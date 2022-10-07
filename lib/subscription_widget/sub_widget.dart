@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class SubscribeWidget extends StatefulWidget {
   const SubscribeWidget({Key? key}) : super(key: key);
@@ -13,13 +14,37 @@ class _SubscribeWidgetState extends State<SubscribeWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: const [
-          CloseButton(),
-          MoonWidget(),
-          SheepMoonWidget(),
-          CloudOne(),
-        ],
+      backgroundColor: const Color(0xff141733),
+      body: SafeArea(
+        left: false,
+        right: false,
+        top: false,
+        bottom: false,
+        child: Stack(
+          children: [
+            Expanded(
+              child: Image.asset("assets/images/Group.png",
+                  width: MediaQuery.of(context).size.width),
+            ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              child: Expanded(
+                child: Image.asset(
+                  "assets/images/Group.png",
+                ),
+              ),
+              color: Colors.red,
+            ),
+            Column(
+              children: const [
+                // CloseButton(),
+                MoonWidget(),
+                // SheepMoonWidget(),
+                // CloudOne(),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -54,15 +79,48 @@ class MoonWidget extends StatefulWidget {
 class _MoonWidgetState extends State<MoonWidget> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.black,
-      alignment: Alignment.topCenter,
-      child: Image.asset(
-        "assets/images/Group 60.png",
-        width: 150,
-        height: 150,
+    return Expanded(
+      child: Stack(
+        children: [
+          Positioned(
+            top: 105,
+            right: 58,
+            child: Image.asset("assets/images/sheep.png"),
+          ),
+          Positioned(
+            left: MediaQuery.of(context).size.width / 2 - 126,
+            top: 82,
+            child: Image.asset(
+              "assets/images/Group 60.png",
+              // color: Colors.red,
+            ),
+          ),
+          Positioned(
+            top: 197,
+            right: 205,
+            child: Image.asset("assets/images/150.png"),
+          ),
+          Positioned(
+            top: 105,
+            right: 0,
+            child: Image.asset("assets/images/151.png"),
+          ),
+          Positioned(
+            top: 103,
+            left: 0,
+            child: Image.asset("assets/images/153.png"),
+          ),
+        ],
       ),
     );
+    // color: Colors.black,
+    // alignment: Alignment.topCenter,
+    // child: Image.asset(
+    //   "assets/images/Group 60.png",
+    //   width: 150,
+    //   height: 150,
+    //   ),
+    // );
   }
 }
 

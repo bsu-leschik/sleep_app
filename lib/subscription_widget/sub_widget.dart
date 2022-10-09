@@ -100,15 +100,20 @@ class _MoonWidgetState extends State<MoonWidget> {
             child: WordsWidget(),
           ),
           const Positioned(
-            top: 394,
+            top: 374,
             right: 59,
             child: AboutPremiumWidget(),
           ),
           const Positioned(
-            top: 520,
+            top: 500,
             left: 30,
             child: PayBottonWidget(),
           ),
+          const Positioned(
+            top: 700,
+            right: 37,
+            child: BottomBarWidget(),
+          )
         ],
       ),
     );
@@ -264,7 +269,7 @@ class _PayBottonWidgetState extends State<PayBottonWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          ElevatedButton(
+          OutlinedButton(
             onPressed: () {},
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -277,7 +282,7 @@ class _PayBottonWidgetState extends State<PayBottonWidget> {
           const SizedBox(
             height: 10,
           ),
-          ElevatedButton(
+          OutlinedButton(
             onPressed: () {},
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -290,7 +295,7 @@ class _PayBottonWidgetState extends State<PayBottonWidget> {
           const SizedBox(
             height: 10,
           ),
-          ElevatedButton(
+          OutlinedButton(
             onPressed: () {},
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -302,6 +307,68 @@ class _PayBottonWidgetState extends State<PayBottonWidget> {
           ),
         ],
       ),
+    );
+  }
+}
+
+class BottomBarWidget extends StatefulWidget {
+  const BottomBarWidget({super.key});
+
+  @override
+  State<BottomBarWidget> createState() => _BottomBarWidgetState();
+}
+
+class _BottomBarWidgetState extends State<BottomBarWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        Column(
+          children: [
+            TextButton(
+              onPressed: () {},
+              child: const Text(
+                "Restore Purchases",
+                style: TextStyle(
+                    fontSize: 12,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400),
+              ),
+            ),
+          ],
+        ),
+        Column(
+          children: [
+            TextButton(
+              onPressed: () {},
+              child: const Text(
+                "Therms of Use",
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            )
+          ],
+        ),
+        Column(
+          children: [
+            TextButton(
+              onPressed: () {},
+              child: const Text(
+                "Privacy Police",
+                style: TextStyle(
+                  fontSize: 12,
+                  color: Colors.white,
+                  fontWeight: FontWeight.w400,
+                ),
+              ),
+            )
+          ],
+        ),
+      ],
     );
   }
 }

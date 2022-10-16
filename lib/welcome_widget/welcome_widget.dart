@@ -1,17 +1,16 @@
-import 'package:go_router/go_router.dart';
 import 'package:flutter/material.dart';
-
-import '../subscription_widget/sub_widget.dart';
+import 'package:go_router/go_router.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 void main() {
-  return runApp(
-    FirstWelcomeWidget(),
-  );
+  setPathUrlStrategy();
+  return runApp(App());
 }
 
-class FirstWelcomeWidget extends StatelessWidget {
-  FirstWelcomeWidget({super.key});
-  static const String title = "GoRouter Routes";
+class App extends StatelessWidget {
+  App({Key? key}) : super(key: key);
+
+  static const String title = 'GoRouter Routes';
 
   @override
   Widget build(BuildContext context) => MaterialApp.router(
@@ -28,53 +27,120 @@ class FirstWelcomeWidget extends StatelessWidget {
           GoRoute(
             path: 'page2',
             builder: (BuildContext context, GoRouterState state) =>
-                const SubscribeWidget(),
+                const Page2Screen(),
+          ),
+          GoRoute(
+            path: 'page3',
+            builder: (BuildContext context, GoRouterState state) =>
+                const Page3Screen(),
+          ),
+          GoRoute(
+            path: 'page4',
+            builder: (BuildContext context, GoRouterState state) =>
+                const Page4Screen(),
           ),
         ],
         path: '/',
         builder: (BuildContext context, GoRouterState state) =>
-            const PageScreen(),
+            const Page1Screen(),
       ),
     ],
   );
 }
 
-class PageScreen extends StatelessWidget {
-  const PageScreen({Key? key}) : super(key: key);
+/// The screen of the first page.
+class Page1Screen extends StatelessWidget {
+  /// Creates a [Page1Screen].
+  const Page1Screen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(title: const Text(FirstWelcomeWidget.title)),
+        appBar: AppBar(title: const Text(App.title)),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ElevatedButton(
-                  onPressed: () => context.go('/page2'),
-                  child: const Text('Privacy Police'))
+                onPressed: () => context.go('/page2'),
+                child: const Text('Go to page 2'),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              ElevatedButton(
+                onPressed: () => context.go('/page3'),
+                child: const Text('Go to page 3'),
+              ),
             ],
           ),
         ),
       );
 }
 
-class SecondPageScreen extends StatelessWidget {
-  const SecondPageScreen({Key? key}) : super(key: key);
+/// The screen of the second page.
+class Page2Screen extends StatelessWidget {
+  /// Creates a [Page2Screen].
+  const Page2Screen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) => Scaffold(
-        appBar: AppBar(title: const Text(FirstWelcomeWidget.title)),
+        appBar: AppBar(title: const Text(App.title)),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ElevatedButton(
                   onPressed: () => context.go('/'),
-                  child: const Text('Go Back'))
+                  child: const Text('Go back to home page')),
             ],
           ),
         ),
       );
+}
+
+/// The screen of the second page.
+class Page3Screen extends StatelessWidget {
+  /// Creates a [Page2Screen].
+  const Page3Screen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+        appBar: AppBar(title: const Text(App.title)),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ElevatedButton(
+                  onPressed: () => context.go('/page4'),
+                  child: const Text('Go to page4'))
+            ],
+          ),
+        ),
+      );
+}
+
+/// The screen of the second page.
+class Page4Screen extends StatelessWidget {
+  /// Creates a [Page2Screen].
+  const Page4Screen({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final router = GoRouter.of(context);
+    return Scaffold(
+      appBar: AppBar(title: Text(router.location.toString())),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(
+                onPressed: () => context.go('/'),
+                child: const Text('Go back to home page'))
+          ],
+        ),
+      ),
+    );
+  }
 }
 
 class ErrorScreen extends StatelessWidget {
@@ -85,7 +151,7 @@ class ErrorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Error"),
+        title: Text("Error"),
       ),
       body: Center(
         child: Text(error.toString()),

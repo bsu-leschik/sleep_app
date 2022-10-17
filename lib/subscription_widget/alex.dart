@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sleep_app/subscription_widget/sub_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingPage extends StatefulWidget {
@@ -202,7 +203,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const MyHomePage1()),
+                              builder: (context) => const SubscribeWidget()),
                         );
                       } else {
                         _pageController.nextPage(

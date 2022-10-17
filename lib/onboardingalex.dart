@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:sleep_app/subscription_widget/sub_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -79,24 +78,6 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                     const SizedBox(
                       height: 224,
                     ),
-                    CupertinoButton(
-                      padding: const EdgeInsets.only(right: 50, left: 50),
-                      color: const Color(
-                        (0xff141733),
-                      ),
-                      borderRadius: BorderRadius.circular(45.0),
-                      onPressed: () => {},
-                      child: const Text(
-                        "Continue",
-                        style: TextStyle(
-                          color: Color(0xffffffff),
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                          fontSize: 32.0,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
                   ],
                 ),
                 Column(
@@ -135,24 +116,6 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                     ),
                     const SizedBox(
                       height: 224,
-                    ),
-                    CupertinoButton(
-                      padding: const EdgeInsets.only(right: 50, left: 50),
-                      color: const Color(
-                        (0xff141733),
-                      ),
-                      borderRadius: BorderRadius.circular(45.0),
-                      onPressed: () => {},
-                      child: const Text(
-                        "Continue",
-                        style: TextStyle(
-                          color: Color(0xffffffff),
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                          fontSize: 32.0,
-                        ),
-                        textAlign: TextAlign.center,
-                      ),
                     ),
                   ],
                 ),
@@ -193,36 +156,41 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                     const SizedBox(
                       height: 224,
                     ),
-                    CupertinoButton(
-                      onPressed: () {
-                        if (_pageController.page == 1) {}
+                    Positioned(
+                      top: 662,
+                      left: 65,
+                      child: CupertinoButton(
+                        onPressed: () {
+                          if (_pageController.page == 1) {}
 
-                        if (_pageController.page == 2) {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SubscribeWidget()),
-                          );
-                        } else {
-                          _pageController.nextPage(
-                            duration: const Duration(
-                              milliseconds: 400,
-                            ),
-                            curve: Curves.ease,
-                          );
-                        }
-                      },
-                      minSize: 74.0,
-                      color: const Color.fromARGB(255, 4, 95, 227),
-                      borderRadius: BorderRadius.circular(45.0),
-                      child: const Text(
-                        "Continue",
-                        style: TextStyle(
-                          fontFamily: 'SFProDisplay',
-                          color: Color(0xffffffff),
-                          fontSize: 20,
-                          fontWeight: FontWeight.w700,
-                          fontStyle: FontStyle.normal,
+                          if (_pageController.page == 2) {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const SubscribeWidget()),
+                            );
+                          } else {
+                            _pageController.nextPage(
+                              duration: const Duration(
+                                milliseconds: 400,
+                              ),
+                              curve: Curves.ease,
+                            );
+                          }
+                        },
+                        minSize: 74.0,
+                        color: const Color.fromARGB(255, 4, 95, 227),
+                        borderRadius: BorderRadius.circular(45.0),
+                        child: const Text(
+                          "Continue",
+                          style: TextStyle(
+                            fontFamily: 'SFProDisplay',
+                            color: Color(0xffffffff),
+                            fontSize: 20,
+                            fontWeight: FontWeight.w700,
+                            fontStyle: FontStyle.normal,
+                          ),
                         ),
                       ),
                     ),

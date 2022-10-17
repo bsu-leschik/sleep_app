@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'boarding.dart';
+
+import 'onboardingalex.dart';
 
 void main() {
   runApp(const MyApp());
@@ -16,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const BoardingWidget(),
+      home: const OnBoardingWidget(),
     );
   }
 }

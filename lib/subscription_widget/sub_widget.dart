@@ -24,8 +24,8 @@ class _SubscribeWidgetState extends State<SubscribeWidget> {
           Column(
             children: const [
               CloseButton(),
-              // MoonWidget(),
-              // AboutPremiumWidget(),
+              MoonWidget(),
+              AboutPremiumWidget(),
             ],
           ),
         ],

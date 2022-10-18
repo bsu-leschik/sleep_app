@@ -151,7 +151,7 @@ class ErrorScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Error"),
+        title: const Text("Error"),
       ),
       body: Center(
         child: Text(error.toString()),

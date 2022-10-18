@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'melody_widget/fiveframewidget.dart';
 import 'onboardingalex.dart';
 
 void main() {
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const OnBoardingWidget(),
+      home: const MelodyWidget(),
     );
   }
 }

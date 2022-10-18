@@ -46,7 +46,7 @@ class CloseButton extends StatelessWidget {
           Icons.close,
           color: Colors.white,
         ),
-        onPressed: () => context.go('/'),
+        onPressed: () => {},
       ),
     );
   }

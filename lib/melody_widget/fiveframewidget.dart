@@ -71,19 +71,19 @@ class _MelodyWidgetState extends State<MelodyWidget> {
                               decoration: const BoxDecoration(
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(59),
-                                  child: Text(
-                                    "ALL",
-                                    style: TextStyle(
-                                      color: Color(0xff281343),
-                                      fontWeight: FontWeight.w700,
-                                      fontStyle: FontStyle.normal,
-                                      fontSize: 16,
-                                    ),
-                                  ),
+                                ),
+                              ),
+                              child: const Text(
+                                "ALL",
+                                style: TextStyle(
+                                  color: Color(0xff281343),
+                                  fontWeight: FontWeight.w700,
+                                  fontStyle: FontStyle.normal,
+                                  fontSize: 16,
                                 ),
                               ),
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ],

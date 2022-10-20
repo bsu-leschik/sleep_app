@@ -55,30 +55,32 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     ),
                     AnimationAppTour(
                       4,
-                      Column(children: const [
-                        Text("Get a Loan Quickly Anytime",
+                      Column(
+                        children: const [
+                          Text("Get a Loan Quickly Anytime",
+                              style: TextStyle(
+                                fontFamily: 'SFProDisplay',
+                                color: Color(0xff000000),
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FontStyle.normal,
+                              )),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Get a loan for urgent purchases,\nbusiness development or your dreams",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: 'SFProDisplay',
-                              color: Color(0xff000000),
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600,
+                              color: Color(0xff404040),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
                               fontStyle: FontStyle.normal,
-                            )),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "Get a loan for urgent purchases,\nbusiness development or your dreams",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: 'SFProDisplay',
-                            color: Color(0xff404040),
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.normal,
+                            ),
                           ),
-                        ),
-                      ]),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height:
@@ -97,30 +99,32 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     ),
                     AnimationAppTour(
                       4,
-                      Column(children: const [
-                        Text("No Extra Comissions",
+                      Column(
+                        children: const [
+                          Text("No Extra Comissions",
+                              style: TextStyle(
+                                fontFamily: 'SFProDisplay',
+                                color: Color(0xff000000),
+                                fontSize: 24,
+                                fontWeight: FontWeight.w600,
+                                fontStyle: FontStyle.normal,
+                              )),
+                          SizedBox(
+                            height: 10,
+                          ),
+                          Text(
+                            "Honest direct lenders and\nunderstandable agreements",
+                            textAlign: TextAlign.center,
                             style: TextStyle(
                               fontFamily: 'SFProDisplay',
-                              color: Color(0xff000000),
-                              fontSize: 24,
-                              fontWeight: FontWeight.w600,
+                              color: Color(0xff404040),
+                              fontSize: 18,
+                              fontWeight: FontWeight.w400,
                               fontStyle: FontStyle.normal,
-                            )),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        Text(
-                          "Honest direct lenders and\nunderstandable agreements",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontFamily: 'SFProDisplay',
-                            color: Color(0xff404040),
-                            fontSize: 18,
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.normal,
+                            ),
                           ),
-                        ),
-                      ]),
+                        ],
+                      ),
                     ),
                     SizedBox(
                       height:

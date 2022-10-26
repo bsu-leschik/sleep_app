@@ -33,9 +33,9 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
         child: Expanded(
           child: Stack(
             children: [
-              const Rotation(
-                title: '',
-              ),
+              // const Rotation(
+              // title: '',
+              // ),
               PageView(
                 controller: _pageController,
                 onPageChanged: (value) {

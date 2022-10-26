@@ -31,7 +31,6 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
       backgroundColor: const Color(0xff141733),
       body: SafeArea(
         child: Expanded(
-          // возможно тут ошибка вылазит
           child: Stack(
             children: [
               const Rotation(

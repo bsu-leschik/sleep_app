@@ -16,9 +16,6 @@ class _RotationState extends State<Rotation> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
       body: AnimatedBackground(
         behaviour: RandomParticleBehaviour(
           options: const ParticleOptions(
@@ -32,7 +29,9 @@ class _RotationState extends State<Rotation> with TickerProviderStateMixin {
           ),
         ),
         vsync: this,
-        child: const OnBoardingWidget(),
+        child: const Center(
+          child: Text('куку ёпта'),
+        ),
       ),
     );
   }

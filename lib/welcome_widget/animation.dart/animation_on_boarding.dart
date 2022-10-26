@@ -1,48 +1,38 @@
+import 'package:animated_background/animated_background.dart';
 import 'package:flutter/material.dart';
 
+import '../../onboardingalex.dart';
+
 class Rotation extends StatefulWidget {
-  const Rotation({Key? key}) : super(key: key);
+  const Rotation({super.key, required this.title});
+
+  final String title;
 
   @override
-  _RotationState createState() => _RotationState();
+  State<Rotation> createState() => _RotationState();
 }
 
 class _RotationState extends State<Rotation> with TickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _animation;
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 20),
-    );
-    _animation = CurvedAnimation(
-      parent: _controller,
-      curve: Curves.easeIn,
-    );
-    _controller.repeat();
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xff141733),
-      body: RotationTransition(
-        turns: _animation,
-        child: Center(
-          child: Image.asset(
-            'assets/images/shopping/Stars.png',
-            height: double.infinity,
-            width: double.infinity,
+      appBar: AppBar(
+        title: Text(widget.title),
+      ),
+      body: AnimatedBackground(
+        behaviour: RandomParticleBehaviour(
+          options: const ParticleOptions(
+            spawnMaxRadius: 50,
+            spawnMaxSpeed: 50,
+            spawnMinSpeed: 10,
+            particleCount: 15,
+            minOpacity: 0.3,
+            spawnOpacity: 0.5,
+            baseColor: Colors.blueAccent,
           ),
         ),
+        vsync: this,
+        child: const OnBoardingWidget(),
       ),
     );
   }

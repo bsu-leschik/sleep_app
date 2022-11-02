@@ -17,7 +17,7 @@ class _RotationState extends State<Rotation> with TickerProviderStateMixin {
       backgroundColor: const Color(0xff141733),
       body: AnimatedBackground(
         behaviour: RandomParticleBehaviour(
-          options: ParticleOptions(
+          options: const ParticleOptions(
             spawnMaxRadius: 50,
             spawnMaxSpeed: 50,
             spawnMinSpeed: 10,
@@ -25,7 +25,6 @@ class _RotationState extends State<Rotation> with TickerProviderStateMixin {
             minOpacity: 0.3,
             spawnOpacity: 0.5,
             baseColor: Colors.blueAccent,
-            image: Image.asset('assets/images/shopping/Stars.png'),
           ),
         ),
         vsync: this,

@@ -1,6 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 class MelodyWidget extends StatefulWidget {
   const MelodyWidget({super.key});
@@ -58,36 +57,56 @@ class _MelodyWidgetState extends State<MelodyWidget> {
                 const SizedBox(
                   height: 20,
                 ),
-                Padding(
-                  padding: const EdgeInsets.all(17.0),
-                  child: Row(
-                    children: [
-                      Stack(
-                        children: [
-                          Positioned(
-                            child: Container(
-                              width: 61,
-                              height: 42,
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(59),
-                                ),
-                              ),
-                              child: const Text(
-                                "ALL",
-                                style: TextStyle(
-                                  color: Color(0xff281343),
-                                  fontWeight: FontWeight.w700,
-                                  fontStyle: FontStyle.normal,
-                                  fontSize: 16,
-                                ),
-                              ),
+                Row(
+                  children: [
+                    CupertinoButton(
+                      onPressed: () => {print(2)},
+                      child: Container(
+                        width: 61,
+                        height: 42,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(59),
+                          ),
+                          color: Color.fromARGB(255, 255, 255, 255),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Text(
+                            "ALL",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xff8E9FCC),
                             ),
                           ),
-                        ],
+                        ),
                       ),
-                    ],
-                  ),
+                    ),
+                    CupertinoButton(
+                      onPressed: () => {print(3)},
+                      child: Container(
+                        width: 122,
+                        height: 42,
+                        decoration: const BoxDecoration(
+                          border: Border(),
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(59),
+                          ),
+                          color: Color.fromRGBO(20, 23, 51, 0.7),
+                        ),
+                        child: const Padding(
+                          padding: EdgeInsets.all(10.0),
+                          child: Text(
+                            "Favorite",
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              color: Color(0xff8E9FCC),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

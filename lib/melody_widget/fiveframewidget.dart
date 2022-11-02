@@ -60,15 +60,20 @@ class _MelodyWidgetState extends State<MelodyWidget> {
                 Row(
                   children: [
                     CupertinoButton(
-                      onPressed: () => {print(2)},
+                      onPressed: () => {
+                        print(2),
+                      },
                       child: Container(
                         width: 61,
                         height: 42,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: const Color(0xff8E9FCC),
+                          ),
+                          borderRadius: const BorderRadius.all(
                             Radius.circular(59),
                           ),
-                          color: Color.fromARGB(255, 255, 255, 255),
+                          color: const Color.fromARGB(255, 255, 255, 255),
                         ),
                         child: const Padding(
                           padding: EdgeInsets.all(10.0),
@@ -83,16 +88,20 @@ class _MelodyWidgetState extends State<MelodyWidget> {
                       ),
                     ),
                     CupertinoButton(
-                      onPressed: () => {print(3)},
+                      onPressed: () => {
+                        print(3),
+                      },
                       child: Container(
                         width: 122,
                         height: 42,
-                        decoration: const BoxDecoration(
-                          border: Border(),
-                          borderRadius: BorderRadius.all(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: const Color(0xff8E9FCC),
+                          ),
+                          borderRadius: const BorderRadius.all(
                             Radius.circular(59),
                           ),
-                          color: Color.fromRGBO(20, 23, 51, 0.7),
+                          color: const Color.fromRGBO(20, 23, 51, 0.7),
                         ),
                         child: const Padding(
                           padding: EdgeInsets.all(10.0),

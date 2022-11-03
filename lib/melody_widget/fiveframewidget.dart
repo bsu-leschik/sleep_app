@@ -66,6 +66,13 @@ class _MelodyWidgetState extends State<MelodyWidget> {
                   height: 15,
                 ),
                 const ImageMusicWidget(),
+                Container(
+                  height: 1,
+                  decoration: BoxDecoration(
+                    color: const Color(0xffa7a7ab),
+                    borderRadius: BorderRadius.circular(2),
+                  ),
+                ),
               ],
             ),
           ],

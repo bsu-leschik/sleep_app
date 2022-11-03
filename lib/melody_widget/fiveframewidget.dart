@@ -65,6 +65,7 @@ class _MelodyWidgetState extends State<MelodyWidget> {
                 const SizedBox(
                   height: 15,
                 ),
+                const ImageMusicWidget(),
               ],
             ),
           ],
@@ -73,6 +74,137 @@ class _MelodyWidgetState extends State<MelodyWidget> {
     );
   }
 }
+
+class ImageMusicWidget extends StatelessWidget {
+  const ImageMusicWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: GridView.count(
+        primary: false,
+        padding: const EdgeInsets.all(30),
+        crossAxisSpacing: 10,
+        mainAxisSpacing: 10,
+        crossAxisCount: 3,
+        children: <Widget>[
+          Container(
+            padding: const EdgeInsets.all(1),
+            child: Column(
+              children: [
+                Image.asset("assets/images/music/Mediative.png"),
+                const Text(
+                  'Mediative space',
+                  style: TextStyle(
+                    fontSize: 12,
+                    color: Color(0xff8E9FCC),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(1),
+            child: Column(
+              children: [
+                Image.asset("assets/images/music/Moonmusic.png"),
+                const Text(
+                  'Moon vibes',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Color(0xff8E9FCC),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(1),
+            child: Column(
+              children: [
+                Image.asset("assets/images/music/Peaceful.png"),
+                const Text(
+                  'Peaceful and calm',
+                  style: TextStyle(
+                    fontSize: 11,
+                    color: Color(0xff8E9FCC),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(1),
+            child: Column(
+              children: [
+                Image.asset("assets/images/music/Tropical.png"),
+                const Text(
+                  'Tropical',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Color(0xff8E9FCC),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Container(
+            padding: const EdgeInsets.all(1),
+            child: Column(
+              children: [
+                Image.asset("assets/images/music/Winter.png"),
+                const Text(
+                  'Winter',
+                  style: TextStyle(
+                    fontSize: 14,
+                    color: Color(0xff8E9FCC),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+//       child: GridView.count(
+//         padding: const EdgeInsets.all(25),
+//         primary: false,
+//         scrollDirection: Axis.horizontal,
+//         crossAxisCount: 3,
+//         crossAxisSpacing: 10,
+//         mainAxisSpacing: 10,
+//         children: [
+//           Stack(
+//             children: [
+//               Positioned(
+//                 top: 240,
+//                 left: 43,
+//                 child: Image.asset("assets/images/music/Mediative.png"),
+//               ),
+//               Positioned(
+//                 top: 240,
+//                 left: 156,
+//                 child: Image.asset("assets/images/music/Moonmusic.png"),
+//               ),
+//               Positioned(
+//                 top: 240,
+//                 left: 269,
+//                 child: Image.asset("assets/images/music/Peaceful.png"),
+//               ),
+//               Positioned(
+//                 top: 362,
+//                 left: 43,
+//                 child: Image.asset("assets/images/music/Tropical.png"),
+//               ),
+//               Positioned(
+//                 child: Image.asset("assets/images/music/Winter.png"),
+//               ),
+//             ],
+//           ),
+//         ],
+//       ),
 
 class TypeMusic extends StatelessWidget {
   const TypeMusic({

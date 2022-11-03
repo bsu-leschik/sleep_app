@@ -67,6 +67,7 @@ class _MelodyWidgetState extends State<MelodyWidget> {
                 ),
                 const ImageMusicWidget(),
                 Container(
+                  alignment: Alignment.topCenter,
                   height: 1,
                   decoration: BoxDecoration(
                     color: const Color(0xffa7a7ab),
@@ -88,89 +89,93 @@ class ImageMusicWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: GridView.count(
-        primary: false,
-        padding: const EdgeInsets.all(30),
-        crossAxisSpacing: 10,
-        mainAxisSpacing: 10,
-        crossAxisCount: 3,
-        children: <Widget>[
-          Container(
-            padding: const EdgeInsets.all(1),
-            child: Column(
-              children: [
-                Image.asset("assets/images/music/Mediative.png"),
-                const Text(
-                  'Mediative space',
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: Color(0xff8E9FCC),
+      child: SizedBox(
+        width: double.infinity,
+        height: 200,
+        child: GridView.count(
+          primary: false,
+          padding: const EdgeInsets.all(30),
+          crossAxisSpacing: 10,
+          mainAxisSpacing: 10,
+          crossAxisCount: 3,
+          children: <Widget>[
+            Container(
+              padding: const EdgeInsets.all(1),
+              child: Column(
+                children: [
+                  Image.asset("assets/images/music/Mediative.png"),
+                  const Text(
+                    'Mediative space',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Color(0xff8E9FCC),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(1),
-            child: Column(
-              children: [
-                Image.asset("assets/images/music/Moonmusic.png"),
-                const Text(
-                  'Moon vibes',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Color(0xff8E9FCC),
+            Container(
+              padding: const EdgeInsets.all(1),
+              child: Column(
+                children: [
+                  Image.asset("assets/images/music/Moonmusic.png"),
+                  const Text(
+                    'Moon vibes',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Color(0xff8E9FCC),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(1),
-            child: Column(
-              children: [
-                Image.asset("assets/images/music/Peaceful.png"),
-                const Text(
-                  'Peaceful and calm',
-                  style: TextStyle(
-                    fontSize: 11,
-                    color: Color(0xff8E9FCC),
+            Container(
+              padding: const EdgeInsets.all(1),
+              child: Column(
+                children: [
+                  Image.asset("assets/images/music/Peaceful.png"),
+                  const Text(
+                    'Peaceful and calm',
+                    style: TextStyle(
+                      fontSize: 11,
+                      color: Color(0xff8E9FCC),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(1),
-            child: Column(
-              children: [
-                Image.asset("assets/images/music/Tropical.png"),
-                const Text(
-                  'Tropical',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Color(0xff8E9FCC),
+            Container(
+              padding: const EdgeInsets.all(1),
+              child: Column(
+                children: [
+                  Image.asset("assets/images/music/Tropical.png"),
+                  const Text(
+                    'Tropical',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Color(0xff8E9FCC),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-          Container(
-            padding: const EdgeInsets.all(1),
-            child: Column(
-              children: [
-                Image.asset("assets/images/music/Winter.png"),
-                const Text(
-                  'Winter',
-                  style: TextStyle(
-                    fontSize: 14,
-                    color: Color(0xff8E9FCC),
+            Container(
+              padding: const EdgeInsets.all(1),
+              child: Column(
+                children: [
+                  Image.asset("assets/images/music/Winter.png"),
+                  const Text(
+                    'Winter',
+                    style: TextStyle(
+                      fontSize: 14,
+                      color: Color(0xff8E9FCC),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

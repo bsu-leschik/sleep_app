@@ -14,67 +14,65 @@ class _MelodyWidgetState extends State<MelodyWidget> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(20, 23, 51, 0.7),
       body: SafeArea(
-        child: Stack(
+        child: Column(
           children: [
-            Column(
+            Row(
               children: [
-                Row(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        "Melodies for sleep ",
-                        style: TextStyle(
-                            color: Color(0xffffffff),
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.normal,
-                            fontSize: 23.0),
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 90,
-                    ),
-                    CupertinoButton(
-                      onPressed: () => {print(1)},
-                      child: Container(
-                        width: 40,
-                        height: 40,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(59),
-                          ),
-                          color: Color(0xff003293),
-                        ),
-                        child: const Icon(
-                          Icons.settings,
-                          color: Colors.white,
-                          size: 25,
-                        ),
-                      ),
-                    ),
-                  ],
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "Melodies for sleep ",
+                    style: TextStyle(
+                        color: Color(0xffffffff),
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                        fontSize: 23.0),
+                    textAlign: TextAlign.left,
+                  ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  width: 90,
                 ),
-                const SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: TypeMusic(),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                const ImageMusicWidget(),
-                Container(
-                  alignment: Alignment.topCenter,
-                  height: 1,
-                  decoration: BoxDecoration(
-                    color: const Color(0xffa7a7ab),
-                    borderRadius: BorderRadius.circular(2),
+                CupertinoButton(
+                  onPressed: () => {print(1)},
+                  child: Container(
+                    width: 40,
+                    height: 40,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(59),
+                      ),
+                      color: Color(0xff003293),
+                    ),
+                    child: const Icon(
+                      Icons.settings,
+                      color: Colors.white,
+                      size: 25,
+                    ),
                   ),
                 ),
               ],
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            const SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: TypeMusic(),
+            ),
+            const SizedBox(
+              height: 15,
+            ),
+            const ImageMusicWidget(),
+            Center(
+              child: Container(
+                alignment: Alignment.topCenter,
+                height: 1,
+                decoration: BoxDecoration(
+                  color: const Color(0xffa7a7ab),
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
             ),
           ],
         ),
@@ -89,93 +87,82 @@ class ImageMusicWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: SizedBox(
-        width: double.infinity,
-        height: 200,
-        child: GridView.count(
-          primary: false,
-          padding: const EdgeInsets.all(30),
-          crossAxisSpacing: 10,
-          mainAxisSpacing: 10,
-          crossAxisCount: 3,
-          children: <Widget>[
-            Container(
-              padding: const EdgeInsets.all(1),
-              child: Column(
-                children: [
-                  Image.asset("assets/images/music/Mediative.png"),
-                  const Text(
-                    'Mediative space',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Color(0xff8E9FCC),
+      child: Stack(
+        children: [
+          SizedBox(
+            width: double.infinity,
+            height: 250,
+            child: GridView.count(
+              primary: false,
+              padding: const EdgeInsets.all(20),
+              crossAxisSpacing: 3,
+              mainAxisSpacing: 3,
+              crossAxisCount: 3,
+              children: <Widget>[
+                Column(
+                  children: [
+                    Image.asset("assets/images/music/Mediative.png"),
+                    const Text(
+                      'Mediative space',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xff8E9FCC),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(1),
-              child: Column(
-                children: [
-                  Image.asset("assets/images/music/Moonmusic.png"),
-                  const Text(
-                    'Moon vibes',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Color(0xff8E9FCC),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Image.asset("assets/images/music/Moonmusic.png"),
+                    const Text(
+                      'Moon vibes',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xff8E9FCC),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(1),
-              child: Column(
-                children: [
-                  Image.asset("assets/images/music/Peaceful.png"),
-                  const Text(
-                    'Peaceful and calm',
-                    style: TextStyle(
-                      fontSize: 11,
-                      color: Color(0xff8E9FCC),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Image.asset("assets/images/music/Peaceful.png"),
+                    const Text(
+                      'Peaceful and calm',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xff8E9FCC),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(1),
-              child: Column(
-                children: [
-                  Image.asset("assets/images/music/Tropical.png"),
-                  const Text(
-                    'Tropical',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Color(0xff8E9FCC),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Image.asset("assets/images/music/Tropical.png"),
+                    const Text(
+                      'Tropical',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xff8E9FCC),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              padding: const EdgeInsets.all(1),
-              child: Column(
-                children: [
-                  Image.asset("assets/images/music/Winter.png"),
-                  const Text(
-                    'Winter',
-                    style: TextStyle(
-                      fontSize: 14,
-                      color: Color(0xff8E9FCC),
+                  ],
+                ),
+                Column(
+                  children: [
+                    Image.asset("assets/images/music/Winter.png"),
+                    const Text(
+                      'Winter',
+                      style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xff8E9FCC),
+                      ),
                     ),
-                  ),
-                ],
-              ),
+                  ],
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

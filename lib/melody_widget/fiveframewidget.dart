@@ -68,8 +68,10 @@ class _MelodyWidgetState extends State<MelodyWidget> {
               const SizedBox(
                 height: 15,
               ),
+              const BlokImageMusicWidget()
               // Container(
               //   alignment: Alignment.bottomCenter,
+              //   width: 304,
               //   height: 1,
               //   decoration: BoxDecoration(
               //     color: const Color(0xffa7a7ab),
@@ -94,7 +96,7 @@ class ImageMusicWidget extends StatelessWidget {
         children: [
           SizedBox(
             width: double.infinity,
-            height: double.infinity,
+            height: 250,
             child: GridView.count(
               primary: false,
               padding: const EdgeInsets.all(20),
@@ -470,6 +472,117 @@ class TypeMusic extends StatelessWidget {
           ),
         ),
       ],
+    );
+  }
+}
+
+class BlokImageMusicWidget extends StatelessWidget {
+  const BlokImageMusicWidget({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Stack(
+        children: [
+          SizedBox(
+            width: double.infinity,
+            height: 300,
+            child: GridView.count(
+              primary: false,
+              padding: const EdgeInsets.all(20),
+              crossAxisCount: 3,
+              crossAxisSpacing: 3,
+              mainAxisSpacing: 3,
+              children: <Widget>[
+                Column(
+                  children: [
+                    Container(
+                      width: 78,
+                      height: 78,
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(59),
+                        ),
+                        border: Border.all(
+                            color: const Color(0xff8e9fcc), width: 1),
+                      ),
+                    ),
+                  ],
+                ),
+                const Text(
+                  'music title',
+                  style: TextStyle(
+                    color: Color(0xff8e9fcc),
+                  ),
+                ),
+                Column(
+                  children: [
+                    Container(
+                      width: 78,
+                      height: 78,
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(59),
+                        ),
+                        border: Border.all(
+                            color: const Color(0xff8e9fcc), width: 1),
+                      ),
+                    ),
+                  ],
+                ),
+                const Text(
+                  'long song title',
+                  style: TextStyle(
+                    color: Color(0xff8e9fcc),
+                  ),
+                ),
+                Column(
+                  children: [
+                    Container(
+                      width: 78,
+                      height: 78,
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(59),
+                        ),
+                        border: Border.all(
+                            color: const Color(0xff8e9fcc), width: 1),
+                      ),
+                    ),
+                  ],
+                ),
+                const Text(
+                  'very long song ...',
+                  style: TextStyle(
+                    color: Color(0xff8e9fcc),
+                  ),
+                ),
+                Column(
+                  children: [
+                    Container(
+                      width: 78,
+                      height: 78,
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(59),
+                        ),
+                        border: Border.all(
+                            color: const Color(0xff8e9fcc), width: 1),
+                      ),
+                    ),
+                  ],
+                ),
+                const Text(
+                  'music title',
+                  style: TextStyle(
+                    color: Color(0xff8e9fcc),
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

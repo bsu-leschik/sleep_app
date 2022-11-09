@@ -1,6 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'bottom_music.dart';
+
 class MelodyWidget extends StatefulWidget {
   const MelodyWidget({super.key});
 
@@ -59,7 +61,7 @@ class _MelodyWidgetState extends State<MelodyWidget> {
               ),
               const SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: TypeMusic(),
+                child: TypeMusicWidget(),
               ),
               const SizedBox(
                 height: 15,
@@ -68,7 +70,8 @@ class _MelodyWidgetState extends State<MelodyWidget> {
               const SizedBox(
                 height: 15,
               ),
-              const BlokImageMusicWidget()
+              const BlockedMusicWidget(),
+
               // Container(
               //   alignment: Alignment.bottomCenter,
               //   width: 304,
@@ -210,8 +213,8 @@ class ImageMusicWidget extends StatelessWidget {
 //         ],
 //       ),
 
-class TypeMusic extends StatelessWidget {
-  const TypeMusic({
+class TypeMusicWidget extends StatelessWidget {
+  const TypeMusicWidget({
     Key? key,
   }) : super(key: key);
 
@@ -476,8 +479,8 @@ class TypeMusic extends StatelessWidget {
   }
 }
 
-class BlokImageMusicWidget extends StatelessWidget {
-  const BlokImageMusicWidget({super.key});
+class BlockMusicWidget extends StatelessWidget {
+  const BlockMusicWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

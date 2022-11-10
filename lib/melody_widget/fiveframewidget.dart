@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'bottom_closed.dart';
 import 'bottom_music.dart';
 
 class MelodyWidget extends StatefulWidget {
@@ -17,6 +18,7 @@ class _MelodyWidgetState extends State<MelodyWidget> {
       backgroundColor: const Color.fromRGBO(20, 23, 51, 0.7),
       body: SafeArea(
         child: Stack(children: [
+          const CloseBottomWidget(),
           Column(
             children: [
               Row(

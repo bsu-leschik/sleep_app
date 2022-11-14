@@ -17,74 +17,75 @@ class _MelodyWidgetState extends State<MelodyWidget> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(20, 23, 51, 0.7),
       body: SafeArea(
-        child: Stack(children: [
-          Column(
-            children: [
-              Row(
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.all(8.0),
-                    child: Text(
-                      "Melodies for sleep ",
-                      style: TextStyle(
-                          color: Color(0xffffffff),
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                          fontSize: 23.0),
-                      textAlign: TextAlign.left,
+        child: Stack(
+          children: [
+            Column(
+              children: [
+                Row(
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.all(8.0),
+                      child: Text(
+                        "Melodies for sleep ",
+                        style: TextStyle(
+                            color: Color(0xffffffff),
+                            fontWeight: FontWeight.w400,
+                            fontStyle: FontStyle.normal,
+                            fontSize: 23.0),
+                        textAlign: TextAlign.left,
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    width: 90,
-                  ),
-                  CupertinoButton(
-                    onPressed: () => {print(1)},
-                    child: Container(
-                      width: 40,
-                      height: 40,
-                      decoration: const BoxDecoration(
-                        borderRadius: BorderRadius.all(
-                          Radius.circular(59),
+                    const SizedBox(
+                      width: 90,
+                    ),
+                    CupertinoButton(
+                      onPressed: () => {print(1)},
+                      child: Container(
+                        width: 40,
+                        height: 40,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(59),
+                          ),
+                          color: Color(0xff003293),
                         ),
-                        color: Color(0xff003293),
-                      ),
-                      child: const Icon(
-                        Icons.settings,
-                        color: Colors.white,
-                        size: 25,
+                        child: const Icon(
+                          Icons.settings,
+                          color: Colors.white,
+                          size: 25,
+                        ),
                       ),
                     ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                const SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: TypeMusicWidget(),
+                ),
+                const SizedBox(
+                  height: 15,
+                ),
+                const ImageMusicWidget(),
+                SizedBox(
+                  height: 1,
+                  child: Container(
+                    alignment: Alignment.topCenter,
+                    width: MediaQuery.of(context).size.width - 86,
+                    height: 1,
+                    decoration: BoxDecoration(
+                      color: const Color(0xffa7a7ab),
+                      borderRadius: BorderRadius.circular(2),
+                    ),
                   ),
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              const SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: TypeMusicWidget(),
-              ),
-              const SizedBox(
-                height: 15,
-              ),
-              const ImageMusicWidget(),
-              const SizedBox(
-                height: 15,
-              ),
-              const BlockedMusicWidget(),
-
-              // Container(
-              //   alignment: Alignment.bottomCenter,
-              //   width: 304,
-              //   height: 1,
-              //   decoration: BoxDecoration(
-              //     color: const Color(0xffa7a7ab),
-              //     borderRadius: BorderRadius.circular(2),
-              //   ),
-              // ),
-            ],
-          ),
-        ]),
+                ),
+                const BlockedMusicWidget(),
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }

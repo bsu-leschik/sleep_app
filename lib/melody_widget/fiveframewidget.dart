@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import 'bottom_closed.dart';
 import 'bottom_music.dart';
+import 'lock_music_widget.dart';
 
 class MelodyWidget extends StatefulWidget {
   const MelodyWidget({super.key});
@@ -185,6 +185,7 @@ class ImageMusicWidget extends StatelessWidget {
               ],
             ),
           ),
+          const LockTopMusicWidget(),
         ],
       ),
     );

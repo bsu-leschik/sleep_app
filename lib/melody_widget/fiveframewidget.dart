@@ -68,7 +68,7 @@ class _MelodyWidgetState extends State<MelodyWidget> {
                 const SizedBox(
                   height: 15,
                 ),
-                const ImageMusicWidget(),
+                ImageMusicWidget(),
                 SizedBox(
                   height: 1,
                   child: Container(
@@ -92,8 +92,52 @@ class _MelodyWidgetState extends State<MelodyWidget> {
 }
 
 class ImageMusicWidget extends StatelessWidget {
-  const ImageMusicWidget({super.key});
+  ImageMusicWidget({super.key});
+  List<MuzModel> listMusic = [
+    MuzModel(
+      title: "Moon vibes",
+      image: "assets/images/music/Moonmusic.png",
+    ),
+    MuzModel(
+      title: "1",
+      image: "assets/images/music/Moonmusic.png",
+    ),
+    MuzModel(
+      title: "2",
+      image: "assets/images/music/Moonmusic.png",
+    ),
+    MuzModel(
+      title: "3",
+      image: "assets/images/music/Moonmusic.png",
+    ),
+    MuzModel(
+      title: "4",
+      image: "assets/images/music/Moonmusic.png",
+    ),
+    MuzModel(
+      title: "5",
+      image: "assets/images/music/Moonmusic.png",
+    ),
+  ];
+  // List<String> listImage = [
+  //   "assets/images/music/Moonmusic.png",
+  //   "assets/images/music/Mediative.png",
+  //   "assets/images/music/Mediative.png",
+  //   "assets/images/music/Mediative.png",
+  //   "assets/images/music/Mediative.png",
+  //   "assets/images/music/Mediative.png",
+  //   "assets/images/music/Mediative.png",
+  // ];
 
+  // List<String> listTitle = [
+  //   "Moon vibes",
+  //   "1",
+  //   "2",
+  //   "3",
+  //   "4",
+  //   "5",
+  //   "6",
+  // ];
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -103,115 +147,150 @@ class ImageMusicWidget extends StatelessWidget {
           SizedBox(
             width: double.infinity,
             height: 250,
-            child: GridView.count(
+            child: GridView.builder(
+              itemCount: listMusic.length,
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3,
+              ),
               primary: false,
-              padding: const EdgeInsets.all(20),
-              crossAxisSpacing: 3,
-              mainAxisSpacing: 3,
-              crossAxisCount: 3,
-              children: <Widget>[
-                Positioned(
-                  child: Column(
-                    children: [
-                      Positioned(
-                        top: 17,
-                        left: 95,
-                        child: Container(
-                          width: 27,
-                          height: 27,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(59),
-                            ),
-                            color: Color(0xff003293),
-                          ),
-                          child: const Icon(
-                            Icons.lock,
-                            color: Colors.white,
-                            size: 15,
+              padding: const EdgeInsets.all(10),
+              itemBuilder: (BuildContext context, int index) {
+                return Container(
+                  color: Colors.red,
+                  width: 50,
+                  height: 50,
+                  child: Stack(children: [
+                    Column(
+                      children: [
+                        Image.asset(listMusic[index].image),
+                        Text(
+                          listMusic[index].title,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            color: Color(0xff8E9FCC),
                           ),
                         ),
-                      ),
-                      Image.asset("assets/images/music/Mediative.png"),
-                      const Text(
-                        'Mediative space',
-                        style: TextStyle(
-                          fontSize: 12,
-                          color: Color(0xff8E9FCC),
+                      ],
+                    ),
+                    Positioned(
+                      top: 0,
+                      right: 0,
+                      child: Container(
+                        width: 27,
+                        height: 27,
+                        decoration: const BoxDecoration(
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(59),
+                          ),
+                          color: Color(0xff003293),
+                        ),
+                        child: const Icon(
+                          Icons.lock,
+                          color: Colors.white,
+                          size: 15,
                         ),
                       ),
-                    ],
-                  ),
-                ),
-                Column(
-                  children: [
-                    Image.asset("assets/images/music/Moonmusic.png"),
-                    const Text(
-                      'Moon vibes',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Color(0xff8E9FCC),
-                      ),
                     ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Image.asset("assets/images/music/Peaceful.png"),
-                    const Text(
-                      'Peaceful and calm',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Color(0xff8E9FCC),
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Image.asset("assets/images/music/Tropical.png"),
-                    const Text(
-                      'Tropical',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Color(0xff8E9FCC),
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Image.asset("assets/images/music/Winter.png"),
-                    const Text(
-                      'Winter',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Color(0xff8E9FCC),
-                      ),
-                    ),
-                  ],
-                ),
-                Column(
-                  children: [
-                    Image.asset("assets/images/music/Winter.png"),
-                    const Text(
-                      'Winter',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Color(0xff8E9FCC),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+                  ]),
+                );
+              },
+              // crossAxisSpacing: 3,
+              // mainAxisSpacing: 3,
+              // crossAxisCount: 3,
+              // children: <Widget>[
+              //   Positioned(
+              //     child: Column(
+              //       children: [
+              //         Image.asset("assets/images/music/Mediative.png"),
+              //         const Text(
+              //           'Mediative space',
+              //           style: TextStyle(
+              //             fontSize: 12,
+              //             color: Color(0xff8E9FCC),
+              //           ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              //   Column(
+              //     children: [
+              //       Image.asset("assets/images/music/Moonmusic.png"),
+              //       const Text(
+              //         'Moon vibes',
+              //         style: TextStyle(
+              //           fontSize: 12,
+              //           color: Color(0xff8E9FCC),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              //   Column(
+              //     children: [
+              //       Image.asset("assets/images/music/Peaceful.png"),
+              //       const Text(
+              //         'Peaceful and calm',
+              //         style: TextStyle(
+              //           fontSize: 12,
+              //           color: Color(0xff8E9FCC),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              //   Column(
+              //     children: [
+              //       Image.asset("assets/images/music/Tropical.png"),
+              //       const Text(
+              //         'Tropical',
+              //         style: TextStyle(
+              //           fontSize: 12,
+              //           color: Color(0xff8E9FCC),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              //   Column(
+              //     children: [
+              //       Image.asset("assets/images/music/Winter.png"),
+              //       const Text(
+              //         'Winter',
+              //         style: TextStyle(
+              //           fontSize: 12,
+              //           color: Color(0xff8E9FCC),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              //   Column(
+              //     children: [
+              //       Image.asset("assets/images/music/Winter.png"),
+              //       const Text(
+              //         'Winter',
+              //         style: TextStyle(
+              //           fontSize: 12,
+              //           color: Color(0xff8E9FCC),
+              //         ),
+              //       ),
+              //     ],
+              //   ),
+              // ],
             ),
           ),
-          const LockTopMusicWidget(),
+          // const LockTopMusicWidget(),
         ],
       ),
     );
   }
 }
+
+class MuzModel {
+  String title;
+  String image;
+  MuzModel({
+    required this.title,
+    required this.image,
+  });
+}
+
 //       child: GridView.count(
 //         padding: const EdgeInsets.all(25),
 //         primary: false,

@@ -110,17 +110,38 @@ class ImageMusicWidget extends StatelessWidget {
               mainAxisSpacing: 3,
               crossAxisCount: 3,
               children: <Widget>[
-                Column(
-                  children: [
-                    Image.asset("assets/images/music/Mediative.png"),
-                    const Text(
-                      'Mediative space',
-                      style: TextStyle(
-                        fontSize: 12,
-                        color: Color(0xff8E9FCC),
+                Positioned(
+                  child: Column(
+                    children: [
+                      Positioned(
+                        top: 17,
+                        left: 95,
+                        child: Container(
+                          width: 27,
+                          height: 27,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(59),
+                            ),
+                            color: Color(0xff003293),
+                          ),
+                          child: const Icon(
+                            Icons.lock,
+                            color: Colors.white,
+                            size: 15,
+                          ),
+                        ),
                       ),
-                    ),
-                  ],
+                      Image.asset("assets/images/music/Mediative.png"),
+                      const Text(
+                        'Mediative space',
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Color(0xff8E9FCC),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
                 Column(
                   children: [
@@ -491,159 +512,6 @@ class TypeMusicWidget extends StatelessWidget {
           ),
         ),
       ],
-    );
-  }
-}
-
-class BlockMusicWidget extends StatelessWidget {
-  const BlockMusicWidget({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Stack(
-        children: [
-          SizedBox(
-            width: double.infinity,
-            height: 300,
-            child: GridView.count(
-              primary: false,
-              padding: const EdgeInsets.all(20),
-              crossAxisCount: 3,
-              crossAxisSpacing: 4,
-              mainAxisSpacing: 4,
-              children: <Widget>[
-                Column(
-                  children: [
-                    Container(
-                      width: 78,
-                      height: 78,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(59),
-                        ),
-                        border: Border.all(
-                            color: const Color(0xff8e9fcc), width: 1),
-                      ),
-                    ),
-                  ],
-                ),
-                const Text(
-                  'music title',
-                  style: TextStyle(
-                    color: Color(0xff8e9fcc),
-                  ),
-                ),
-                Column(
-                  children: [
-                    Container(
-                      width: 78,
-                      height: 78,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(59),
-                        ),
-                        border: Border.all(
-                            color: const Color(0xff8e9fcc), width: 1),
-                      ),
-                    ),
-                  ],
-                ),
-                const Text(
-                  'long song title',
-                  style: TextStyle(
-                    color: Color(0xff8e9fcc),
-                  ),
-                ),
-                Column(
-                  children: [
-                    Container(
-                      width: 78,
-                      height: 78,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(59),
-                        ),
-                        border: Border.all(
-                            color: const Color(0xff8e9fcc), width: 1),
-                      ),
-                    ),
-                  ],
-                ),
-                const Text(
-                  'very long song ...',
-                  style: TextStyle(
-                    color: Color(0xff8e9fcc),
-                  ),
-                ),
-                Column(
-                  children: [
-                    Container(
-                      width: 78,
-                      height: 78,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(59),
-                        ),
-                        border: Border.all(
-                            color: const Color(0xff8e9fcc), width: 1),
-                      ),
-                    ),
-                  ],
-                ),
-                const Text(
-                  'music title',
-                  style: TextStyle(
-                    color: Color(0xff8e9fcc),
-                  ),
-                ),
-                Column(
-                  children: [
-                    Container(
-                      width: 78,
-                      height: 78,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(59),
-                        ),
-                        border: Border.all(
-                            color: const Color(0xff8e9fcc), width: 1),
-                      ),
-                    ),
-                  ],
-                ),
-                const Text(
-                  'very long song ...',
-                  style: TextStyle(
-                    color: Color(0xff8e9fcc),
-                  ),
-                ),
-                Column(
-                  children: [
-                    Container(
-                      width: 78,
-                      height: 78,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(59),
-                        ),
-                        border: Border.all(
-                            color: const Color(0xff8e9fcc), width: 1),
-                      ),
-                    ),
-                  ],
-                ),
-                const Text(
-                  'very long song ...',
-                  style: TextStyle(
-                    color: Color(0xff8e9fcc),
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

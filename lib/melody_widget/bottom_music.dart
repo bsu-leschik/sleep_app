@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'lock_music_widget.dart';
+
 class BlockedMusicWidget extends StatelessWidget {
   const BlockedMusicWidget({super.key});
 
@@ -153,6 +155,7 @@ class BlockedMusicWidget extends StatelessWidget {
               ],
             ),
           ),
+          const LockBottomMusicWidget(),
         ],
       ),
     );

@@ -68,7 +68,7 @@ class _MelodyWidgetState extends State<MelodyWidget> {
                 const SizedBox(
                   height: 15,
                 ),
-                ImageMusicWidget(),
+                const ImageMusicWidget(),
                 SizedBox(
                   height: 1,
                   child: Container(
@@ -91,34 +91,54 @@ class _MelodyWidgetState extends State<MelodyWidget> {
   }
 }
 
-class ImageMusicWidget extends StatelessWidget {
-  ImageMusicWidget({super.key});
+class ImageMusicWidget extends StatefulWidget {
+  const ImageMusicWidget({super.key});
+
+  @override
+  State<ImageMusicWidget> createState() => _ImageMusicWidgetState();
+}
+
+class _ImageMusicWidgetState extends State<ImageMusicWidget> {
   List<MuzModel> listMusic = [
+    MuzModel(
+      title: "Mediative space",
+      image: "assets/images/music/Mediative.png",
+    ),
     MuzModel(
       title: "Moon vibes",
       image: "assets/images/music/Moonmusic.png",
     ),
     MuzModel(
-      title: "1",
-      image: "assets/images/music/Moonmusic.png",
+      title: "Peaceful and calm",
+      image: "assets/images/music/Peaceful.png",
     ),
     MuzModel(
-      title: "2",
-      image: "assets/images/music/Moonmusic.png",
+      title: "Tropical",
+      image: "assets/images/music/Tropical.png",
     ),
     MuzModel(
-      title: "3",
-      image: "assets/images/music/Moonmusic.png",
-    ),
-    MuzModel(
-      title: "4",
-      image: "assets/images/music/Moonmusic.png",
-    ),
-    MuzModel(
-      title: "5",
-      image: "assets/images/music/Moonmusic.png",
+      title: "Winter",
+      image: "assets/images/music/Winter.png",
     ),
   ];
+
+  List<BlockMusModel> blockListMuz = [
+    BlockMusModel(
+      title: "1",
+      cicle: 
+                      width: 78,
+                      height: 78,
+                      decoration: BoxDecoration(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(59),
+                        ),
+                        border: Border.all(
+                            color: const Color(0xff8e9fcc), width: 1),
+                      ),
+                   
+    ),
+  ];
+
   // List<String> listImage = [
   //   "assets/images/music/Moonmusic.png",
   //   "assets/images/music/Mediative.png",
@@ -138,6 +158,7 @@ class ImageMusicWidget extends StatelessWidget {
   //   "5",
   //   "6",
   // ];
+
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -156,11 +177,14 @@ class ImageMusicWidget extends StatelessWidget {
               padding: const EdgeInsets.all(10),
               itemBuilder: (BuildContext context, int index) {
                 return Container(
-                  color: Colors.red,
+                  padding: const EdgeInsets.all(0),
+                  margin: const EdgeInsets.all(5),
+                  color: Colors.white,
                   width: 50,
                   height: 50,
                   child: Stack(children: [
                     Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Image.asset(listMusic[index].image),
                         Text(
@@ -288,6 +312,15 @@ class MuzModel {
   MuzModel({
     required this.title,
     required this.image,
+  });
+}
+
+class BlockMusModel {
+  String title;
+  Widget cicle;
+  BlockMusModel({
+    required this.title,
+    required this.cicle,
   });
 }
 

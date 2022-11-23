@@ -17,73 +17,55 @@ class _MelodyWidgetState extends State<MelodyWidget> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(20, 23, 51, 0.7),
       body: SafeArea(
-        child: Stack(
+        child: Column(
           children: [
-            Column(
+            Row(
+              // spaceBetween раздвигает 2 виджета по краям
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Row(
-                  children: [
-                    const Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        "Melodies for sleep ",
-                        style: TextStyle(
-                            color: Color(0xffffffff),
-                            fontWeight: FontWeight.w400,
-                            fontStyle: FontStyle.normal,
-                            fontSize: 23.0),
-                        textAlign: TextAlign.left,
-                      ),
-                    ),
-                    const SizedBox(
-                      width: 90,
-                    ),
-                    CupertinoButton(
-                      onPressed: () => {print(1)},
-                      child: Container(
-                        width: 40,
-                        height: 40,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(59),
-                          ),
-                          color: Color(0xff003293),
-                        ),
-                        child: const Icon(
-                          Icons.settings,
-                          color: Colors.white,
-                          size: 25,
-                        ),
-                      ),
-                    ),
-                  ],
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child: Text(
+                    "Melodies for sleep ",
+                    style: TextStyle(
+                        color: Color(0xffffffff),
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                        fontSize: 23.0),
+                    textAlign: TextAlign.left,
+                  ),
                 ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child: TypeMusicWidget(),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                const ImageMusicWidget(),
-                SizedBox(
-                  height: 1,
+                CupertinoButton(
+                  onPressed: () => {print(1)},
                   child: Container(
-                    alignment: Alignment.topCenter,
-                    width: MediaQuery.of(context).size.width - 86,
-                    height: 1,
-                    decoration: BoxDecoration(
-                      color: const Color(0xffa7a7ab),
-                      borderRadius: BorderRadius.circular(2),
+                    width: 40,
+                    height: 40,
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(
+                        Radius.circular(59),
+                      ),
+                      color: Color(0xff003293),
+                    ),
+                    child: const Icon(
+                      Icons.settings,
+                      color: Colors.white,
+                      size: 25,
                     ),
                   ),
                 ),
-                const BlockedMusicWidget(),
               ],
             ),
+            const SizedBox(height: 20),
+            const SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: TypeMusicWidget(),
+            ),
+            const SizedBox(height: 15),
+            const ImageMusicWidget(),
+            const Divider(
+              color: Colors.grey,
+            ),
+            const BlockedMusicWidget(),
           ],
         ),
       ),
@@ -119,23 +101,6 @@ class _ImageMusicWidgetState extends State<ImageMusicWidget> {
     MuzModel(
       title: "Winter",
       image: "assets/images/music/Winter.png",
-    ),
-  ];
-
-  List<BlockMusModel> blockListMuz = [
-    BlockMusModel(
-      title: "1",
-      cicle: 
-                      width: 78,
-                      height: 78,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(59),
-                        ),
-                        border: Border.all(
-                            color: const Color(0xff8e9fcc), width: 1),
-                      ),
-                   
     ),
   ];
 
@@ -176,10 +141,8 @@ class _ImageMusicWidgetState extends State<ImageMusicWidget> {
               primary: false,
               padding: const EdgeInsets.all(10),
               itemBuilder: (BuildContext context, int index) {
-                return Container(
-                  padding: const EdgeInsets.all(0),
-                  margin: const EdgeInsets.all(5),
-                  color: Colors.white,
+                return SizedBox(
+                  // color: Colors.white,
                   width: 50,
                   height: 50,
                   child: Stack(children: [
@@ -197,8 +160,8 @@ class _ImageMusicWidgetState extends State<ImageMusicWidget> {
                       ],
                     ),
                     Positioned(
-                      top: 0,
-                      right: 0,
+                      top: 5,
+                      right: 25,
                       child: Container(
                         width: 27,
                         height: 27,
@@ -315,15 +278,6 @@ class MuzModel {
   });
 }
 
-class BlockMusModel {
-  String title;
-  Widget cicle;
-  BlockMusModel({
-    required this.title,
-    required this.cicle,
-  });
-}
-
 //       child: GridView.count(
 //         padding: const EdgeInsets.all(25),
 //         primary: false,
@@ -362,6 +316,56 @@ class BlockMusModel {
 //         ],
 //       ),
 
+class CategoryToggle extends StatefulWidget {
+  final String title;
+  const CategoryToggle({super.key, required this.title});
+
+  @override
+  State<CategoryToggle> createState() => _CategoryToggleState();
+}
+
+class _CategoryToggleState extends State<CategoryToggle> {
+  bool isSelected = false; // нажатие кнопки и активность кнопки
+  void select() {
+    setState(() {
+      isSelected = !isSelected; // присваивание противоположного значения
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      splashColor: Colors.transparent,
+      onTap: () {
+        select(); // вызов функции select для смены активности кнопки
+      },
+      child: Container(
+        margin: const EdgeInsets.symmetric(horizontal: 5),
+        decoration: BoxDecoration(
+            border: Border.all(
+              color: const Color(0xff8E9FCC),
+            ),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(59),
+            ),
+            color: isSelected
+                ? const Color.fromARGB(255, 255, 255, 255)
+                : Colors.transparent),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+          child: Text(
+            widget.title,
+            textAlign: TextAlign.center,
+            style: const TextStyle(
+              color: Color(0xff8E9FCC),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
 class TypeMusicWidget extends StatelessWidget {
   const TypeMusicWidget({
     Key? key,
@@ -369,261 +373,284 @@ class TypeMusicWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        CupertinoButton(
-          onPressed: () => {
-            print(2),
-          },
-          child: Container(
-            width: 61,
-            height: 42,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: const Color(0xff8E9FCC),
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(59),
-              ),
-              color: const Color.fromARGB(255, 255, 255, 255),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                "ALL",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xff8E9FCC),
-                ),
-              ),
-            ),
-          ),
-        ),
-        CupertinoButton(
-          onPressed: () => {
-            print(3),
-          },
-          child: Container(
-            width: 122,
-            height: 42,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: const Color(0xff8E9FCC),
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(59),
-              ),
-              color: const Color.fromRGBO(20, 23, 51, 0.7),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                "Favorite",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xff8E9FCC),
-                ),
-              ),
-            ),
-          ),
-        ),
-        CupertinoButton(
-          onPressed: () => {
-            print(4),
-          },
-          child: Container(
-            width: 100,
-            height: 42,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: const Color(0xff8E9FCC),
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(59),
-              ),
-              color: const Color.fromRGBO(20, 23, 51, 0.7),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                "Music",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xff8E9FCC),
-                ),
-              ),
-            ),
-          ),
-        ),
-        CupertinoButton(
-          onPressed: () => {
-            print(5),
-          },
-          child: Container(
-            width: 100,
-            height: 42,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: const Color(0xff8E9FCC),
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(59),
-              ),
-              color: const Color.fromRGBO(20, 23, 51, 0.7),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                "Nature",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xff8E9FCC),
-                ),
-              ),
-            ),
-          ),
-        ),
-        CupertinoButton(
-          onPressed: () => {
-            print(6),
-          },
-          child: Container(
-            width: 122,
-            height: 42,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: const Color(0xff8E9FCC),
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(59),
-              ),
-              color: const Color.fromRGBO(20, 23, 51, 0.7),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                "Urban",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xff8E9FCC),
-                ),
-              ),
-            ),
-          ),
-        ),
-        CupertinoButton(
-          onPressed: () => {
-            print(7),
-          },
-          child: Container(
-            width: 122,
-            height: 42,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: const Color(0xff8E9FCC),
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(59),
-              ),
-              color: const Color.fromRGBO(20, 23, 51, 0.7),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                "Animals",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xff8E9FCC),
-                ),
-              ),
-            ),
-          ),
-        ),
-        CupertinoButton(
-          onPressed: () => {
-            print(8),
-          },
-          child: Container(
-            width: 122,
-            height: 42,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: const Color(0xff8E9FCC),
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(59),
-              ),
-              color: const Color.fromRGBO(20, 23, 51, 0.7),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                "White noise",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xff8E9FCC),
-                ),
-              ),
-            ),
-          ),
-        ),
-        CupertinoButton(
-          onPressed: () => {
-            print(9),
-          },
-          child: Container(
-            width: 100,
-            height: 42,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: const Color(0xff8E9FCC),
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(59),
-              ),
-              color: const Color.fromRGBO(20, 23, 51, 0.7),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                "Home",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xff8E9FCC),
-                ),
-              ),
-            ),
-          ),
-        ),
-        CupertinoButton(
-          onPressed: () => {
-            print(3),
-          },
-          child: Container(
-            width: 100,
-            height: 42,
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: const Color(0xff8E9FCC),
-              ),
-              borderRadius: const BorderRadius.all(
-                Radius.circular(59),
-              ),
-              color: const Color.fromRGBO(20, 23, 51, 0.7),
-            ),
-            child: const Padding(
-              padding: EdgeInsets.all(10.0),
-              child: Text(
-                "Baby",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: Color(0xff8E9FCC),
-                ),
-              ),
-            ),
-          ),
-        ),
-      ],
+    List<String> categorys = [
+      "ALL",
+      "Favorite",
+      "Music",
+      "Nature",
+      "Urban",
+      "Animals",
+      "White noise",
+      "Home",
+      "Baby"
+    ];
+
+    return SizedBox(
+      height: 40,
+      child: ListView.builder(
+          itemCount: categorys.length,
+          shrinkWrap: true,
+          scrollDirection: Axis.horizontal,
+          itemBuilder: (context, index) {
+            return CategoryToggle(
+              title: categorys[index],
+            );
+          }),
     );
+    // return Row(
+    // children: [
+    //   CupertinoButton(
+    //     onPressed: () => {
+    //       print(2),
+    //     },
+    //     child: Container(
+    //       width: 61,
+    //       height: 42,
+    //       decoration: BoxDecoration(
+    //         border: Border.all(
+    //           color: const Color(0xff8E9FCC),
+    //         ),
+    //         borderRadius: const BorderRadius.all(
+    //           Radius.circular(59),
+    //         ),
+    //         color: const Color.fromARGB(255, 255, 255, 255),
+    //       ),
+    //       child: const Padding(
+    //         padding: EdgeInsets.all(10.0),
+    //         child: Text(
+    //           "ALL",
+    //           textAlign: TextAlign.center,
+    //           style: TextStyle(
+    //             color: Color(0xff8E9FCC),
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    //   CupertinoButton(
+    //     onPressed: () => {
+    //       print(3),
+    //     },
+    //     child: Container(
+    //       width: 122,
+    //       height: 42,
+    //       decoration: BoxDecoration(
+    //         border: Border.all(
+    //           color: const Color(0xff8E9FCC),
+    //         ),
+    //         borderRadius: const BorderRadius.all(
+    //           Radius.circular(59),
+    //         ),
+    //         color: const Color.fromRGBO(20, 23, 51, 0.7),
+    //       ),
+    //       child: const Padding(
+    //         padding: EdgeInsets.all(10.0),
+    //         child: Text(
+    //           "Favorite",
+    //           textAlign: TextAlign.center,
+    //           style: TextStyle(
+    //             color: Color(0xff8E9FCC),
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    //   CupertinoButton(
+    //     onPressed: () => {
+    //       print(4),
+    //     },
+    //     child: Container(
+    //       width: 100,
+    //       height: 42,
+    //       decoration: BoxDecoration(
+    //         border: Border.all(
+    //           color: const Color(0xff8E9FCC),
+    //         ),
+    //         borderRadius: const BorderRadius.all(
+    //           Radius.circular(59),
+    //         ),
+    //         color: const Color.fromRGBO(20, 23, 51, 0.7),
+    //       ),
+    //       child: const Padding(
+    //         padding: EdgeInsets.all(10.0),
+    //         child: Text(
+    //           "Music",
+    //           textAlign: TextAlign.center,
+    //           style: TextStyle(
+    //             color: Color(0xff8E9FCC),
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    //   CupertinoButton(
+    //     onPressed: () => {
+    //       print(5),
+    //     },
+    //     child: Container(
+    //       width: 100,
+    //       height: 42,
+    //       decoration: BoxDecoration(
+    //         border: Border.all(
+    //           color: const Color(0xff8E9FCC),
+    //         ),
+    //         borderRadius: const BorderRadius.all(
+    //           Radius.circular(59),
+    //         ),
+    //         color: const Color.fromRGBO(20, 23, 51, 0.7),
+    //       ),
+    //       child: const Padding(
+    //         padding: EdgeInsets.all(10.0),
+    //         child: Text(
+    //           "Nature",
+    //           textAlign: TextAlign.center,
+    //           style: TextStyle(
+    //             color: Color(0xff8E9FCC),
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    //   CupertinoButton(
+    //     onPressed: () => {
+    //       print(6),
+    //     },
+    //     child: Container(
+    //       width: 122,
+    //       height: 42,
+    //       decoration: BoxDecoration(
+    //         border: Border.all(
+    //           color: const Color(0xff8E9FCC),
+    //         ),
+    //         borderRadius: const BorderRadius.all(
+    //           Radius.circular(59),
+    //         ),
+    //         color: const Color.fromRGBO(20, 23, 51, 0.7),
+    //       ),
+    //       child: const Padding(
+    //         padding: EdgeInsets.all(10.0),
+    //         child: Text(
+    //           "Urban",
+    //           textAlign: TextAlign.center,
+    //           style: TextStyle(
+    //             color: Color(0xff8E9FCC),
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    //   CupertinoButton(
+    //     onPressed: () => {
+    //       print(7),
+    //     },
+    //     child: Container(
+    //       width: 122,
+    //       height: 42,
+    //       decoration: BoxDecoration(
+    //         border: Border.all(
+    //           color: const Color(0xff8E9FCC),
+    //         ),
+    //         borderRadius: const BorderRadius.all(
+    //           Radius.circular(59),
+    //         ),
+    //         color: const Color.fromRGBO(20, 23, 51, 0.7),
+    //       ),
+    //       child: const Padding(
+    //         padding: EdgeInsets.all(10.0),
+    //         child: Text(
+    //           "Animals",
+    //           textAlign: TextAlign.center,
+    //           style: TextStyle(
+    //             color: Color(0xff8E9FCC),
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    //   CupertinoButton(
+    //     onPressed: () => {
+    //       print(8),
+    //     },
+    //     child: Container(
+    //       width: 122,
+    //       height: 42,
+    //       decoration: BoxDecoration(
+    //         border: Border.all(
+    //           color: const Color(0xff8E9FCC),
+    //         ),
+    //         borderRadius: const BorderRadius.all(
+    //           Radius.circular(59),
+    //         ),
+    //         color: const Color.fromRGBO(20, 23, 51, 0.7),
+    //       ),
+    //       child: const Padding(
+    //         padding: EdgeInsets.all(10.0),
+    //         child: Text(
+    //           "White noise",
+    //           textAlign: TextAlign.center,
+    //           style: TextStyle(
+    //             color: Color(0xff8E9FCC),
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    //   CupertinoButton(
+    //     onPressed: () => {
+    //       print(9),
+    //     },
+    //     child: Container(
+    //       width: 100,
+    //       height: 42,
+    //       decoration: BoxDecoration(
+    //         border: Border.all(
+    //           color: const Color(0xff8E9FCC),
+    //         ),
+    //         borderRadius: const BorderRadius.all(
+    //           Radius.circular(59),
+    //         ),
+    //         color: const Color.fromRGBO(20, 23, 51, 0.7),
+    //       ),
+    //       child: const Padding(
+    //         padding: EdgeInsets.all(10.0),
+    //         child: Text(
+    //           "Home",
+    //           textAlign: TextAlign.center,
+    //           style: TextStyle(
+    //             color: Color(0xff8E9FCC),
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    //   CupertinoButton(
+    //     onPressed: () => {
+    //       print(3),
+    //     },
+    //     child: Container(
+    //       width: 100,
+    //       height: 42,
+    //       decoration: BoxDecoration(
+    //         border: Border.all(
+    //           color: const Color(0xff8E9FCC),
+    //         ),
+    //         borderRadius: const BorderRadius.all(
+    //           Radius.circular(59),
+    //         ),
+    //         color: const Color.fromRGBO(20, 23, 51, 0.7),
+    //       ),
+    //       child: const Padding(
+    //         padding: EdgeInsets.all(10.0),
+    //         child: Text(
+    //           "Baby",
+    //           textAlign: TextAlign.center,
+    //           style: TextStyle(
+    //             color: Color(0xff8E9FCC),
+    //           ),
+    //         ),
+    //       ),
+    //     ),
+    //   ),
+    // ],
   }
 }

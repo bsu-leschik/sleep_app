@@ -374,6 +374,7 @@ class TypeMusicWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<String> categorys = [
+      // создаём лист названий
       "ALL",
       "Favorite",
       "Music",

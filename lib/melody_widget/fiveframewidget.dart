@@ -348,7 +348,7 @@ class _CategoryToggleState extends State<CategoryToggle> {
             borderRadius: const BorderRadius.all(
               Radius.circular(59),
             ),
-            color: isSelected
+            color: isSelected // меняется фон при условии нажатия
                 ? const Color.fromARGB(255, 255, 255, 255)
                 : Colors.transparent),
         child: Padding(

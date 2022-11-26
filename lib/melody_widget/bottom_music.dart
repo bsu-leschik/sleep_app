@@ -8,13 +8,6 @@ class BlockedMusicWidget extends StatefulWidget {
 }
 
 class _BlockedMusicWidgetState extends State<BlockedMusicWidget> {
-  List<LockModel> lockMusic = [
-    LockModel(
-      title: "music title",
-      cicle: "",
-    ),
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Expanded(
@@ -31,28 +24,7 @@ class _BlockedMusicWidgetState extends State<BlockedMusicWidget> {
               primary: false,
               padding: const EdgeInsets.all(20),
               itemBuilder: (BuildContext context, int index) {
-                return Column(
-                  children: [
-                    Container(
-                      width: 78,
-                      height: 78,
-                      decoration: BoxDecoration(
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(59),
-                        ),
-                        border: Border.all(
-                            color: const Color(0xff8e9fcc), width: 1),
-                      ),
-                    ),
-                    Text(
-                      lockMusic[index].title,
-                      style: const TextStyle(
-                        fontSize: 12,
-                        color: Color(0xff8E9FCC),
-                      ),
-                    ),
-                  ],
-                );
+                return const ListMusics();
               },
             ),
           ),
@@ -179,4 +151,42 @@ class LockModel {
     required this.title,
     required this.cicle,
   });
+}
+
+class ListMusics extends StatefulWidget {
+  const ListMusics({super.key});
+
+  @override
+  State<ListMusics> createState() => _ListMusicsState();
+}
+
+class _ListMusicsState extends State<ListMusics> {
+  List<String> lockMusic = [
+    "music title",
+  ];
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Container(
+          width: 78,
+          height: 78,
+          decoration: BoxDecoration(
+            borderRadius: const BorderRadius.all(
+              Radius.circular(59),
+            ),
+            border: Border.all(color: const Color(0xff8e9fcc), width: 1),
+          ),
+        ),
+        Text(
+          lockMusic[index].title,
+          style: const TextStyle(
+            fontSize: 12,
+            color: Color(0xff8E9FCC),
+          ),
+        ),
+      ],
+    );
+    ;
+  }
 }

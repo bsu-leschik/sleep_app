@@ -63,7 +63,10 @@ class _MelodyWidgetState extends State<MelodyWidget> {
             const SizedBox(height: 15),
             const ImageMusicWidget(),
             const Divider(
-              color: Colors.grey,
+              thickness: 1,
+              indent: 43,
+              endIndent: 43,
+              color: Color(0x808e9fcc),
             ),
             const BlockedMusicWidget(),
           ],
@@ -383,7 +386,8 @@ class TypeMusicWidget extends StatelessWidget {
       "Animals",
       "White noise",
       "Home",
-      "Baby"
+      "Baby",
+      "Single"
     ];
 
     return SizedBox(

@@ -12,6 +12,7 @@ class MelodyWidget extends StatefulWidget {
 }
 
 class _MelodyWidgetState extends State<MelodyWidget> {
+  bool play = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,6 +70,90 @@ class _MelodyWidgetState extends State<MelodyWidget> {
           ],
         ),
       ),
+      bottomNavigationBar: BottomAppBar(
+        color: const Color(0xFF01308C),
+        shape: const CircularNotchedRectangle(),
+        child: Container(
+          height: 60.0,
+          child: Row(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: <Widget>[
+              Container(
+                margin: const EdgeInsets.only(left: 29.0, top: 8),
+                width: 88,
+                height: 55,
+                child: InkWell(
+                  onTap: (() {
+                    print("Mix");
+                    setState(() {
+                      // _navPage.jumpToPage(0);
+                    });
+                  }),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        width: 25,
+                        height: 22,
+                        color: Colors.amber,
+                      ),
+                      const Text("Mix"),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                margin: const EdgeInsets.only(right: 29.0, top: 8),
+                width: 88,
+                height: 55,
+                child: InkWell(
+                  onTap: (() {
+                    print("Mix");
+                    setState(() {
+                      // _navPage.jumpToPage(1);
+                    });
+                  }),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        width: 25,
+                        height: 22,
+                        color: Colors.amber,
+                      ),
+                      const Text("Timer"),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+      floatingActionButton: Container(
+        height: 92,
+        width: 92,
+        child: FloatingActionButton(
+          backgroundColor: Colors.white,
+          onPressed: () {
+            setState(() {
+              play = !play;
+            });
+          },
+          // onPressed: () => setState(() {
+          //   _count++;
+          //   print('You like Indonesia $_count time(s)');
+
+          // }),
+          child: Icon(
+            size: 55,
+            play ? Icons.play_arrow_rounded : Icons.pause_rounded,
+            color: const Color(0xFF7E44FA),
+          ),
+        ),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }

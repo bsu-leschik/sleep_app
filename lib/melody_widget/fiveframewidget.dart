@@ -68,7 +68,7 @@ class _MelodyWidgetState extends State<MelodyWidget> {
               endIndent: 43,
               color: Color(0x808e9fcc),
             ),
-            const BlockedMusicWidget(),
+            const BottomLock()
           ],
         ),
       ),
@@ -184,88 +184,9 @@ class _ImageMusicWidgetState extends State<ImageMusicWidget> {
                   ]),
                 );
               },
-              // crossAxisSpacing: 3,
-              // mainAxisSpacing: 3,
-              // crossAxisCount: 3,
-              // children: <Widget>[
-              //   Positioned(
-              //     child: Column(
-              //       children: [
-              //         Image.asset("assets/images/music/Mediative.png"),
-              //         const Text(
-              //           'Mediative space',
-              //           style: TextStyle(
-              //             fontSize: 12,
-              //             color: Color(0xff8E9FCC),
-              //           ),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              //   Column(
-              //     children: [
-              //       Image.asset("assets/images/music/Moonmusic.png"),
-              //       const Text(
-              //         'Moon vibes',
-              //         style: TextStyle(
-              //           fontSize: 12,
-              //           color: Color(0xff8E9FCC),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              //   Column(
-              //     children: [
-              //       Image.asset("assets/images/music/Peaceful.png"),
-              //       const Text(
-              //         'Peaceful and calm',
-              //         style: TextStyle(
-              //           fontSize: 12,
-              //           color: Color(0xff8E9FCC),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              //   Column(
-              //     children: [
-              //       Image.asset("assets/images/music/Tropical.png"),
-              //       const Text(
-              //         'Tropical',
-              //         style: TextStyle(
-              //           fontSize: 12,
-              //           color: Color(0xff8E9FCC),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              //   Column(
-              //     children: [
-              //       Image.asset("assets/images/music/Winter.png"),
-              //       const Text(
-              //         'Winter',
-              //         style: TextStyle(
-              //           fontSize: 12,
-              //           color: Color(0xff8E9FCC),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              //   Column(
-              //     children: [
-              //       Image.asset("assets/images/music/Winter.png"),
-              //       const Text(
-              //         'Winter',
-              //         style: TextStyle(
-              //           fontSize: 12,
-              //           color: Color(0xff8E9FCC),
-              //         ),
-              //       ),
-              //     ],
-              //   ),
-              // ],
             ),
           ),
-          // const LockTopMusicWidget(),
+          // const BottomMusics(),
         ],
       ),
     );
@@ -280,44 +201,6 @@ class MuzModel {
     required this.image,
   });
 }
-
-//       child: GridView.count(
-//         padding: const EdgeInsets.all(25),
-//         primary: false,
-//         scrollDirection: Axis.horizontal,
-//         crossAxisCount: 3,
-//         crossAxisSpacing: 10,
-//         mainAxisSpacing: 10,
-//         children: [
-//           Stack(
-//             children: [
-//               Positioned(
-//                 top: 240,
-//                 left: 43,
-//                 child: Image.asset("assets/images/music/Mediative.png"),
-//               ),
-//               Positioned(
-//                 top: 240,
-//                 left: 156,
-//                 child: Image.asset("assets/images/music/Moonmusic.png"),
-//               ),
-//               Positioned(
-//                 top: 240,
-//                 left: 269,
-//                 child: Image.asset("assets/images/music/Peaceful.png"),
-//               ),
-//               Positioned(
-//                 top: 362,
-//                 left: 43,
-//                 child: Image.asset("assets/images/music/Tropical.png"),
-//               ),
-//               Positioned(
-//                 child: Image.asset("assets/images/music/Winter.png"),
-//               ),
-//             ],
-//           ),
-//         ],
-//       ),
 
 class CategoryToggle extends StatefulWidget {
   final String title;

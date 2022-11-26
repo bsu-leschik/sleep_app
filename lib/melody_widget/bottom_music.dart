@@ -1,192 +1,272 @@
+// import 'package:flutter/material.dart';
+
+// class BlockedMusicWidget extends StatefulWidget {
+//    final String title;
+//   const BlockedMusicWidget({super.key, required this.title});
+
+//   @override
+//   State<BlockedMusicWidget> createState() => _BlockedMusicWidgetState();
+// }
+
+// class _BlockedMusicWidgetState extends State<BlockedMusicWidget> {
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return Expanded(
+//       child: Stack(
+//         children: [
+//           SizedBox(
+//             width: double.infinity,
+//             height: 250,
+//             child: GridView.builder(
+//               itemCount: ListMusics.length,
+//               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+//                 crossAxisCount: 3,
+//               ),
+//               primary: false,
+//               padding: const EdgeInsets.all(20),
+//               itemBuilder: (BuildContext context, int index) {
+//                 return const ListMusics();
+//               },
+//             ),
+//           ),
+//           // Column(
+//           //   children: [
+//           //     Container(
+//           //       width: 78,
+//           //       height: 78,
+//           //       decoration: BoxDecoration(
+//           //         borderRadius: const BorderRadius.all(
+//           //           Radius.circular(59),
+//           //         ),
+//           //         border: Border.all(
+//           //             color: const Color(0xff8e9fcc), width: 1),
+//           //       ),
+//           //     ),
+//           //     const Text(
+//           //       'long song title',
+//           //       style: TextStyle(
+//           //         fontSize: 12,
+//           //         color: Color(0xff8E9FCC),
+//           //       ),
+//           //     ),
+//           //   ],
+//           // ),
+//           // Column(
+//           //   children: [
+//           //     Container(
+//           //       width: 78,
+//           //       height: 78,
+//           //       decoration: BoxDecoration(
+//           //         borderRadius: const BorderRadius.all(
+//           //           Radius.circular(59),
+//           //         ),
+//           //         border: Border.all(
+//           //             color: const Color(0xff8e9fcc), width: 1),
+//           //       ),
+//           //     ),
+//           //     const Text(
+//           //       'very long song ...',
+//           //       style: TextStyle(
+//           //         fontSize: 12,
+//           //         color: Color(0xff8E9FCC),
+//           //       ),
+//           //     ),
+//           //   ],
+//           // ),
+//           // Column(
+//           //   children: [
+//           //     Container(
+//           //       width: 78,
+//           //       height: 78,
+//           //       decoration: BoxDecoration(
+//           //         borderRadius: const BorderRadius.all(
+//           //           Radius.circular(59),
+//           //         ),
+//           //         border: Border.all(
+//           //             color: const Color(0xff8e9fcc), width: 1),
+//           //       ),
+//           //     ),
+//           //     const Text(
+//           //       'music title',
+//           //       style: TextStyle(
+//           //         fontSize: 12,
+//           //         color: Color(0xff8E9FCC),
+//           //       ),
+//           //     ),
+//           //   ],
+//           // ),
+//           // Column(
+//           //   children: [
+//           //     Container(
+//           //       width: 78,
+//           //       height: 78,
+//           //       decoration: BoxDecoration(
+//           //         borderRadius: const BorderRadius.all(
+//           //           Radius.circular(59),
+//           //         ),
+//           //         border: Border.all(
+//           //             color: const Color(0xff8e9fcc), width: 1),
+//           //       ),
+//           //     ),
+//           //     const Text(
+//           //       'light music',
+//           //       style: TextStyle(
+//           //         fontSize: 12,
+//           //         color: Color(0xff8E9FCC),
+//           //       ),
+//           //     ),
+//           //   ],
+//           // ),
+//           // Column(
+//           //   children: [
+//           //     Container(
+//           //       width: 78,
+//           //       height: 78,
+//           //       decoration: BoxDecoration(
+//           //         borderRadius: const BorderRadius.all(
+//           //           Radius.circular(59),
+//           //         ),
+//           //         border: Border.all(
+//           //             color: const Color(0xff8e9fcc), width: 1),
+//           //       ),
+//           //     ),
+//           //     const Text(
+//           //       'long song title',
+//           //       style: TextStyle(
+//           //         fontSize: 12,
+//           //         color: Color(0xff8E9FCC),
+//           //       ),
+//           //     ),
+//           //   ],
+//           // ),
+//         ],
+//       ),
+//     );
+//   }
+// }
+
+// class LockModel {
+//   String title;
+//   String cicle;
+//   LockModel({
+//     required this.title,
+//     required this.cicle,
+//   });
+// }
+
+// class ListMusics extends StatefulWidget {
+//   const ListMusics({super.key});
+
+//   @override
+//   State<ListMusics> createState() => _ListMusicsState();
+// }
+
+// class _ListMusicsState extends State<ListMusics> {
+//   List<String> lockMusic = [
+//     "music title",
+//   ];
+//   @override
+//   Widget build(BuildContext context) {
+//     return Column(
+//       children: [
+//         Container(
+//           width: 78,
+//           height: 78,
+//           decoration: BoxDecoration(
+//             borderRadius: const BorderRadius.all(
+//               Radius.circular(59),
+//             ),
+//             border: Border.all(color: const Color(0xff8e9fcc), width: 1),
+//           ),
+//         ),
+//         Text(
+//           lockMusic[index],
+//           style: const TextStyle(
+//             fontSize: 12,
+//             color: Color(0xff8E9FCC),
+//           ),
+//         ),
+//       ],
+//     );
+//   }
+// }
+
 import 'package:flutter/material.dart';
 
-class BlockedMusicWidget extends StatefulWidget {
-  const BlockedMusicWidget({super.key});
+class BottomMusics extends StatefulWidget {
+  final String title;
+  const BottomMusics({super.key, required this.title});
 
   @override
-  State<BlockedMusicWidget> createState() => _BlockedMusicWidgetState();
+  State<BottomMusics> createState() => _BottomMusicsState();
 }
 
-class _BlockedMusicWidgetState extends State<BlockedMusicWidget> {
+class _BottomMusicsState extends State<BottomMusics> {
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Stack(
+    return SizedBox(
+      // color: Colors.amber,
+      height: 250,
+      width: double.infinity,
+      child: Column(
         children: [
-          SizedBox(
-            width: double.infinity,
-            height: 250,
-            child: GridView.builder(
-              itemCount: lockMusic.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
+          Container(
+            width: 78,
+            height: 78,
+            decoration: BoxDecoration(
+              borderRadius: const BorderRadius.all(
+                Radius.circular(59),
               ),
-              primary: false,
-              padding: const EdgeInsets.all(20),
-              itemBuilder: (BuildContext context, int index) {
-                return const ListMusics();
-              },
+              border: Border.all(color: const Color(0xff8e9fcc), width: 1),
             ),
           ),
-          // Column(
-          //   children: [
-          //     Container(
-          //       width: 78,
-          //       height: 78,
-          //       decoration: BoxDecoration(
-          //         borderRadius: const BorderRadius.all(
-          //           Radius.circular(59),
-          //         ),
-          //         border: Border.all(
-          //             color: const Color(0xff8e9fcc), width: 1),
-          //       ),
-          //     ),
-          //     const Text(
-          //       'long song title',
-          //       style: TextStyle(
-          //         fontSize: 12,
-          //         color: Color(0xff8E9FCC),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // Column(
-          //   children: [
-          //     Container(
-          //       width: 78,
-          //       height: 78,
-          //       decoration: BoxDecoration(
-          //         borderRadius: const BorderRadius.all(
-          //           Radius.circular(59),
-          //         ),
-          //         border: Border.all(
-          //             color: const Color(0xff8e9fcc), width: 1),
-          //       ),
-          //     ),
-          //     const Text(
-          //       'very long song ...',
-          //       style: TextStyle(
-          //         fontSize: 12,
-          //         color: Color(0xff8E9FCC),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // Column(
-          //   children: [
-          //     Container(
-          //       width: 78,
-          //       height: 78,
-          //       decoration: BoxDecoration(
-          //         borderRadius: const BorderRadius.all(
-          //           Radius.circular(59),
-          //         ),
-          //         border: Border.all(
-          //             color: const Color(0xff8e9fcc), width: 1),
-          //       ),
-          //     ),
-          //     const Text(
-          //       'music title',
-          //       style: TextStyle(
-          //         fontSize: 12,
-          //         color: Color(0xff8E9FCC),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // Column(
-          //   children: [
-          //     Container(
-          //       width: 78,
-          //       height: 78,
-          //       decoration: BoxDecoration(
-          //         borderRadius: const BorderRadius.all(
-          //           Radius.circular(59),
-          //         ),
-          //         border: Border.all(
-          //             color: const Color(0xff8e9fcc), width: 1),
-          //       ),
-          //     ),
-          //     const Text(
-          //       'light music',
-          //       style: TextStyle(
-          //         fontSize: 12,
-          //         color: Color(0xff8E9FCC),
-          //       ),
-          //     ),
-          //   ],
-          // ),
-          // Column(
-          //   children: [
-          //     Container(
-          //       width: 78,
-          //       height: 78,
-          //       decoration: BoxDecoration(
-          //         borderRadius: const BorderRadius.all(
-          //           Radius.circular(59),
-          //         ),
-          //         border: Border.all(
-          //             color: const Color(0xff8e9fcc), width: 1),
-          //       ),
-          //     ),
-          //     const Text(
-          //       'long song title',
-          //       style: TextStyle(
-          //         fontSize: 12,
-          //         color: Color(0xff8E9FCC),
-          //       ),
-          //     ),
-          //   ],
-          // ),
+          Text(
+            widget.title,
+            style: const TextStyle(
+              fontSize: 12,
+              color: Color(0xff8E9FCC),
+            ),
+          )
         ],
       ),
     );
   }
 }
 
-class LockModel {
-  String title;
-  String cicle;
-  LockModel({
-    required this.title,
-    required this.cicle,
-  });
-}
+class BottomLock extends StatelessWidget {
+  const BottomLock({super.key});
 
-class ListMusics extends StatefulWidget {
-  const ListMusics({super.key});
-
-  @override
-  State<ListMusics> createState() => _ListMusicsState();
-}
-
-class _ListMusicsState extends State<ListMusics> {
-  List<String> lockMusic = [
-    "music title",
-  ];
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Container(
-          width: 78,
-          height: 78,
-          decoration: BoxDecoration(
-            borderRadius: const BorderRadius.all(
-              Radius.circular(59),
-            ),
-            border: Border.all(color: const Color(0xff8e9fcc), width: 1),
-          ),
-        ),
-        Text(
-          lockMusic[index].title,
-          style: const TextStyle(
-            fontSize: 12,
-            color: Color(0xff8E9FCC),
-          ),
-        ),
-      ],
+    List<String> locks = [
+      // создаём лист названий
+      "ALL",
+      "Favorite",
+      "Music",
+      "Nature",
+      "Urban",
+      "Animals",
+      "White noise",
+      "Home",
+      "Baby",
+      "Single",
+    ];
+    return SizedBox(
+      width: double.infinity,
+      height: 250,
+      child: GridView.builder(
+        itemCount: locks.length,
+        primary: false,
+        padding: const EdgeInsets.all(10),
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
+        itemBuilder: (BuildContext context, int index) {
+          return BottomMusics(
+            title: locks[index],
+          );
+        },
+      ),
     );
-    ;
   }
 }

@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:sleep_app/subscription_widget/bottom_bar/bottom_bar.dart';
+import 'package:sleep_app/seven_frame/seven_frame.dart';
+
 // import 'package:sleep_app/welcome_widget/animation.dart/animation_on_boarding.dart';
 
-import 'melody_widget/fiveframewidget.dart';
-import 'subscription_widget/sub_widget.dart';
 // import 'onboardingalex.dart';
 
 void main() {
@@ -21,7 +20,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const MelodyWidget(),
+      home: const SevenFrame(),
       // home: const BottomBar(),
       // home: const SubscribeWidget(),
     );

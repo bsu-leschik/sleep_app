@@ -206,30 +206,55 @@ class _BottomMusicsState extends State<BottomMusics> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // color: Colors.amber,
-      height: 250,
-      width: double.infinity,
-      child: Column(
-        children: [
-          Container(
-            width: 78,
-            height: 78,
-            decoration: BoxDecoration(
-              borderRadius: const BorderRadius.all(
+      child: Stack(children: [
+        Column(
+          children: [
+            Center(
+              child: Container(
+                width: 78,
+                height: 78,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(59),
+                  ),
+                  border: Border.all(color: const Color(0xff8e9fcc), width: 1),
+                ),
+              ),
+            ),
+            Text(
+              widget.title,
+              style: const TextStyle(
+                fontSize: 12,
+                color: Color(0xff8E9FCC),
+              ),
+            ),
+          ],
+        ),
+        Positioned(
+          top: 0,
+          right: 20,
+          child: Container(
+            width: 27,
+            height: 27,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(
                 Radius.circular(59),
               ),
-              border: Border.all(color: const Color(0xff8e9fcc), width: 1),
+              color: Color(0xff003293),
+            ),
+            child: const Icon(
+              Icons.lock,
+              color: Colors.white,
+              size: 15,
             ),
           ),
-          Text(
-            widget.title,
-            style: const TextStyle(
-              fontSize: 12,
-              color: Color(0xff8E9FCC),
-            ),
-          )
-        ],
-      ),
+        ),
+        Positioned(
+          top: 20,
+          left: 45,
+          child: Image.asset("assets/images/Fire.png"),
+        )
+      ]),
     );
   }
 }

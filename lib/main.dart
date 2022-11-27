@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sleep_app/subscription_widget/bottom_bar/bottom_bar.dart';
 // import 'package:sleep_app/welcome_widget/animation.dart/animation_on_boarding.dart';
 
 import 'melody_widget/fiveframewidget.dart';
@@ -21,6 +22,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: const MelodyWidget(),
+      // home: const BottomBar(),
       // home: const SubscribeWidget(),
     );
   }

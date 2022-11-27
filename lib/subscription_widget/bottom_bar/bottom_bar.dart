@@ -21,73 +21,41 @@ class BottomBar extends StatelessWidget {
   }
 }
 
-//Initial widget
 class InitalScreenWidget extends StatefulWidget {
   const InitalScreenWidget({super.key});
-
-  // InitialScreenWidget({Key key}) : super(key: key);
 
   @override
   HomeWidget createState() => HomeWidget();
 }
 
-//State<StatefulWidget> action method
 class HomeWidget extends State<InitalScreenWidget> {
-  // final int _count = 0;
-  // final Color _iconPressed = Colors.amber;
   bool play = false;
 
-  //Page controller
   final PageController _navPage = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        backgroundColor: const Color(0xFFFFFFFF), //white
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(right: 28.0),
-            child: GestureDetector(
-                onTap: () {
-                  _navPage.jumpToPage(5);
-                },
-                child: const Icon(
-                  Icons.more_vert,
-                  size: 26.0,
-                  color: Colors.black,
-                )),
-          )
-        ],
-      ),
       body: PageView(
         controller: _navPage,
-        onPageChanged: (int) {
-          print('Page changes to index $int');
+        onPageChanged: (i) {
+          print('Page changes to index $i');
         },
         children: <Widget>[
           Container(
             color: Colors.red,
           ),
           Container(
-            color: Colors.black,
-          ),
-          Container(
-            color: Colors.green,
-          ),
-          Container(
-            color: Colors.amber,
+            color: Colors.black12,
           ),
         ],
         // physics: NeverScrollableScrollPhysics(), //to disable Swipe
       ),
-
       backgroundColor: Colors.transparent, //white ivory
       bottomNavigationBar: BottomAppBar(
         color: const Color(0xFF01308C),
         shape: const CircularNotchedRectangle(),
-        child: Container(
+        child: SizedBox(
           height: 60.0,
           child: Row(
             mainAxisSize: MainAxisSize.max,
@@ -107,12 +75,22 @@ class HomeWidget extends State<InitalScreenWidget> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Container(
+                      SizedBox(
                         width: 25,
                         height: 22,
-                        color: Colors.amber,
+                        child: Image.asset(
+                          "assets/images/mix.png",
+                          color: Colors.white,
+                        ),
                       ),
-                      const Text("Mix"),
+                      const Text(
+                        "Mix",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -123,20 +101,30 @@ class HomeWidget extends State<InitalScreenWidget> {
                 height: 55,
                 child: InkWell(
                   onTap: (() {
-                    print("Mix");
+                    print("Timer");
                     setState(() {
                       _navPage.jumpToPage(1);
                     });
                   }),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Container(
+                    children: const [
+                      SizedBox(
                         width: 25,
                         height: 22,
-                        color: Colors.amber,
+                        child: Icon(
+                          Icons.timer_sharp,
+                          color: Colors.white,
+                        ),
                       ),
-                      const Text("Timer"),
+                      Text(
+                        "Timer",
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.white,
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -145,7 +133,7 @@ class HomeWidget extends State<InitalScreenWidget> {
           ),
         ),
       ),
-      floatingActionButton: Container(
+      floatingActionButton: SizedBox(
         height: 92,
         width: 92,
         child: FloatingActionButton(

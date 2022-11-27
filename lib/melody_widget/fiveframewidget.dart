@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../subscription_widget/bottom_bar/bottom_bar.dart';
 import 'bottom_music.dart';
-import 'lock_music_widget.dart';
 
 class MelodyWidget extends StatefulWidget {
   const MelodyWidget({super.key});
@@ -24,7 +24,7 @@ class _MelodyWidgetState extends State<MelodyWidget> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: EdgeInsets.all(5.0),
                   child: Text(
                     "Melodies for sleep ",
                     style: TextStyle(
@@ -55,12 +55,12 @@ class _MelodyWidgetState extends State<MelodyWidget> {
                 ),
               ],
             ),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             const SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: TypeMusicWidget(),
             ),
-            const SizedBox(height: 15),
+            const SizedBox(height: 10),
             const ImageMusicWidget(),
             const Divider(
               thickness: 1,
@@ -68,7 +68,11 @@ class _MelodyWidgetState extends State<MelodyWidget> {
               endIndent: 43,
               color: Color(0x808e9fcc),
             ),
-            const BottomLock()
+            const BottomLock(),
+            const SizedBox(
+              height: 50,
+            )
+            // const BottomBar(),
           ],
         ),
       ),
@@ -105,27 +109,11 @@ class _ImageMusicWidgetState extends State<ImageMusicWidget> {
       title: "Winter",
       image: "assets/images/music/Winter.png",
     ),
+    MuzModel(
+      title: "Wonter",
+      image: "assets/images/music/Winter.png",
+    ),
   ];
-
-  // List<String> listImage = [
-  //   "assets/images/music/Moonmusic.png",
-  //   "assets/images/music/Mediative.png",
-  //   "assets/images/music/Mediative.png",
-  //   "assets/images/music/Mediative.png",
-  //   "assets/images/music/Mediative.png",
-  //   "assets/images/music/Mediative.png",
-  //   "assets/images/music/Mediative.png",
-  // ];
-
-  // List<String> listTitle = [
-  //   "Moon vibes",
-  //   "1",
-  //   "2",
-  //   "3",
-  //   "4",
-  //   "5",
-  //   "6",
-  // ];
 
   @override
   Widget build(BuildContext context) {
@@ -144,49 +132,53 @@ class _ImageMusicWidgetState extends State<ImageMusicWidget> {
               primary: false,
               padding: const EdgeInsets.all(10),
               itemBuilder: (BuildContext context, int index) {
-                return SizedBox(
-                  // color: Colors.white,
-                  width: 50,
-                  height: 50,
-                  child: Stack(children: [
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Image.asset(listMusic[index].image),
-                        Text(
-                          listMusic[index].title,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            color: Color(0xff8E9FCC),
+                return Center(
+                  child: Container(
+                    alignment: Alignment.center,
+                    color: Colors.transparent,
+                    // padding: EdgeInsets.all(5),
+                    width: 112,
+                    height: 102,
+                    child: Stack(children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Image.asset(listMusic[index].image),
+                          Text(
+                            listMusic[index].title,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 12,
+                              color: Color(0xff8E9FCC),
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                    Positioned(
-                      top: 5,
-                      right: 25,
-                      child: Container(
-                        width: 27,
-                        height: 27,
-                        decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(59),
+                        ],
+                      ),
+                      Positioned(
+                        top: 0,
+                        right: 0,
+                        child: Container(
+                          width: 27,
+                          height: 27,
+                          decoration: const BoxDecoration(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(59),
+                            ),
+                            color: Color(0xff003293),
                           ),
-                          color: Color(0xff003293),
-                        ),
-                        child: const Icon(
-                          Icons.lock,
-                          color: Colors.white,
-                          size: 15,
+                          child: const Icon(
+                            Icons.lock,
+                            color: Colors.white,
+                            size: 15,
+                          ),
                         ),
                       ),
-                    ),
-                  ]),
+                    ]),
+                  ),
                 );
               },
             ),
           ),
-          // const BottomMusics(),
         ],
       ),
     );

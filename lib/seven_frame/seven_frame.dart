@@ -15,8 +15,8 @@ class _SevenFrameState extends State<SevenFrame> {
       backgroundColor: const Color(0xff141733),
       body: SafeArea(
         top: false,
-        child: Container(
-          color: Colors.amber,
+        child: SizedBox(
+          // color: Colors.amber,
           child: Column(
             children: [
               Padding(
@@ -57,15 +57,22 @@ class _SevenFrameState extends State<SevenFrame> {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 25,
+              ),
               Container(
                 width: MediaQuery.of(context).size.width,
                 height: 72,
-                color: Colors.black,
+                // color: Colors.black,
                 // margin: const EdgeInsets.symmetric(horizontal: 5),
                 padding:
                     const EdgeInsets.symmetric(horizontal: 17, vertical: 5),
                 child: const ClearSaveMix(),
               ),
+              const SizedBox(
+                height: 25,
+              ),
+              const PlayingMusic(),
             ],
           ),
         ),
@@ -138,6 +145,67 @@ class ClearSaveMix extends StatelessWidget {
           ),
         )
       ],
+    );
+  }
+}
+
+class PlayingMusic extends StatefulWidget {
+  const PlayingMusic({super.key});
+
+  @override
+  State<PlayingMusic> createState() => _PlayingMusicState();
+}
+
+class _PlayingMusicState extends State<PlayingMusic> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.amber,
+      width: 338,
+      height: 78,
+      child: Row(
+        children: [
+          Stack(children: [
+            Container(
+              width: 78,
+              height: 78,
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: const Color(0xff8E9FCC),
+                ),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(7),
+                ),
+                color: Colors.red,
+              ),
+            ),
+            Positioned(
+              top: 0,
+              right: 0,
+              child: Container(
+                width: 30,
+                height: 30,
+                decoration: const BoxDecoration(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(59),
+                  ),
+                  color: Color(0xff003293),
+                ),
+                child: const Icon(
+                  Icons.lock,
+                  color: Colors.white,
+                  size: 15,
+                ),
+              ),
+            ),
+          ])
+        ],
+
+        // alignment: Alignment.topCenter,
+        // height: 78,
+        // width: MediaQuery.of(context).size.width - 52,
+        // color: Colors.amber,
+      ),
     );
   }
 }

@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class SevenFrame extends StatefulWidget {
@@ -198,7 +197,37 @@ class _PlayingMusicState extends State<PlayingMusic> {
                 ),
               ),
             ),
-          ])
+          ]),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 16, left: 19),
+                child: Container(
+                  width: 241,
+                  height: 27,
+                  color: Colors.black,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                        "Meditation music",
+                        style: TextStyle(
+                          color: Color(0xff8E9FCC),
+                        ),
+                      ),
+                      Icon(
+                        Icons.menu,
+                        color: Color(0xffFFFFFF),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Row(
+                children: const [Text("data")],
+              ),
+            ],
+          ),
         ],
 
         // alignment: Alignment.topCenter,

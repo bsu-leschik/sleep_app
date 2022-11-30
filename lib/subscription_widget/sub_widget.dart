@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class SubscribeWidget extends StatefulWidget {
   const SubscribeWidget({Key? key}) : super(key: key);

@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../subscription_widget/bottom_bar/bottom_bar.dart';
 import 'bottom_music.dart';
 
 class MelodyWidget extends StatefulWidget {

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:sleep_app/subscription_widget/sub_widget.dart';
-import 'package:sleep_app/welcome_widget/animation.dart/animation_on_boarding.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnBoardingWidget extends StatefulWidget {

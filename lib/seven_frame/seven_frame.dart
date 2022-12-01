@@ -224,7 +224,9 @@ class _PlayingMusicState extends State<PlayingMusic> {
                 ),
               ),
               Row(
-                children: const [Text("data")],
+                children: const [
+                  Text("data")
+                ], // Sllider для громкости https://api.flutter.dev/flutter/material/Slider-class.html
               ),
             ],
           ),

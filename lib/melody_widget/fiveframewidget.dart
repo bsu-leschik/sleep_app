@@ -16,6 +16,7 @@ class _MelodyWidgetState extends State<MelodyWidget> {
     return Scaffold(
       backgroundColor: const Color.fromRGBO(20, 23, 51, 0.7),
       body: SafeArea(
+        bottom: false,
         child: Column(
           children: [
             Row(

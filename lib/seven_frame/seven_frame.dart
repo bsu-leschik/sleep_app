@@ -156,6 +156,7 @@ class PlayingMusic extends StatefulWidget {
 }
 
 class _PlayingMusicState extends State<PlayingMusic> {
+  double _rating = 0.1;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -223,11 +224,23 @@ class _PlayingMusicState extends State<PlayingMusic> {
                   ),
                 ),
               ),
-              Row(
-                children: const [
-                  Text("data")
-                ], // Sllider для громкости https://api.flutter.dev/flutter/material/Slider-class.html
-              ),
+              Container(
+                width: 241,
+                height: 10,
+                // margin: const EdgeInsets.all(0),
+                color: Colors.green,
+                child: Slider(
+                  value: _rating,
+                  min: 0.1,
+                  max: 100,
+                  onChanged: (newRating) {
+                    setState(() {
+                      _rating = newRating;
+                    });
+                  },
+                  label: "$_rating",
+                ),
+              )
             ],
           ),
         ],

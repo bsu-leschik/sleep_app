@@ -4,11 +4,6 @@ import 'package:flutter/material.dart';
 
 import '../../melody_widget/fiveframewidget.dart';
 
-// void main() {
-//   runApp(MyApp());
-// }
-
-//This widget is the main widget.
 class BottomBar extends StatelessWidget {
   static const String appTitle = 'Bottom Nav Bar';
 

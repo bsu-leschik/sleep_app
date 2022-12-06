@@ -156,7 +156,7 @@ class PlayingMusic extends StatefulWidget {
 }
 
 class _PlayingMusicState extends State<PlayingMusic> {
-  double _rating = 0.1;
+  double _rating = 1;
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -224,21 +224,24 @@ class _PlayingMusicState extends State<PlayingMusic> {
                   ),
                 ),
               ),
-              Container(
-                width: 241,
-                height: 10,
-                // margin: const EdgeInsets.all(0),
-                color: Colors.green,
-                child: Slider(
-                  value: _rating,
-                  min: 0.1,
-                  max: 100,
-                  onChanged: (newRating) {
-                    setState(() {
-                      _rating = newRating;
-                    });
-                  },
-                  label: "$_rating",
+              Center(
+                child: Container(
+                  width: 241,
+                  height: 10,
+                  // margin: const EdgeInsets.all(0),
+                  color: Colors.green,
+                  child: Slider(
+                    divisions: 100,
+                    value: _rating,
+                    min: 0,
+                    max: 100,
+                    onChanged: (double newRating) {
+                      setState(() {
+                        _rating = newRating;
+                      });
+                    },
+                    label: "$_rating",
+                  ),
                 ),
               )
             ],

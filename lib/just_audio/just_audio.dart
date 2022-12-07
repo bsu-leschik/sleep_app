@@ -4,7 +4,6 @@
 // import 'package:flutter/services.dart';
 // import 'package:just_audio/just_audio.dart';
 // import 'package:rxdart/rxdart.dart' show Rx;
-// import 'package:just_audio_example/common.dart';
 
 // class JustAudio extends StatefulWidget {
 //   const JustAudio({super.key});
@@ -189,7 +188,7 @@
 //                 max: 1.5,
 //                 value: player.speed,
 //                 stream: player.speedStream,
-//                 onChanged: player.setSpeed,
+//                 onChanged: player.setSpeed,  
 //               );
 //             },
 //           ),

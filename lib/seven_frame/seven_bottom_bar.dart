@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:sleep_app/seven_frame/seven_frame.dart';
 
 import '../../melody_widget/fiveframewidget.dart';
@@ -25,7 +26,21 @@ class InitalScreenWidget extends StatefulWidget {
 }
 
 class HomeWidget extends State<InitalScreenWidget> {
+  List<AudioPlayer> l = [];
+  double volume = 0;
+  AudioPlayer _play1(
+    String setAsset,
+    double setVolume,
+  ) {
+    final AudioPlayer _player2 = AudioPlayer();
+    _player2.setAsset(setAsset);
+    _player2.play();
+    _player2.setVolume(setVolume);
+    return _player2;
+  }
+
   bool play = false;
+  final AudioPlayer _player2 = AudioPlayer();
 
   final PageController _navPage = PageController(initialPage: 0);
 
@@ -68,13 +83,23 @@ class HomeWidget extends State<InitalScreenWidget> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      SizedBox(
-                        width: 25,
-                        height: 22,
-                        child: Image.asset(
-                          "assets/images/mix.png",
-                          color: Colors.white,
-                        ),
+                      Row(
+                        children: [
+                          SizedBox(
+                            width: 30,
+                            height: 30,
+                            child: Image.asset(
+                              "assets/images/mix.png",
+                              color: Colors.white,
+                            ),
+                          ),
+                          // Container(
+                          //   color: Colors.amber,
+                          //   width: 65,
+                          //   height: 30,
+                          //   child:
+                          // ),
+                        ],
                       ),
                       const Text(
                         "Mix",
@@ -96,6 +121,12 @@ class HomeWidget extends State<InitalScreenWidget> {
                   onTap: (() {
                     print("Timer");
                     setState(() {
+                      _player2.stop();
+                      for (var element in l) {
+                        element.stop();
+                      }
+                      // l[0].setVolume(volume);
+                      // volume = volume + 0.1;
                       _navPage.jumpToPage(1);
                     });
                   }),
@@ -126,7 +157,7 @@ class HomeWidget extends State<InitalScreenWidget> {
           ),
         ),
       ),
-      floatingActionButton: Container(
+      floatingActionButton: SizedBox(
         // color: Colors.red,
         height: 92,
         width: 92,
@@ -135,6 +166,12 @@ class HomeWidget extends State<InitalScreenWidget> {
           onPressed: () {
             setState(() {
               play = !play;
+
+              l.add(_play1("assets/images/music/Dozhd.mp3", 1));
+
+              // _player2.setAsset("assets/images/music/Dozhd.mp3");
+              // _player2.play();
+              // _player2.setVolume(1);
             });
           },
           child: Icon(
@@ -148,4 +185,3 @@ class HomeWidget extends State<InitalScreenWidget> {
     );
   }
 } //Toast function
- 

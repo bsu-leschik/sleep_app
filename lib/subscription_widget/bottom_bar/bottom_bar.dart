@@ -1,5 +1,3 @@
-// @author  ninan
-
 import 'package:flutter/material.dart';
 
 import '../../melody_widget/fiveframewidget.dart';
@@ -44,7 +42,6 @@ class HomeWidget extends State<InitalScreenWidget> {
             color: Colors.black12,
           ),
         ],
-        // physics: NeverScrollableScrollPhysics(), //to disable Swipe
       ),
       backgroundColor: Colors.transparent, //white ivory
       bottomNavigationBar: BottomAppBar(

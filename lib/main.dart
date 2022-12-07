@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sleep_app/melody_widget/fiveframewidget.dart';
+import 'package:sleep_app/seven_frame/seven_bottom_bar.dart';
 import 'package:sleep_app/seven_frame/seven_frame.dart';
 import 'package:sleep_app/subscription_widget/bottom_bar/bottom_bar.dart';
 
@@ -25,7 +26,8 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: const BottomBar(),
-      home: const SevenFrame(),
+      home: const SevenBottomBar(),
+      // home: const SevenFrame(),
       // home: const SubscribeWidget(),
       // home: const MyApp1(),
     );

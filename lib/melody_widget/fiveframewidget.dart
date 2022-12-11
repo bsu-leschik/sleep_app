@@ -277,6 +277,7 @@ class TypeMusicWidget extends StatelessWidget {
             );
           }),
     );
+
     // return Row(
     // children: [
     //   CupertinoButton(

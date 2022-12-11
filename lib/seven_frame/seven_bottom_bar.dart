@@ -26,21 +26,41 @@ class InitalScreenWidget extends StatefulWidget {
 }
 
 class HomeWidget extends State<InitalScreenWidget> {
-  List<AudioPlayer> l = [];
-  double volume = 0;
-  AudioPlayer _play1(
-    String setAsset,
-    double setVolume,
-  ) {
-    final AudioPlayer _player2 = AudioPlayer();
-    _player2.setAsset(setAsset);
-    _player2.play();
-    _player2.setVolume(setVolume);
-    return _player2;
+  // List<AudioPlayer> l = [];
+  // double volume = 0;
+  // AudioPlayer _play1(
+  //   String setAsset,
+  //   double setVolume,
+  // ) {
+  //   final AudioPlayer player2 = AudioPlayer();
+  //   player2.setAsset(setAsset);
+  //   player2.play();
+  //   player2.setVolume(setVolume);
+  //   return player2;
+  // }
+  final AudioPlayer audioPlayer = AudioPlayer();
+  List<AudioPlayer> playList = [];
+  AudioPlayer _play1(String setAsset, double setVolume) {
+    final AudioPlayer audioPlayer1 = AudioPlayer();
+    audioPlayer1.setAsset(setAsset);
+    audioPlayer1.setVolume(setVolume);
+    audioPlayer1.play();
+    // audioPlayer1.pause();
+    return audioPlayer1;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    
+    audioPlayer.onPlayerStateChange.listen((state) {
+      setState(() {
+        play = state == PlayerState.PLAYING;
+      });
+    };
   }
 
   bool play = false;
-  final AudioPlayer _player2 = AudioPlayer();
 
   final PageController _navPage = PageController(initialPage: 0);
 
@@ -119,12 +139,13 @@ class HomeWidget extends State<InitalScreenWidget> {
                 height: 55,
                 child: InkWell(
                   onTap: (() {
+                    audioPlayer.pause();
                     print("Timer");
                     setState(() {
-                      _player2.stop();
-                      for (var element in l) {
-                        element.stop();
-                      }
+                      // _player2.stop();
+                      // for (var element in l) {
+                      //   element.stop();
+                      // }
                       // l[0].setVolume(volume);
                       // volume = volume + 0.1;
                       _navPage.jumpToPage(1);
@@ -166,9 +187,13 @@ class HomeWidget extends State<InitalScreenWidget> {
           onPressed: () {
             setState(() {
               play = !play;
+              if (play) {
+                audioPlayer.play();
+              } else {
+                audioPlayer.pause();
+              }
 
-              l.add(_play1("assets/images/music/Dozhd.mp3", 1));
-
+              playList.add(_play1("assets/images/music/Dozhd.mp3", 1));
               // _player2.setAsset("assets/images/music/Dozhd.mp3");
               // _player2.play();
               // _player2.setVolume(1);

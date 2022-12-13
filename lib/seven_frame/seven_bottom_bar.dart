@@ -27,6 +27,7 @@ class InitalScreenWidget extends StatefulWidget {
 
 class HomeWidget extends State<InitalScreenWidget> {
   final AudioPlayer _player2 = AudioPlayer();
+  bool play = false;
   List<AudioPlayer> l = [];
   double volume = 0;
   AudioPlayer _play1(
@@ -36,7 +37,7 @@ class HomeWidget extends State<InitalScreenWidget> {
     final AudioPlayer _player2 = AudioPlayer();
     _player2.setAsset(setAsset);
     _player2.play();
-    _player2.pause();
+    // _player2.stop();
     _player2.setVolume(setVolume);
     return _player2;
   }
@@ -68,8 +69,6 @@ class HomeWidget extends State<InitalScreenWidget> {
     //   });
     // });
   }
-
-  bool play = true;
 
   final PageController _navPage = PageController(initialPage: 0);
 
@@ -150,7 +149,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                   onTap: (() {
                     print("Timer");
                     setState(() {
-                      _player2.pause();
+                      // _player2.stop();
                       // _play1.stop();
                       // for (var element in l) {
                       //   element.stop();
@@ -197,9 +196,10 @@ class HomeWidget extends State<InitalScreenWidget> {
             setState(() {
               play = !play;
               // if (play) {
-              //   audioPlayer.play();
+              //   _player2.pause();
               // } else {
-              //   audioPlayer.pause();
+              //   l.add(_play1("assets/images/music/Dozhd.mp3", 1));
+              //   _player2.play();
               // }
               l.add(_play1("assets/images/music/Dozhd.mp3", 1));
               // _player2.setAsset("assets/images/music/Dozhd.mp3");

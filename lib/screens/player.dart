@@ -1,19 +1,10 @@
-/*
- * File: player.dart
- * Project: Flutter music player
- * Created Date: Wednesday February 17th 2021
- * Author: Michele Volpato
- * -----
- * Copyright (c) 2021 Michele Volpato
- */
-
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:music_player/screens/commons/player_buttons.dart';
-
-import 'commons/player_buttons.dart';
+import 'package:sleep_app/screens/commons/player_buttons.dart';
 
 class Player extends StatefulWidget {
+  const Player({super.key});
+
   @override
   _PlayerState createState() => _PlayerState();
 }
@@ -51,8 +42,11 @@ class _PlayerState extends State<Player> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: PlayerButtons(this._audioPlayer, {required Key key}) : super(key: key);)
-      );
-    
+        child: PlayerButtons(
+          _audioPlayer,
+          key: UniqueKey(),
+        ),
+      ),
+    );
   }
 }

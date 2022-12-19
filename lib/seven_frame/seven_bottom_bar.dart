@@ -37,8 +37,10 @@ class HomeWidget extends State<InitalScreenWidget> {
     final AudioPlayer _player2 = AudioPlayer();
     _player2.setAsset(setAsset);
     _player2.play();
-    // _player2.stop();
+    _player2.pause();
     _player2.setVolume(setVolume);
+    // notifyListeners();
+
     return _player2;
   }
 
@@ -50,7 +52,7 @@ class HomeWidget extends State<InitalScreenWidget> {
   //   audioPlayer1.setAsset(setAsset);
   //   audioPlayer1.setVolume(setVolume);
   //   audioPlayer1.play();
-  //   // audioPlayer1.pause();
+  //   audioPlayer1.pause();
   //   return audioPlayer1;
   // }
   @override
@@ -111,23 +113,13 @@ class HomeWidget extends State<InitalScreenWidget> {
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: 30,
-                            height: 30,
-                            child: Image.asset(
-                              "assets/images/mix.png",
-                              color: Colors.white,
-                            ),
-                          ),
-                          // Container(
-                          //   color: Colors.amber,
-                          //   width: 65,
-                          //   height: 30,
-                          //   child:
-                          // ),
-                        ],
+                      SizedBox(
+                        width: 30,
+                        height: 30,
+                        child: Image.asset(
+                          "assets/images/mix.png",
+                          color: Colors.white,
+                        ),
                       ),
                       const Text(
                         "Mix",
@@ -149,13 +141,12 @@ class HomeWidget extends State<InitalScreenWidget> {
                   onTap: (() {
                     print("Timer");
                     setState(() {
-                      // _player2.stop();
-                      // _play1.stop();
-                      // for (var element in l) {
-                      //   element.stop();
-                      // }
-                      // l[0].setVolume(volume);
-                      // volume = volume + 0.1;
+                      _player2.stop();
+                      for (var element in l) {
+                        element.stop();
+                      }
+                      l[0].setVolume(volume);
+                      volume = volume + 0.1;
                       _navPage.jumpToPage(1);
                     });
                   }),

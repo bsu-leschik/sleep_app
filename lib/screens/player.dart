@@ -11,13 +11,15 @@ import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:music_player/screens/commons/player_buttons.dart';
 
+import 'commons/player_buttons.dart';
+
 class Player extends StatefulWidget {
   @override
   _PlayerState createState() => _PlayerState();
 }
 
 class _PlayerState extends State<Player> {
-  AudioPlayer _audioPlayer;
+  late AudioPlayer _audioPlayer;
 
   @override
   void initState() {
@@ -49,8 +51,8 @@ class _PlayerState extends State<Player> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: PlayerButtons(_audioPlayer),
-      ),
-    );
+        child: PlayerButtons(this._audioPlayer, {required Key key}) : super(key: key);)
+      );
+    
   }
 }

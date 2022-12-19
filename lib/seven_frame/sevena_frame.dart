@@ -130,3 +130,17 @@ class _SaveTypeState extends State<SaveType> {
     );
   }
 }
+
+class TitleMusic extends StatefulWidget {
+  const TitleMusic({super.key});
+
+  @override
+  State<TitleMusic> createState() => _TitleMusicState();
+}
+
+class _TitleMusicState extends State<TitleMusic> {
+  @override
+  Widget build(BuildContext context) {
+    return Container();
+  }
+}

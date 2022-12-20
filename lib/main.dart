@@ -28,10 +28,10 @@ class MyApp extends StatelessWidget {
       ),
       // home: const BottomBar(),
       // home: const SevenBottomBar(),
-      home: const SevenFrame(),
+      // home: const SevenFrame(),
       // home: const SubscribeWidget(),
       // home: const MyApp1(),
-      // home: const Sevena(),
+      home: const Sevena(),
     );
   }
 }

@@ -206,9 +206,9 @@ class _BottomMusicsState extends State<BottomMusics> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      child: Stack(children: [
-        Column(
-          children: [
+      child: Stack(
+        children: [
+          Column(children: [
             Center(
               child: Container(
                 width: 78,
@@ -221,40 +221,40 @@ class _BottomMusicsState extends State<BottomMusics> {
                 ),
               ),
             ),
-            Text(
-              widget.title,
-              style: const TextStyle(
-                fontSize: 12,
-                color: Color(0xff8E9FCC),
-              ),
-            ),
-          ],
-        ),
-        Positioned(
-          top: 0,
-          right: 20,
-          child: Container(
-            width: 27,
-            height: 27,
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(59),
-              ),
-              color: Color(0xff003293),
-            ),
-            child: const Icon(
-              Icons.lock,
-              color: Colors.white,
-              size: 15,
+          ]),
+          Text(
+            widget.title,
+            style: const TextStyle(
+              fontSize: 12,
+              color: Color(0xff8E9FCC),
             ),
           ),
-        ),
-        Positioned(
-          top: 20,
-          left: 45,
-          child: Image.asset("assets/images/Fire.png"),
-        )
-      ]),
+          Positioned(
+            top: 0,
+            right: 20,
+            child: Container(
+              width: 27,
+              height: 27,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(
+                  Radius.circular(59),
+                ),
+                color: Color(0xff003293),
+              ),
+              child: const Icon(
+                Icons.lock,
+                color: Colors.white,
+                size: 15,
+              ),
+            ),
+          ),
+          Positioned(
+            top: 20,
+            left: 45,
+            child: Image.asset("assets/images/Fire.png"),
+          ),
+        ],
+      ),
     );
   }
 }

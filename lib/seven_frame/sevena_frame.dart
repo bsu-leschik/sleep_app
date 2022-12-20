@@ -22,6 +22,7 @@ class _SevenaState extends State<Sevena> {
             SizedBox(height: 25),
             SaveType(),
             PlayList(),
+            LikeMusic(),
           ],
         ),
       ),
@@ -140,10 +141,7 @@ class _SaveTypeState extends State<SaveType> {
 }
 
 class PlayList extends StatefulWidget {
-  // final String title;
-  const PlayList({
-    super.key,
-  });
+  const PlayList({super.key});
 
   @override
   State<PlayList> createState() => _PlayListState();
@@ -151,7 +149,7 @@ class PlayList extends StatefulWidget {
 
 class _PlayListState extends State<PlayList> {
   double _rating1 = 1;
-  double _rating2 = 1;
+
   @override
   Widget build(BuildContext context) {
     return Column(children: [
@@ -251,78 +249,126 @@ class _PlayListState extends State<PlayList> {
       const SizedBox(
         height: 25,
       ),
-      SizedBox(
-        // color: Colors.amber,
-        width: 338,
-        height: 78,
-        child: Row(
-          children: [
-            Stack(children: [
-              Container(
-                width: 78,
-                height: 78,
-                decoration: const BoxDecoration(
-                  color: Color(0xff7E44FA),
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(57),
+    ]);
+  }
+}
+
+class LikeMusic extends StatelessWidget {
+  const LikeMusic({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    List<String> like = [
+      "Rain",
+      "Snow",
+      "Cry",
+      "Fun",
+      "Step",
+      "Classic",
+      "Liriq",
+      "Shopen"
+    ];
+    return SizedBox(
+      // height: MediaQuery.of(context).size.height,
+      width: 338,
+      child: ListView.builder(
+        itemCount: like.length,
+        scrollDirection: Axis.vertical,
+        itemBuilder: (BuildContext context, int index) {
+          return LikesMusic(title: like[index]);
+        },
+      ),
+    );
+  }
+}
+
+class LikesMusic extends StatefulWidget {
+  final String title;
+
+  const LikesMusic({super.key, required this.title});
+
+  @override
+  State<LikesMusic> createState() => _LikesMusicState();
+}
+
+class _LikesMusicState extends State<LikesMusic> {
+  double _rating2 = 1;
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      // color: Colors.amber,
+      width: 338,
+      height: 78,
+      child: Row(
+        children: [
+          Stack(children: [
+            Container(
+              width: 78,
+              height: 78,
+              decoration: const BoxDecoration(
+                color: Color(0xff7E44FA),
+                borderRadius: BorderRadius.all(
+                  Radius.circular(57),
+                ),
+                // color: Colors.red,
+              ),
+            ),
+          ]),
+          Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 16, left: 19),
+                child: SizedBox(
+                  width: 241,
+                  height: 27,
+                  // color: Colors.black,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text(
+                        "Rain",
+                        style: TextStyle(
+                          color: Color(0xff8E9FCC),
+                        ),
+                      ),
+                      Icon(
+                        Icons.menu,
+                        color: Color(0xffFFFFFF),
+                      ),
+                    ],
                   ),
-                  // color: Colors.red,
                 ),
               ),
-            ]),
-            Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 16, left: 19),
-                  child: SizedBox(
-                    width: 241,
-                    height: 27,
-                    // color: Colors.black,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
-                        Text(
-                          "Rain",
-                          style: TextStyle(
-                            color: Color(0xff8E9FCC),
-                          ),
-                        ),
-                        Icon(
-                          Icons.menu,
-                          color: Color(0xffFFFFFF),
-                        ),
-                      ],
-                    ),
-                  ),
+              const SizedBox(
+                height: 5,
+              ),
+              SizedBox(
+                width: 241,
+                height: 15,
+                // margin: const EdgeInsets.all(0),
+                // color: Colors.green,
+                child: Slider(
+                  activeColor: const Color(0xff7E44FA),
+                  inactiveColor: const Color(0xff01308C),
+                  divisions: 100,
+                  value: _rating2,
+                  min: 0,
+                  max: 100,
+                  onChanged: (double newRating2) {
+                    setState(() {
+                      _rating2 = newRating2;
+                    });
+                  },
+                  // label: "$_rating",
                 ),
-                const SizedBox(
-                  height: 5,
-                ),
-                SizedBox(
-                  width: 241,
-                  height: 15,
-                  // margin: const EdgeInsets.all(0),
-                  // color: Colors.green,
-                  child: Slider(
-                    activeColor: const Color(0xff7E44FA),
-                    inactiveColor: const Color(0xff01308C),
-                    divisions: 100,
-                    value: _rating2,
-                    min: 0,
-                    max: 100,
-                    onChanged: (double newRating2) {
-                      setState(() {
-                        _rating2 = newRating2;
-                      });
-                    },
-                    // label: "$_rating",
-                  ),
-                )
-              ],
-            ),
-          ],
-        ),
+              ),
+              const SizedBox(
+                height: 5,
+              ),
+            ],
+          ),
+        ],
       ),
-    ]);
+    );
   }
 }

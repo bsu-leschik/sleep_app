@@ -21,6 +21,7 @@ class _SevenaState extends State<Sevena> {
             TopBar(),
             SizedBox(height: 25),
             SaveType(),
+            PlayList(),
           ],
         ),
       ),
@@ -67,6 +68,13 @@ class SaveType extends StatefulWidget {
 }
 
 class _SaveTypeState extends State<SaveType> {
+  bool isSelected = false; // нажатие кнопки и активность кнопки
+  void select() {
+    setState(() {
+      isSelected = !isSelected; // присваивание противоположного значения
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -131,16 +139,190 @@ class _SaveTypeState extends State<SaveType> {
   }
 }
 
-class TitleMusic extends StatefulWidget {
-  const TitleMusic({super.key});
+class PlayList extends StatefulWidget {
+  // final String title;
+  const PlayList({
+    super.key,
+  });
 
   @override
-  State<TitleMusic> createState() => _TitleMusicState();
+  State<PlayList> createState() => _PlayListState();
 }
 
-class _TitleMusicState extends State<TitleMusic> {
+class _PlayListState extends State<PlayList> {
+  double _rating1 = 1;
+  double _rating2 = 1;
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Column(children: [
+      SizedBox(
+        // color: Colors.amber,
+        width: 338,
+        height: 78,
+        child: Row(
+          children: [
+            Stack(children: [
+              Container(
+                width: 78,
+                height: 78,
+                decoration: BoxDecoration(
+                  border: Border.all(
+                    color: const Color(0xff8E9FCC),
+                  ),
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(7),
+                  ),
+                  // color: Colors.red,
+                ),
+              ),
+              Positioned(
+                top: 0,
+                right: 0,
+                child: Container(
+                  width: 30,
+                  height: 30,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(59),
+                    ),
+                    color: Color(0xff003293),
+                  ),
+                  child: const Icon(
+                    Icons.lock,
+                    color: Colors.white,
+                    size: 15,
+                  ),
+                ),
+              ),
+            ]),
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 16, left: 19),
+                  child: SizedBox(
+                    width: 241,
+                    height: 27,
+                    // color: Colors.black,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          "Meditation music",
+                          style: TextStyle(
+                            color: Color(0xff8E9FCC),
+                          ),
+                        ),
+                        Icon(
+                          Icons.menu,
+                          color: Color(0xffFFFFFF),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                SizedBox(
+                  width: 241,
+                  height: 15,
+                  // margin: const EdgeInsets.all(0),
+                  // color: Colors.green,
+                  child: Slider(
+                    activeColor: const Color(0xff7E44FA),
+                    inactiveColor: const Color(0xff01308C),
+                    divisions: 100,
+                    value: _rating1,
+                    min: 0,
+                    max: 100,
+                    onChanged: (double newRating) {
+                      setState(() {
+                        _rating1 = newRating;
+                      });
+                    },
+                    // label: "$_rating",
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
+      const SizedBox(
+        height: 25,
+      ),
+      SizedBox(
+        // color: Colors.amber,
+        width: 338,
+        height: 78,
+        child: Row(
+          children: [
+            Stack(children: [
+              Container(
+                width: 78,
+                height: 78,
+                decoration: const BoxDecoration(
+                  color: Color(0xff7E44FA),
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(57),
+                  ),
+                  // color: Colors.red,
+                ),
+              ),
+            ]),
+            Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 16, left: 19),
+                  child: SizedBox(
+                    width: 241,
+                    height: 27,
+                    // color: Colors.black,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: const [
+                        Text(
+                          "Rain",
+                          style: TextStyle(
+                            color: Color(0xff8E9FCC),
+                          ),
+                        ),
+                        Icon(
+                          Icons.menu,
+                          color: Color(0xffFFFFFF),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  height: 5,
+                ),
+                SizedBox(
+                  width: 241,
+                  height: 15,
+                  // margin: const EdgeInsets.all(0),
+                  // color: Colors.green,
+                  child: Slider(
+                    activeColor: const Color(0xff7E44FA),
+                    inactiveColor: const Color(0xff01308C),
+                    divisions: 100,
+                    value: _rating2,
+                    min: 0,
+                    max: 100,
+                    onChanged: (double newRating2) {
+                      setState(() {
+                        _rating2 = newRating2;
+                      });
+                    },
+                    // label: "$_rating",
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
+    ]);
   }
 }

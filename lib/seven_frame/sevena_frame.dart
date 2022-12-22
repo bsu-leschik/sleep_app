@@ -1,6 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 
 class Sevena extends StatefulWidget {
   const Sevena({super.key});
@@ -277,13 +276,53 @@ class LikeMusic extends StatelessWidget {
           itemCount: like.length,
           scrollDirection: Axis.vertical,
           itemBuilder: (BuildContext context, int index) {
-            return LikesMusic(title: like[index]);
+            return Slidable(
+                // key: const ValueKey(0),
+                endActionPane: ActionPane(
+                    motion: const ScrollMotion(),
+                    dismissible: DismissiblePane(onDismissed: () {}),
+                    children: const [
+                      SlidableAction(
+                        autoClose: false,
+                        flex: 3,
+                        onPressed: doNothing,
+                        icon: Icons.heart_broken_rounded,
+                      ),
+                    ]),
+                child: LikesMusic(title: like[index]));
+            // return Dismissible(
+            //     key: ValueKey(like[index]),
+            //     background: Container(
+            //       height: 78,
+            //       width: 267,
+            //       decoration: const BoxDecoration(
+            //           color: Color(0xFF0C0E1F),
+            //           borderRadius: BorderRadius.only(
+            //               topLeft: Radius.circular(50),
+            //               bottomLeft: Radius.circular(50))),
+            //       child: Row(
+            //         children: const [Icon(Icons.heat_pump_rounded)],
+            //       ),
+            //     ),
+            // secondaryBackground: Container(
+            //   height: 78,
+            //   width: 267,
+            //   decoration: const BoxDecoration(
+            //       color: Color(0xFF0C0E1F),
+            //       borderRadius: BorderRadius.only(
+            //           topRight: Radius.circular(50),
+            //           bottomRight: Radius.circular(50))),
+            // ),
+            // child: LikesMusic(title: like[index]));
+            // return LikesMusic(title: like[index]);
           },
         ),
       ),
     );
   }
 }
+
+void doNothing(BuildContext context) {}
 
 class LikesMusic extends StatefulWidget {
   final String title;
@@ -363,9 +402,6 @@ class _LikesMusicState extends State<LikesMusic> {
                   },
                   // label: "$_rating",
                 ),
-              ),
-              const SizedBox(
-                height: 5,
               ),
             ],
           ),

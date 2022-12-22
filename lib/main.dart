@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:sleep_app/melody_widget/fiveframewidget.dart';
-import 'package:sleep_app/seven_frame/seven_bottom_bar.dart';
-import 'package:sleep_app/seven_frame/seven_frame.dart';
-import 'package:sleep_app/subscription_widget/bottom_bar/bottom_bar.dart';
+// import 'package:sleep_app/melody_widget/fiveframewidget.dart';
+// import 'package:sleep_app/seven_frame/seven_bottom_bar.dart';
+// import 'package:sleep_app/seven_frame/seven_frame.dart';
+// import 'package:sleep_app/subscription_widget/bottom_bar/bottom_bar.dart';
 
-import 'just_audio/just_audio.dart';
-import 'seven_frame/sevena_frame.dart';
+// import 'just_audio/just_audio.dart';
+import 'seven_frame/sevena_bottom_bar.dart';
+// import 'seven_frame/sevena_frame.dart';
 
 // import 'package:sleep_app/welcome_widget/animation.dart/animation_on_boarding.dart';
 
@@ -31,7 +32,8 @@ class MyApp extends StatelessWidget {
       // home: const SevenFrame(),
       // home: const SubscribeWidget(),
       // home: const MyApp1(),
-      home: const Sevena(),
+      // home: const Sevena(),
+      home: const SevenaBottomBar(),
     );
   }
 }

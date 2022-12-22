@@ -16,6 +16,7 @@ class _SevenaState extends State<Sevena> {
       backgroundColor: const Color.fromRGBO(20, 23, 51, 1),
       body: SafeArea(
         top: false,
+        bottom: false,
         child: Column(
           children: const [
             TopBar(),
@@ -268,15 +269,17 @@ class LikeMusic extends StatelessWidget {
       "Liriq",
       "Shopen"
     ];
-    return SizedBox(
-      // height: MediaQuery.of(context).size.height,
-      width: 338,
-      child: ListView.builder(
-        itemCount: like.length,
-        scrollDirection: Axis.vertical,
-        itemBuilder: (BuildContext context, int index) {
-          return LikesMusic(title: like[index]);
-        },
+    return Expanded(
+      child: SizedBox(
+        height: MediaQuery.of(context).size.height,
+        width: 338,
+        child: ListView.builder(
+          itemCount: like.length,
+          scrollDirection: Axis.vertical,
+          itemBuilder: (BuildContext context, int index) {
+            return LikesMusic(title: like[index]);
+          },
+        ),
       ),
     );
   }
@@ -284,7 +287,6 @@ class LikeMusic extends StatelessWidget {
 
 class LikesMusic extends StatefulWidget {
   final String title;
-
   const LikesMusic({super.key, required this.title});
 
   @override

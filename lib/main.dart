@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 
 // import 'just_audio/just_audio.dart';
 import 'seven_frame/sevena_bottom_bar.dart';
+import 'show_dialog/timer_picker.dart';
 // import 'seven_frame/sevena_frame.dart';
 
 // import 'package:sleep_app/welcome_widget/animation.dart/animation_on_boarding.dart';
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
       // home: const SubscribeWidget(),
       // home: const MyApp1(),
       // home: const Sevena(),
-      home: const SevenaBottomBar(),
+      home: const TimerDialog(),
     );
   }
 }

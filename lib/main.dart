@@ -28,6 +28,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       // home: const BottomBar(),
+      // home: const Dialog(),
       // home: const SevenBottomBar(),
       // home: const SevenFrame(),
       // home: const SubscribeWidget(),

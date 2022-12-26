@@ -278,14 +278,16 @@ class LikeMusic extends StatelessWidget {
           scrollDirection: Axis.vertical,
           itemBuilder: (BuildContext context, int index) {
             return Slidable(
+
                 // key: const ValueKey(0),
                 endActionPane: ActionPane(
                     motion: const ScrollMotion(),
                     dismissible: DismissiblePane(onDismissed: () {}),
                     children: const [
                       SlidableAction(
+                        backgroundColor: Color(0xFF0C0E1F),
                         autoClose: false,
-                        flex: 3,
+                        flex: 5,
                         onPressed: doNothing,
                         icon: Icons.heart_broken_rounded,
                       ),
@@ -305,16 +307,16 @@ class LikeMusic extends StatelessWidget {
             //         children: const [Icon(Icons.heat_pump_rounded)],
             //       ),
             //     ),
-            // secondaryBackground: Container(
-            //   height: 78,
-            //   width: 267,
-            //   decoration: const BoxDecoration(
-            //       color: Color(0xFF0C0E1F),
-            //       borderRadius: BorderRadius.only(
-            //           topRight: Radius.circular(50),
-            //           bottomRight: Radius.circular(50))),
-            // ),
-            // child: LikesMusic(title: like[index]));
+            //     secondaryBackground: Container(
+            //       height: 78,
+            //       width: 267,
+            //       decoration: const BoxDecoration(
+            //           color: Color(0xFF0C0E1F),
+            //           borderRadius: BorderRadius.only(
+            //               topRight: Radius.circular(50),
+            //               bottomRight: Radius.circular(50))),
+            //     ),
+            //     child: LikesMusic(title: like[index]));
             // return LikesMusic(title: like[index]);
           },
         ),

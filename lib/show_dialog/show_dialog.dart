@@ -44,25 +44,25 @@ class FirstDialog extends StatelessWidget {
               'https://Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit. Hendrerit \net dignissim donec donec neque \ndonec tempor.'),
         ),
       ),
-      // child: const Icon(Icons.info, size: 52, color: Colors.black),
-      child: Container(
-        height: 78,
-        width: 267,
-        decoration: const BoxDecoration(
-            color: Colors.black,
-            borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(60), bottomLeft: Radius.circular(60))),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            Image.asset(
-              'assets/images/Heart@1x.png',
-            ),
-            const Icon(Icons.info, size: 52, color: Colors.white),
-            const Icon(Icons.delete_outlined, size: 52, color: Colors.white)
-          ],
-        ),
-      ),
+      child: const Icon(Icons.info, size: 52, color: Colors.black),
+      // child: Container(
+      //   height: 78,
+      //   width: 267,
+      //   decoration: const BoxDecoration(
+      //       color: Colors.black,
+      //       borderRadius: BorderRadius.only(
+      //           topLeft: Radius.circular(60), bottomLeft: Radius.circular(60))),
+      //   child: Row(
+      //     mainAxisAlignment: MainAxisAlignment.spaceAround,
+      //     children: [
+      //       Image.asset(
+      //         'assets/images/Heart@1x.png',
+      //       ),
+      //       const Icon(Icons.info, size: 52, color: Colors.white),
+      //       const Icon(Icons.delete_outlined, size: 52, color: Colors.white)
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 
+import '../show_dialog/show_dialog.dart';
+
 class Sevena extends StatefulWidget {
   const Sevena({super.key});
 
@@ -253,6 +255,10 @@ class _PlayListState extends State<PlayList> {
   }
 }
 
+final firstdialog = FirstDialog(
+  key: ObjectKey(firstdialog),
+);
+
 class LikeMusic extends StatelessWidget {
   const LikeMusic({super.key});
 
@@ -281,27 +287,30 @@ class LikeMusic extends StatelessWidget {
                 endActionPane: ActionPane(
                     motion: const ScrollMotion(),
                     dismissible: DismissiblePane(onDismissed: () {}),
-                    children: const [
+                    children: [
                       SlidableAction(
+                        backgroundColor: const Color(0xFF0C0E1F),
+                        autoClose: false,
+                        flex: 5,
+                        onPressed: ((context) {
+                          const SecondDialog();
+                        }),
+                        icon: Icons.favorite,
+                      ),
+                      const SlidableAction(
                         backgroundColor: Color(0xFF0C0E1F),
                         autoClose: false,
                         flex: 5,
                         onPressed: doNothing,
-                        icon: (Icons.favorite),
+                        icon: Icons.info,
                       ),
                       SlidableAction(
-                        backgroundColor: Color(0xFF0C0E1F),
+                        key: ObjectKey(firstdialog),
+                        backgroundColor: const Color(0xFF0C0E1F),
                         autoClose: false,
                         flex: 5,
                         onPressed: doNothing,
-                        icon: (Icons.info),
-                      ),
-                      SlidableAction(
-                        backgroundColor: Color(0xFF0C0E1F),
-                        autoClose: false,
-                        flex: 5,
-                        onPressed: doNothing,
-                        icon: (Icons.delete_outline),
+                        icon: Icons.delete_outline,
                       ),
                     ]),
                 child: LikesMusic(title: like[index]));

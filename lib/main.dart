@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: const OnBoardingWidget(),
+      // home: const OnBoardingWidget(),
       // home: const BottomBar(),
       // home: const MelodyWidget(),
       // home: const SevenBottomBar(),
@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
       // home: const MyApp1(),
       // home: const Sevena(),
       // home: const TimerDialog(),
-      // home: const SevenaBottomBar(),
+      home: const SevenaBottomBar(),
     );
   }
 }

@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-// import 'package:sleep_app/melody_widget/fiveframewidget.dart';
-// import 'package:sleep_app/seven_frame/seven_bottom_bar.dart';
-// import 'package:sleep_app/seven_frame/seven_frame.dart';
-// import 'package:sleep_app/subscription_widget/bottom_bar/bottom_bar.dart';
+import 'package:sleep_app/melody_widget/bottom_music.dart';
+import 'package:sleep_app/melody_widget/fiveframewidget.dart';
+import 'package:sleep_app/seven_frame/seven_bottom_bar.dart';
+import 'package:sleep_app/seven_frame/seven_frame.dart';
+import 'package:sleep_app/subscription_widget/bottom_bar/bottom_bar.dart';
 
-// import 'just_audio/just_audio.dart';
+import 'just_audio/just_audio.dart';
+import 'onboardingalex.dart';
 import 'seven_frame/sevena_bottom_bar.dart';
-// import 'show_dialog/timer_picker.dart';
-// import 'seven_frame/sevena_frame.dart';
+import 'show_dialog/timer_picker.dart';
+import 'seven_frame/sevena_frame.dart';
 
-// import 'package:sleep_app/welcome_widget/animation.dart/animation_on_boarding.dart';
+import 'package:sleep_app/welcome_widget/animation.dart/animation_on_boarding.dart';
 
-// import 'onboardingalex.dart';
+import 'onboardingalex.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,15 +30,16 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
+      home: const OnBoardingWidget(),
       // home: const BottomBar(),
-      // home: const Dialog(),
+      // home: const MelodyWidget(),
       // home: const SevenBottomBar(),
       // home: const SevenFrame(),
       // home: const SubscribeWidget(),
       // home: const MyApp1(),
       // home: const Sevena(),
       // home: const TimerDialog(),
-      home: const SevenaBottomBar(),
+      // home: const SevenaBottomBar(),
     );
   }
 }

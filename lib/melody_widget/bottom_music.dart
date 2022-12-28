@@ -194,6 +194,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../subscription_widget/bottom_bar/bottom_bar.dart';
+
 class BottomMusics extends StatefulWidget {
   final String title;
   const BottomMusics({super.key, required this.title});
@@ -221,14 +223,15 @@ class _BottomMusicsState extends State<BottomMusics> {
                 ),
               ),
             ),
-          ]),
-          Text(
-            widget.title,
-            style: const TextStyle(
-              fontSize: 12,
-              color: Color(0xff8E9FCC),
+            Text(
+              widget.title,
+              style: const TextStyle(
+                fontSize: 12,
+                color: Color(0xff8E9FCC),
+              ),
             ),
-          ),
+            // const BottomBar(),
+          ]),
           Positioned(
             top: 0,
             right: 20,

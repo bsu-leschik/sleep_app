@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../melody_widget/fiveframewidget.dart';
+import 'bottom_bar/bottom_bar.dart';
+
 class SubscribeWidget extends StatefulWidget {
   const SubscribeWidget({Key? key}) : super(key: key);
 
@@ -45,7 +48,12 @@ class CloseButton extends StatelessWidget {
           Icons.close,
           color: Colors.white,
         ),
-        onPressed: () => {},
+        onPressed: () => {
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const BottomBar()),
+          )
+        },
       ),
     );
   }

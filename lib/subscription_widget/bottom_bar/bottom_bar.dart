@@ -125,7 +125,7 @@ class HomeWidget extends State<InitalScreenWidget> {
           ),
         ),
       ),
-      floatingActionButton: Container(
+      floatingActionButton: SizedBox(
         // color: Colors.red,
         height: 92,
         width: 92,

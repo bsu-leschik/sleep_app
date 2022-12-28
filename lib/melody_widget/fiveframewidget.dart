@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../subscription_widget/bottom_bar/bottom_bar.dart';
 import 'bottom_music.dart';
 
 class MelodyWidget extends StatefulWidget {
@@ -18,6 +19,7 @@ class _MelodyWidgetState extends State<MelodyWidget> {
       body: SafeArea(
         bottom: false,
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Row(
               // spaceBetween раздвигает 2 виджета по краям
@@ -71,7 +73,7 @@ class _MelodyWidgetState extends State<MelodyWidget> {
             const BottomLock(),
             const SizedBox(
               height: 50,
-            )
+            ),
             // const BottomBar(),
           ],
         ),
@@ -110,7 +112,7 @@ class _ImageMusicWidgetState extends State<ImageMusicWidget> {
       image: "assets/images/music/Winter.png",
     ),
     MuzModel(
-      title: "Wonter",
+      title: "Winter",
       image: "assets/images/music/Winter.png",
     ),
   ];
@@ -277,7 +279,6 @@ class TypeMusicWidget extends StatelessWidget {
             );
           }),
     );
-
     // return Row(
     // children: [
     //   CupertinoButton(

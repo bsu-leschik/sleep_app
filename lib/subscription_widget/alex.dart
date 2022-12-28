@@ -53,7 +53,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     const SizedBox(
                       height: 52,
                     ),
-                    AnimationAppTour(
+                    animationAppTour(
                       4,
                       Column(
                         children: const [
@@ -97,7 +97,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     const SizedBox(
                       height: 52,
                     ),
-                    AnimationAppTour(
+                    animationAppTour(
                       4,
                       Column(
                         children: const [
@@ -141,7 +141,7 @@ class _OnboardingPageState extends State<OnboardingPage> {
                     const SizedBox(
                       height: 52,
                     ),
-                    AnimationAppTour(
+                    animationAppTour(
                       4,
                       Column(children: const [
                         Text("Fast Approval Process",
@@ -244,5 +244,5 @@ class _OnboardingPageState extends State<OnboardingPage> {
     );
   }
 
-  AnimationAppTour(int i, Column column) {}
+  animationAppTour(int i, Column column) {}
 }

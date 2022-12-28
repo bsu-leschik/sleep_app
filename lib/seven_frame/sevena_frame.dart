@@ -255,9 +255,7 @@ class _PlayListState extends State<PlayList> {
   }
 }
 
-final firstdialog = FirstDialog(
-  key: ObjectKey(firstdialog),
-);
+var unique = const FirstDialog();
 
 class LikeMusic extends StatelessWidget {
   const LikeMusic({super.key});
@@ -284,29 +282,29 @@ class LikeMusic extends StatelessWidget {
           scrollDirection: Axis.vertical,
           itemBuilder: (BuildContext context, int index) {
             return Slidable(
+                key: UniqueKey(),
                 endActionPane: ActionPane(
                     motion: const ScrollMotion(),
                     dismissible: DismissiblePane(onDismissed: () {}),
                     children: [
-                      SlidableAction(
-                        backgroundColor: const Color(0xFF0C0E1F),
-                        autoClose: false,
-                        flex: 5,
-                        onPressed: ((context) {
-                          const SecondDialog();
-                        }),
-                        icon: Icons.favorite,
-                      ),
                       const SlidableAction(
                         backgroundColor: Color(0xFF0C0E1F),
                         autoClose: false,
                         flex: 5,
                         onPressed: doNothing,
-                        icon: Icons.info,
+                        icon: Icons.favorite,
                       ),
                       SlidableAction(
-                        key: ObjectKey(firstdialog),
                         backgroundColor: const Color(0xFF0C0E1F),
+                        autoClose: false,
+                        flex: 5,
+                        onPressed: ((context) {
+                          unique;
+                        }),
+                        icon: Icons.info,
+                      ),
+                      const SlidableAction(
+                        backgroundColor: Color(0xFF0C0E1F),
                         autoClose: false,
                         flex: 5,
                         onPressed: doNothing,
@@ -389,14 +387,14 @@ class _LikesMusicState extends State<LikesMusic> {
                   // color: Colors.black,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
+                    children: [
                       Text(
-                        "Rain",
-                        style: TextStyle(
+                        widget.title,
+                        style: const TextStyle(
                           color: Color(0xff8E9FCC),
                         ),
                       ),
-                      Icon(
+                      const Icon(
                         Icons.menu,
                         color: Color(0xffFFFFFF),
                       ),

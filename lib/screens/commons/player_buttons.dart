@@ -81,7 +81,7 @@ class PlayerButtons extends StatelessWidget {
   Widget _shuffleButton(BuildContext context, bool isEnabled) {
     return IconButton(
       icon: isEnabled
-          ? Icon(Icons.shuffle, color: Theme.of(context).accentColor)
+          ? Icon(Icons.shuffle, color: Theme.of(context).secondaryHeaderColor)
           : const Icon(Icons.shuffle),
       onPressed: () async {
         final enable = !isEnabled;

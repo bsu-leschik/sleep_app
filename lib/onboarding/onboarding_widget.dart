@@ -28,12 +28,6 @@ class OnboardingWidget extends StatelessWidget {
               height: 45 / 33,
             ),
           ),
-          // style: GoogleFonts.nunito(TextStyle(
-          //   color: Colors.white,
-          //   fontSize: 33,
-          //   fontWeight: FontWeight.w400,
-          //   height: 45 / 33,
-          // )),
         ),
         const Expanded(
           flex: 2,

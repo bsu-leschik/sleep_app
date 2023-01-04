@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:sleep_app/premium/sub_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -33,10 +34,12 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
       body: SafeArea(
         child: Stack(
           children: [
-            // const Rotation(
-            // title: '',
-            // ),
-
+            // Expanded(
+            //     child: SvgPicture.asset(
+            //   "assets/images/Group1.svg",
+            //   height: MediaQuery.of(context).size.height,
+            //   width: MediaQuery.of(context).size.width,
+            // )), При экспорте получается полная шляпка (изображение не расстягивается на экран)
             PageView(
               controller: _pageController,
               onPageChanged: (value) {
@@ -81,19 +84,21 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
               left: 54,
               // !!!!!!!!Уточнить по бордеру (не получается отдельно бордел заградиентить)
               child: Container(
+                // нижний контейнер
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(43.0),
                   gradient: const LinearGradient(
-                    begin: Alignment.topRight,
-                    end: Alignment.bottomLeft,
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
                     colors: [Color(0xFF4C566C), Color(0xFF202432)],
                   ),
                 ),
                 child: Container(
+                  // верхний контейнер
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
-                      begin: Alignment.topRight,
-                      end: Alignment.bottomLeft,
+                      begin: Alignment.bottomCenter,
+                      end: Alignment.topCenter,
                       colors: [Color(0xFF202432), Color(0xFF4C566C)],
                     ),
                     color: const Color(0xff202432),

@@ -32,7 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   pedantic: ^1.11.1
-  flutter_svg: ^1.1.5
+  flutter_svg: ^1.1.6
   go_router: ^5.0.5
   url_strategy:
   smooth_page_indicator: ^1.0.0+2

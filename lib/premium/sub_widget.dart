@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sleep_app/premium/widget/moon_sheep_cloud.dart';
 
 // import '../melody_widget/fiveframewidget.dart';
 import '../subscription_widget/bottom_bar/bottom_bar.dart';
+import 'widget/sweet_dreams_premium.dart';
 
 class SubscribeWidget extends StatefulWidget {
   const SubscribeWidget({Key? key}) : super(key: key);
@@ -14,119 +17,126 @@ class _SubscribeWidgetState extends State<SubscribeWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: const Color(0xff141733),
+        actions: [
+          const Align(
+            alignment: Alignment.topRight,
+          ),
+          IconButton(
+            onPressed: () => {
+              Navigator.push(context,
+                  MaterialPageRoute(builder: ((context) => const BottomBar())))
+            },
+            icon: const Icon(Icons.close),
+            color: const Color(0xFFFFFFFF),
+            iconSize: 20,
+          )
+        ],
+      ),
       backgroundColor: const Color(0xff141733),
       body: Stack(
         children: [
           Image.asset(
-            "assets/images/shopping/Stars.png",
+            "assets/images/premium/Stars3x.png",
             width: double.infinity,
             fit: BoxFit.cover,
             alignment: Alignment.center,
           ),
-          Column(
-            children: const [
-              CloseButton(),
-              MoonWidget(),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class CloseButton extends StatelessWidget {
-  const CloseButton({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.topRight,
-      padding: const EdgeInsets.only(right: 10, top: 25),
-      child: OutlinedButton(
-        child: const Icon(
-          Icons.close,
-          color: Colors.white,
-        ),
-        onPressed: () => {
-          Navigator.push(
-            context,
-            MaterialPageRoute(builder: (context) => const BottomBar()),
-          )
-        },
-      ),
-    );
-  }
-}
-
-class MoonWidget extends StatefulWidget {
-  const MoonWidget({super.key});
-
-  @override
-  State<MoonWidget> createState() => _MoonWidgetState();
-}
-
-class _MoonWidgetState extends State<MoonWidget> {
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: Stack(
-        children: [
           Positioned(
-            top: 60,
-            right: 58,
-            child: Image.asset("assets/images/shopping/Sheep.png"),
-          ),
-          Positioned(
-            left: MediaQuery.of(context).size.width / 2 - 126,
-            top: 82,
-            child: Image.asset(
-              "assets/images/shopping/Moon.png",
-              // color: Colors.red,
-            ),
-          ),
-          Positioned(
+            left: 91,
+            // bottom: 584,
             top: 197,
-            left: 65,
             child: Image.asset(
-              "assets/images/shopping/Leftbottomcloud.png",
-            ),
+              "assets/images/premium/Sheep3x.png",
+              height: 63,
+              width: 94,
+            ), // "assets/images/shopping/Sheep.png"
           ),
-          Positioned(
-            top: 105,
-            right: 0,
-            child: Image.asset("assets/images/shopping/Rightbottomcloud.png"),
-          ),
-          Positioned(
-            top: 103,
-            left: 0,
-            child: Image.asset("assets/images/shopping/Lefttopcloud.png"),
-          ),
-          const Positioned(
-            top: 252,
-            right: 89,
-            child: WordsWidget(),
-          ),
-          const Positioned(
-            top: 374,
-            right: 59,
-            child: AboutPremiumWidget(),
-          ),
-          const Positioned(
-            top: 500,
-            left: 30,
-            child: PayBottonWidget(),
-          ),
-          const Positioned(
-            top: 700,
-            right: 37,
-            child: BottomBarWidget(),
-          )
+          const SweetDreamsPremium(),
+
+          // SvgPicture.asset("assets/images/premium/Moon.svg")
+          // Image.asset(
+          //   "assets/images/premium/Stars.png",
+          //   width: double.infinity,
+          //   fit: BoxFit.cover,
+          //   alignment: Alignment.center,
+          // ),
+          // MoonSheepCloud(),
         ],
       ),
     );
   }
 }
+
+// class MoonWidget extends StatefulWidget {
+//   const MoonWidget({super.key});
+
+//   @override
+//   State<MoonWidget> createState() => _MoonWidgetState();
+// }
+
+// class _MoonWidgetState extends State<MoonWidget> {
+//   @override
+//   Widget build(BuildContext context) {
+//     return Expanded(
+//       child: Stack(
+//         children: [
+//           Positioned(
+//             top: 60,
+//             right: 58,
+//             child: Image.asset("assets/images/shopping/Sheep.png"),
+//           ),
+//           Positioned(
+//             left: MediaQuery.of(context).size.width / 2 - 126,
+//             top: 82,
+//             child: Image.asset(
+//               "assets/images/shopping/Moon.png",
+//               // color: Colors.red,
+//             ),
+//           ),
+//           Positioned(
+//             top: 197,
+//             left: 65,
+//             child: Image.asset(
+//               "assets/images/shopping/Leftbottomcloud.png",
+//             ),
+//           ),
+//           Positioned(
+//             top: 105,
+//             right: 0,
+//             child: Image.asset("assets/images/shopping/Rightbottomcloud.png"),
+//           ),
+//           Positioned(
+//             top: 103,
+//             left: 0,
+//             child: Image.asset("assets/images/shopping/Lefttopcloud.png"),
+//           ),
+//           const Positioned(
+//             top: 252,
+//             right: 89,
+//             child: WordsWidget(),
+//           ),
+//           const Positioned(
+//             top: 374,
+//             right: 59,
+//             child: AboutPremiumWidget(),
+//           ),
+//           const Positioned(
+//             top: 500,
+//             left: 30,
+//             child: PayBottonWidget(),
+//           ),
+//           const Positioned(
+//             top: 700,
+//             right: 37,
+//             child: BottomBarWidget(),
+//           )
+//         ],
+//       ),
+//     );
+//   }
+// }
 
 class WordsWidget extends StatelessWidget {
   const WordsWidget({super.key});

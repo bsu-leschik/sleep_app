@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../melody_widget/fiveframewidget.dart';
+// import '../melody_widget/fiveframewidget.dart';
 import 'bottom_bar/bottom_bar.dart';
 
 class SubscribeWidget extends StatefulWidget {
@@ -334,14 +334,17 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
       children: [
         Column(
           children: [
-            TextButton(
-              onPressed: () {},
-              child: const Text(
-                "Restore Purchases",
-                style: TextStyle(
-                    fontSize: 12,
-                    color: Colors.white,
-                    fontWeight: FontWeight.w400),
+            Tooltip(
+              message: "You have no purchases to restore",
+              child: TextButton(
+                onPressed: () {},
+                child: const Text(
+                  "Restore Purchases",
+                  style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w400),
+                ),
               ),
             ),
           ],

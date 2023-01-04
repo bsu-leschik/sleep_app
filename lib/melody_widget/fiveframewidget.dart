@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-import '../subscription_widget/bottom_bar/bottom_bar.dart';
+// import '../subscription_widget/bottom_bar/bottom_bar.dart';
 import 'bottom_music.dart';
 
 class MelodyWidget extends StatefulWidget {
@@ -125,7 +125,7 @@ class _ImageMusicWidgetState extends State<ImageMusicWidget> {
           // const CloseBottomWidget(),
           SizedBox(
             width: double.infinity,
-            height: 250,
+            height: 280,
             child: GridView.builder(
               itemCount: listMusic.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

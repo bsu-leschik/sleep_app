@@ -162,7 +162,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:hive/hive.dart';
+// import 'package:hive/hive.dart';
 
 const sketchBox = 'sketchpadBox';
 
@@ -177,7 +177,7 @@ class DrawApp extends StatelessWidget {
   const DrawApp({super.key});
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       home: Scaffold(body: DrawingScreen()),
     );
   }
@@ -283,8 +283,8 @@ class _DrawingScreenState extends State<DrawingScreen> {
           children: [
             for (var i = 0; i < ColoredPath.colors.length; i++)
               buildColorCircle(i),
-            ClearButton(),
-            UndoButton(),
+            const ClearButton(),
+            const UndoButton(),
           ],
         ),
         const SizedBox(height: 20),
@@ -327,7 +327,7 @@ class _DrawingScreenState extends State<DrawingScreen> {
 class DrawingArea extends StatefulWidget {
   final int selectedColorIndex;
 
-  DrawingArea(this.selectedColorIndex);
+  const DrawingArea(this.selectedColorIndex, {super.key});
 
   @override
   _DrawingAreaState createState() => _DrawingAreaState();
@@ -382,13 +382,15 @@ class PathPainter extends CustomPainter {
 }
 
 class ClearButton extends StatelessWidget {
+  const ClearButton({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: Hive.box<ColoredPath>(sketchBox).listenable(),
       builder: (context, box, _) {
         return IconButton(
-          icon: Icon(Icons.delete),
+          icon: const Icon(Icons.delete),
           onPressed: box.length == 0 ? null : () => box.clear(),
         );
       },
@@ -397,13 +399,15 @@ class ClearButton extends StatelessWidget {
 }
 
 class UndoButton extends StatelessWidget {
+  const UndoButton({super.key});
+
   @override
   Widget build(BuildContext context) {
     return ValueListenableBuilder(
       valueListenable: Hive.box<ColoredPath>(sketchBox).listenable(),
       builder: (context, box, _) {
         return IconButton(
-          icon: Icon(Icons.undo),
+          icon: const Icon(Icons.undo),
           onPressed:
               box.length == 0 ? null : () => box.deleteAt(box.length - 1),
         );

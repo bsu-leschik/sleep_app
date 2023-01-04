@@ -110,8 +110,8 @@ class PlayerButtons extends StatelessWidget {
   Widget _repeatButton(BuildContext context, LoopMode loopMode) {
     final icons = [
       const Icon(Icons.repeat),
-      Icon(Icons.repeat, color: Theme.of(context).accentColor),
-      Icon(Icons.repeat_one, color: Theme.of(context).accentColor),
+      Icon(Icons.repeat, color: Theme.of(context).secondaryHeaderColor),
+      Icon(Icons.repeat_one, color: Theme.of(context).secondaryHeaderColor),
     ];
     const cycleModes = [
       LoopMode.off,

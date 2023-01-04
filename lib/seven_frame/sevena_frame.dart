@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:provider/provider.dart';
+import 'package:sleep_app/Data.dart';
 
 import '../show_dialog/show_dialog.dart';
 
@@ -229,19 +231,21 @@ class _PlayListState extends State<PlayList> {
                   // margin: const EdgeInsets.all(0),
                   // color: Colors.green,
                   child: Slider(
-                    activeColor: const Color(0xff7E44FA),
-                    inactiveColor: const Color(0xff01308C),
-                    divisions: 100,
-                    value: _rating1,
-                    min: 0,
-                    max: 100,
-                    onChanged: (double newRating) {
-                      setState(() {
-                        _rating1 = newRating;
-                      });
-                    },
-                    // label: "$_rating",
-                  ),
+                      activeColor: const Color(0xff7E44FA),
+                      inactiveColor: const Color(0xff01308C),
+                      divisions: 100,
+                      value: _rating1,
+                      min: 0,
+                      max: 100,
+                      onChanged: (newRating) =>
+                          context.read<DataSlider>().changeRating(newRating)
+                      //  (double newRating) {
+                      //   setState(() {
+                      //     _rating1 = newRating;
+                      //   });
+                      // },
+                      // label: "$_rating",
+                      ),
                 )
               ],
             ),

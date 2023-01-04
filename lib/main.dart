@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:sleep_app/melody_widget/bottom_music.dart';
-import 'package:sleep_app/melody_widget/fiveframewidget.dart';
-import 'package:sleep_app/seven_frame/seven_bottom_bar.dart';
-import 'package:sleep_app/seven_frame/seven_frame.dart';
-import 'package:sleep_app/subscription_widget/bottom_bar/bottom_bar.dart';
+import 'package:provider/provider.dart';
+import 'package:sleep_app/Data.dart';
+// import 'package:provider/provider.dart';
+// import 'package:sleep_app/melody_widget/bottom_music.dart';
+// import 'package:sleep_app/melody_widget/fiveframewidget.dart';
+// import 'package:sleep_app/seven_frame/seven_bottom_bar.dart';
+// import 'package:sleep_app/seven_frame/seven_frame.dart';
+// import 'package:sleep_app/subscription_widget/bottom_bar/bottom_bar.dart';
 
-import 'just_audio/just_audio.dart';
+// import 'just_audio/just_audio.dart';
 import 'onboardingalex.dart';
-import 'seven_frame/sevena_bottom_bar.dart';
-import 'show_dialog/timer_picker.dart';
 import 'seven_frame/sevena_frame.dart';
+// import 'seven_frame/sevena_bottom_bar.dart';
+// import 'show_dialog/timer_picker.dart';
+// import 'seven_frame/sevena_frame.dart';
 
-import 'package:sleep_app/welcome_widget/animation.dart/animation_on_boarding.dart';
+// import 'package:sleep_app/welcome_widget/animation.dart/animation_on_boarding.dart';
 
-import 'onboardingalex.dart';
+// import 'onboardingalex.dart';
 
 void main() {
   runApp(const MyApp());
@@ -24,22 +28,25 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
+    return ChangeNotifierProvider<DataSlider>(
+      create: (context) => DataSlider(),
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        title: 'Flutter Demo',
+        theme: ThemeData(
+          primarySwatch: Colors.blue,
+        ),
+        // home: const OnBoardingWidget(),
+        // home: const BottomBar(),
+        // home: const MelodyWidget(),
+        // home: const SevenBottomBar(),
+        // home: const SevenFrame(),
+        // home: const SubscribeWidget(),
+        // home: const MyApp1(),
+        home: const Sevena(),
+        // home: const TimerDialog(),
+        // home: const SevenaBottomBar(),
       ),
-      // home: const OnBoardingWidget(),
-      // home: const BottomBar(),
-      // home: const MelodyWidget(),
-      // home: const SevenBottomBar(),
-      // home: const SevenFrame(),
-      // home: const SubscribeWidget(),
-      // home: const MyApp1(),
-      // home: const Sevena(),
-      // home: const TimerDialog(),
-      home: const SevenaBottomBar(),
     );
   }
 }

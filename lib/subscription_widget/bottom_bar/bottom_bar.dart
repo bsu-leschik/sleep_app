@@ -10,6 +10,7 @@ class BottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: appTitle,
       home: InitalScreenWidget(),
     );
@@ -43,7 +44,7 @@ class HomeWidget extends State<InitalScreenWidget> {
           ),
         ],
       ),
-      backgroundColor: Colors.transparent, //white ivory
+      backgroundColor: Colors.transparent,
       bottomNavigationBar: BottomAppBar(
         color: const Color(0xFF01308C),
         shape: const CircularNotchedRectangle(),

@@ -95,8 +95,8 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                 controller: _pageController,
                 count: 3,
                 effect: const WormEffect(
-                  dotColor: Colors.white,
-                  activeDotColor: Colors.amber,
+                  dotColor: Color(0xFFCACACA),
+                  activeDotColor: Color(0xFFFA9044),
                   dotHeight: 10.0,
                   dotWidth: 10.0,
                   spacing: 10.0,

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:sleep_app/premium/sub_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import 'onboarding_widget.dart';
 
 class OnBoardingWidget extends StatefulWidget {
@@ -79,36 +79,56 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
               bottom: 42,
               right: 54,
               left: 54,
-              child: CupertinoButton(
-                onPressed: () {
-                  if (_pageController.page == 1) {}
+              // !!!!!!!!Уточнить по бордеру (не получается отдельно бордел заградиентить)
+              child: Container(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(43.0),
+                  gradient: const LinearGradient(
+                    begin: Alignment.topRight,
+                    end: Alignment.bottomLeft,
+                    colors: [Color(0xFF4C566C), Color(0xFF202432)],
+                  ),
+                ),
+                child: Container(
+                  decoration: BoxDecoration(
+                    gradient: const LinearGradient(
+                      begin: Alignment.topRight,
+                      end: Alignment.bottomLeft,
+                      colors: [Color(0xFF202432), Color(0xFF4C566C)],
+                    ),
+                    color: const Color(0xff202432),
+                    borderRadius: BorderRadius.circular(43.0),
+                  ),
+                  child: CupertinoButton(
+                    onPressed: () {
+                      if (_pageController.page == 1) {}
 
-                  if (_pageController.page == 2) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SubscribeWidget()),
-                    );
-                  } else {
-                    _pageController.nextPage(
-                      duration: const Duration(
-                        milliseconds: 400,
-                      ),
-                      curve: Curves.ease,
-                    );
-                  }
-                },
-                minSize: 70.0,
-                color: const Color(0xff202432),
-                borderRadius: BorderRadius.circular(43.0),
-                child: const Text(
-                  "Continue",
-                  style: TextStyle(
-                    fontFamily: 'SFProDisplay',
-                    color: Color(0xffffffff),
-                    fontSize: 20,
-                    fontWeight: FontWeight.w700,
-                    fontStyle: FontStyle.normal,
+                      if (_pageController.page == 2) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const SubscribeWidget()),
+                        );
+                      } else {
+                        _pageController.nextPage(
+                          duration: const Duration(
+                            milliseconds: 400,
+                          ),
+                          curve: Curves.ease,
+                        );
+                      }
+                    },
+                    child: const Text(
+                      "Continue",
+                      style: (TextStyle(
+                        fontFamily: 'Poetsen',
+                        color: Color(0xFFFFFFFF),
+                        fontSize: 32,
+                        height: 38.4 / 32,
+                        fontWeight: FontWeight.w400,
+                        fontStyle: FontStyle.normal,
+                      )),
+                    ),
                   ),
                 ),
               ),

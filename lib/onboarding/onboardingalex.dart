@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:sleep_app/subscription_widget/sub_widget.dart';
+import 'package:sleep_app/premium/sub_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
+import 'onboarding_widget.dart';
 
 class OnBoardingWidget extends StatefulWidget {
   const OnBoardingWidget({super.key});
@@ -34,6 +36,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
             // const Rotation(
             // title: '',
             // ),
+
             PageView(
               controller: _pageController,
               onPageChanged: (value) {
@@ -43,53 +46,22 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                   },
                 );
               },
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "Welcome to the\njorney\nto healthy spleep,\nconcentration\nand generalpeace",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 33,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    )
-                  ],
+              children: const [
+                OnboardingWidget(
+                  title:
+                      "Welcome to the\njorney\nto healthy spleep,\nconcentration\nand general peace",
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
+                OnboardingWidget(
+                  title:
                       "Pick up the right\nsounds from our\ndatabase and save\ntheme to presets",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 33,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
                 ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Text(
-                      "Dive into a peasful\ndeeper sleep",
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 33,
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                  ],
+                OnboardingWidget(
+                  title: "Dive into a peasful\ndeeper sleep",
                 ),
               ],
             ),
             Positioned(
-              top: 550,
+              bottom: 218,
               right: 170,
               child: SmoothPageIndicator(
                 controller: _pageController,
@@ -104,8 +76,9 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
               ),
             ),
             Positioned(
-              top: 662,
-              right: 90,
+              bottom: 42,
+              right: 54,
+              left: 54,
               child: CupertinoButton(
                 onPressed: () {
                   if (_pageController.page == 1) {}
@@ -125,9 +98,9 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                     );
                   }
                 },
-                minSize: 74.0,
+                minSize: 70.0,
                 color: const Color(0xff202432),
-                borderRadius: BorderRadius.circular(45.0),
+                borderRadius: BorderRadius.circular(43.0),
                 child: const Text(
                   "Continue",
                   style: TextStyle(

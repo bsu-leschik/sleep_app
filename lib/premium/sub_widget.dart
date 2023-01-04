@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 // import '../melody_widget/fiveframewidget.dart';
-import 'bottom_bar/bottom_bar.dart';
+import '../subscription_widget/bottom_bar/bottom_bar.dart';
 
 class SubscribeWidget extends StatefulWidget {
   const SubscribeWidget({Key? key}) : super(key: key);
@@ -73,7 +73,7 @@ class _MoonWidgetState extends State<MoonWidget> {
       child: Stack(
         children: [
           Positioned(
-            top: 105,
+            top: 60,
             right: 58,
             child: Image.asset("assets/images/shopping/Sheep.png"),
           ),
@@ -152,17 +152,16 @@ class WordsWidget extends StatelessWidget {
               ),
             ],
           ),
-          Row(
-            children: const [
-              Text(
-                "PREMIUM",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 33,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-            ],
+          const SizedBox(
+            height: 8,
+          ),
+          const Text(
+            "PREMIUM",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 33,
+              fontWeight: FontWeight.w700,
+            ),
           ),
         ],
       ),
@@ -341,19 +340,25 @@ class _BottomBarWidgetState extends State<BottomBarWidget> {
                 child: const Text(
                   "Restore Purchases",
                   style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w400),
+                    fontSize: 12,
+                    color: Colors.white,
+                    fontWeight: FontWeight.w400,
+                  ),
                 ),
               ),
             ),
           ],
         ),
         Column(
-          children: [
-            TextButton(
-              onPressed: () {},
-              child: const Text(
+          children: const [
+            InkWell(
+              // onPressed: () {},
+              // focusNode: FocusNode(
+              //   canRequestFocus: false,
+              //   descendantsAreFocusable: false,
+              //   descendantsAreTraversable: false,
+              // ),
+              child: Text(
                 "Therms of Use",
                 style: TextStyle(
                   fontSize: 12,

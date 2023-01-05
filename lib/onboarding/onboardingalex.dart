@@ -31,115 +31,97 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: const Color(0xff141733),
-      body: SafeArea(
-        child: Stack(
-          children: [
-            // Expanded(
-            //     child: SvgPicture.asset(
-            //   "assets/images/Group1.svg",
-            //   height: MediaQuery.of(context).size.height,
-            //   width: MediaQuery.of(context).size.width,
-            // )), При экспорте получается полная шляпка (изображение не расстягивается на экран)
-            PageView(
+      body: Stack(
+        children: [
+          Image.asset(
+            "assets/images/bg.png",
+          ),
+          // При экспорте получается полная шляпка (изображение не расстягивается на экран)
+          PageView(
+            controller: _pageController,
+            onPageChanged: (value) {
+              setState(
+                () {
+                  print(value);
+                },
+              );
+            },
+            children: const [
+              OnboardingWidget(
+                title:
+                    "Welcome to the\njorney\nto healthy spleep,\nconcentration\nand general peace",
+              ),
+              OnboardingWidget(
+                title:
+                    "Pick up the right\nsounds from our\ndatabase and save\ntheme to presets",
+              ),
+              OnboardingWidget(
+                title: "Dive into a peasful\ndeeper sleep",
+              ),
+            ],
+          ),
+          Positioned(
+            bottom: 218,
+            right: 170,
+            child: SmoothPageIndicator(
               controller: _pageController,
-              onPageChanged: (value) {
-                setState(
-                  () {
-                    print(value);
-                  },
-                );
-              },
-              children: const [
-                OnboardingWidget(
-                  title:
-                      "Welcome to the\njorney\nto healthy spleep,\nconcentration\nand general peace",
-                ),
-                OnboardingWidget(
-                  title:
-                      "Pick up the right\nsounds from our\ndatabase and save\ntheme to presets",
-                ),
-                OnboardingWidget(
-                  title: "Dive into a peasful\ndeeper sleep",
-                ),
-              ],
-            ),
-            Positioned(
-              bottom: 218,
-              right: 170,
-              child: SmoothPageIndicator(
-                controller: _pageController,
-                count: 3,
-                effect: const WormEffect(
-                  dotColor: Color(0xFFCACACA),
-                  activeDotColor: Color(0xFFFA9044),
-                  dotHeight: 10.0,
-                  dotWidth: 10.0,
-                  spacing: 10.0,
-                ),
+              count: 3,
+              effect: const WormEffect(
+                dotColor: Color(0xFFCACACA),
+                activeDotColor: Color(0xFFFA9044),
+                dotHeight: 10.0,
+                dotWidth: 10.0,
+                spacing: 10.0,
               ),
             ),
-            Positioned(
-              bottom: 42,
-              right: 54,
-              left: 54,
-              // !!!!!!!!Уточнить по бордеру (не получается отдельно бордел заградиентить)
-              child: Container(
-                // нижний контейнер
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(43.0),
-                  gradient: const LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    colors: [Color(0xFF4C566C), Color(0xFF202432)],
-                  ),
+          ),
+          Positioned(
+            bottom: 42,
+            right: 54,
+            left: 54,
+            // !!!!!!!!Уточнить по бордеру (не получается отдельно бордел заградиентить)
+            child: Container(
+              decoration: BoxDecoration(
+                color: const Color(0xff8E9FCC).withOpacity(0.05),
+                borderRadius: BorderRadius.circular(43.0),
+                border: Border.all(
+                  color: const Color(0xFF4C566C),
                 ),
-                child: Container(
-                  // верхний контейнер
-                  decoration: BoxDecoration(
-                    gradient: const LinearGradient(
-                      begin: Alignment.bottomCenter,
-                      end: Alignment.topCenter,
-                      colors: [Color(0xFF202432), Color(0xFF4C566C)],
-                    ),
-                    color: const Color(0xff202432),
-                    borderRadius: BorderRadius.circular(43.0),
-                  ),
-                  child: CupertinoButton(
-                    onPressed: () {
-                      if (_pageController.page == 1) {}
+              ),
+              child: CupertinoButton(
+                onPressed: () {
+                  if (_pageController.page == 1) {}
 
-                      if (_pageController.page == 2) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const SubscribeWidget()),
-                        );
-                      } else {
-                        _pageController.nextPage(
-                          duration: const Duration(
-                            milliseconds: 400,
-                          ),
-                          curve: Curves.ease,
-                        );
-                      }
-                    },
-                    child: const Text(
-                      "Continue",
-                      style: (TextStyle(
-                        fontFamily: 'Poetsen',
-                        color: Color(0xFFFFFFFF),
-                        fontSize: 32,
-                        height: 38.4 / 32,
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.normal,
-                      )),
-                    ),
-                  ),
+                  if (_pageController.page == 2) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SubscribeWidget()),
+                    );
+                  } else {
+                    _pageController.nextPage(
+                      duration: const Duration(
+                        milliseconds: 400,
+                      ),
+                      curve: Curves.ease,
+                    );
+                  }
+                },
+                child: const Text(
+                  "Continue",
+                  style: (TextStyle(
+                    fontFamily: 'Poetsen',
+                    color: Color(0xFFFFFFFF),
+                    fontSize: 32,
+                    height: 38.4 / 32,
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.normal,
+                  )),
                 ),
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

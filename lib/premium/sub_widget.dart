@@ -31,7 +31,6 @@ class _SubscribeWidgetState extends State<SubscribeWidget> {
               MoonSheepCloud(),
             ],
           ),
-
           // SvgPicture.asset("assets/images/premium/Moon.svg")
           // Image.asset(
           //   "assets/images/premium/Stars.png",

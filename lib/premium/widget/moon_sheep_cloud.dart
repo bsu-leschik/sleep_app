@@ -22,8 +22,8 @@ class MoonSheepCloud extends StatelessWidget {
           // color: Colors.red,
         ),
         Positioned(
-          top: 197,
-          left: 65, width: 125,
+          top: 103,
+          left: -30, width: 125,
           height: 83,
           child: Image.asset(
               "assets/images/premium/TLC3x.png"), // "assets/images/shopping/Leftbottomcloud.png"
@@ -37,7 +37,7 @@ class MoonSheepCloud extends StatelessWidget {
         ),
         Positioned(
           top: 103,
-          left: 0, width: 94,
+          left: 91, width: 197,
           height: 63,
           child: Image.asset(
               "assets/images/premium/BCC3x.png"), // "assets/images/shopping/Lefttopcloud.png"

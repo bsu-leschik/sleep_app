@@ -5,6 +5,7 @@ import 'package:sleep_app/premium/sub_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'onboarding_widget.dart';
+import 'package:blur/blur.dart';
 
 class OnBoardingWidget extends StatefulWidget {
   const OnBoardingWidget({super.key});
@@ -61,7 +62,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
             ],
           ),
           Positioned(
-            bottom: 218,
+            bottom: 290,
             right: 170,
             child: SmoothPageIndicator(
               controller: _pageController,
@@ -76,49 +77,54 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
             ),
           ),
           Positioned(
-            bottom: 42,
+            bottom: 112,
             right: 54,
             left: 54,
-            // !!!!!!!!Уточнить по бордеру (не получается отдельно бордел заградиентить)
-            child: Container(
-              decoration: BoxDecoration(
-                color: const Color(0xff8E9FCC).withOpacity(0.05),
-                borderRadius: BorderRadius.circular(43.0),
-                border: Border.all(
-                  color: const Color(0xFF4C566C),
+            child: InkWell(
+              onTap: () {
+                if (_pageController.page == 1) {}
+                if (_pageController.page == 2) {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const SubscribeWidget()),
+                  );
+                } else {
+                  _pageController.nextPage(
+                    duration: const Duration(
+                      milliseconds: 400,
+                    ),
+                    curve: Curves.ease,
+                  );
+                }
+              },
+              child: Container(
+                height: 70,
+                decoration: BoxDecoration(
+                  color: const Color(0xff8E9FCC).withOpacity(0.05),
+                  borderRadius: BorderRadius.circular(43.0),
+                  border: Border.all(
+                    color: const Color(0xFF4C566C),
+                  ),
                 ),
-              ),
-              child: CupertinoButton(
-                onPressed: () {
-                  if (_pageController.page == 1) {}
-
-                  if (_pageController.page == 2) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SubscribeWidget()),
-                    );
-                  } else {
-                    _pageController.nextPage(
-                      duration: const Duration(
-                        milliseconds: 400,
-                      ),
-                      curve: Curves.ease,
-                    );
-                  }
-                },
-                child: const Text(
-                  "Continue",
-                  style: (TextStyle(
-                    fontFamily: 'Poetsen',
-                    color: Color(0xFFFFFFFF),
-                    fontSize: 32,
-                    height: 38.4 / 32,
-                    fontWeight: FontWeight.w400,
-                    fontStyle: FontStyle.normal,
-                  )),
+                child: const Center(
+                  child: Text(
+                    "Continue",
+                    style: (TextStyle(
+                      fontFamily: 'Poetsen',
+                      color: Color(0xFFFFFFFF),
+                      fontSize: 32,
+                      height: 38.4 / 32,
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.normal,
+                    )),
+                  ),
                 ),
-              ),
+              ).blurred(
+                  blurColor: const Color.fromRGBO(32, 36, 50, 0),
+                  colorOpacity: 0.05,
+                  borderRadius: BorderRadius.circular(43.0),
+                  blur: 0.15),
             ),
           ),
         ],

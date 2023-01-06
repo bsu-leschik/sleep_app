@@ -14,7 +14,7 @@ class OnboardingWidget extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         const Expanded(
-          flex: 1,
+          flex: 2,
           child: SizedBox(),
         ),
         Text(
@@ -30,7 +30,7 @@ class OnboardingWidget extends StatelessWidget {
           ),
         ),
         const Expanded(
-          flex: 2,
+          flex: 5,
           child: SizedBox(),
         ),
       ],

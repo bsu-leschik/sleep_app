@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/Data.dart';
 // import 'package:provider/provider.dart';
@@ -29,6 +30,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return ChangeNotifierProvider<DataSlider>(
       create: (context) => DataSlider(),
       child: MaterialApp(

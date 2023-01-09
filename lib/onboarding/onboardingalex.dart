@@ -1,13 +1,8 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/cupertino.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:sleep_app/premium/sub_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'onboarding_widget.dart';
-import 'package:blur/blur.dart';
 
 class OnBoardingWidget extends StatefulWidget {
   const OnBoardingWidget({super.key});
@@ -39,7 +34,6 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
           Image.asset(
             "assets/images/bg.png",
           ),
-          // При экспорте получается полная шляпка (изображение не расстягивается на экран)
           PageView(
             controller: _pageController,
             onPageChanged: (value) {

@@ -8,18 +8,17 @@ class MoonSheepCloud extends StatelessWidget {
     return Expanded(
       child: Stack(children: [
         Positioned(
-          top: 70,
+          top: 130,
           right: 58,
-          width: 130,
-          height: 87,
           child: Image.asset(
-              "assets/images/premium/Sheep3x.png"), // "assets/images/shopping/Sheep.png"
+            "assets/images/premium/Sheep3x.png",
+            width: 130,
+            height: 90,
+          ), // "assets/images/shopping/Sheep.png"
         ),
         Positioned(
           left: MediaQuery.of(context).size.width / 2 - 126,
           top: 82,
-          // height: 126,
-          // width: 126,
           child: Image.asset(
             "assets/images/premium/Moon3x.png",
             height: 238,
@@ -30,24 +29,30 @@ class MoonSheepCloud extends StatelessWidget {
         ),
         Positioned(
           top: 103,
-          left: -30, width: 125,
-          height: 83,
+          left: -30,
           child: Image.asset(
-              "assets/images/premium/TLC3x.png"), // "assets/images/shopping/Leftbottomcloud.png"
+            "assets/images/premium/TLC3x.png",
+            width: 125,
+            height: 83,
+          ), // "assets/images/shopping/Leftbottomcloud.png"
         ),
         Positioned(
-          top: 105,
-          right: 0, width: 138,
-          height: 92,
+          top: 165,
+          right: -30,
           child: Image.asset(
-              "assets/images/premium/BLC3x.png"), // "assets/images/shopping/Rightbottomcloud.png"
+            "assets/images/premium/BLC3x.png",
+            width: 138,
+            height: 92,
+          ), // "assets/images/shopping/Rightbottomcloud.png"
         ),
         Positioned(
-          top: 103,
-          left: 91, width: 197,
-          height: 63,
+          top: 197,
+          right: 180,
           child: Image.asset(
-              "assets/images/premium/BCC3x.png"), // "assets/images/shopping/Lefttopcloud.png"
+            "assets/images/premium/BCC3x.png",
+            width: 197,
+            height: 63,
+          ), // "assets/images/shopping/Lefttopcloud.png"
         ),
       ]),
     );

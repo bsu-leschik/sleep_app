@@ -6,39 +6,39 @@ class SweetDreamsPremium extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.bottomCenter,
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        children: [
-          Text(
-            "Sweet dreams",
-            style: GoogleFonts.nunito(
-              textStyle: const TextStyle(
-                color: Color(0xFFFFFFFF),
-                fontSize: 33,
-                fontWeight: FontWeight.w400,
-                height: 45 / 33,
-              ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Text(
+          "Sweet dreams",
+          style: GoogleFonts.nunito(
+            textStyle: const TextStyle(
+              color: Color(0xFFFFFFFF),
+              fontSize: 33,
+              fontWeight: FontWeight.w400,
+              height: 45 / 33,
             ),
           ),
-          const SizedBox(
-            height: 8,
-          ),
-          Text(
-            "PREMIUM",
-            style: GoogleFonts.nunito(
-              textStyle: const TextStyle(
-                color: Color(0xFFFFFFFF),
-                fontSize: 33,
-                fontWeight: FontWeight.w700,
-                height: 45 / 33,
-              ),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Text(
+          "PREMIUM",
+          style: GoogleFonts.nunito(
+            textStyle: const TextStyle(
+              color: Color(0xFFFFFFFF),
+              fontSize: 33,
+              fontWeight: FontWeight.w700,
+              height: 45 / 33,
             ),
           ),
-        ],
-      ),
+        ),
+        const SizedBox(
+          height: 44,
+        ),
+      ],
     );
   }
 }

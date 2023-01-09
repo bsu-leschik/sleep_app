@@ -1,0 +1,161 @@
+import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
+
+class PayButton extends StatefulWidget {
+  const PayButton({super.key});
+
+  @override
+  State<PayButton> createState() => _PayButtonState();
+}
+
+class _PayButtonState extends State<PayButton> {
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: const [
+        FirstButton(),
+        // TwoPayButton(
+        //   close: "\$15.99",
+        //   sum: "\$15.99",
+        //   period: "per month",
+        // ),
+      ],
+    );
+  }
+}
+
+class FirstButton extends StatelessWidget {
+  const FirstButton({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        print("Print first button");
+      },
+      child: Container(
+        height: 58,
+        width: 323,
+        decoration: BoxDecoration(
+          color: Colors.transparent,
+          borderRadius: BorderRadius.circular(43),
+          border: Border.all(
+            color: const Color(0xFFFFFFFF),
+          ),
+        ),
+        child: Center(
+            child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "\$11.99",
+              style: TextStyle(
+                fontFamily: 'Poetsen',
+                color: Color(0xFFFFFFFF),
+                fontSize: 32,
+                height: 38.4 / 32,
+                fontWeight: FontWeight.w400,
+                fontStyle: FontStyle.normal,
+              ),
+            ),
+            const SizedBox(
+              width: 12,
+            ),
+            Text(
+              "per week",
+              style: GoogleFonts.nunito(
+                textStyle: const TextStyle(
+                  color: Color(0xFFFFFFFF),
+                  fontSize: 18,
+                  height: 24.5 / 18,
+                  fontWeight: FontWeight.w400,
+                  fontStyle: FontStyle.normal,
+                ),
+              ),
+            ),
+          ],
+        )),
+      ),
+    );
+  }
+}
+
+class TwoPayButton extends StatelessWidget {
+  final String close;
+  final String sum;
+  final String period;
+  const TwoPayButton({
+    super.key,
+    required this.close,
+    required this.sum,
+    required this.period,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(children: [
+      InkWell(
+        onTap: () {
+          print("Print first button");
+        },
+        child: Container(
+          height: 58,
+          width: 323,
+          decoration: BoxDecoration(
+            color: Colors.transparent,
+            borderRadius: BorderRadius.circular(43),
+            border: Border.all(
+              color: const Color(0xFF8E9FCC),
+            ),
+          ),
+          child: Center(
+              child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                close,
+                style: const TextStyle(
+                  fontFamily: 'Poetsen',
+                  color: Color(0xFF8E9FCC),
+                  fontSize: 18,
+                  height: 21.6 / 18,
+                  fontWeight: FontWeight.w400,
+                  fontStyle: FontStyle.normal,
+                ),
+              ),
+              const SizedBox(
+                width: 12,
+              ),
+              Text(
+                sum,
+                style: const TextStyle(
+                  fontFamily: 'Poetsen',
+                  color: Color(0xFFFA9044),
+                  fontSize: 32,
+                  height: 38.4 / 32,
+                  fontWeight: FontWeight.w400,
+                  fontStyle: FontStyle.normal,
+                ),
+              ),
+              const SizedBox(
+                width: 12,
+              ),
+              Text(
+                period,
+                style: GoogleFonts.nunito(
+                  textStyle: const TextStyle(
+                    color: Color(0xFF8E9FCC),
+                    fontSize: 18,
+                    height: 24.55 / 18,
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.normal,
+                  ),
+                ),
+              ),
+            ],
+          )),
+        ),
+      ),
+    ]);
+  }
+}

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import '../../premium/widget/close_button.dart';
+import 'widget/bottom_prem.dart';
 import 'widget/moon_sheep_cloud.dart';
+import 'widget/pay_button.dart';
 import 'widget/plus_premium.dart';
 import 'widget/sweet_dreams_premium.dart';
 
@@ -17,7 +19,7 @@ class _SubscribeWidgetState extends State<SubscribeWidget> {
     return Scaffold(
       backgroundColor: const Color(0xff141733),
       body: Stack(
-        alignment: AlignmentDirectional.topCenter,
+        // alignment: AlignmentDirectional.topCenter,
         children: <Widget>[
           Image.asset(
             "assets/images/premium/bg4.png",
@@ -31,39 +33,61 @@ class _SubscribeWidgetState extends State<SubscribeWidget> {
           //   left: 50,
           //   child: SweetDreamsPremium(),
           // ),
-          Center(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: const [
-                SizedBox(
-                  height: 43,
-                ),
-                CloseButt(),
-                MoonSheepCloud(),
-                SweetDreamsPremium(),
-                PlusPremium(
-                  image: "assets/images/shopping/Corona.png",
-                  title: "Full acces to the sleep library",
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                PlusPremium(
-                  image: "assets/images/shopping/Music.png",
-                  title: "Relaxing music",
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                PlusPremium(
-                  image: "assets/images/shopping/Flower.png",
-                  title: "Sleep medidations",
-                ),
-                SizedBox(
-                  height: 31,
-                ),
-              ],
-            ),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: const [
+              SizedBox(
+                height: 43,
+              ),
+              CloseButt(),
+              MoonSheepCloud(),
+              SweetDreamsPremium(), // высота строки 44 должна быть
+              PlusPremium(
+                image: "assets/images/shopping/Corona.png",
+                title: "Full acces to the sleep library",
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              PlusPremium(
+                image: "assets/images/shopping/Music.png",
+                title: "Relaxing music",
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              PlusPremium(
+                image: "assets/images/shopping/Flower.png",
+                title: "Sleep medidations",
+              ),
+              SizedBox(
+                height: 31,
+              ),
+              PayButton(),
+              SizedBox(
+                height: 12,
+              ),
+              TwoPayButton(
+                close: "\$15.99",
+                sum: "\$15.99",
+                period: "per month",
+              ),
+              SizedBox(
+                height: 12,
+              ),
+              TwoPayButton(
+                close: "\$207.48",
+                sum: "\$99.99",
+                period: "per year",
+              ),
+              SizedBox(
+                height: 32,
+              ),
+              BottomPremium(),
+              SizedBox(
+                height: 22,
+              ),
+            ],
           ),
         ],
       ),

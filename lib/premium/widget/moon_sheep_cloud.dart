@@ -8,7 +8,7 @@ class MoonSheepCloud extends StatelessWidget {
     return Expanded(
       child: Stack(children: [
         Positioned(
-          top: 130,
+          top: 110,
           right: 58,
           child: Image.asset(
             "assets/images/premium/Sheep3x.png",

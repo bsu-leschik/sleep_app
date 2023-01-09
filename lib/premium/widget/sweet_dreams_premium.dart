@@ -36,7 +36,8 @@ class SweetDreamsPremium extends StatelessWidget {
           ),
         ),
         const SizedBox(
-          height: 44,
+          height: 24,
+          // здесь высота строки 44
         ),
       ],
     );

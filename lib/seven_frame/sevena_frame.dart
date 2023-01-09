@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/Data.dart';
+import 'package:sleep_app/data.dart';
 
 import '../show_dialog/show_dialog.dart';
 

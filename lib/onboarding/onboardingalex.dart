@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_svg/svg.dart';
@@ -81,51 +83,66 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
             right: 54,
             left: 54,
             child: InkWell(
-              onTap: () {
-                if (_pageController.page == 1) {}
-                if (_pageController.page == 2) {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                        builder: (context) => const SubscribeWidget()),
-                  );
-                } else {
-                  _pageController.nextPage(
-                    duration: const Duration(
-                      milliseconds: 400,
+                onTap: () {
+                  if (_pageController.page == 1) {}
+                  if (_pageController.page == 2) {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const SubscribeWidget()),
+                    );
+                  } else {
+                    _pageController.nextPage(
+                      duration: const Duration(
+                        milliseconds: 400,
+                      ),
+                      curve: Curves.ease,
+                    );
+                  }
+                },
+                child: Stack(children: [
+                  Container(
+                    height: 70,
+                    decoration: BoxDecoration(
+                      color: const Color(0xff8E9FCC).withOpacity(0.05),
+                      borderRadius: BorderRadius.circular(43.0),
                     ),
-                    curve: Curves.ease,
-                  );
-                }
-              },
-              child: Container(
-                height: 70,
-                decoration: BoxDecoration(
-                  color: const Color(0xff8E9FCC).withOpacity(0.05),
-                  borderRadius: BorderRadius.circular(43.0),
-                  border: Border.all(
-                    color: const Color(0xFF4C566C),
                   ),
-                ),
-                child: const Center(
-                  child: Text(
-                    "Continue",
-                    style: (TextStyle(
-                      fontFamily: 'Poetsen',
-                      color: Color(0xFFFFFFFF),
-                      fontSize: 32,
-                      height: 38.4 / 32,
-                      fontWeight: FontWeight.w400,
-                      fontStyle: FontStyle.normal,
-                    )),
+                  ClipRect(
+                    child: BackdropFilter(
+                      filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
+                      child: Container(
+                        height: 70,
+                        decoration: BoxDecoration(
+                          color: const Color(0xff8E9FCC).withOpacity(0.05),
+                          borderRadius: BorderRadius.circular(43.0),
+                          border: Border.all(
+                            color: const Color(0xFF4C566C),
+                          ),
+                        ),
+                        child: const Center(
+                          child: Text(
+                            "Continue",
+                            style: (TextStyle(
+                              fontFamily: 'Poetsen',
+                              color: Color(0xFFFFFFFF),
+                              fontSize: 32,
+                              height: 38.4 / 32,
+                              fontWeight: FontWeight.w400,
+                              fontStyle: FontStyle.normal,
+                            )),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
+                ])
+                // .blurred(
+                //     blurColor: const Color.fromRGBO(32, 36, 50, 0),
+                //     colorOpacity: 0.05,
+                //     borderRadius: BorderRadius.circular(43.0),
+                //     blur: 0.15),
                 ),
-              ).blurred(
-                  blurColor: const Color.fromRGBO(32, 36, 50, 0),
-                  colorOpacity: 0.05,
-                  borderRadius: BorderRadius.circular(43.0),
-                  blur: 0.15),
-            ),
           ),
         ],
       ),

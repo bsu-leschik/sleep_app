@@ -5,40 +5,41 @@ class MoonSheepCloud extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Expanded(
       child: Stack(children: [
         Positioned(
-          top: 110,
-          right: 58,
+          top: screenHeight * 22 / 844,
+          right: screenWidth * 58 / 390,
           child: Image.asset(
             "assets/images/premium/Sheep3x.png",
-            width: 130,
-            height: 90,
+            width: screenWidth * 0.33,
+            height: screenHeight * 0.11,
           ), // "assets/images/shopping/Sheep.png"
         ),
         Positioned(
-          left: MediaQuery.of(context).size.width / 2 - 126,
-          top: 82,
+          left: screenWidth / 2 - 126,
+          top: -(screenHeight * 0.04),
           child: Image.asset(
             "assets/images/premium/Moon3x.png",
-            height: 238,
-            width: 238,
+            height: screenHeight * 0.28,
+            width: screenWidth * 0.61,
           ),
-
           // "assets/images/shopping/Moon.png"
         ),
         Positioned(
-          top: 103,
-          left: -30,
+          top: screenHeight * 0.017,
+          left: -(screenWidth * 0.04),
           child: Image.asset(
             "assets/images/premium/TLC3x.png",
-            width: 125,
-            height: 83,
+            width: screenWidth * 0.32,
+            height: screenHeight * 0.1,
           ), // "assets/images/shopping/Leftbottomcloud.png"
         ),
         Positioned(
-          top: 165,
-          right: -30,
+          top: screenHeight * 0.097,
+          right: -(screenWidth * 0.08),
           child: Image.asset(
             "assets/images/premium/BLC3x.png",
             width: 138,
@@ -46,8 +47,8 @@ class MoonSheepCloud extends StatelessWidget {
           ), // "assets/images/shopping/Rightbottomcloud.png"
         ),
         Positioned(
-          top: 197,
-          right: 180,
+          top: screenHeight * 0.13,
+          left: screenWidth * 0.10,
           child: Image.asset(
             "assets/images/premium/BCC3x.png",
             width: 197,
@@ -57,4 +58,10 @@ class MoonSheepCloud extends StatelessWidget {
       ]),
     );
   }
+}
+
+class Insets {
+  static const double sm = 10;
+  static const double med = 15;
+  static const double high = 20;
 }

@@ -10,7 +10,7 @@ import 'package:sleep_app/data.dart';
 // import 'package:sleep_app/subscription_widget/bottom_bar/bottom_bar.dart';
 
 // import 'just_audio/just_audio.dart';
-import 'onboarding/onboardingalex.dart';
+// import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
 
 // import 'seven_frame/sevena_bottom_bar.dart';
@@ -22,7 +22,9 @@ import 'premium/sub_widget.dart';
 // import 'onboardingalex.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    const MyApp(),
+  );
 }
 
 class MyApp extends StatelessWidget {

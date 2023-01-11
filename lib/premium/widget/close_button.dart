@@ -7,24 +7,30 @@ class CloseButt extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final screenWidth = MediaQuery.of(context).size.width;
+    final screenHeight = MediaQuery.of(context).size.height;
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
-        InkWell(
-          child: const Icon(
-            Icons.close,
-            color: Color(0xFFFFFFFF),
-            size: 20,
+        SizedBox(
+          height: screenHeight * 0.024,
+          width: screenWidth * 0.05,
+          child: InkWell(
+            child: const Icon(
+              Icons.close,
+              color: Color(0xFFFFFFFF),
+              size: 20,
+            ),
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const BottomBar()),
+              )
+            },
           ),
-          onTap: () => {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const BottomBar()),
-            )
-          },
         ),
-        const SizedBox(
-          width: 30,
+        SizedBox(
+          width: screenWidth * 0.08,
         )
       ],
     );

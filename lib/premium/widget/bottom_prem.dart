@@ -10,8 +10,8 @@ class BottomPremium extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceAround,
       children: const [
         BottomTerms(title: "Restore Purchases"),
-        BottomTerms(title: "Restore Purchases"),
-        BottomTerms(title: "Restore Purchases"),
+        BottomTerms(title: "Terms of Use"),
+        BottomTerms(title: "Privacy Policy"),
       ],
     );
   }

@@ -16,6 +16,8 @@ class SubscribeWidget extends StatefulWidget {
 class _SubscribeWidgetState extends State<SubscribeWidget> {
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: const Color(0xff141733),
       body: Stack(
@@ -23,68 +25,64 @@ class _SubscribeWidgetState extends State<SubscribeWidget> {
         children: <Widget>[
           Image.asset(
             "assets/images/premium/bg4.png",
+            // "assets/images/premium/4.png",
             width: double.infinity,
             fit: BoxFit.cover,
             alignment: Alignment.center,
           ),
-          // const Positioned(
-          //   top: 320,
-          //   right: 50,
-          //   left: 50,
-          //   child: SweetDreamsPremium(),
-          // ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
-            children: const [
+            children: [
               SizedBox(
-                height: 43,
+                height: screenHeight * 0.07,
               ),
-              CloseButt(),
-              MoonSheepCloud(),
-              SweetDreamsPremium(), // высота строки 44 должна быть
-              PlusPremium(
+              const CloseButt(),
+              // MoonWidget(),
+              const MoonSheepCloud(),
+              const SweetDreamsPremium(),
+              const PlusPremium(
                 image: "assets/images/shopping/Corona.png",
                 title: "Full acces to the sleep library",
               ),
               SizedBox(
-                height: 20,
+                height: screenHeight * 0.02,
               ),
-              PlusPremium(
+              const PlusPremium(
                 image: "assets/images/shopping/Music.png",
                 title: "Relaxing music",
               ),
               SizedBox(
-                height: 20,
+                height: screenHeight * 0.02,
               ),
-              PlusPremium(
+              const PlusPremium(
                 image: "assets/images/shopping/Flower.png",
                 title: "Sleep medidations",
               ),
               SizedBox(
-                height: 31,
+                height: screenHeight * 0.04,
               ),
-              PayButton(),
-              SizedBox(
+              const PayButton(),
+              const SizedBox(
                 height: 12,
               ),
-              TwoPayButton(
+              const TwoPayButton(
                 close: "\$15.99",
                 sum: "\$15.99",
                 period: "per month",
               ),
-              SizedBox(
+              const SizedBox(
                 height: 12,
               ),
-              TwoPayButton(
+              const TwoPayButton(
                 close: "\$207.48",
                 sum: "\$99.99",
                 period: "per year",
               ),
-              SizedBox(
+              const SizedBox(
                 height: 32,
               ),
-              BottomPremium(),
-              SizedBox(
+              const BottomPremium(),
+              const SizedBox(
                 height: 22,
               ),
             ],
@@ -95,74 +93,54 @@ class _SubscribeWidgetState extends State<SubscribeWidget> {
   }
 }
 
-// class MoonWidget extends StatefulWidget {
-//   const MoonWidget({super.key});
+class MoonWidget extends StatefulWidget {
+  const MoonWidget({super.key});
 
-//   @override
-//   State<MoonWidget> createState() => _MoonWidgetState();
-// }
+  @override
+  State<MoonWidget> createState() => _MoonWidgetState();
+}
 
-// class _MoonWidgetState extends State<MoonWidget> {
-//   @override
-//   Widget build(BuildContext context) {
-//     return Expanded(
-//       child: Stack(
-//         children: [
-//           Positioned(
-//             top: 60,
-//             right: 58,
-//             child: Image.asset("assets/images/shopping/Sheep.png"),
-//           ),
-//           Positioned(
-//             left: MediaQuery.of(context).size.width / 2 - 126,
-//             top: 82,
-//             child: Image.asset(
-//               "assets/images/shopping/Moon.png",
-//               color: Colors.red,
-//             ),
-//           ),
-//           Positioned(
-//             top: 197,
-//             left: 65,
-//             child: Image.asset(
-//               "assets/images/shopping/Leftbottomcloud.png",
-//             ),
-//           ),
-//           Positioned(
-//             top: 105,
-//             right: 0,
-//             child: Image.asset("assets/images/shopping/Rightbottomcloud.png"),
-//           ),
-//           Positioned(
-//             top: 103,
-//             left: 0,
-//             child: Image.asset("assets/images/shopping/Lefttopcloud.png"),
-//           ),
-          // const Positioned(
-          //   top: 252,
-          //   right: 89,
-          //   child: WordsWidget(),
-          // ),
-          // const Positioned(
-          //   top: 374,
-          //   right: 59,
-          //   child: AboutPremiumWidget(),
-          // ),
-          // const Positioned(
-          //   top: 500,
-          //   left: 30,
-          //   child: PayBottonWidget(),
-          // ),
-          // const Positioned(
-          //   top: 700,
-          //   right: 37,
-          //   child: BottomBarWidget(),
-          // )
-//         ],
-//       ),
-//     );
-//   }
-// }
+class _MoonWidgetState extends State<MoonWidget> {
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Stack(
+        children: [
+          Positioned(
+            top: 60,
+            right: 58,
+            child: Image.asset("assets/images/shopping/Sheep.png"),
+          ),
+          Positioned(
+            left: MediaQuery.of(context).size.width / 2 - 126,
+            top: 82,
+            child: Image.asset(
+              "assets/images/shopping/Moon.png",
+              // color: Colors.red,
+            ),
+          ),
+          Positioned(
+            top: 197,
+            left: 65,
+            child: Image.asset(
+              "assets/images/shopping/Leftbottomcloud.png",
+            ),
+          ),
+          Positioned(
+            top: 105,
+            right: 0,
+            child: Image.asset("assets/images/shopping/Rightbottomcloud.png"),
+          ),
+          Positioned(
+            top: 103,
+            left: 0,
+            child: Image.asset("assets/images/shopping/Lefttopcloud.png"),
+          ),
+        ],
+      ),
+    );
+  }
+}
 
 // class WordsWidget extends StatelessWidget {
 //   const WordsWidget({super.key});

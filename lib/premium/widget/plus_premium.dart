@@ -12,15 +12,16 @@ class PlusPremium extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const SizedBox(
-          width: 61,
+        SizedBox(
+          width: screenWidth * 0.16,
         ),
         Image.asset(image),
-        const SizedBox(
-          width: 14.65,
+        SizedBox(
+          width: screenWidth * 0.04,
         ),
         Text(
           title,

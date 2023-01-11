@@ -147,5 +147,4 @@ class HomeWidget extends State<InitalScreenWidget> {
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
-} //Toast function
- 
+}

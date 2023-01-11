@@ -3,15 +3,9 @@ import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/data.dart';
 // import 'package:provider/provider.dart';
-// import 'package:sleep_app/melody_widget/bottom_music.dart';
-// import 'package:sleep_app/melody_widget/fiveframewidget.dart';
-// import 'package:sleep_app/seven_frame/seven_bottom_bar.dart';
-// import 'package:sleep_app/seven_frame/seven_frame.dart';
-// import 'package:sleep_app/subscription_widget/bottom_bar/bottom_bar.dart';
-
-// import 'just_audio/just_audio.dart';
 // import 'onboarding/onboardingalex.dart';
-import 'premium/sub_widget.dart';
+import 'fiveth_frame/fiveth_frame.dart';
+// import 'premium/sub_widget.dart';
 
 // import 'seven_frame/sevena_bottom_bar.dart';
 // import 'show_dialog/timer_picker.dart';
@@ -42,8 +36,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         // home: const OnBoardingWidget(),
-        home: const SubscribeWidget(),
-        // home: const BottomBar(),
+        // home: const SubscribeWidget(),
+        home: const FivethFrame(),
         // home: const MelodyWidget(),
         // home: const SevenBottomBar(),
         // home: const SevenFrame(),

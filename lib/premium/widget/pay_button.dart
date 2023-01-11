@@ -29,13 +29,15 @@ class FirstButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return InkWell(
       onTap: () {
         print("Print first button");
       },
       child: Container(
-        height: 58,
-        width: 323,
+        height: screenHeight * 0.07,
+        width: screenWidth * 0.83,
         decoration: BoxDecoration(
           color: Colors.transparent,
           borderRadius: BorderRadius.circular(43),
@@ -47,29 +49,35 @@ class FirstButton extends StatelessWidget {
             child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text(
-              "\$11.99",
-              style: TextStyle(
-                fontFamily: 'Poetsen',
-                color: Color(0xFFFFFFFF),
-                fontSize: 32,
-                height: 38.4 / 32,
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.normal,
+            const FittedBox(
+              fit: BoxFit.contain,
+              child: Text(
+                "\$11.99",
+                style: TextStyle(
+                  fontFamily: 'Poetsen',
+                  color: Color(0xFFFFFFFF),
+                  fontSize: 32,
+                  height: 38.4 / 32,
+                  fontWeight: FontWeight.w400,
+                  fontStyle: FontStyle.normal,
+                ),
               ),
             ),
             const SizedBox(
               width: 12,
             ),
-            Text(
-              "per week",
-              style: GoogleFonts.nunito(
-                textStyle: const TextStyle(
-                  color: Color(0xFFFFFFFF),
-                  fontSize: 18,
-                  height: 24.5 / 18,
-                  fontWeight: FontWeight.w400,
-                  fontStyle: FontStyle.normal,
+            FittedBox(
+              fit: BoxFit.contain,
+              child: Text(
+                "per week",
+                style: GoogleFonts.nunito(
+                  textStyle: const TextStyle(
+                    color: Color(0xFFFFFFFF),
+                    fontSize: 18,
+                    height: 24.5 / 18,
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.normal,
+                  ),
                 ),
               ),
             ),
@@ -93,14 +101,16 @@ class TwoPayButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Stack(children: [
       InkWell(
         onTap: () {
           print("Print first button");
         },
         child: Container(
-          height: 58,
-          width: 323,
+          height: screenHeight * 0.07,
+          width: screenWidth * 0.83,
           decoration: BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.circular(43),
@@ -123,8 +133,8 @@ class TwoPayButton extends StatelessWidget {
                   fontStyle: FontStyle.normal,
                 ),
               ),
-              const SizedBox(
-                width: 12,
+              SizedBox(
+                width: screenWidth * 0.03,
               ),
               Text(
                 sum,
@@ -137,8 +147,8 @@ class TwoPayButton extends StatelessWidget {
                   fontStyle: FontStyle.normal,
                 ),
               ),
-              const SizedBox(
-                width: 12,
+              SizedBox(
+                width: screenWidth * 0.03,
               ),
               Text(
                 period,

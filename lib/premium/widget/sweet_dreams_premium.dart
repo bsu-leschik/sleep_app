@@ -14,7 +14,7 @@ class SweetDreamsPremium extends StatelessWidget {
       children: [
         SizedBox(
           height: screenHeight * 0.05,
-          width: screenWidth * 0.75,
+          width: screenWidth,
           child: FittedBox(
             fit: BoxFit.contain,
             child: Text(
@@ -35,15 +35,18 @@ class SweetDreamsPremium extends StatelessWidget {
         ),
         SizedBox(
           height: screenHeight * 0.05,
-          width: screenWidth * 0.40,
-          child: Text(
-            "PREMIUM",
-            style: GoogleFonts.nunito(
-              textStyle: const TextStyle(
-                color: Color(0xFFFFFFFF),
-                fontSize: 33,
-                fontWeight: FontWeight.w700,
-                height: 45 / 33,
+          width: screenWidth * 0.45,
+          child: FittedBox(
+            fit: BoxFit.contain,
+            child: Text(
+              "PREMIUM",
+              style: GoogleFonts.nunito(
+                textStyle: const TextStyle(
+                  color: Color(0xFFFFFFFF),
+                  fontSize: 33,
+                  fontWeight: FontWeight.w700,
+                  height: 45 / 33,
+                ),
               ),
             ),
           ),

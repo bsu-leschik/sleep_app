@@ -17,11 +17,8 @@ class _FivethFrameState extends State<FivethFrame> {
     return Scaffold(
       backgroundColor: const Color(0xFF141733),
       body: Column(
-        children: [
-          SizedBox(
-            height: screenHeight * 0.09,
-          ),
-          const BarWidget(),
+        children: const [
+          BarWidget(),
         ],
       ),
     );

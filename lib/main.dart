@@ -5,6 +5,9 @@ import 'package:sleep_app/data.dart';
 // import 'package:provider/provider.dart';
 // import 'onboarding/onboardingalex.dart';
 import 'fiveth_frame/fiveth_frame.dart';
+import 'melody_widget/fiveframewidget.dart';
+import 'onboarding/onboardingalex.dart';
+import 'premium/sub_widget.dart';
 // import 'premium/sub_widget.dart';
 
 // import 'seven_frame/sevena_bottom_bar.dart';

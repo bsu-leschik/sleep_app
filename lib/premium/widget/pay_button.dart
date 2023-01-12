@@ -119,9 +119,7 @@ class TwoPayButton extends StatelessWidget {
             ),
           ),
           child: Center(
-              child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+            child: Row(mainAxisAlignment: MainAxisAlignment.center, children: [
               Text(
                 close,
                 style: const TextStyle(
@@ -162,10 +160,10 @@ class TwoPayButton extends StatelessWidget {
                   ),
                 ),
               ),
-            ],
-          )),
+            ]),
+          ),
         ),
-      ),
+      )
     ]);
   }
 }

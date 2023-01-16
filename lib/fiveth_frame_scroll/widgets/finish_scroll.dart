@@ -26,17 +26,23 @@ class _FinishScrollState extends State<FinishScroll> {
             height: screenHeight * 0.03,
           ),
           const TypeMusicScroll(),
-          SizedBox(
-            height: screenHeight * 0.03,
+          SingleChildScrollView(
+            child: Column(
+              children: [
+                SizedBox(
+                  height: screenHeight * 0.03,
+                ),
+                const FirstLockScroll(),
+                Divider(
+                  color: const Color(0xFF8E9FCC),
+                  thickness: 1,
+                  indent: screenWidth * 0.11,
+                  endIndent: screenWidth * 0.11,
+                ),
+                const SecondLockScroll(),
+              ],
+            ),
           ),
-          const FirstLockScroll(),
-          Divider(
-            color: const Color(0xFF8E9FCC),
-            thickness: 1,
-            indent: screenWidth * 0.11,
-            endIndent: screenWidth * 0.11,
-          ),
-          const SecondLockScroll(),
         ],
       ),
     );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../fiveth_frame/fiveth_frame.dart';
+import 'widgets/finish_scroll.dart';
 
 class FiveFrameScroll extends StatelessWidget {
   static const String appTitle = 'Bottom Nav Bar';
@@ -36,7 +35,7 @@ class HomeWidget extends State<InitalScreenWidget> {
           print('Page changes to index $i');
         },
         children: const <Widget>[
-          FivethFrame(),
+          FinishScroll(),
           // Container(
           //   color: Colors.red,
           // ),

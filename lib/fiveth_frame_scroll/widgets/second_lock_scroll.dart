@@ -85,6 +85,15 @@ class _SecondLockScrollState extends State<SecondLockScroll> {
       "Home",
       "Baby",
       "Single",
+      "Single",
+      "Single",
+      "Single",
+      "Single",
+      "Single",
+      "Single",
+      "Single",
+      "Single",
+      "Single",
     ];
     return SizedBox(
       width: screenWidth,

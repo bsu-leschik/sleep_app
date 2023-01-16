@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../settings_frame/settings_widget.dart';
+import '../../settings_frame/widgets/result_widget.dart';
+
 class BarWidget extends StatelessWidget {
   const BarWidget({super.key});
 
@@ -39,7 +42,12 @@ class BarWidget extends StatelessWidget {
             backgroundColor: const Color(0xFF003293),
             child: InkWell(
               onTap: () {
-                print("Tap on the Settings");
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const ResultWidget(),
+                  ),
+                );
               },
               child: const Icon(
                 Icons.settings,

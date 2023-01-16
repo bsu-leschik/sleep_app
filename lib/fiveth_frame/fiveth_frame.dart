@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sleep_app/fiveth_frame/widget/bottom_bar.dart';
 
 import 'widget/bar_widget.dart';
-import 'widget/category_toogle.dart';
+import 'widget/type_music.dart';
 import 'widget/first_lock.dart';
 import 'widget/second_lock.dart';
 

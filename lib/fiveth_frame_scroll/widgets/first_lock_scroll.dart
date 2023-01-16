@@ -2,14 +2,14 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class FirstLock extends StatefulWidget {
-  const FirstLock({super.key});
+class FirstLockScroll extends StatefulWidget {
+  const FirstLockScroll({super.key});
 
   @override
-  State<FirstLock> createState() => _FirstLockState();
+  State<FirstLockScroll> createState() => _FirstLockScrollState();
 }
 
-class _FirstLockState extends State<FirstLock> {
+class _FirstLockScrollState extends State<FirstLockScroll> {
   @override
   Widget build(BuildContext context) {
     return const GridFirst();

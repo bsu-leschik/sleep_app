@@ -5,9 +5,11 @@ import 'package:sleep_app/data.dart';
 // import 'package:provider/provider.dart';
 // import 'onboarding/onboardingalex.dart';
 import 'fiveth_frame/fiveth_frame.dart';
+import 'fiveth_frame/widget/bottom_bar.dart';
 import 'melody_widget/fiveframewidget.dart';
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
+
 // import 'premium/sub_widget.dart';
 
 // import 'seven_frame/sevena_bottom_bar.dart';
@@ -38,10 +40,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const OnBoardingWidget(),
+        // home: const OnBoardingWidget(),
         // home: const SubscribeWidget(),
+        home: const BottomBar(),
         // home: const FivethFrame(),
-        // home: const MelodyWidget(),
         // home: const SevenBottomBar(),
         // home: const SevenFrame(),
         // home: const MyApp1(),

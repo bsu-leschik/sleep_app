@@ -35,26 +35,6 @@ class _SubscribeWidgetState extends State<SubscribeWidget> {
             right: screenWidth * 0.076,
             child: const CloseButt(),
           ),
-          Positioned(
-            left: screenWidth * 0.21,
-            top: screenHeight * 0.74,
-            bottom: screenHeight * 0.21,
-            child: SizedBox(
-              width: screenWidth * 0.038,
-              height: screenHeight * 0.035,
-              child: Image.asset("assets/images/premium/Splash.png"),
-            ),
-          ),
-          Positioned(
-            left: screenWidth * 0.21,
-            bottom: screenHeight * 0.13,
-            top: screenHeight * 0.82,
-            child: SizedBox(
-              width: screenWidth * 0.038,
-              height: screenHeight * 0.035,
-              child: Image.asset("assets/images/premium/Splash.png"),
-            ),
-          ),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [

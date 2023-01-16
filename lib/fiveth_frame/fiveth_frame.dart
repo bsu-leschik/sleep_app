@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:sleep_app/fiveth_frame/widget/bottom_bar.dart';
 
 import 'widget/bar_widget.dart';
 import 'widget/category_toogle.dart';
 import 'widget/first_lock.dart';
+import 'widget/second_lock.dart';
 
 class FivethFrame extends StatefulWidget {
   const FivethFrame({super.key});
@@ -28,7 +30,14 @@ class _FivethFrameState extends State<FivethFrame> {
           SizedBox(
             height: screenHeight * 0.03,
           ),
-          FirstLock()
+          const FirstLock(),
+          Divider(
+            color: const Color(0xFF8E9FCC),
+            thickness: 1,
+            indent: screenWidth * 0.11,
+            endIndent: screenWidth * 0.11,
+          ),
+          const SecondLock(),
         ],
       ),
     );

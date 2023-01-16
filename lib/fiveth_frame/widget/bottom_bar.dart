@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../melody_widget/fiveframewidget.dart';
+import '../fiveth_frame.dart';
 
 class BottomBar extends StatelessWidget {
   static const String appTitle = 'Bottom Nav Bar';
@@ -9,11 +8,7 @@ class BottomBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: appTitle,
-      home: InitalScreenWidget(),
-    );
+    return const InitalScreenWidget();
   }
 }
 
@@ -31,17 +26,19 @@ class HomeWidget extends State<InitalScreenWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: PageView(
         controller: _navPage,
         onPageChanged: (i) {
           print('Page changes to index $i');
         },
-        children: <Widget>[
-          const MelodyWidget(),
-          Container(
-            color: Colors.red,
-          ),
+        children: const <Widget>[
+          FivethFrame(),
+          // Container(
+          //   color: Colors.red,
+          // ),
         ],
       ),
       backgroundColor: Colors.transparent,
@@ -49,15 +46,16 @@ class HomeWidget extends State<InitalScreenWidget> {
         color: const Color(0xFF01308C),
         shape: const CircularNotchedRectangle(),
         child: SizedBox(
-          height: 60.0,
+          height: screenHeight * 0.07,
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
-                margin: const EdgeInsets.only(left: 29.0, top: 8),
-                width: 88,
-                height: 55,
+                margin: EdgeInsets.only(
+                    left: screenWidth * 0.07, top: screenHeight * 0.009),
+                width: screenWidth * 0.23,
+                height: screenHeight * 0.065,
                 child: InkWell(
                   onTap: (() {
                     print("Mix");
@@ -69,8 +67,8 @@ class HomeWidget extends State<InitalScreenWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       SizedBox(
-                        width: 25,
-                        height: 22,
+                        width: screenWidth * 0.06,
+                        height: screenHeight * 0.03,
                         child: Image.asset(
                           "assets/images/mix.png",
                           color: Colors.white,
@@ -90,8 +88,8 @@ class HomeWidget extends State<InitalScreenWidget> {
               ),
               Container(
                 margin: const EdgeInsets.only(right: 29.0, top: 8),
-                width: 88,
-                height: 55,
+                width: screenWidth * 0.23,
+                height: screenHeight * 0.07,
                 child: InkWell(
                   onTap: (() {
                     print("Timer");
@@ -101,16 +99,16 @@ class HomeWidget extends State<InitalScreenWidget> {
                   }),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: const [
+                    children: [
                       SizedBox(
-                        width: 25,
-                        height: 22,
-                        child: Icon(
+                        width: screenWidth * 0.06,
+                        height: screenHeight * 0.03,
+                        child: const Icon(
                           Icons.timer_sharp,
                           color: Colors.white,
                         ),
                       ),
-                      Text(
+                      const Text(
                         "Timer",
                         style: TextStyle(
                           fontSize: 18,
@@ -128,8 +126,8 @@ class HomeWidget extends State<InitalScreenWidget> {
       ),
       floatingActionButton: SizedBox(
         // color: Colors.red,
-        height: 92,
-        width: 92,
+        height: screenHeight * 0.11,
+        width: screenWidth * 0.24,
         child: FloatingActionButton(
           backgroundColor: Colors.white,
           onPressed: () {

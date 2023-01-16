@@ -11,8 +11,21 @@ class CategoryToogle extends StatefulWidget {
 
 class _CategoryToogleState extends State<CategoryToogle> {
   bool isSelected = false;
+  List<bool> shine = [
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
   void select() {
     setState(() {
+      shine[0] = true;
       isSelected = !isSelected;
     });
   }

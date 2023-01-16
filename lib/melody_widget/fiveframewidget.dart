@@ -38,7 +38,7 @@ class _MelodyWidgetState extends State<MelodyWidget> {
                   ),
                 ),
                 CupertinoButton(
-                  onPressed: () => {print(1)},
+                  onPressed: () => {print("1")},
                   child: Container(
                     width: 40,
                     height: 40,
@@ -120,68 +120,63 @@ class _ImageMusicWidgetState extends State<ImageMusicWidget> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Stack(
-        children: [
-          // const CloseBottomWidget(),
-          SizedBox(
-            width: double.infinity,
-            height: 280,
-            child: GridView.builder(
-              itemCount: listMusic.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
-              ),
-              primary: false,
-              padding: const EdgeInsets.all(10),
-              itemBuilder: (BuildContext context, int index) {
-                return Center(
-                  child: Container(
-                    alignment: Alignment.center,
-                    color: Colors.transparent,
-                    // padding: EdgeInsets.all(5),
-                    width: 112,
-                    height: 102,
-                    child: Stack(children: [
-                      Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          Image.asset(listMusic[index].image),
-                          Text(
-                            listMusic[index].title,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                              fontSize: 12,
-                              color: Color(0xff8E9FCC),
-                            ),
-                          ),
-                        ],
-                      ),
-                      Positioned(
-                        top: 0,
-                        right: 0,
-                        child: Container(
-                          width: 27,
-                          height: 27,
-                          decoration: const BoxDecoration(
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(59),
-                            ),
-                            color: Color(0xff003293),
-                          ),
-                          child: const Icon(
-                            Icons.lock,
-                            color: Colors.white,
-                            size: 15,
-                          ),
+      child: SizedBox(
+        width: double.infinity,
+        height: 280,
+        child: GridView.builder(
+          itemCount: listMusic.length,
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+          ),
+          primary: false,
+          padding: const EdgeInsets.all(10),
+          itemBuilder: (BuildContext context, int index) {
+            return Center(
+              child: Container(
+                alignment: Alignment.center,
+                color: Colors.transparent,
+                // padding: EdgeInsets.all(5),
+                width: 112,
+                height: 102,
+                child: Stack(children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Image.asset(listMusic[index].image),
+                      Text(
+                        listMusic[index].title,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 12,
+                          color: Color(0xff8E9FCC),
                         ),
                       ),
-                    ]),
+                    ],
                   ),
-                );
-              },
-            ),
-          ),
-        ],
+                  Positioned(
+                    top: 0,
+                    right: 0,
+                    child: Container(
+                      width: 27,
+                      height: 27,
+                      decoration: const BoxDecoration(
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(59),
+                        ),
+                        color: Color(0xff003293),
+                      ),
+                      child: const Icon(
+                        Icons.lock,
+                        color: Colors.white,
+                        size: 15,
+                      ),
+                    ),
+                  ),
+                ]),
+              ),
+            );
+          },
+        ),
       ),
     );
   }

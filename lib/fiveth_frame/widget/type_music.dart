@@ -1,6 +1,43 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+class TypeMusic extends StatelessWidget {
+  const TypeMusic({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
+    final double screenWidth = MediaQuery.of(context).size.width;
+    List<String> type = [
+      "All",
+      "Favorite",
+      "Music",
+      "Nature",
+      "Urban",
+      "Animals",
+      "White noise",
+      "Home",
+      "Baby",
+      "Single"
+    ];
+    return SizedBox(
+      // color: Colors.amber,
+      height: screenHeight * 0.085,
+      width: screenWidth * 2.5,
+      child: ListView.builder(
+        itemCount: type.length,
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          return CategoryToogle(
+            title: type[index],
+          );
+        },
+      ),
+    );
+  }
+}
+
 class CategoryToogle extends StatefulWidget {
   final String title;
   const CategoryToogle({super.key, required this.title});
@@ -66,43 +103,6 @@ class _CategoryToogleState extends State<CategoryToogle> {
             ),
           ),
         ),
-      ),
-    );
-  }
-}
-
-class TypeMusic extends StatelessWidget {
-  const TypeMusic({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
-    final double screenWidth = MediaQuery.of(context).size.width;
-    List<String> type = [
-      "All",
-      "Favorite",
-      "Music",
-      "Nature",
-      "Urban",
-      "Animals",
-      "White noise",
-      "Home",
-      "Baby",
-      "Single"
-    ];
-    return SizedBox(
-      // color: Colors.amber,
-      height: screenHeight * 0.085,
-      width: screenWidth * 2.5,
-      child: ListView.builder(
-        itemCount: type.length,
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        itemBuilder: (context, index) {
-          return CategoryToogle(
-            title: type[index],
-          );
-        },
       ),
     );
   }

@@ -10,6 +10,7 @@ import 'fiveth_frame_scroll/fiveth_frame_scroll.dart';
 import 'melody_widget/fiveframewidget.dart';
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
+import 'settings_frame/settings_widget.dart';
 
 // import 'premium/sub_widget.dart';
 
@@ -43,10 +44,10 @@ class MyApp extends StatelessWidget {
         ),
         // home: const OnBoardingWidget(),
         // home: const SubscribeWidget(),
-        // home: const BottomBar(),
+        home: const BottomBar(),
         // home: const FivethFrame(),
-        home: const FiveFrameScroll(),
-        // home: const SevenFrame(),
+        // home: const FiveFrameScroll(),
+        // home: const SettingsWidget(),
         // home: const MyApp1(),
         // home: const Sevena(),
         // home: const TimerDialog(),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'button_back.dart';
+import 'settings_info.dart';
+import 'sheep_moon_cloud_version.dart';
 
 class ResultWidget extends StatelessWidget {
   const ResultWidget({super.key});
@@ -11,12 +13,27 @@ class ResultWidget extends StatelessWidget {
     final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: const Color(0xFF141733),
-      body: Column(
+      body: Stack(
         children: [
-          SizedBox(
-            height: screenHeight * 0.11,
+          Positioned(
+            top: screenHeight * 0.1,
+            left: screenWidth * 0.03,
+            child: const ButtonBack(),
           ),
-          const ButtonBack(),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(
+                height: screenHeight * 0.18,
+              ),
+              const SettingsInfo(),
+              SizedBox(
+                height: screenHeight * 0.16,
+                width: screenWidth,
+              ),
+              const MoonSheepCloudVersion(),
+            ],
+          ),
         ],
       ),
     );

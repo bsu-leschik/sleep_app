@@ -138,67 +138,6 @@ class _GridFirstState extends State<GridFirst> {
                 ),
               ),
             );
-
-            //   return Expanded(
-            //     child: SizedBox(
-            //       width: double.infinity,
-            //       height: 280,
-            //       child: GridView.builder(
-            //         itemCount: firstList.length,
-            //         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //           crossAxisCount: 3,
-            //         ),
-            //         primary: false,
-            //         padding: const EdgeInsets.all(10),
-            //         itemBuilder: (BuildContext context, int index) {
-            //           return Center(
-            //             child: Container(
-            //               alignment: Alignment.center,
-            //               color: Colors.transparent,
-            //               // padding: EdgeInsets.all(5),
-            //               width: 112,
-            //               height: 102,
-            //               child: Stack(children: [
-            //                 Column(
-            //                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //                   children: [
-            //                     Image.asset(firstList[index].image),
-            //                     Text(
-            //                       firstList[index].title,
-            //                       textAlign: TextAlign.center,
-            //                       style: const TextStyle(
-            //                         fontSize: 12,
-            //                         color: Color(0xff8E9FCC),
-            //                       ),
-            //                     ),
-            //                   ],
-            //                 ),
-            //                 Positioned(
-            //                   top: 0,
-            //                   right: 0,
-            //                   child: Container(
-            //                     width: 27,
-            //                     height: 27,
-            //                     decoration: const BoxDecoration(
-            //                       borderRadius: BorderRadius.all(
-            //                         Radius.circular(59),
-            //                       ),
-            //                       color: Color(0xff003293),
-            //                     ),
-            //                     child: const Icon(
-            //                       Icons.lock,
-            //                       color: Colors.white,
-            //                       size: 15,
-            //                     ),
-            //                   ),
-            //                 ),
-            //               ]),
-            //             ),
-            //           );
-            //         },
-            //       ),
-            //     ),
-            //   );
           }),
     );
   }

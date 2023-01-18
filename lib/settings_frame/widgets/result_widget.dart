@@ -28,7 +28,7 @@ class ResultWidget extends StatelessWidget {
               ),
               const SettingsInfo(),
               SizedBox(
-                height: screenHeight * 0.16,
+                height: screenHeight * 0.15,
                 width: screenWidth,
               ),
               const MoonSheepCloudVersion(),

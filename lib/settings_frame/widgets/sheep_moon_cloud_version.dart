@@ -22,7 +22,7 @@ class MoonSheepCloudVersion extends StatelessWidget {
           ),
           Positioned(
             bottom: screenHeight * 0.14,
-            left: -(screenWidth * 0.1),
+            left: -(screenWidth * 0.12),
             child: Image.asset(
               "assets/images/settings/CL2.png",
               width: screenWidth * 0.48,
@@ -67,7 +67,7 @@ class MoonSheepCloudVersion extends StatelessWidget {
           ),
           Positioned(
             bottom: 0,
-            left: 38,
+            left: screenWidth * 0.12,
             child: Image.asset(
               "assets/images/settings/SH2.png",
               width: screenWidth * 0.34,

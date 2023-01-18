@@ -46,14 +46,17 @@ class HomeWidget extends State<InitalScreenWidget> {
         color: const Color(0xFF01308C),
         shape: const CircularNotchedRectangle(),
         child: SizedBox(
-          height: screenHeight * 0.07,
+          // color: Colors.red,
+          height: screenHeight * 0.075,
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: <Widget>[
               Container(
                 margin: EdgeInsets.only(
-                    left: screenWidth * 0.07, top: screenHeight * 0.009),
+                  left: screenWidth * 0.07,
+                  top: screenHeight * 0.009,
+                ),
                 width: screenWidth * 0.23,
                 height: screenHeight * 0.065,
                 child: InkWell(
@@ -74,12 +77,15 @@ class HomeWidget extends State<InitalScreenWidget> {
                           color: Colors.white,
                         ),
                       ),
-                      const Text(
-                        "Mix",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
+                      const FittedBox(
+                        fit: BoxFit.contain,
+                        child: Text(
+                          "Mix",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ],
@@ -108,12 +114,15 @@ class HomeWidget extends State<InitalScreenWidget> {
                           color: Colors.white,
                         ),
                       ),
-                      const Text(
-                        "Timer",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
+                      const FittedBox(
+                        fit: BoxFit.contain,
+                        child: Text(
+                          "Timer",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.w400,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
                     ],

@@ -34,8 +34,10 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-    return ChangeNotifierProvider<DataSlider>(
-      create: (context) => DataSlider(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => DataSlider()),
+      ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',

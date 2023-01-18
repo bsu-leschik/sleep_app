@@ -67,6 +67,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                     });
                   }),
                   child: Column(
+                    // пооборачивать колонку в SizedBox и задать размеры!!!
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       SizedBox(

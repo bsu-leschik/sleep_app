@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:sleep_app/data.dart';
 // import 'package:provider/provider.dart';
 // import 'onboarding/onboardingalex.dart';
+import 'current_mix/current_mix.dart';
 import 'fiveth_frame/fiveth_frame.dart';
 import 'fiveth_frame/widget/bottom_bar.dart';
 import 'fiveth_frame_scroll/fiveth_frame_scroll.dart';
@@ -49,8 +50,9 @@ class MyApp extends StatelessWidget {
         // home: const BottomBar(),
         // home: const FivethFrame(),
         // home: const FiveFrameScroll(),
-        home: const SettingsWidget(),
-        // home: const MyApp1(),
+        // home: const SettingsWidget(),
+
+        home: const CurrentMix(),
         // home: const Sevena(),
         // home: const TimerDialog(),
         // home: const SevenaBottomBar(),

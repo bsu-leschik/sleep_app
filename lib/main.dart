@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/data.dart';
+// import 'package:sleep_app/data.dart';
 // import 'package:provider/provider.dart';
 // import 'onboarding/onboardingalex.dart';
 import 'current_mix/current_mix.dart';
-import 'fiveth_frame/fiveth_frame.dart';
-import 'fiveth_frame/widget/bottom_bar.dart';
-import 'fiveth_frame_scroll/fiveth_frame_scroll.dart';
-import 'melody_widget/fiveframewidget.dart';
-import 'onboarding/onboardingalex.dart';
-import 'premium/sub_widget.dart';
-import 'settings_frame/settings_widget.dart';
+// import 'fiveth_frame/fiveth_frame.dart';
+// import 'fiveth_frame/widget/bottom_bar.dart';
+// import 'fiveth_frame_scroll/fiveth_frame_scroll.dart';
+// import 'melody_widget/fiveframewidget.dart';
+// import 'onboarding/onboardingalex.dart';
+// import 'premium/sub_widget.dart';
+// import 'settings_frame/settings_widget.dart';
 
 // import 'premium/sub_widget.dart';
 
@@ -79,5 +79,14 @@ class Example extends StatelessWidget {
         child: const Text('Flutter in the sky', textAlign: TextAlign.center),
       ),
     );
+  }
+}
+
+class DataSlider with ChangeNotifier {
+  double _rating1 = 1;
+  double get newRating => _rating1;
+  void changeRating(double newRating) {
+    _rating1 = newRating;
+    notifyListeners();
   }
 }

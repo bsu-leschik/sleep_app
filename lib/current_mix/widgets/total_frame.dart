@@ -20,6 +20,7 @@ class _TotalFrameState extends State<TotalFrame> {
     return Scaffold(
       backgroundColor: const Color(0xFF141733),
       body: Column(
+        mainAxisAlignment: MainAxisAlignment.start,
         children: [
           const BarWidgetCurrent(),
           SizedBox(
@@ -34,9 +35,10 @@ class _TotalFrameState extends State<TotalFrame> {
             height: screenHeight * 0.03,
           ),
           SizedBox(
-              height: screenHeight * 0.49,
-              width: screenWidth,
-              child: const UnlockMusic()),
+            height: screenHeight * 0.49,
+            width: screenWidth,
+            child: const UnlockMusic(),
+          ),
         ],
       ),
     );

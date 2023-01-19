@@ -74,7 +74,6 @@ class _SecondLockState extends State<SecondLock> {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
     List<String> locks = [
-      // создаём лист названий
       "ALL",
       "Favorite",
       "Music",

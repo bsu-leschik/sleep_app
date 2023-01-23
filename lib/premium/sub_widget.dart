@@ -44,47 +44,11 @@ class _SubscribeWidgetState extends State<SubscribeWidget> {
               // MoonWidget(),
               const MoonSheepCloud(),
               const SweetDreamsPremium(),
-              const PlusPremium(
-                image: "assets/images/shopping/Corona.png",
-                title: "Full acces to the sleep library",
-              ),
-              SizedBox(
-                height: screenHeight * 0.02,
-              ),
-              const PlusPremium(
-                image: "assets/images/shopping/Music.png",
-                title: "Relaxing music",
-              ),
-              SizedBox(
-                height: screenHeight * 0.02,
-              ),
-              const PlusPremium(
-                image: "assets/images/shopping/Flower.png",
-                title: "Sleep medidations",
-              ),
+              const PlusPremium(),
               SizedBox(
                 height: screenHeight * 0.036,
               ),
               const PayButton(),
-              SizedBox(
-                height: screenHeight * 0.01,
-              ),
-              const TwoPayButton(
-                close: "\$15.99",
-                sum: "\$15.99",
-                period: "per month",
-              ),
-              SizedBox(
-                height: screenHeight * 0.01,
-              ),
-              const TwoPayButton(
-                close: "\$207.48",
-                sum: "\$99.99",
-                period: "per year",
-              ),
-              SizedBox(
-                height: screenHeight * 0.04,
-              ),
               const BottomPremium(),
               SizedBox(
                 height: screenHeight * 0.03,

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../subscription_widget/bottom_bar/bottom_bar.dart';
+import '../../fiveth_frame/widget/bottom_bar.dart';
 
 class CloseButt extends StatelessWidget {
   const CloseButt({super.key});

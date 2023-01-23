@@ -11,14 +11,29 @@ class PayButton extends StatefulWidget {
 class _PayButtonState extends State<PayButton> {
   @override
   Widget build(BuildContext context) {
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Column(
-      children: const [
-        FirstButton(),
-        // TwoPayButton(
-        //   close: "\$15.99",
-        //   sum: "\$15.99",
-        //   period: "per month",
-        // ),
+      children: [
+        const FirstButton(),
+        SizedBox(
+          height: screenHeight * 0.01,
+        ),
+        const TwoPayButton(
+          close: "\$15.99",
+          sum: "\$15.99",
+          period: "per month",
+        ),
+        SizedBox(
+          height: screenHeight * 0.01,
+        ),
+        const TwoPayButton(
+          close: "\$207.48",
+          sum: "\$99.99",
+          period: "per year",
+        ),
+        SizedBox(
+          height: screenHeight * 0.04,
+        ),
       ],
     );
   }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sleep_app/current_mix/widgets/alert_dialog.dart';
 
 class UnlockMusic extends StatefulWidget {
   const UnlockMusic({super.key});
@@ -23,7 +24,7 @@ class _UnlockMusicState extends State<UnlockMusic> {
       "I TD",
       "Serduchka",
     ];
-
+    var len = unlockMusik.length;
     return ListView.builder(
       padding: EdgeInsets.zero,
       itemCount: unlockMusik.length,
@@ -45,7 +46,9 @@ class _UnlockMusicState extends State<UnlockMusic> {
                   backgroundColor: const Color(0xFF0C0E1F),
                   autoClose: false,
                   flex: 5,
-                  onPressed: (doNothing) {},
+                  onPressed: (BuildContext context) {
+                    const CurrentAlertDialog();
+                  },
                   icon: Icons.info,
                 ),
                 SlidableAction(
@@ -91,7 +94,7 @@ class _LikeCurrentMusicState extends State<LikeCurrentMusic> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  width: screenWidth * 0.2,
+                  width: screenWidth * 0.16,
                   height: screenHeight * 0.092,
                   decoration: const BoxDecoration(
                     color: Color(0xff7E44FA),
@@ -138,7 +141,7 @@ class _LikeCurrentMusicState extends State<LikeCurrentMusic> {
                     ),
                     SizedBox(
                       width: 241,
-                      height: 15,
+                      height: 13,
                       // margin: const EdgeInsets.all(0),
                       // color: Colors.green,
                       child: Slider(

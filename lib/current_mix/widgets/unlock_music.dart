@@ -94,7 +94,7 @@ class _LikeCurrentMusicState extends State<LikeCurrentMusic> {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Container(
-                  width: screenWidth * 0.16,
+                  width: screenWidth * 0.2,
                   height: screenHeight * 0.092,
                   decoration: const BoxDecoration(
                     color: Color(0xff7E44FA),

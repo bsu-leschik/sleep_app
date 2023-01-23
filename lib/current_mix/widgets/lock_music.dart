@@ -26,7 +26,7 @@ class _LockMusicState extends State<LockMusic> {
             children: [
               Stack(children: [
                 Container(
-                  width: screenWidth * 0.16,
+                  width: screenWidth * 0.2,
                   height: screenHeight * 0.092,
                   decoration: BoxDecoration(
                     border: Border.all(

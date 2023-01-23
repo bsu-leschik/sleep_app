@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 // import 'package:provider/provider.dart';
 // import 'onboarding/onboardingalex.dart';
 import 'current_mix/current_mix.dart';
+import 'fiveth_frame/widget/bottom_bar.dart';
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
 // import 'fiveth_frame/fiveth_frame.dart';
@@ -48,8 +49,8 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         // home: const OnBoardingWidget(),
-        home: const SubscribeWidget(),
-        // home: const BottomBar(),
+        // home: const SubscribeWidget(),
+        home: const BottomBar(),
         // home: const FivethFrame(),
         // home: const FiveFrameScroll(),
         // home: const SettingsWidget(),

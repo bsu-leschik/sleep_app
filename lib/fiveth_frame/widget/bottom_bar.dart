@@ -47,7 +47,7 @@ class HomeWidget extends State<InitalScreenWidget> {
         color: const Color(0xFF01308C),
         shape: const CircularNotchedRectangle(),
         child: SizedBox(
-          height: screenHeight * 0.07,
+          height: screenHeight * 0.08,
           child: Row(
             mainAxisSize: MainAxisSize.max,
             mainAxisAlignment: MainAxisAlignment.spaceBetween,

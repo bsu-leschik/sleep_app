@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../fiveth_frame/widget/bottom_bar.dart';
-
 class CloseButt extends StatelessWidget {
   const CloseButt({super.key});
 
@@ -14,10 +12,7 @@ class CloseButt extends StatelessWidget {
         size: 20,
       ),
       onTap: () => {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => const BottomBar()),
-        )
+        Navigator.pushNamed(context, "/fiveframe"),
       },
     );
   }

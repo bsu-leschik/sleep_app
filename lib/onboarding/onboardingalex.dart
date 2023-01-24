@@ -1,6 +1,5 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:sleep_app/premium/sub_widget.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'onboarding_widget.dart';
 
@@ -80,11 +79,12 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                 onTap: () {
                   if (_pageController.page == 1) {}
                   if (_pageController.page == 2) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SubscribeWidget()),
-                    );
+                    Navigator.pushNamed(context, "/subscribe");
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //       builder: (context) => const SubscribeWidget()),
+                    // );
                   } else {
                     _pageController.nextPage(
                       duration: const Duration(

@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../settings_frame/settings_widget.dart';
-
 class BarWidget extends StatelessWidget {
   const BarWidget({super.key});
 
@@ -41,11 +39,12 @@ class BarWidget extends StatelessWidget {
             backgroundColor: const Color(0xFF003293),
             child: InkWell(
               onTap: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute<void>(
-                    builder: (BuildContext context) => const SettingsWidget(),
-                  ),
-                );
+                Navigator.pushNamed(context, "/settings");
+                // Navigator.of(context).push(
+                //   MaterialPageRoute<void>(
+                //     builder: (BuildContext context) => const SettingsWidget(),
+                //   ),
+                // );
               },
               child: const Icon(
                 Icons.settings,

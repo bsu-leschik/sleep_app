@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(const Dialog());
-}
-
 class Dialog extends StatelessWidget {
   const Dialog({super.key});
 
@@ -11,7 +7,9 @@ class Dialog extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-          colorSchemeSeed: const Color(0xff6750a4), useMaterial3: true),
+        colorSchemeSeed: const Color(0xff6750a4),
+        useMaterial3: true,
+      ),
       home: const Scaffold(
         backgroundColor: Colors.white,
         body: Center(
@@ -76,28 +74,29 @@ class SecondDialog extends StatelessWidget {
       onPressed: () => showDialog<String>(
         context: context,
         builder: (BuildContext context) => AlertDialog(
-            title: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const Text(
-                    "Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit.",
-                    style: TextStyle(
-                      fontWeight: FontWeight.w700,
-                      fontSize: 16,
-                    ),
-                  ),
-                  IconButton(
-                    onPressed: () => Navigator.pop(context),
-                    icon: const Icon(
-                      Icons.close,
-                      color: Colors.white,
-                      size: 20,
-                    ),
-                  )
-                ]),
-            backgroundColor: Colors.transparent,
-            content: const Text(
-                "https://Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit. Hendrerit\net dignissim donec donec neque\ndonec tempor.")),
+          title:
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+            const Text(
+              "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+              style: TextStyle(
+                fontWeight: FontWeight.w700,
+                fontSize: 16,
+                height: 22 / 16,
+              ),
+            ),
+            IconButton(
+              onPressed: () => Navigator.pop(context),
+              icon: const Icon(
+                Icons.close,
+                color: Colors.white,
+                size: 20,
+              ),
+            )
+          ]),
+          backgroundColor: Colors.transparent,
+          content: const Text(
+              "https://Lorem ipsum dolor sit amet,\nconsectetur adipiscing elit. Hendrerit\net dignissim donec donec neque\ndonec tempor."),
+        ),
       ),
       child: Container(
         height: 78,

@@ -59,11 +59,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                 height: screenHeight * 0.065,
                 child: InkWell(
                   onTap: (() {
-                    Navigator.of(context).push(
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) => const CurrentMix(),
-                      ),
-                    );
+                    Navigator.pushNamed(context, "/currentmix");
                   }),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,

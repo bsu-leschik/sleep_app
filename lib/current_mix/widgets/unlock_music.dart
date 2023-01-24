@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sleep_app/current_mix/widgets/alert_dialog.dart';
+import 'package:sleep_app/seven_frame/sevena_frame.dart';
 
 class UnlockMusic extends StatefulWidget {
   const UnlockMusic({super.key});
@@ -24,10 +25,10 @@ class _UnlockMusicState extends State<UnlockMusic> {
       "I TD",
       "Serduchka",
     ];
-    var len = unlockMusik.length;
+    var lenght = unlockMusik.length;
     return ListView.builder(
       padding: EdgeInsets.zero,
-      itemCount: unlockMusik.length,
+      itemCount: lenght,
       itemBuilder: (BuildContext context, int index) {
         return Slidable(
           key: UniqueKey(),
@@ -51,11 +52,11 @@ class _UnlockMusicState extends State<UnlockMusic> {
                   },
                   icon: Icons.info,
                 ),
-                SlidableAction(
-                  backgroundColor: const Color(0xFF0C0E1F),
+                const SlidableAction(
+                  backgroundColor: Color(0xFF0C0E1F),
                   autoClose: false,
                   flex: 5,
-                  onPressed: (doNothing) {},
+                  onPressed: (doNothing),
                   icon: Icons.delete_outline,
                 ),
               ]),

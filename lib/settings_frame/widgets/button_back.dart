@@ -12,12 +12,7 @@ class ButtonBack extends StatelessWidget {
       children: [
         InkWell(
           onTap: (() {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => const BottomBar(),
-              ),
-            );
+            Navigator.pushNamed(context, "/fiveframe");
           }),
           child: const Icon(
             Icons.chevron_left_rounded,

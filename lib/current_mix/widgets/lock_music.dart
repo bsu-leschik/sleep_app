@@ -106,6 +106,7 @@ class _LockMusicState extends State<LockMusic> {
                       max: 100,
                       onChanged: (double newRating) {
                         setState(() {
+                          _rating = newRating;
                           // DataSlider(); здесь у меня есть провайдер, правильно ли я написал его
                         });
                       },

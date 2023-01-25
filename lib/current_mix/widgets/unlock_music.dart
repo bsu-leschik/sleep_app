@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:sleep_app/current_mix/widgets/alert_dialog.dart';
 import 'package:sleep_app/seven_frame/sevena_frame.dart';
+
+import '../../data.dart';
 
 class UnlockMusic extends StatefulWidget {
   const UnlockMusic({super.key});
@@ -129,9 +132,12 @@ class _LikeCurrentMusicState extends State<LikeCurrentMusic> {
                                 ),
                               ),
                             ),
-                            const Icon(
-                              Icons.menu,
-                              color: Color(0xffFFFFFF),
+                            InkWell(
+                              onTap: () => Slidable,
+                              child: const Icon(
+                                Icons.menu,
+                                color: Color(0xffFFFFFF),
+                              ),
                             ),
                           ],
                         ),
@@ -152,7 +158,9 @@ class _LikeCurrentMusicState extends State<LikeCurrentMusic> {
                         value: _rating2,
                         min: 0,
                         max: 100,
-                        onChanged: (double newRating2) {
+                        onChanged:
+                            // Provider.of<DataSlider>(context).changeRating,
+                            (double newRating2) {
                           setState(() {
                             _rating2 = newRating2;
                           });

@@ -19,9 +19,10 @@ class _TypeMusicCurrentState extends State<TypeMusicCurrent> {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    return SizedBox(
+    return Container(
+      // color: Colors.red,
       height: screenHeight * 0.085,
-      width: screenWidth * 2.5,
+      width: screenWidth,
       child: ListView.builder(
         itemCount: type.length,
         scrollDirection: Axis.horizontal,

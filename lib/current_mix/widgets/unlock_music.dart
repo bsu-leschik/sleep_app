@@ -50,9 +50,34 @@ class _UnlockMusicState extends State<UnlockMusic> {
                   backgroundColor: const Color(0xFF0C0E1F),
                   autoClose: false,
                   flex: 5,
-                  onPressed: (BuildContext context) {
-                    const CurrentAlertDialog();
-                  },
+                  onPressed: ((context) {
+                    showDialog(
+                      context: context,
+                      builder: (context) => SimpleDialog(
+                        children: [
+                          SimpleDialogOption(
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                const Text("Rain"),
+                                IconButton(
+                                  onPressed: () => Navigator.pop(context),
+                                  icon: const Icon(Icons.close),
+                                ),
+                              ],
+                            ),
+                          ),
+                          const SizedBox(
+                            height: 20,
+                          ),
+                          const SimpleDialogOption(
+                            child: Text(
+                                'https://Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit. Hendrerit \net dignissim donec donec neque \ndonec tempor.'),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
                   icon: Icons.info,
                 ),
                 const SlidableAction(

@@ -3,7 +3,7 @@ import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/data.dart';
 
-import '../show_dialog/show_dialog.dart';
+import '../show_dialog/show_dialog_example.dart';
 
 class Sevena extends StatefulWidget {
   const Sevena({super.key});

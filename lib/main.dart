@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 import 'current_mix/current_mix.dart';
+import 'current_mix/widgets/show_dialog.dart';
 import 'fiveth_frame/widget/bottom_bar.dart';
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
@@ -31,6 +32,7 @@ class MyApp extends StatelessWidget {
           "/fiveframe": (context) => const BottomBar(),
           "/settings": (context) => const SettingsWidget(),
           "/currentmix": (context) => const CurrentMix(),
+          "/showdialog": (context) => const ShowDialog(),
         },
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',

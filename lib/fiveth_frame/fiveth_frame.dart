@@ -24,12 +24,10 @@ class _FivethFrameState extends State<FivethFrame> {
         children: [
           const BarWidget(),
           SizedBox(
-            height: screenHeight * 0.03,
+            height: screenHeight * 0.01,
           ),
           const TypeMusic(),
-          SizedBox(
-            height: screenHeight * 0.03,
-          ),
+          SizedBox(height: screenHeight * 0.01),
           const FirstLock(),
           Divider(
             color: const Color(0xFF8E9FCC),

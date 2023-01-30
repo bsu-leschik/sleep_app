@@ -129,6 +129,7 @@ class _GridFirstState extends State<GridFirst> {
                             child: Icon(
                               Icons.lock,
                               size: 15,
+                              color: Color(0xFFFFFFFF),
                             ),
                           ),
                         ),

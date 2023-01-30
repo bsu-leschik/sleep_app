@@ -50,6 +50,7 @@ class GridSecond extends StatelessWidget {
                   child: Icon(
                     Icons.lock,
                     size: 15,
+                    color: Color(0xFFFFFFFF),
                   ),
                 ),
               ),
@@ -87,7 +88,7 @@ class _SecondLockState extends State<SecondLock> {
     ];
     return SizedBox(
       width: screenWidth,
-      height: screenHeight * 0.29,
+      height: screenHeight * 0.347,
       child: GridView.builder(
         itemCount: locks.length,
         primary: false,

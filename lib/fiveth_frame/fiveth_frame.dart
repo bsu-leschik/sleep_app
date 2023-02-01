@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sleep_app/fiveth_frame/widget/bottom_bar.dart';
 
 import 'widget/bar_widget.dart';
 import 'widget/type_music.dart';
@@ -26,7 +25,7 @@ class _FivethFrameState extends State<FivethFrame> {
           SizedBox(
             height: screenHeight * 0.01,
           ),
-          const TypeMusic(),
+          TypeMusic(),
           SizedBox(height: screenHeight * 0.01),
           const FirstLock(),
           Divider(

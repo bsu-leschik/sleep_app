@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -59,10 +60,27 @@ class _GridFirstState extends State<GridFirst> {
       title: "Winter",
     ),
   ];
+  List<MuzModOne> twoList = [
+    MuzModOne(
+      image: "assets/images/music/Mediative.png",
+      title: "Mediative space",
+    ),
+    MuzModOne(
+      image: "assets/images/music/Moonmusic.png",
+      title: "Moon vibes",
+    ),
+    MuzModOne(
+      image: "assets/images/music/Winter.png",
+      title: "Winter",
+    ),
+  ];
+
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
+    List<MuzModOne> activeList = true ? twoList : firstList;
+
     return Container(
       padding: const EdgeInsets.all(16),
       color: Colors.transparent,
@@ -72,7 +90,7 @@ class _GridFirstState extends State<GridFirst> {
           padding: EdgeInsets.zero,
           dragStartBehavior: DragStartBehavior.start,
           shrinkWrap: false,
-          itemCount: firstList.length,
+          itemCount: activeList.length,
           primary: true,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
@@ -93,7 +111,7 @@ class _GridFirstState extends State<GridFirst> {
                         SizedBox(
                           width: screenWidth * 0.2,
                           height: screenHeight * 0.09,
-                          child: Image.asset(firstList[index].image),
+                          child: Image.asset(activeList[index].image),
                         ),
                         SizedBox(
                           width: screenWidth * 0.2,
@@ -101,7 +119,7 @@ class _GridFirstState extends State<GridFirst> {
                             child: FittedBox(
                               fit: BoxFit.contain,
                               child: Text(
-                                firstList[index].title,
+                                activeList[index].title,
                                 overflow: TextOverflow.ellipsis,
                                 style: GoogleFonts.nunito(
                                   textStyle: const TextStyle(

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import '../../current_mix/current_mix.dart';
+import 'package:google_fonts/google_fonts.dart';
+
 import '../fiveth_frame.dart';
 
 class BottomBar extends StatelessWidget {
@@ -46,80 +47,85 @@ class HomeWidget extends State<InitalScreenWidget> {
       bottomNavigationBar: BottomAppBar(
         color: const Color(0xFF01308C),
         shape: const CircularNotchedRectangle(),
-        child: SizedBox(
-          height: screenHeight * 0.072,
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Container(
-                margin: EdgeInsets.only(
-                    left: screenWidth * 0.07, top: screenHeight * 0.009),
-                width: screenWidth * 0.23,
-                height: screenHeight * 0.065,
-                child: InkWell(
-                  onTap: (() {
-                    Navigator.pushNamed(context, "/currentmix");
-                  }),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SizedBox(
-                        width: screenWidth * 0.06,
-                        height: screenHeight * 0.03,
-                        child: Image.asset(
-                          "assets/images/mix.png",
-                          color: Colors.white,
-                        ),
+        child: Row(
+          mainAxisSize: MainAxisSize.max,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(
+                  left: screenWidth * 0.07, top: screenHeight * 0.009),
+              width: screenWidth * 0.23,
+              height: screenHeight * 0.07,
+              child: InkWell(
+                onTap: (() {
+                  Navigator.pushNamed(context, "/currentmix");
+                }),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+                  children: [
+                    SizedBox(
+                      width: screenWidth * 0.06,
+                      height: screenHeight * 0.03,
+                      child: Image.asset(
+                        "assets/images/mix.png",
+                        color: Colors.white,
                       ),
-                      const Text(
-                        "Mix",
-                        style: TextStyle(
+                    ),
+                    Text(
+                      "Mix",
+                      style: GoogleFonts.nunito(
+                        textStyle: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
                           color: Colors.white,
+                          height: 24.55 / 18,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-              Container(
-                margin: const EdgeInsets.only(right: 29.0, top: 8),
-                width: screenWidth * 0.23,
-                height: screenHeight * 0.07,
-                child: InkWell(
-                  onTap: (() {
-                    print("Timer");
-                    setState(() {
+            ),
+            Container(
+              margin: const EdgeInsets.only(right: 29.0, top: 8),
+              width: screenWidth * 0.23,
+              height: screenHeight * 0.07,
+              child: InkWell(
+                onTap: (() {
+                  print("Timer");
+                  setState(
+                    () {
                       _navPage.jumpToPage(1);
-                    });
-                  }),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      SizedBox(
-                        width: screenWidth * 0.06,
-                        height: screenHeight * 0.03,
-                        child: const Icon(
-                          Icons.timer_sharp,
-                          color: Colors.white,
-                        ),
+                    },
+                  );
+                }),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SizedBox(
+                      width: screenWidth * 0.06,
+                      height: screenHeight * 0.03,
+                      child: const Icon(
+                        Icons.timer_sharp,
+                        color: Colors.white,
                       ),
-                      const Text(
-                        "Timer",
-                        style: TextStyle(
+                    ),
+                    Text(
+                      "Timer",
+                      style: GoogleFonts.nunito(
+                        textStyle: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.w400,
                           color: Colors.white,
+                          height: 24.55 / 18,
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
       floatingActionButton: SizedBox(

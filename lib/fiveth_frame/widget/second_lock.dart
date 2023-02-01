@@ -11,32 +11,34 @@ class GridSecond extends StatelessWidget {
     return SizedBox(
       child: Stack(
         children: [
-          Column(children: [
-            Center(
-              child: Container(
-                width: screenWidth * 0.2,
-                height: screenHeight * 0.09,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(59),
+          Column(
+            children: [
+              Center(
+                child: Container(
+                  width: screenWidth * 0.2,
+                  height: screenHeight * 0.09,
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(59),
+                    ),
+                    border: Border.all(
+                      color: const Color(0xff8e9fcc),
+                      width: 1,
+                    ),
                   ),
-                  border: Border.all(
-                    color: const Color(0xff8e9fcc),
-                    width: 1,
-                  ),
+                  child: Image.asset("assets/images/Fire.png"),
                 ),
-                child: Image.asset("assets/images/Fire.png"),
               ),
-            ),
-            Text(
-              title,
-              style: const TextStyle(
-                fontSize: 12,
-                color: Color(0xFF8E9FCC),
+              Text(
+                title,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Color(0xFF8E9FCC),
+                ),
               ),
-            ),
-            // const BottomBar(),
-          ]),
+              // const BottomBar(),
+            ],
+          ),
           Positioned(
             top: 0,
             right: screenWidth * 0.05,
@@ -88,7 +90,7 @@ class _SecondLockState extends State<SecondLock> {
     ];
     return SizedBox(
       width: screenWidth,
-      height: screenHeight * 0.347,
+      height: screenHeight * 0.32,
       child: GridView.builder(
         itemCount: locks.length,
         primary: false,

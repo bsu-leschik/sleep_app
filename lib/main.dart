@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/widget/type_music.dart';
 import 'current_mix/current_mix.dart';
 import 'current_mix/widgets/show_dialog.dart';
 import 'fiveth_frame/widget/bottom_bar.dart';
@@ -15,14 +16,21 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(create: (context) => DataSlider()),
+        ChangeNotifierProvider(
+          create: (context) => DataSlider(),
+        ),
+        ChangeNotifierProvider<TypeMusic>(
+          create: (context) => TypeMusic(),
+        ),
       ],
       child: MaterialApp(
         initialRoute: "/",
@@ -37,7 +45,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-          useMaterial3: true,
+          useMaterial3: false,
           primarySwatch: Colors.blue,
         ),
         // home: const OnBoardingWidget(),

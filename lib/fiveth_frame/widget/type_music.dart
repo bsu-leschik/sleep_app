@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class TypeMusic extends StatefulWidget {
-  const TypeMusic({super.key});
+class TypeMusic extends StatefulWidget with ChangeNotifier {
+  TypeMusic({super.key});
 
   @override
   State<TypeMusic> createState() => _TypeMusicState();
@@ -10,7 +10,7 @@ class TypeMusic extends StatefulWidget {
 
 class _TypeMusicState extends State<TypeMusic> {
   Map<String, bool> type = {
-    "All": false,
+    "All": true,
     "Favorite": false,
     "Music": false,
     "Nature": false,

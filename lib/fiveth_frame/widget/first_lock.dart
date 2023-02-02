@@ -2,6 +2,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:sleep_app/data.dart';
 
 class FirstLock extends StatefulWidget {
   const FirstLock({super.key});
@@ -77,9 +79,35 @@ class _GridFirstState extends State<GridFirst> {
 
   @override
   Widget build(BuildContext context) {
+    List ddd = [
+      firstList,
+      twoList,
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+      [],
+    ];
+
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-    List<MuzModOne> activeList = true ? twoList : firstList;
+    List<MuzModOne> activeList = ddd[context
+        .read<DataTypeMusic>()
+        .type
+        .values
+        .map((e) => e)
+        .toList()
+        .indexOf(true)];
+    print(context
+        .read<DataTypeMusic>()
+        .type
+        .values
+        .map((e) => e)
+        .toList()
+        .indexOf(true));
 
     return Container(
       padding: const EdgeInsets.all(16),

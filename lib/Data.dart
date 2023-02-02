@@ -8,3 +8,24 @@ class DataSlider with ChangeNotifier {
     notifyListeners();
   }
 }
+
+class DataTypeMusic with ChangeNotifier {
+  int value = 1;
+  Map<String, bool> type = {
+    "All": true,
+    "Favorite": false,
+    "Music": false,
+    "Nature": false,
+    "Urban": false,
+    "Animals": false,
+    "White noise": false,
+    "Home": false,
+    "Baby": false,
+    "Single": false,
+  };
+  Map get getMap => type;
+  void changeType(newType) {
+    type = newType;
+    notifyListeners();
+  }
+}

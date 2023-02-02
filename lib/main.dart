@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/widget/type_music.dart';
+
 import 'current_mix/current_mix.dart';
 import 'current_mix/widgets/show_dialog.dart';
+import 'data.dart';
 import 'fiveth_frame/widget/bottom_bar.dart';
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
@@ -28,8 +29,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => DataSlider(),
         ),
-        ChangeNotifierProvider<TypeMusic>(
-          create: (context) => TypeMusic(),
+        ChangeNotifierProvider<DataTypeMusic>(
+          create: (_) => DataTypeMusic(),
         ),
       ],
       child: MaterialApp(
@@ -62,34 +63,5 @@ class MyApp extends StatelessWidget {
         // home: const MoonSheepCloud(),
       ),
     );
-  }
-}
-
-class Example extends StatelessWidget {
-  const Example({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        padding: const EdgeInsets.all(8.0),
-        decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(width: 16.0, color: Colors.lightBlue.shade50),
-            bottom: BorderSide(width: 16.0, color: Colors.lightBlue.shade900),
-          ),
-        ),
-        child: const Text('Flutter in the sky', textAlign: TextAlign.center),
-      ),
-    );
-  }
-}
-
-class DataSlider with ChangeNotifier {
-  double _rating1 = 1;
-  double get newRating => _rating1;
-  void changeRating(double newRating) {
-    _rating1 = newRating;
-    notifyListeners();
   }
 }

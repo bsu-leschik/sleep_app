@@ -1,50 +1,68 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 
-class TypeMusic extends StatefulWidget with ChangeNotifier {
-  TypeMusic({super.key});
+import '../../data.dart';
+
+class TypeMusic extends StatefulWidget {
+  const TypeMusic({super.key});
 
   @override
   State<TypeMusic> createState() => _TypeMusicState();
 }
 
 class _TypeMusicState extends State<TypeMusic> {
-  Map<String, bool> type = {
-    "All": true,
-    "Favorite": false,
-    "Music": false,
-    "Nature": false,
-    "Urban": false,
-    "Animals": false,
-    "White noise": false,
-    "Home": false,
-    "Baby": false,
-    "Single": false,
-  };
+  // Map<String, bool> type = {
+  //   "All": true,
+  //   "Favorite": false,
+  //   "Music": false,
+  //   "Nature": false,
+  //   "Urban": false,
+  //   "Animals": false,
+  //   "White noise": false,
+  //   "Home": false,
+  //   "Baby": false,
+  //   "Single": false,
+  // };
+  // Map<String, bool> active = {
+  //   "All": true,
+  //   "Favorite": false,
+  //   "Music": false,
+  //   "Nature": false,
+  //   "Urban": false,
+  //   "Animals": false,
+  //   "White noise": false,
+  //   "Home": false,
+  //   "Baby": false,
+  //   "Single": false,
+  // };
 
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
-
+    Map<String, bool> activeType = true
+        ? context.read<DataTypeMusic>().type
+        : context.read<DataTypeMusic>().type;
     return SizedBox(
       height: screenHeight * 0.085,
       width: screenWidth * 2.5,
       child: ListView.builder(
-        itemCount: type.length,
+        itemCount: activeType.length,
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemBuilder: (context, index) {
-          final key = type.keys.elementAt(index);
+          final key = context.read<DataTypeMusic>().type.keys.elementAt(index);
           return InkWell(
             splashColor: Colors.transparent,
             onTap: () {
-              type.forEach(
+              context.read<DataTypeMusic>().type.forEach(
                 (k, v) {
                   if (k == key) {
-                    type[k] = !type[k]!;
+                    activeType[k] = !activeType[k]!;
+                    context.read<DataTypeMusic>().value = 0;
                   } else {
-                    type[k] = false;
+                    activeType[k] = false;
                   }
                 },
               );
@@ -52,7 +70,7 @@ class _TypeMusicState extends State<TypeMusic> {
             },
             child: CategoryToogle(
               title: key,
-              isSelected: type[key]!,
+              isSelected: activeType[key]!,
             ),
           );
         },
@@ -86,7 +104,7 @@ class CategoryToogle extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Text(
-            title,
+            title + context.watch<DataTypeMusic>().value.toString(),
             textAlign: TextAlign.center,
             style: GoogleFonts.nunito(
               textStyle: TextStyle(

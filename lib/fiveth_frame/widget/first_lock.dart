@@ -101,13 +101,13 @@ class _GridFirstState extends State<GridFirst> {
         .map((e) => e)
         .toList()
         .indexOf(true)];
-    print(context
-        .read<DataTypeMusic>()
-        .type
-        .values
-        .map((e) => e)
-        .toList()
-        .indexOf(true));
+    // print(context
+    //     .read<DataTypeMusic>()
+    //     .type
+    //     .values
+    //     .map((e) => e)
+    //     .toList()
+    //     .indexOf(true));
 
     return Container(
       padding: const EdgeInsets.all(16),

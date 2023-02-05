@@ -1,4 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sleep_app/data.dart';
 
 class GridSecond extends StatelessWidget {
   final String title;
@@ -88,18 +92,42 @@ class _SecondLockState extends State<SecondLock> {
       "Baby",
       "Single",
     ];
+    List<String> adds = [
+      "ALL",
+      "Favorite",
+      "Music",
+      "Nature",
+      "Urban",
+      "Animals",
+      "White noise",
+    ];
+
+    List<String> bbb = [
+      locks.toString(),
+      adds.toString(),
+      [].toString(),
+      [].toString(),
+      [].toString(),
+      [].toString(),
+      [].toString(),
+      [].toString(),
+      [].toString(),
+      [].toString(),
+    ];
+    List<String> vstavka =
+        bbb[context.read<DataLock>().ccc.toList().indexOf(value)];
     return SizedBox(
       width: screenWidth,
       height: screenHeight * 0.32,
       child: GridView.builder(
-        itemCount: locks.length,
+        itemCount: vstavka.length,
         primary: false,
         padding: const EdgeInsets.all(10),
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
         itemBuilder: (BuildContext context, int index) {
           return GridSecond(
-            title: locks[index],
+            title: vstavka[index],
           );
         },
       ),

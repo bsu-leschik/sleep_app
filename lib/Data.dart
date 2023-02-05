@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class DataSlider with ChangeNotifier {
   double _rating1 = 1;
@@ -26,6 +27,26 @@ class DataTypeMusic with ChangeNotifier {
   Map get getMap => type;
   void changeType(newType) {
     type = newType;
+    notifyListeners();
+  }
+}
+
+class DataLock with ChangeNotifier {
+  List<String> ccc = [
+    "ALL",
+    "Favorite",
+    "Music",
+    "Nature",
+    "Urban",
+    "Animals",
+    "White noise",
+    "Home",
+    "Baby",
+    "Single",
+  ];
+  List get getList => ccc;
+  void changeCcc(newCcc) {
+    ccc = newCcc;
     notifyListeners();
   }
 }

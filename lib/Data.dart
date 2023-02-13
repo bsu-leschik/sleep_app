@@ -32,6 +32,7 @@ class DataTypeMusic with ChangeNotifier {
 }
 
 class DataLock with ChangeNotifier {
+  int value = 2;
   List<String> ccc = [
     "ALL",
     "Favorite",

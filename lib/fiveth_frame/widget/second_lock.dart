@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/data.dart';
@@ -92,30 +90,9 @@ class _SecondLockState extends State<SecondLock> {
       "Baby",
       "Single",
     ];
-    List<String> adds = [
-      "ALL",
-      "Favorite",
-      "Music",
-      "Nature",
-      "Urban",
-      "Animals",
-      "White noise",
-    ];
 
-    List<String> bbb = [
-      locks.toString(),
-      adds.toString(),
-      [].toString(),
-      [].toString(),
-      [].toString(),
-      [].toString(),
-      [].toString(),
-      [].toString(),
-      [].toString(),
-      [].toString(),
-    ];
-    List<String> vstavka =
-        bbb[context.read<DataLock>().ccc.toList().indexOf(value)];
+    List<MuzModOne> vstavka =
+        type[context.read<DataLock>().type.values.map((e) => e),];
     return SizedBox(
       width: screenWidth,
       height: screenHeight * 0.32,

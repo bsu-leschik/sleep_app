@@ -91,20 +91,20 @@ class _SecondLockState extends State<SecondLock> {
       "Single",
     ];
 
-    List<MuzModOne> vstavka =
-        type[context.read<DataLock>().type.values.map((e) => e),];
+    // List<MuzModOne> vstavka =
+    //     type[context.read<DataLock>().type.values.map((e) => e),];
     return SizedBox(
       width: screenWidth,
       height: screenHeight * 0.32,
       child: GridView.builder(
-        itemCount: vstavka.length,
+        itemCount: locks.length,
         primary: false,
         padding: const EdgeInsets.all(10),
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
         itemBuilder: (BuildContext context, int index) {
           return GridSecond(
-            title: vstavka[index],
+            title: locks[index],
           );
         },
       ),

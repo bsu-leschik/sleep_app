@@ -78,7 +78,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                             color: Colors.white,
                           ),
                         ),
-                        Text("1")
+                        const Text("1")
                       ],
                     ),
                     const FittedBox(

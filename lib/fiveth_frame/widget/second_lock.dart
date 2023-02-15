@@ -97,14 +97,14 @@ class _SecondLockState extends State<SecondLock> {
       width: screenWidth,
       height: screenHeight * 0.32,
       child: GridView.builder(
-        itemCount: locks.length,
+        itemCount: vstavka.length,
         primary: false,
         padding: const EdgeInsets.all(10),
         gridDelegate:
             const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
         itemBuilder: (BuildContext context, int index) {
           return GridSecond(
-            title: locks[index],
+            title: vstavka[index],
           );
         },
       ),

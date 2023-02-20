@@ -93,6 +93,7 @@ class _SecondLockState extends State<SecondLock> {
 
     // List<MuzModOne> vstavka =
     //     type[context.read<DataLock>().type.values.map((e) => e),];
+    // List<DataLock> vstavka = ccc[context.read<DataLock>().toString().length];
     return SizedBox(
       width: screenWidth,
       height: screenHeight * 0.32,

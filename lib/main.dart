@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        initialRoute: "/",
+        initialRoute: "/fiveframe",
         routes: {
           "/": (context) => const OnBoardingWidget(),
           "/subscribe": (context) => const SubscribeWidget(),

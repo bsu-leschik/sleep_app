@@ -25,7 +25,7 @@ class _FivethFrameState extends State<FivethFrame> {
           SizedBox(
             height: screenHeight * 0.01,
           ),
-          TypeMusic(),
+          const TypeMusic(),
           SizedBox(height: screenHeight * 0.01),
           const FirstLock(),
           Divider(

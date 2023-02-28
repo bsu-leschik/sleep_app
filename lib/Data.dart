@@ -10,25 +10,89 @@ class DataSlider with ChangeNotifier {
   }
 }
 
-class DataTypeMusic with ChangeNotifier {
-  int value = 1;
-  Map<String, bool> type = {
-    "All": true,
-    "Favorite": false,
-    "Music": false,
-    "Nature": false,
-    "Urban": false,
-    "Animals": false,
-    "White noise": false,
-    "Home": false,
-    "Baby": false,
-    "Single": false,
-  };
-  Map get getMap => type;
-  void changeType(newType) {
-    type = newType;
-    notifyListeners();
-  }
+// class DataTypeMusic with ChangeNotifier {
+//   int value = 1;
+//   static const List<Widget> type = <Widget>[
+//     Text("All"),
+//     Text("Favorite"),
+//     Text("Music"),
+//     Text("Nature"),
+//     Text("Urban"),
+//     Text("Animals"),
+//     Text("White noise"),
+//     Text("Home"),
+//     Text("Baby"),
+//     Text("Single"),
+//   ];
+
+//   final List<bool> _selectedType = <bool>[
+//     true,
+//     false,
+//     false,
+//     false,
+//     false,
+//     false,
+//     false,
+//     false,
+//     false,
+//     false,
+//   ];
+// }
+class DataTypeList with ChangeNotifier {
+  List<List<String>> allList = [List.filled(8, [])];
+  List<String> nature = [
+    "Rain",
+    "Fire",
+    "Forest",
+    "Night",
+    "Ocean",
+    "River",
+    "Sea",
+    "Thunder",
+    "Snow",
+    "Waterfall",
+  ];
+  List<String> favourite = [];
+  List<String> music = [];
+  List<String> urban = [
+    "Crowd",
+    "Kids",
+    "Subway",
+    "Train",
+    "Cricket",
+    "Live",
+    "Phone",
+  ];
+  List<String> animals = [
+    "Seagulls",
+    "Cat",
+    "Cows",
+    "Dog",
+    "Dolphins",
+    "Frogs",
+    "Horse",
+    "Owl",
+    "Wolf",
+    "Whale",
+  ];
+  List<String> whiteNoise = [
+    "Microwave",
+    "Metronome",
+  ];
+  List<String> home = [
+    "Hairdryer",
+    "Fan",
+    "Teapot",
+    "Vacuum Cleaner",
+    "Washing Machine",
+    "Watch",
+    "Lullaby",
+    "Music Box",
+    "Refrigirator",
+  ];
+  List<String> baby = [
+    "Whisper",
+  ];
 }
 
 class DataLock with ChangeNotifier {

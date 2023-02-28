@@ -87,7 +87,6 @@ class _TypeMusicState extends State<TypeMusic> {
               //         _selectedType[i] = i == index;
               //       }
               //     });
-
               //   },
               //   child: CategoryToogle(
               //       title: type[index].toString(),
@@ -102,7 +101,7 @@ class _TypeMusicState extends State<TypeMusic> {
                 }
               });
             },
-            renderBorder: true,
+            renderBorder: false,
             borderRadius: const BorderRadius.all(Radius.circular(59)),
             selectedBorderColor: const Color(0xFFFFFFFF),
             disabledBorderColor: const Color(0xFF8E9FCC),

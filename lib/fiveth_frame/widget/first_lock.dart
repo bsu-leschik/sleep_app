@@ -94,13 +94,13 @@ class _GridFirstState extends State<GridFirst> {
 
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-    List<MuzModOne> activeList = ddd[context
-        .read<DataTypeMusic>()
-        .type
-        .values
-        .map((e) => e)
-        .toList()
-        .indexOf(true)];
+    // List<MuzModOne> activeList = ddd[context
+    //     .read<DataTypeMusic>()
+    //     .type
+    //     .values
+    //     .map((e) => e)
+    //     .toList()
+    //     .indexOf(true)];
     // print(context
     //     .read<DataTypeMusic>()
     //     .type
@@ -118,7 +118,7 @@ class _GridFirstState extends State<GridFirst> {
           padding: EdgeInsets.zero,
           dragStartBehavior: DragStartBehavior.start,
           shrinkWrap: false,
-          itemCount: activeList.length,
+          itemCount: firstList.length,
           primary: true,
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 3,
@@ -139,7 +139,7 @@ class _GridFirstState extends State<GridFirst> {
                         SizedBox(
                           width: screenWidth * 0.2,
                           height: screenHeight * 0.09,
-                          child: Image.asset(activeList[index].image),
+                          child: Image.asset(firstList[index].image),
                         ),
                         SizedBox(
                           width: screenWidth * 0.2,
@@ -147,7 +147,7 @@ class _GridFirstState extends State<GridFirst> {
                             child: FittedBox(
                               fit: BoxFit.contain,
                               child: Text(
-                                activeList[index].title,
+                                firstList[index].title,
                                 overflow: TextOverflow.ellipsis,
                                 style: GoogleFonts.nunito(
                                   textStyle: const TextStyle(

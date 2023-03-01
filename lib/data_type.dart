@@ -10,34 +10,34 @@ class DataSlider with ChangeNotifier {
   }
 }
 
-// class DataTypeMusic with ChangeNotifier {
-//   int value = 1;
-//   static const List<Widget> type = <Widget>[
-//     Text("All"),
-//     Text("Favorite"),
-//     Text("Music"),
-//     Text("Nature"),
-//     Text("Urban"),
-//     Text("Animals"),
-//     Text("White noise"),
-//     Text("Home"),
-//     Text("Baby"),
-//     Text("Single"),
-//   ];
+class DataTypeMusic with ChangeNotifier {
+  static const List<Widget> type = <Widget>[
+    Text("All"),
+    Text("Favorite"),
+    Text("Music"),
+    Text("Nature"),
+    Text("Urban"),
+    Text("Animals"),
+    Text("White noise"),
+    Text("Home"),
+    Text("Baby"),
+    Text("Single"),
+  ];
 
-//   final List<bool> _selectedType = <bool>[
-//     true,
-//     false,
-//     false,
-//     false,
-//     false,
-//     false,
-//     false,
-//     false,
-//     false,
-//     false,
-//   ];
-// }
+  final List<bool> _selectedType = <bool>[
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
+}
+
 class DataTypeList with ChangeNotifier {
   List<List<String>> allList = [
     [
@@ -97,7 +97,6 @@ class DataTypeList with ChangeNotifier {
 
   final List<bool> selectedType = <bool>[
     true,
-    false,
     false,
     false,
     false,

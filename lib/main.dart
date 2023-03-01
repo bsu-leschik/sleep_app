@@ -30,8 +30,8 @@ class MyApp extends StatelessWidget {
           create: (context) => DataSlider(),
         ),
         ChangeNotifierProvider<DataTypeList>(
-          create: (_) => DataTypeList(),
-        ),
+          create: (context) => DataTypeList(),
+        )
       ],
       child: MaterialApp(
         initialRoute: "/fiveframe",

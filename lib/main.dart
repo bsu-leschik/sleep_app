@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:sleep_app/Data.dart';
 
 import 'current_mix/current_mix.dart';
 import 'current_mix/widgets/show_dialog.dart';
-import 'data.dart';
 import 'fiveth_frame/widget/bottom_bar.dart';
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => DataSlider(),
         ),
-        ChangeNotifierProvider<DataTypeMusic>(
-          create: (_) => DataTypeMusic(),
+        ChangeNotifierProvider<DataTypeList>(
+          create: (_) => DataTypeList(),
         ),
       ],
       child: MaterialApp(

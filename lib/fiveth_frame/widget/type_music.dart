@@ -166,7 +166,9 @@ class CategoryToogle extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
           child: Text(
-            title + context.watch<DataTypeMusic>().value.toString(),
+            title
+            //  + context.watch<DataTypeList>().value.toString()
+            ,
             textAlign: TextAlign.center,
             style: GoogleFonts.nunito(
               textStyle: TextStyle(

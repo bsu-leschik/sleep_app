@@ -39,59 +39,60 @@ class DataSlider with ChangeNotifier {
 //   ];
 // }
 class DataTypeList with ChangeNotifier {
-  List<List<String>> allList = [List.filled(8, [])];
-  List<String> nature = [
-    "Rain",
-    "Fire",
-    "Forest",
-    "Night",
-    "Ocean",
-    "River",
-    "Sea",
-    "Thunder",
-    "Snow",
-    "Waterfall",
-  ];
-  List<String> favourite = [];
-  List<String> music = [];
-  List<String> urban = [
-    "Crowd",
-    "Kids",
-    "Subway",
-    "Train",
-    "Cricket",
-    "Live",
-    "Phone",
-  ];
-  List<String> animals = [
-    "Seagulls",
-    "Cat",
-    "Cows",
-    "Dog",
-    "Dolphins",
-    "Frogs",
-    "Horse",
-    "Owl",
-    "Wolf",
-    "Whale",
-  ];
-  List<String> whiteNoise = [
-    "Microwave",
-    "Metronome",
-  ];
-  List<String> home = [
-    "Hairdryer",
-    "Fan",
-    "Teapot",
-    "Vacuum Cleaner",
-    "Washing Machine",
-    "Watch",
-    "Lullaby",
-    "Music Box",
-    "Refrigirator",
-  ];
-  List<String> baby = [
-    "Whisper",
+  List<List<String>> allList = [
+    [
+      "Rain",
+      "Fire",
+      "Forest",
+      "Night",
+      "Ocean",
+      "River",
+      "Sea",
+      "Thunder",
+      "Snow",
+      "Waterfall",
+    ],
+    [],
+    [],
+    [
+      "Crowd",
+      "Kids",
+      "Subway",
+      "Train",
+      "Cricket",
+      "Live",
+      "Phone",
+    ],
+    [
+      "Seagulls",
+      "Cat",
+      "Cows",
+      "Dog",
+      "Dolphins",
+      "Frogs",
+      "Horse",
+      "Owl",
+      "Wolf",
+      "Whale",
+    ],
+    [
+      "Microwave",
+      "Metronome",
+    ],
+    [
+      "Hairdryer",
+      "Fan",
+      "Teapot",
+      "Vacuum Cleaner",
+      "Washing Machine",
+      "Watch",
+      "Lullaby",
+      "Music Box",
+      "Refrigirator",
+    ],
+    [
+      "Whisper",
+    ],
   ];
 }
 

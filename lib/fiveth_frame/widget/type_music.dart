@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-
 import '../../data_type.dart';
 
 class TypeMusic extends StatefulWidget {
@@ -12,31 +11,6 @@ class TypeMusic extends StatefulWidget {
 }
 
 class _TypeMusicState extends State<TypeMusic> {
-  static const List<Widget> type = <Widget>[
-    Text("All"),
-    Text("Favorite"),
-    Text("Music"),
-    Text("Nature"),
-    Text("Urban"),
-    Text("Animals"),
-    Text("White noise"),
-    Text("Home"),
-    Text("Baby"),
-  ];
-
-  final List<bool> _selectedType = <bool>[
-    true,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ];
-
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -44,64 +18,61 @@ class _TypeMusicState extends State<TypeMusic> {
     // Map<String, bool> activeType = true
     //     ? context.read<DataTypeMusic>().type
     //     : context.read<DataTypeMusic>().type;
-    return Consumer<DataTypeList>(builder: (context, provider, _) {
-      print("re re");
-      return SizedBox(
-        height: screenHeight * 0.085,
-        width: screenWidth * 2.5,
-        child: ListView.builder(
-          itemCount: type.length,
-          scrollDirection: Axis.horizontal,
-          shrinkWrap: true,
-          itemBuilder: (context, index) {
-            // final key = context.read<DataTypeMusic>().type.keys.elementAt(index);
-            return ToggleButtons(
-              onPressed: (int index) {
-                setState(() {
-                  for (int i = 0; i < _selectedType.length; i++) {
-                    _selectedType[i] = i == index;
-                  }
-                });
-              },
-              renderBorder: false,
-              borderRadius: const BorderRadius.all(Radius.circular(59)),
-              selectedBorderColor: const Color(0xFFFFFFFF),
-              disabledBorderColor: const Color(0xFF8E9FCC),
-              selectedColor: const Color(0xFF281343),
-              fillColor: const Color(0xFFFFFFFF),
-              color: const Color(0xFF8E9FCC),
-              constraints: const BoxConstraints(
-                minHeight: 40.0,
-                minWidth: 80.0,
-              ),
-              isSelected: _selectedType,
-              children: type,
-            );
-
-            // рабочий код, но цвета настроить
-            // InkWell(
-            //   splashColor: Colors.transparent,
-            //   onTap: () {
-            //     context.read<DataTypeMusic>().type.forEach(
-            //       (k, v) {
-            //         if (k == key) {
-            //           activeType[k] = !activeType[k]!;
-            //           context.read<DataTypeMusic>().value = 0;
-            //         } else {
-            //           activeType[k] = false;
-            //         }
-            //       },
-            //     );
-            //     setState(() {});
-            //   },
-            // child: CategoryToogle(
-            //   title: key,
-            //   isSelected: activeType[key]!,
-            //   ),
-          },
-        ),
-      );
-    });
+    return SizedBox(
+      height: screenHeight * 0.085,
+      width: screenWidth * 2.5,
+      child: ListView.builder(
+        itemCount: context.read<DataTypeTopMusic>().length,
+        scrollDirection: Axis.horizontal,
+        shrinkWrap: true,
+        itemBuilder: (context, index) {
+          // final key = context.read<DataTypeMusic>().type.keys.elementAt(index);
+          return ToggleButtons(
+            onPressed: (int index) {
+              setState(() {
+                for (int i = 0;
+                    i < context.read<DataTypeList>().selectedType.length;
+                    i++) {
+                  context.read<DataTypeList>().selectedType[i] = i == index;
+                }
+              });
+            },
+            renderBorder: false,
+            borderRadius: const BorderRadius.all(Radius.circular(59)),
+            selectedBorderColor: const Color(0xFFFFFFFF),
+            disabledBorderColor: const Color(0xFF8E9FCC),
+            selectedColor: const Color(0xFF281343),
+            fillColor: const Color(0xFFFFFFFF),
+            color: const Color(0xFF8E9FCC),
+            constraints: const BoxConstraints(
+              minHeight: 40.0,
+              minWidth: 80.0,
+            ),
+            isSelected: context.read<DataTypeList>().selectedType,
+            children: context.read<DataListWidget>().type,
+          );
+          // InkWell(
+          //   splashColor: Colors.transparent,
+          //   onTap: () {
+          //     context.read<DataTypeMusic>().type.forEach(
+          //       (k, v) {
+          //         if (k == key) {
+          //           activeType[k] = !activeType[k]!;
+          //           context.read<DataTypeMusic>().value = 0;
+          //         } else {
+          //           activeType[k] = false;
+          //         }
+          //       },
+          //     );
+          //     setState(() {});
+          //   },
+          // child: CategoryToogle(
+          //   title: key,
+          //   isSelected: activeType[key]!,
+          //   ),
+        },
+      ),
+    );
   }
 }
 

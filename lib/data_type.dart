@@ -9,34 +9,6 @@ class DataSlider with ChangeNotifier {
   }
 }
 
-// class DataTypeMusic with ChangeNotifier {
-//   static const List<Widget> type = <Widget>[
-//     Text("All"),
-//     Text("Favorite"),
-//     Text("Music"),
-//     Text("Nature"),
-//     Text("Urban"),
-//     Text("Animals"),
-//     Text("White noise"),
-//     Text("Home"),
-//     Text("Baby"),
-//     Text("Single"),
-//   ];
-
-//   final List<bool> _selectedType = <bool>[
-//     true,
-//     false,
-//     false,
-//     false,
-//     false,
-//     false,
-//     false,
-//     false,
-//     false,
-//     false,
-//   ];
-// }
-
 class DataTypeList with ChangeNotifier {
   List<List<String>> allList = [
     [
@@ -104,8 +76,40 @@ class DataTypeList with ChangeNotifier {
     false,
     false,
     false,
+    false,
   ];
-  static const List<String> type = <String>[
+}
+
+class DataListWidget with ChangeNotifier {
+  List<Widget> type = <Widget>[
+    const Text("All"),
+    const Text("Favorite"),
+    const Text("Music"),
+    const Text("Nature"),
+    const Text("Urban"),
+    const Text("Animals"),
+    const Text("White noise"),
+    const Text("Home"),
+    const Text("Baby"),
+    const Text("Single"),
+  ];
+
+  final List<bool> selectedType = <bool>[
+    true,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+    false,
+  ];
+}
+
+class DataTypeTopMusic with ChangeNotifier {
+  static const List<String> topType = <String>[
     "All",
     "Favorite",
     "Music",
@@ -117,25 +121,6 @@ class DataTypeList with ChangeNotifier {
     "Baby",
     "Single",
   ];
-}
 
-// class DataLock with ChangeNotifier {
-//   int value = 2;
-//   List<String> ccc = [
-//     "ALL",
-//     "Favorite",
-//     "Music",
-//     "Nature",
-//     "Urban",
-//     "Animals",
-//     "White noise",
-//     "Home",
-//     "Baby",
-//     "Single",
-//   ];
-//   List get getList => ccc;
-//   void changeCcc(newCcc) {
-//     ccc = newCcc;
-//     notifyListeners();
-//   }
-// }
+  get length => topType.length;
+}

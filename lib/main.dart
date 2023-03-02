@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/data_music.dart';
 import 'current_mix/current_mix.dart';
 import 'current_mix/widgets/show_dialog.dart';
+import 'data_type.dart';
 import 'fiveth_frame/widget/bottom_bar.dart';
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
@@ -29,9 +29,15 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<DataSlider>(
           create: (context) => DataSlider(),
         ),
-        ChangeNotifierProvider<DataType>(
-          create: (context) => DataType(),
-        )
+        ChangeNotifierProvider<DataListWidget>(
+          create: (context) => DataListWidget(),
+        ),
+        ChangeNotifierProvider<DataTypeList>(
+          create: (context) => DataTypeList(),
+        ),
+        ChangeNotifierProvider<DataTypeTopMusic>(
+          create: (context) => DataTypeTopMusic(),
+        ),
       ],
       child: MaterialApp(
         initialRoute: "/subscribe",

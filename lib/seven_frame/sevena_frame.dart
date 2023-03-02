@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/data.dart';
+import '../data_type.dart';
 import '../show_dialog/show_dialog_example.dart';
 
 class Sevena extends StatefulWidget {

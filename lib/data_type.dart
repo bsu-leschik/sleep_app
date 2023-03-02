@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class DataSlider with ChangeNotifier {
   double _rating1 = 1;
@@ -10,33 +9,33 @@ class DataSlider with ChangeNotifier {
   }
 }
 
-class DataTypeMusic with ChangeNotifier {
-  static const List<Widget> type = <Widget>[
-    Text("All"),
-    Text("Favorite"),
-    Text("Music"),
-    Text("Nature"),
-    Text("Urban"),
-    Text("Animals"),
-    Text("White noise"),
-    Text("Home"),
-    Text("Baby"),
-    Text("Single"),
-  ];
+// class DataTypeMusic with ChangeNotifier {
+//   static const List<Widget> type = <Widget>[
+//     Text("All"),
+//     Text("Favorite"),
+//     Text("Music"),
+//     Text("Nature"),
+//     Text("Urban"),
+//     Text("Animals"),
+//     Text("White noise"),
+//     Text("Home"),
+//     Text("Baby"),
+//     Text("Single"),
+//   ];
 
-  final List<bool> _selectedType = <bool>[
-    true,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-  ];
-}
+//   final List<bool> _selectedType = <bool>[
+//     true,
+//     false,
+//     false,
+//     false,
+//     false,
+//     false,
+//     false,
+//     false,
+//     false,
+//     false,
+//   ];
+// }
 
 class DataTypeList with ChangeNotifier {
   List<List<String>> allList = [
@@ -105,6 +104,18 @@ class DataTypeList with ChangeNotifier {
     false,
     false,
     false,
+  ];
+  static const List<String> type = <String>[
+    "All",
+    "Favorite",
+    "Music",
+    "Nature",
+    "Urban",
+    "Animals",
+    "White noise",
+    "Home",
+    "Baby",
+    "Single",
   ];
 }
 

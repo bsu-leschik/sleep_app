@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 
 class DataSlider with ChangeNotifier {
   double _rating1 = 1;
-  // double get newRating => _rating1;
+  double get newRating => _rating1;
   void changeRating(double newRating) {
     _rating1 = newRating;
     notifyListeners();
@@ -11,7 +10,6 @@ class DataSlider with ChangeNotifier {
 }
 
 // class DataTypeMusic with ChangeNotifier {
-//   int value = 1;
 //   static const List<Widget> type = <Widget>[
 //     Text("All"),
 //     Text("Favorite"),
@@ -38,8 +36,9 @@ class DataSlider with ChangeNotifier {
 //     false,
 //   ];
 // }
-class DataTypeList with ChangeNotifier {
-  List<List<String>> allList = [
+
+class DataType with ChangeNotifier {
+  List<List<dynamic>> allList = [
     [
       "Rain",
       "Fire",
@@ -105,20 +104,18 @@ class DataTypeList with ChangeNotifier {
     false,
     false,
     false,
-    false,
   ];
-
-  static const List<Widget> type = <Widget>[
-    Text("All"),
-    Text("Favorite"),
-    Text("Music"),
-    Text("Nature"),
-    Text("Urban"),
-    Text("Animals"),
-    Text("White noise"),
-    Text("Home"),
-    Text("Baby"),
-    Text("Single"),
+  static const List<String> type = <String>[
+    "All",
+    "Favorite",
+    "Music",
+    "Nature",
+    "Urban",
+    "Animals",
+    "White noise",
+    "Home",
+    "Baby",
+    "Single",
   ];
 }
 

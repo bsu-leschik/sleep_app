@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/Data.dart';
-
+import 'package:sleep_app/data_music.dart';
 import 'current_mix/current_mix.dart';
 import 'current_mix/widgets/show_dialog.dart';
 import 'fiveth_frame/widget/bottom_bar.dart';
@@ -11,6 +10,8 @@ import 'premium/sub_widget.dart';
 import 'settings_frame/settings_widget.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   runApp(
     const MyApp(),
   );
@@ -23,18 +24,17 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
+        ChangeNotifierProvider<DataSlider>(
           create: (context) => DataSlider(),
         ),
-        ChangeNotifierProvider<DataTypeList>(
-          create: (context) => DataTypeList(),
+        ChangeNotifierProvider<DataType>(
+          create: (context) => DataType(),
         )
       ],
       child: MaterialApp(
-        initialRoute: "/fiveframe",
+        initialRoute: "/subscribe",
         routes: {
           "/": (context) => const OnBoardingWidget(),
           "/subscribe": (context) => const SubscribeWidget(),

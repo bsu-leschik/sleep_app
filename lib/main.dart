@@ -38,6 +38,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<DataTypeTopMusic>(
           create: (context) => DataTypeTopMusic(),
         ),
+        ChangeNotifierProvider<TabBarTypeMusic>(
+          create: (context) => TabBarTypeMusic(),
+        ),
       ],
       child: MaterialApp(
         initialRoute: "/subscribe",

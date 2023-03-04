@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class DataSlider with ChangeNotifier {
+class DataSlider extends ChangeNotifier {
   double _rating1 = 1;
   // double get newRating => _rating1;
   void changeRating(double newRating) {
@@ -9,7 +9,7 @@ class DataSlider with ChangeNotifier {
   }
 }
 
-class DataTypeList with ChangeNotifier {
+class DataTypeList extends ChangeNotifier {
   List<List<String>> allList = [
     [
       "Rain",
@@ -80,7 +80,7 @@ class DataTypeList with ChangeNotifier {
   ];
 }
 
-class DataListWidget with ChangeNotifier {
+class DataListWidget extends ChangeNotifier {
   List<Widget> type = <Widget>[
     const Text("All"),
     const Text("Favorite"),
@@ -108,7 +108,7 @@ class DataListWidget with ChangeNotifier {
   ];
 }
 
-class DataTypeTopMusic with ChangeNotifier {
+class DataTypeTopMusic extends ChangeNotifier {
   static const List<String> topType = <String>[
     "All",
     "Favorite",
@@ -123,4 +123,39 @@ class DataTypeTopMusic with ChangeNotifier {
   ];
 
   get length => topType.length;
+}
+
+class TabBarTypeMusic extends ChangeNotifier {
+  List<Widget> tabBar = <Widget>[
+    const Tab(
+      text: "All",
+    ),
+    const Tab(
+      text: "Favorite",
+    ),
+    const Tab(
+      text: "Music",
+    ),
+    const Tab(
+      text: ("Nature"),
+    ),
+    const Tab(
+      text: "Urban",
+    ),
+    const Tab(
+      text: "Animals",
+    ),
+    const Tab(
+      text: "White noise",
+    ),
+    const Tab(
+      text: "Home",
+    ),
+    const Tab(
+      text: "Baby",
+    ),
+    const Tab(
+      text: "Single",
+    ),
+  ];
 }

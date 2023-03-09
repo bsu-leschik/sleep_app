@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sleep_app/fiveth_frame/widget/second_lock.dart';
 
 void main() {
   runApp(const MyApp());
@@ -26,6 +27,61 @@ class MainHome extends StatefulWidget {
 
 class _MainHomeState extends State<MainHome> {
   /// List of Tab Bar Item
+  List<List<String>> allList = [
+    [
+      "Rain",
+      "Fire",
+      "Forest",
+      "Night",
+      "Ocean",
+      "River",
+      "Sea",
+      "Thunder",
+      "Snow",
+      "Waterfall",
+    ],
+    [],
+    [],
+    [
+      "Crowd",
+      "Kids",
+      "Subway",
+      "Train",
+      "Cricket",
+      "Live",
+      "Phone",
+    ],
+    [
+      "Seagulls",
+      "Cat",
+      "Cows",
+      "Dog",
+      "Dolphins",
+      "Frogs",
+      "Horse",
+      "Owl",
+      "Wolf",
+      "Whale",
+    ],
+    [
+      "Microwave",
+      "Metronome",
+    ],
+    [
+      "Hairdryer",
+      "Fan",
+      "Teapot",
+      "Vacuum Cleaner",
+      "Washing Machine",
+      "Watch",
+      "Lullaby",
+      "Music Box",
+      "Refrigirator",
+    ],
+    [
+      "Whisper",
+    ],
+  ];
   List<String> items = [
     "Home",
     "Explore",
@@ -53,12 +109,12 @@ class _MainHomeState extends State<MainHome> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple[100],
+      backgroundColor: const Color(0xFF141733),
 
       /// APPBAR
       appBar: AppBar(
         centerTitle: true,
-        backgroundColor: Colors.deepPurpleAccent,
+        backgroundColor: const Color(0xFF141733),
         title: Text(
           "Custom TabBar",
           style: GoogleFonts.laila(
@@ -91,42 +147,35 @@ class _MainHomeState extends State<MainHome> {
                           },
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 300),
-                            margin: const EdgeInsets.all(5),
+                            margin: const EdgeInsets.only(left: 17),
                             width: 80,
                             height: 45,
                             decoration: BoxDecoration(
                               color: current == index
-                                  ? Colors.white70
-                                  : Colors.white54,
-                              borderRadius: current == index
-                                  ? BorderRadius.circular(15)
-                                  : BorderRadius.circular(10),
-                              border: current == index
-                                  ? Border.all(
-                                      color: Colors.deepPurpleAccent, width: 2)
-                                  : null,
+                                  ? const Color(0xFFFFFFFF)
+                                  : const Color(0xFF141733),
+                              borderRadius: BorderRadius.circular(59),
+                              border: Border.all(
+                                color: const Color(0xFF8E9FCC),
+                              ),
                             ),
                             child: Center(
                               child: Text(
                                 items[index],
-                                style: GoogleFonts.laila(
-                                    fontWeight: FontWeight.w500,
+                                style: GoogleFonts.nunito(
+                                  textStyle: TextStyle(
+                                    height: 21.82 / 16,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
                                     color: current == index
-                                        ? Colors.black
-                                        : Colors.grey),
+                                        ? const Color(0xFF281343)
+                                        : const Color(0xFF8E9FCC),
+                                  ),
+                                ),
                               ),
                             ),
                           ),
                         ),
-                        // Visibility(
-                        //     visible: current == index,
-                        //     child: Container(
-                        //       width: 5,
-                        //       height: 5,
-                        //       decoration: const BoxDecoration(
-                        //           color: Colors.deepPurpleAccent,
-                        //           shape: BoxShape.circle),
-                        //     ))
                       ],
                     );
                   }),
@@ -134,29 +183,22 @@ class _MainHomeState extends State<MainHome> {
 
             /// MAIN BODY
             Container(
+              color: Colors.amber,
               margin: const EdgeInsets.only(top: 30),
               width: double.infinity,
               height: 550,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(
-                    icons[current],
-                    size: 200,
-                    color: Colors.deepPurple,
-                  ),
-                  const SizedBox(
-                    height: 10,
-                  ),
-                  Text(
-                    items[current],
-                    style: GoogleFonts.laila(
-                        fontWeight: FontWeight.w500,
-                        fontSize: 30,
-                        color: Colors.deepPurple),
-                  ),
-                ],
-              ),
+              child: GridView.builder(
+                  itemCount: allList[current].length,
+                  primary: false,
+                  padding: const EdgeInsets.all(10),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3),
+                  itemBuilder: (BuildContext context, int index) {
+                    return GridSecond(
+                      title: allList[current][index],
+                      // .toString(),
+                    );
+                  }),
             ),
           ],
         ),

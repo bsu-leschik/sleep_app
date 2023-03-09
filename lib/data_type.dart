@@ -65,19 +65,18 @@ class DataTypeList extends ChangeNotifier {
       "Whisper",
     ],
   ];
-
-  final List<bool> selectedType = <bool>[
-    true,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
+  List<String> items = [
+    "Home",
+    "Explore",
+    "Search",
+    "Feed",
+    "Post",
+    "Activity",
+    "Setting",
+    "Profile",
   ];
+
+  int current = 0;
 }
 
 class DataListWidget extends ChangeNotifier {

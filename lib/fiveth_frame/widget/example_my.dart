@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/widget/second_lock.dart';
+
+import '../../data_type.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +14,16 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MainHome(),
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider<DataTypeList>(
+          create: (context) => DataTypeList(),
+        )
+      ],
+      child: const MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: MainHome(),
+      ),
     );
   }
 }
@@ -27,85 +37,7 @@ class MainHome extends StatefulWidget {
 
 class _MainHomeState extends State<MainHome> {
   /// List of Tab Bar Item
-  List<List<String>> allList = [
-    [
-      "Rain",
-      "Fire",
-      "Forest",
-      "Night",
-      "Ocean",
-      "River",
-      "Sea",
-      "Thunder",
-      "Snow",
-      "Waterfall",
-    ],
-    [],
-    [],
-    [
-      "Crowd",
-      "Kids",
-      "Subway",
-      "Train",
-      "Cricket",
-      "Live",
-      "Phone",
-    ],
-    [
-      "Seagulls",
-      "Cat",
-      "Cows",
-      "Dog",
-      "Dolphins",
-      "Frogs",
-      "Horse",
-      "Owl",
-      "Wolf",
-      "Whale",
-    ],
-    [
-      "Microwave",
-      "Metronome",
-    ],
-    [
-      "Hairdryer",
-      "Fan",
-      "Teapot",
-      "Vacuum Cleaner",
-      "Washing Machine",
-      "Watch",
-      "Lullaby",
-      "Music Box",
-      "Refrigirator",
-    ],
-    [
-      "Whisper",
-    ],
-  ];
-  List<String> items = [
-    "Home",
-    "Explore",
-    "Search",
-    "Feed",
-    "Post",
-    "Activity",
-    "Setting",
-    "Profile",
-  ];
-
-  /// List of body icon
-  List<IconData> icons = [
-    Icons.home,
-    Icons.explore,
-    Icons.search,
-    Icons.feed,
-    Icons.post_add,
-    Icons.local_activity,
-    Icons.settings,
-    Icons.person
-  ];
   int current = 0;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -134,7 +66,9 @@ class _MainHomeState extends State<MainHome> {
               height: 60,
               child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
-                  itemCount: items.length,
+                  // длинна списка типа музыки
+                  itemCount: context.read<DataTypeList>().items.length,
+                  // (items.length),
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (ctx, index) {
                     return Column(
@@ -161,7 +95,9 @@ class _MainHomeState extends State<MainHome> {
                             ),
                             child: Center(
                               child: Text(
-                                items[index],
+                                //  текст типа музыки
+                                context.read<DataTypeList>().items[index],
+                                // items[index],
                                 style: GoogleFonts.nunito(
                                   textStyle: TextStyle(
                                     height: 21.82 / 16,
@@ -187,16 +123,22 @@ class _MainHomeState extends State<MainHome> {
               width: double.infinity,
               height: 550,
               child: GridView.builder(
-                  itemCount: allList[current].length,
+                  itemCount:
+                      // длинна всего списка с (current) счётчиком
+                      context.read<DataTypeList>().allList[current].length,
+                  // allList[current].length,
                   primary: false,
                   padding: const EdgeInsets.all(10),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3),
                   itemBuilder: (BuildContext context, int index) {
                     return GridSecond(
-                      title: allList[current][index],
-                      // .toString(),
-                    );
+                        //наименование списка музки по счётчику
+                        title: context.read<DataTypeList>().allList[current]
+                            [index]
+                        // allList[current][index],
+                        // .toString(),
+                        );
                   }),
             ),
           ],

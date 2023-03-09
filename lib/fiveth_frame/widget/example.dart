@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/data_type.dart';
+
+import '../../data_type.dart';
 
 void main() => runApp(const MyApp());
 
@@ -14,11 +15,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<TabBarTypeMusic>(
-          create: (context) => TabBarTypeMusic(),
-        ),
-        ChangeNotifierProvider<DataTypeList>(
-          create: (context) => DataTypeList(),
-        ),
+            create: (context) => TabBarTypeMusic())
       ],
       child: const MaterialApp(
         title: _title,
@@ -44,7 +41,10 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 10, vsync: this);
+    _tabController = TabController(
+      length: context.read<TabBarTypeMusic>().scafbar.length,
+      vsync: this,
+    );
   }
 
   @override
@@ -54,11 +54,13 @@ class _MyStatefulWidgetState extends State<MyStatefulWidget>
         title: const Text('TabBar Widget'),
         bottom: TabBar(
             controller: _tabController,
-            tabs: context.read<TabBarTypeMusic>().tabBar),
+            tabs: context.watch<TabBarTypeMusic>().tabBar),
       ),
-      body: TabBarView(
-        controller: _tabController,
-        children: context.read<DataTypeList>().allList[index],
+      body: SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: TabBarView(
+            controller: _tabController,
+            children: context.watch<TabBarTypeMusic>().scafbar),
       ),
     );
   }

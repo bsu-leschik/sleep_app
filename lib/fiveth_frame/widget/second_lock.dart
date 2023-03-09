@@ -99,17 +99,15 @@ class _SecondLockState extends State<SecondLock> {
       width: screenWidth,
       height: screenHeight * 0.32,
       child: GridView.builder(
-        itemCount: context.read<DataTypeTopMusic>().length,
-        primary: false,
-        padding: const EdgeInsets.all(10),
-        gridDelegate:
-            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3),
-        itemBuilder: (BuildContext context, int index) {
-          return GridSecond(
-            title: context.read<DataTypeList>().allList.single.elementAt(index),
-          );
-        },
-      ),
+          itemCount: context.read<DataTypeTopMusic>().length,
+          primary: false,
+          padding: const EdgeInsets.all(10),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3),
+          itemBuilder: (BuildContext context, int index) {
+            return GridSecond(
+                title: context.read<DataTypeList>().allList[index].toString());
+          }),
     );
   }
 }

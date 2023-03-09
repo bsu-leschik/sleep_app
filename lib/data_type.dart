@@ -158,4 +158,36 @@ class TabBarTypeMusic extends ChangeNotifier {
       text: "Single",
     ),
   ];
+  List<Widget> scafbar = <Widget>[
+    const Center(
+      child: Text("It's cloudy here"),
+    ),
+    const Center(
+      child: Text("It's rainy here"),
+    ),
+    const Center(
+      child: Text("It's sunny here"),
+    ),
+    const Center(
+      child: Text("It's cloudy -="),
+    ),
+    const Center(
+      child: Text("It's cloudy +"),
+    ),
+    const Center(
+      child: Text("It's cloudy -"),
+    ),
+    const Center(
+      child: Text("It's cloudy 123"),
+    ),
+    const Center(
+      child: Text("It's cloudy 345"),
+    ),
+    const Center(
+      child: Text("It's cloudy 345"),
+    ),
+    const Center(
+      child: Text("It's cloudy 456"),
+    ),
+  ];
 }

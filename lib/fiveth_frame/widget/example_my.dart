@@ -183,7 +183,6 @@ class _MainHomeState extends State<MainHome> {
 
             /// MAIN BODY
             Container(
-              color: Colors.amber,
               margin: const EdgeInsets.only(top: 30),
               width: double.infinity,
               height: 550,

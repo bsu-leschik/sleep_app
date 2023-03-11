@@ -75,6 +75,7 @@ class SecondLock extends StatefulWidget {
 }
 
 class _SecondLockState extends State<SecondLock> {
+  int current = 0;
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -99,14 +100,14 @@ class _SecondLockState extends State<SecondLock> {
       width: screenWidth,
       height: screenHeight * 0.32,
       child: GridView.builder(
-          itemCount: context.read<DataTypeTopMusic>().length,
+          itemCount: context.read<DataTypeList>().allList[current].length,
           primary: false,
           padding: const EdgeInsets.all(10),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3),
           itemBuilder: (BuildContext context, int index) {
             return GridSecond(
-                title: context.read<DataTypeList>().allList[index].toString());
+                title: context.read<DataTypeList>().allList[current][index]);
           }),
     );
   }

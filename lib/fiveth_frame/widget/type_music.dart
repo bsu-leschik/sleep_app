@@ -11,6 +11,7 @@ class TypeMusic extends StatefulWidget {
 }
 
 class _TypeMusicState extends State<TypeMusic> {
+  int current = 0;
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
@@ -22,34 +23,49 @@ class _TypeMusicState extends State<TypeMusic> {
       height: screenHeight * 0.085,
       width: screenWidth * 2.5,
       child: ListView.builder(
-        itemCount: context.read<DataTypeTopMusic>().length,
+        itemCount: context.read<DataTypeList>().items.length,
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemBuilder: (context, index) {
           // final key = context.read<DataTypeMusic>().type.keys.elementAt(index);
-          return ToggleButtons(
-            onPressed: (int index) {
+          return GestureDetector(
+            onTap: () {
               setState(() {
-                for (int i = 0;
-                    i < context.read<DataTypeList>().selectedType.length;
-                    i++) {
-                  context.read<DataTypeList>().selectedType[i] = i == index;
-                }
+                current = index;
               });
             },
-            renderBorder: false,
-            borderRadius: const BorderRadius.all(Radius.circular(59)),
-            selectedBorderColor: const Color(0xFFFFFFFF),
-            disabledBorderColor: const Color(0xFF8E9FCC),
-            selectedColor: const Color(0xFF281343),
-            fillColor: const Color(0xFFFFFFFF),
-            color: const Color(0xFF8E9FCC),
-            constraints: const BoxConstraints(
-              minHeight: 40.0,
-              minWidth: 80.0,
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 300),
+              margin: const EdgeInsets.only(left: 17),
+              // width: 80,
+              height: 45,
+              decoration: BoxDecoration(
+                color: current == index
+                    ? const Color(0xFFFFFFFF)
+                    : const Color(0xFF141733),
+                borderRadius: BorderRadius.circular(59),
+                border: Border.all(
+                  color: const Color(0xFF8E9FCC),
+                ),
+              ),
+              child: Center(
+                child: Text(
+                  //  текст типа музыки
+                  context.read<DataTypeList>().items[index],
+                  // items[index],
+                  style: GoogleFonts.nunito(
+                    textStyle: TextStyle(
+                      height: 21.82 / 16,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w700,
+                      color: current == index
+                          ? const Color(0xFF281343)
+                          : const Color(0xFF8E9FCC),
+                    ),
+                  ),
+                ),
+              ),
             ),
-            isSelected: context.read<DataTypeList>().selectedType,
-            children: context.read<DataListWidget>().type,
           );
           // InkWell(
           //   splashColor: Colors.transparent,
@@ -121,29 +137,3 @@ class CategoryToogle extends StatelessWidget {
     );
   }
 }
-
-// c 15 String 
-// Map<String, bool> type = {
-  //   "All": true,
-  //   "Favorite": false,
-  //   "Music": false,
-  //   "Nature": false,
-  //   "Urban": false,
-  //   "Animals": false,
-  //   "White noise": false,
-  //   "Home": false,
-  //   "Baby": false,
-  //   "Single": false,
-  // };
-  // Map<String, bool> active = {
-  //   "All": true,
-  //   "Favorite": false,
-  //   "Music": false,
-  //   "Nature": false,
-  //   "Urban": false,
-  //   "Animals": false,
-  //   "White noise": false,
-  //   "Home": false,
-  //   "Baby": false,
-  //   "Single": false,
-  // };

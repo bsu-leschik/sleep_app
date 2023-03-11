@@ -4,6 +4,8 @@ import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/widget/second_lock.dart';
 
 import '../../data_type.dart';
+import 'bar_widget.dart';
+import 'first_lock.dart';
 
 void main() {
   runApp(const MyApp());
@@ -37,9 +39,12 @@ class MainHome extends StatefulWidget {
 
 class _MainHomeState extends State<MainHome> {
   /// List of Tab Bar Item
+
   int current = 0;
   @override
   Widget build(BuildContext context) {
+    final double screenWidth = MediaQuery.of(context).size.width;
+    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: const Color(0xFF141733),
 
@@ -47,23 +52,25 @@ class _MainHomeState extends State<MainHome> {
       appBar: AppBar(
         centerTitle: true,
         backgroundColor: const Color(0xFF141733),
-        title: Text(
-          "Custom TabBar",
-          style: GoogleFonts.laila(
-            fontWeight: FontWeight.w500,
-          ),
-        ),
+        title: const BarWidget(),
+        // Text(
+        //   "Custom TabBar",
+        //   style: GoogleFonts.laila(
+        //     fontWeight: FontWeight.w500,
+        //   ),
+        // ),
       ),
       body: Container(
+        color: const Color(0xFF141733),
         width: double.infinity,
         height: double.infinity,
-        margin: const EdgeInsets.all(5),
         child: Column(
           children: [
             /// CUSTOM TABBAR
-            SizedBox(
+            Container(
+              color: Colors.red,
               width: double.infinity,
-              height: 60,
+              height: 50,
               child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
                   // длинна списка типа музыки
@@ -95,9 +102,9 @@ class _MainHomeState extends State<MainHome> {
                             ),
                             child: Center(
                               child: Text(
+                                textAlign: TextAlign.center,
                                 //  текст типа музыки
                                 context.read<DataTypeList>().items[index],
-                                // items[index],
                                 style: GoogleFonts.nunito(
                                   textStyle: TextStyle(
                                     height: 21.82 / 16,
@@ -116,12 +123,21 @@ class _MainHomeState extends State<MainHome> {
                     );
                   }),
             ),
+            const FirstLock(),
+            Divider(
+              color: const Color(0xFF8E9FCC),
+              thickness: 1,
+              indent: screenWidth * 0.11,
+              endIndent: screenWidth * 0.11,
+            ),
 
             /// MAIN BODY
             Container(
+              padding: EdgeInsets.zero,
+              color: Colors.orange,
               margin: const EdgeInsets.only(top: 30),
               width: double.infinity,
-              height: 550,
+              height: 260,
               child: GridView.builder(
                   itemCount:
                       // длинна всего списка с (current) счётчиком
@@ -130,15 +146,13 @@ class _MainHomeState extends State<MainHome> {
                   primary: false,
                   padding: const EdgeInsets.all(10),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
+                    crossAxisCount: 3,
+                  ),
                   itemBuilder: (BuildContext context, int index) {
                     return GridSecond(
                         //наименование списка музки по счётчику
                         title: context.read<DataTypeList>().allList[current]
-                            [index]
-                        // allList[current][index],
-                        // .toString(),
-                        );
+                            [index]);
                   }),
             ),
           ],

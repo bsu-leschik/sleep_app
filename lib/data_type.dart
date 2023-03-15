@@ -52,6 +52,8 @@ class DataTypeList extends ChangeNotifier {
       "Refrigirator"
           "Whisper",
     ],
+    [],
+    [],
     [
       "Rain",
       "Fire",
@@ -64,8 +66,6 @@ class DataTypeList extends ChangeNotifier {
       "Snow",
       "Waterfall",
     ],
-    [],
-    [],
     [
       "Crowd",
       "Kids",

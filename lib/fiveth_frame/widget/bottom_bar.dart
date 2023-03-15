@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../fiveth_frame.dart';
+import 'example_my.dart';
 
 class BottomBar extends StatelessWidget {
   static const String appTitle = 'Bottom Nav Bar';
@@ -37,7 +38,7 @@ class HomeWidget extends State<InitalScreenWidget> {
           print('Page changes to index $i');
         },
         children: const <Widget>[
-          FivethFrame(),
+          MainHome(),
           // Container(
           //   color: Colors.red,
           // ),

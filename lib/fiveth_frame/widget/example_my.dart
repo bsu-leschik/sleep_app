@@ -7,28 +7,28 @@ import '../../data_type.dart';
 import 'bar_widget.dart';
 import 'first_lock.dart';
 
-void main() {
-  runApp(const MyApp());
-}
+// void main() {
+//   runApp(const MyApp());
+// }
 
-class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+// class MyApp extends StatelessWidget {
+//   const MyApp({Key? key}) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<DataTypeList>(
-          create: (context) => DataTypeList(),
-        )
-      ],
-      child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: MainHome(),
-      ),
-    );
-  }
-}
+//   @override
+//   Widget build(BuildContext context) {
+//     return MultiProvider(
+//       providers: [
+//         ChangeNotifierProvider<DataTypeList>(
+//           create: (context) => DataTypeList(),
+//         )
+//       ],
+//       child: const MaterialApp(
+//         debugShowCheckedModeBanner: false,
+//         home: MainHome(),
+//       ),
+//     );
+//   }
+// }
 
 class MainHome extends StatefulWidget {
   const MainHome({Key? key}) : super(key: key);
@@ -67,8 +67,8 @@ class _MainHomeState extends State<MainHome> {
         child: Column(
           children: [
             /// CUSTOM TABBAR
-            Container(
-              color: Colors.red,
+            SizedBox(
+              // color: Colors.red, цвет для теста
               width: double.infinity,
               height: 50,
               child: ListView.builder(
@@ -134,10 +134,10 @@ class _MainHomeState extends State<MainHome> {
             /// MAIN BODY
             Container(
               padding: EdgeInsets.zero,
-              color: Colors.orange,
+              // color: Colors.orange,
               margin: const EdgeInsets.only(top: 30),
               width: double.infinity,
-              height: 260,
+              height: 294,
               child: GridView.builder(
                   itemCount:
                       // длинна всего списка с (current) счётчиком

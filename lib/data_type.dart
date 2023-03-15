@@ -105,6 +105,7 @@ class DataTypeList extends ChangeNotifier {
     [
       "Whisper",
     ],
+    [],
   ];
   List<String> items = [
     "All",

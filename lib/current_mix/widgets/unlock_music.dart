@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:sleep_app/seven_frame/sevena_frame.dart';
+
+import '../../data_type.dart';
 
 class UnlockMusic extends StatefulWidget {
   const UnlockMusic({super.key});
@@ -13,21 +16,10 @@ class UnlockMusic extends StatefulWidget {
 class _UnlockMusicState extends State<UnlockMusic> {
   @override
   Widget build(BuildContext context) {
-    List<String> unlockMusik = [
-      "Shopen",
-      "Lirique",
-      "Styucaman",
-      "Pop",
-      "Drop",
-      "Hip-Hop",
-      "Rock",
-      "I TD",
-      "Serduchka",
-    ];
-    var lenght = unlockMusik.length;
+    // var lenght = unlockMusik.length;
     return ListView.builder(
       padding: EdgeInsets.zero,
-      itemCount: lenght,
+      itemCount: context.read<DataListCurrentWidget>().unlockMusik.length,
       itemBuilder: (BuildContext context, int index) {
         return Slidable(
           key: UniqueKey(),
@@ -85,7 +77,7 @@ class _UnlockMusicState extends State<UnlockMusic> {
                 ),
               ]),
           child: LikeCurrentMusic(
-            title: unlockMusik[index],
+            title: context.read<DataListCurrentWidget>().unlockMusik[index],
           ),
         );
       },

@@ -29,8 +29,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<DataSlider>(
           create: (context) => DataSlider(),
         ),
-        ChangeNotifierProvider<DataListWidget>(
-          create: (context) => DataListWidget(),
+        ChangeNotifierProvider<DataListCurrentWidget>(
+          create: (context) => DataListCurrentWidget(),
         ),
         ChangeNotifierProvider<DataTypeList>(
           create: (context) => DataTypeList(),

@@ -123,31 +123,18 @@ class DataTypeList extends ChangeNotifier {
   int current = 0;
 }
 
-class DataListWidget extends ChangeNotifier {
-  List<Widget> type = <Widget>[
-    const Text("All"),
-    const Text("Favorite"),
-    const Text("Music"),
-    const Text("Nature"),
-    const Text("Urban"),
-    const Text("Animals"),
-    const Text("White noise"),
-    const Text("Home"),
-    const Text("Baby"),
-    const Text("Single"),
-  ];
-
-  final List<bool> selectedType = <bool>[
-    true,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
-    false,
+class DataListCurrentWidget extends ChangeNotifier {
+  List<String> unlockMusik = [
+    "Shopen",
+    "Lirique",
+    "Styucaman",
+    "Pop",
+    "Drop",
+    "Hip-Hop",
+    "Rock",
+    "I TD",
+    "Serduchka",
+    "For Baby"
   ];
 }
 

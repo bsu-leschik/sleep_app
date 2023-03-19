@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../../data_type.dart';
 
-class GridSecond extends StatelessWidget {
+class GridSecond extends StatefulWidget {
   final String title;
 
   const GridSecond({
@@ -12,66 +12,80 @@ class GridSecond extends StatelessWidget {
   });
 
   @override
+  State<GridSecond> createState() => _GridSecondState();
+}
+
+class _GridSecondState extends State<GridSecond> {
+  @override
   Widget build(BuildContext context) {
-    const bool activeTap = false;
+    bool activeTap = false;
+    List<String> listString = [context.read<DataTypeList>().allList.toString()];
+    List<bool> listBool = listString.map((e) => e == true).toList();
+    void select() {
+      setState(() {
+        listBool;
+        activeTap = !activeTap;
+      });
+    }
+
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
-    return SizedBox(
-      child: Stack(
-        children: [
-          Column(
-            children: [
-              Center(
-                child: GestureDetector(
-                  onTap: () {},
-                  child: Container(
-                    width: screenWidth * 0.2,
-                    height: screenHeight * 0.09,
-                    decoration: BoxDecoration(
-                      color: activeTap ? const Color(0xFF212111) : Colors.red,
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(59),
-                      ),
-                      border: Border.all(
-                        color: activeTap ? const Color(0xFF212111) : Colors.red,
-                        // const Color(0xff8e9fcc),
-                        width: 1,
-                      ),
+    return Stack(
+      children: [
+        Column(
+          children: [
+            Center(
+              child: GestureDetector(
+                onTap: () {
+                  select();
+                },
+                child: Container(
+                  width: screenWidth * 0.2,
+                  height: screenHeight * 0.09,
+                  decoration: BoxDecoration(
+                    color: activeTap ? const Color(0xFF212111) : Colors.red,
+                    borderRadius: const BorderRadius.all(
+                      Radius.circular(59),
                     ),
-                    child: Image.asset("assets/images/Fire.png"),
+                    border: Border.all(
+                      color: activeTap ? const Color(0xFF212111) : Colors.red,
+                      // const Color(0xff8e9fcc),
+                      width: 1,
+                    ),
                   ),
+                  child: Image.asset("assets/images/Fire.png"),
                 ),
               ),
-              Text(
-                title,
-                style: const TextStyle(
-                  fontSize: 12,
-                  color: Color(0xFF8E9FCC),
-                ),
+            ),
+            Text(
+              widget.title,
+              style: const TextStyle(
+                fontSize: 12,
+                color: Color(0xFF8E9FCC),
               ),
-            ],
-          ),
-          Positioned(
-            top: 0,
-            right: screenWidth * 0.05,
-            child: SizedBox(
-              width: screenWidth * 0.07,
-              height: screenHeight * 0.03,
-              child: const CircleAvatar(
-                backgroundColor: Color(0xFF003293),
-                child: FittedBox(
-                  fit: BoxFit.contain,
-                  child: Icon(
-                    Icons.lock,
-                    size: 15,
-                    color: Color(0xFFFFFFFF),
-                  ),
+            ),
+          ],
+        ),
+        Positioned(
+          top: 0,
+          right: screenWidth * 0.05,
+          child: SizedBox(
+            width: screenWidth * 0.07,
+            height: screenHeight * 0.03,
+            child: const CircleAvatar(
+              backgroundColor: Color(0xFF003293),
+              child: FittedBox(
+                fit: BoxFit.contain,
+                child: Icon(
+                  Icons.lock,
+                  size: 15,
+                  color: Color(0xFFFFFFFF),
                 ),
               ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

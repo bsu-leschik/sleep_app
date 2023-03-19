@@ -49,7 +49,6 @@ class GridSecond extends StatelessWidget {
                   color: Color(0xFF8E9FCC),
                 ),
               ),
-              // const BottomBar(),
             ],
           ),
           Positioned(

@@ -76,35 +76,8 @@ class _GridFirstState extends State<GridFirst> {
 
   @override
   Widget build(BuildContext context) {
-    List ddd = [
-      firstList,
-      twoList,
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-      [],
-    ];
-
     final double screenWidth = MediaQuery.of(context).size.width;
     final double screenHeight = MediaQuery.of(context).size.height;
-    // List<MuzModOne> activeList = ddd[context
-    //     .read<DataTypeMusic>()
-    //     .type
-    //     .values
-    //     .map((e) => e)
-    //     .toList()
-    //     .indexOf(true)];
-    // print(context
-    //     .read<DataTypeMusic>()
-    //     .type
-    //     .values
-    //     .map((e) => e)
-    //     .toList()
-    //     .indexOf(true));
 
     return Container(
       padding: const EdgeInsets.all(16),

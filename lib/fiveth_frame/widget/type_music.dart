@@ -16,9 +16,7 @@ class _TypeMusicState extends State<TypeMusic> {
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
-    // Map<String, bool> activeType = true
-    //     ? context.read<DataTypeMusic>().type
-    //     : context.read<DataTypeMusic>().type;
+
     return SizedBox(
       height: screenHeight * 0.085,
       width: screenWidth * 2.5,
@@ -27,7 +25,6 @@ class _TypeMusicState extends State<TypeMusic> {
         scrollDirection: Axis.horizontal,
         shrinkWrap: true,
         itemBuilder: (context, index) {
-          // final key = context.read<DataTypeMusic>().type.keys.elementAt(index);
           return GestureDetector(
             onTap: () {
               setState(() {
@@ -52,7 +49,6 @@ class _TypeMusicState extends State<TypeMusic> {
                 child: Text(
                   //  текст типа музыки
                   context.read<DataTypeList>().items[index],
-                  // items[index],
                   style: GoogleFonts.nunito(
                     textStyle: TextStyle(
                       height: 21.82 / 16,

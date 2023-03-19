@@ -49,8 +49,8 @@ class DataTypeList extends ChangeNotifier {
       "Watch",
       "Lullaby",
       "Music Box",
-      "Refrigirator"
-          "Whisper",
+      "Refrigirator",
+      "Whisper",
     ],
     [],
     [],

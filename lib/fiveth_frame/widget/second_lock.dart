@@ -5,10 +5,15 @@ import '../../data_type.dart';
 
 class GridSecond extends StatelessWidget {
   final String title;
-  const GridSecond({super.key, required this.title});
+
+  const GridSecond({
+    super.key,
+    required this.title,
+  });
 
   @override
   Widget build(BuildContext context) {
+    const bool activeTap = false;
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
     return SizedBox(
@@ -17,19 +22,24 @@ class GridSecond extends StatelessWidget {
           Column(
             children: [
               Center(
-                child: Container(
-                  width: screenWidth * 0.2,
-                  height: screenHeight * 0.09,
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(59),
+                child: GestureDetector(
+                  onTap: () {},
+                  child: Container(
+                    width: screenWidth * 0.2,
+                    height: screenHeight * 0.09,
+                    decoration: BoxDecoration(
+                      color: activeTap ? const Color(0xFF212111) : Colors.red,
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(59),
+                      ),
+                      border: Border.all(
+                        color: activeTap ? const Color(0xFF212111) : Colors.red,
+                        // const Color(0xff8e9fcc),
+                        width: 1,
+                      ),
                     ),
-                    border: Border.all(
-                      color: const Color(0xff8e9fcc),
-                      width: 1,
-                    ),
+                    child: Image.asset("assets/images/Fire.png"),
                   ),
-                  child: Image.asset("assets/images/Fire.png"),
                 ),
               ),
               Text(
@@ -80,22 +90,7 @@ class _SecondLockState extends State<SecondLock> {
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
-    List<String> locks = [
-      "ALL",
-      "Favorite",
-      "Music",
-      "Nature",
-      "Urban",
-      "Animals",
-      "White noise",
-      "Home",
-      "Baby",
-      "Single",
-    ];
 
-    // List<MuzModOne> vstavka =
-    //     type[context.read<DataLock>().type.values.map((e) => e),];
-    // List<DataLock> vstavka = ccc[context.read<DataLock>().toString().length];
     return SizedBox(
       width: screenWidth,
       height: screenHeight * 0.32,
@@ -107,7 +102,8 @@ class _SecondLockState extends State<SecondLock> {
               crossAxisCount: 3),
           itemBuilder: (BuildContext context, int index) {
             return GridSecond(
-                title: context.read<DataTypeList>().allList[current][index]);
+              title: context.read<DataTypeList>().allList[current][index],
+            );
           }),
     );
   }

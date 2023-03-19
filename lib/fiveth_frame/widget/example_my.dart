@@ -7,29 +7,6 @@ import '../../data_type.dart';
 import 'bar_widget.dart';
 import 'first_lock.dart';
 
-// void main() {
-//   runApp(const MyApp());
-// }
-
-// class MyApp extends StatelessWidget {
-//   const MyApp({Key? key}) : super(key: key);
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return MultiProvider(
-//       providers: [
-//         ChangeNotifierProvider<DataTypeList>(
-//           create: (context) => DataTypeList(),
-//         )
-//       ],
-//       child: const MaterialApp(
-//         debugShowCheckedModeBanner: false,
-//         home: MainHome(),
-//       ),
-//     );
-//   }
-// }
-
 class MainHome extends StatefulWidget {
   const MainHome({Key? key}) : super(key: key);
 
@@ -150,6 +127,7 @@ class _MainHomeState extends State<MainHome> {
                   ),
                   itemBuilder: (BuildContext context, int index) {
                     return GridSecond(
+
                         //наименование списка музки по счётчику
                         title: context.read<DataTypeList>().allList[current]
                             [index]);

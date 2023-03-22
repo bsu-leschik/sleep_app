@@ -18,37 +18,32 @@ class GridSecond extends StatefulWidget {
 class _GridSecondState extends State<GridSecond> {
   @override
   Widget build(BuildContext context) {
-    bool activeTap = false;
-    List<String> listString = [context.read<DataTypeList>().allList.toString()];
-    List<bool> listBool = listString.map((e) => e == true).toList();
-    void select() {
-      setState(() {
-        listBool;
-        activeTap = !activeTap;
-      });
-    }
-
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
+    bool activeTap = false;
     return Stack(
       children: [
         Column(
           children: [
             Center(
-              child: GestureDetector(
+              child: InkWell(
                 onTap: () {
-                  select();
+                  setState(() {
+                    activeTap = !activeTap;
+
+                    print("object 1");
+                  });
                 },
                 child: Container(
                   width: screenWidth * 0.2,
                   height: screenHeight * 0.09,
                   decoration: BoxDecoration(
-                    color: activeTap ? const Color(0xFF212111) : Colors.red,
+                    color: (activeTap == true) ? Colors.red : Colors.amber,
                     borderRadius: const BorderRadius.all(
                       Radius.circular(59),
                     ),
                     border: Border.all(
-                      color: activeTap ? const Color(0xFF212111) : Colors.red,
+                      color: const Color(0xFF8E9FCC),
                       // const Color(0xff8e9fcc),
                       width: 1,
                     ),
@@ -91,7 +86,13 @@ class _GridSecondState extends State<GridSecond> {
 }
 
 class SecondLock extends StatefulWidget {
-  const SecondLock({super.key});
+  final ValueChanged<bool> onSelected;
+  final String title;
+  const SecondLock({
+    super.key,
+    required this.onSelected,
+    required this.title,
+  });
 
   @override
   State<SecondLock> createState() => _SecondLockState();
@@ -120,4 +121,74 @@ class _SecondLockState extends State<SecondLock> {
           }),
     );
   }
+}
+
+int checkedIndex = 0;
+
+List cardNames = [
+  'Sports',
+  'Wild Life',
+  'Night',
+  'LandSpace',
+];
+
+@override
+Widget build(BuildContext context) {
+  return Scaffold(
+    body: GridView.builder(
+      padding: const EdgeInsets.all(16),
+      itemCount: cardNames.length,
+      itemBuilder: (BuildContext context, int index) {
+        return buildCard(index);
+      },
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        crossAxisCount: 2,
+      ),
+    ),
+  );
+}
+
+Widget buildCard(int index) {
+  bool checked = index == checkedIndex;
+  String name = cardNames[index];
+  return GestureDetector(
+    onTap: () {
+      setState(() {
+        checkedIndex = index;
+      });
+    },
+    child: Stack(
+      children: <Widget>[
+        Padding(
+          padding: const EdgeInsets.all(16),
+          child: Card(
+            color: checked ? Colors.orange : Colors.white,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Container(
+              child: Center(child: Text(name)),
+            ),
+          ),
+        ),
+        Positioned(
+          top: 12,
+          right: 12,
+          child: Offstage(
+            offstage: !checked,
+            child: Container(
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(width: 2),
+                  shape: BoxShape.circle),
+              child: Icon(
+                Icons.check,
+                color: Colors.green,
+              ),
+            ),
+          ),
+        ),
+      ],
+    ),
+  );
 }

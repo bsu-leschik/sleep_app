@@ -59,20 +59,6 @@ class _GridFirstState extends State<GridFirst> {
       title: "Winter",
     ),
   ];
-  List<MuzModOne> twoList = [
-    MuzModOne(
-      image: "assets/images/music/Mediative.png",
-      title: "Mediative space",
-    ),
-    MuzModOne(
-      image: "assets/images/music/Moonmusic.png",
-      title: "Moon vibes",
-    ),
-    MuzModOne(
-      image: "assets/images/music/Winter.png",
-      title: "Winter",
-    ),
-  ];
 
   @override
   Widget build(BuildContext context) {

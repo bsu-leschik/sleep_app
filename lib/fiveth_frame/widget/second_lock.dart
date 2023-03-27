@@ -121,8 +121,11 @@ class _SecondLockState extends State<SecondLock> {
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3),
           itemBuilder: (BuildContext context, int index) {
-            return GridSecond(
-              title: context.read<DataTypeList>().allList[current][index],
+            return InkWell(
+              onTap: () {},
+              child: GridSecond(
+                title: context.read<DataTypeList>().allList[current][index],
+              ),
             );
           }),
     );

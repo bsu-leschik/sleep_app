@@ -5,10 +5,11 @@ import '../../data_type.dart';
 
 class GridSecond extends StatefulWidget {
   final String title;
-
+  final bool activeTap;
   const GridSecond({
     super.key,
     required this.title,
+    this.activeTap = false,
   });
 
   @override
@@ -16,11 +17,13 @@ class GridSecond extends StatefulWidget {
 }
 
 class _GridSecondState extends State<GridSecond> {
+  // Color _ContainerColor = Colors.transparent;
+  // Color(0xFF9747FF);
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
-    bool activeTap = false;
+
     return Stack(
       children: [
         Column(
@@ -29,8 +32,9 @@ class _GridSecondState extends State<GridSecond> {
               child: InkWell(
                 onTap: () {
                   setState(() {
-                    activeTap = !activeTap;
-
+                    // activeTap
+                    //     ? const Color(0xFF8E9FCC)
+                    //     : const Color(0xFF9747FF);
                     print("object 1");
                   });
                 },
@@ -38,12 +42,14 @@ class _GridSecondState extends State<GridSecond> {
                   width: screenWidth * 0.2,
                   height: screenHeight * 0.09,
                   decoration: BoxDecoration(
-                    color: (activeTap == true) ? Colors.red : Colors.amber,
+                    color: widget.activeTap
+                        ? Colors.transparent
+                        : const Color(0xFF9747FF),
                     borderRadius: const BorderRadius.all(
                       Radius.circular(59),
                     ),
                     border: Border.all(
-                      color: const Color(0xFF8E9FCC),
+                      color: Color(0xFF8E9FCC),
                       // const Color(0xff8e9fcc),
                       width: 1,
                     ),

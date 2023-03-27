@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class DataSlider extends ChangeNotifier {
@@ -8,6 +9,23 @@ class DataSlider extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+// class TimePicker extends ChangeNotifier {
+//   Duration duration = const Duration(hours: 1, minutes: 23);
+//   void _showDialog(Widget child) {
+//     showCupertinoModalPopup(
+//       context: context,
+//       builder: (BuildContext context) => Container(
+//         height: 216,
+//         padding: const EdgeInsets.only(top: 20),
+//         margin: EdgeInsets.only(
+//           bottom: MediaQuery.of(context).viewInsets.bottom,
+//         ),
+//         color: CupertinoColors.systemBackground.resolveFrom(context),
+//       ),
+//     );
+//   }
+// }
 
 class DataTypeList extends ChangeNotifier {
   List<List<String>> allList = [

@@ -31,7 +31,7 @@ class HomeWidget extends State<InitalScreenWidget> {
       body: PageView(
         controller: _navPage,
         onPageChanged: (i) {
-          print('Page changes to index $i');
+          // print('Page changes to index $i');
         },
         children: const <Widget>[
           TotalFrame(),

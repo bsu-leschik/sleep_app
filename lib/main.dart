@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'current_mix/current_mix.dart';
 import 'current_mix/widgets/show_dialog.dart';
 import 'data_type.dart';
+import 'fiveth_frame/data_fiveth.dart';
 import 'fiveth_frame/widget/bottom_bar.dart';
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
@@ -41,6 +42,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<TabBarTypeMusic>(
           create: (context) => TabBarTypeMusic(),
         ),
+        // ChangeNotifierProvider<MuzModeTwo>(
+        //   create: (context) => MuzModeTwo(),
+        // )
       ],
       child: MaterialApp(
         initialRoute: "/fiveframe",

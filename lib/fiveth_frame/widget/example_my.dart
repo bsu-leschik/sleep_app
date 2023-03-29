@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/widget/second_lock.dart';
 
 import '../../data_type.dart';
+import '../data_fiveth.dart';
 import 'bar_widget.dart';
 import 'first_lock.dart';
 
@@ -116,21 +117,101 @@ class _MainHomeState extends State<MainHome> {
               width: double.infinity,
               height: 294,
               child: GridView.builder(
-                  itemCount:
-                      // длинна всего списка с (current) счётчиком
-                      context.read<DataTypeList>().allList[current].length,
-                  // allList[current].length,
+                  itemCount: secondList.length,
+                  // context.read<DataTypeList>().allList[current].length,
                   primary: false,
                   padding: const EdgeInsets.all(10),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 3,
-                  ),
+                      crossAxisCount: 3),
                   itemBuilder: (BuildContext context, int index) {
-                    return GridSecond(
-
-                        //наименование списка музки по счётчику
-                        title: context.read<DataTypeList>().allList[current]
-                            [index]);
+                    return InkWell(
+                      onTap: () {
+                        setState(() {
+                          context
+                                  .read<DataTypeList>()
+                                  .secondList[index]
+                                  .isSelected =
+                              !context
+                                  .read<DataTypeList>()
+                                  .secondList[index]
+                                  .isSelected;
+                          print("object 111");
+                          print(context
+                              .read<DataTypeList>()
+                              .secondList[index]
+                              .isSelected);
+                        });
+                      },
+                      child: Stack(
+                        children: [
+                          Column(
+                            children: [
+                              Center(
+                                child: InkWell(
+                                  // onTap: () {
+                                  //   setState(() {
+                                  //     widget.activeTap = !widget.activeTap;
+                                  //   });
+                                  //   print("object12");
+                                  // },
+                                  child: Container(
+                                    width: screenWidth * 0.2,
+                                    height: screenHeight * 0.09,
+                                    decoration: BoxDecoration(
+                                      color: context
+                                              .watch<DataTypeList>()
+                                              .secondList[index]
+                                              .isSelected
+                                          ? const Color(0xFF9747FF)
+                                          : Colors.transparent,
+                                      borderRadius: const BorderRadius.all(
+                                        Radius.circular(59),
+                                      ),
+                                      border: Border.all(
+                                        color: const Color(0xFF8E9FCC),
+                                        // const Color(0xff8e9fcc),
+                                        width: 1,
+                                      ),
+                                    ),
+                                    child:
+                                        Image.asset("assets/images/Fire.png"),
+                                  ),
+                                ),
+                              ),
+                              Text(
+                                context
+                                    .read<DataTypeList>()
+                                    .secondList[index]
+                                    .title,
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                  color: Color(0xFF8E9FCC),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Positioned(
+                            top: 0,
+                            right: screenWidth * 0.05,
+                            child: SizedBox(
+                              width: screenWidth * 0.07,
+                              height: screenHeight * 0.03,
+                              child: const CircleAvatar(
+                                backgroundColor: Color(0xFF003293),
+                                child: FittedBox(
+                                  fit: BoxFit.contain,
+                                  child: Icon(
+                                    Icons.lock,
+                                    size: 15,
+                                    color: Color(0xFFFFFFFF),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
                   }),
             ),
           ],

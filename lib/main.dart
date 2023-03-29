@@ -43,8 +43,13 @@ class MyApp extends StatelessWidget {
           create: (context) => TabBarTypeMusic(),
         ),
         // ChangeNotifierProvider<MuzModeTwo>(
-        //   create: (context) => MuzModeTwo(),
-        // )
+        //   create: (context) => MuzModeTwo(
+        //     image: '',
+        //     isSelected: false,
+        //     music: '',
+        //     title: '',
+        //   ),
+        // ),
       ],
       child: MaterialApp(
         initialRoute: "/fiveframe",

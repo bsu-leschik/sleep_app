@@ -2,7 +2,7 @@ class MuzModeTwo {
   final String image;
   final String title;
   final String music;
-  final bool isSelected;
+  bool isSelected;
   MuzModeTwo({
     required this.image,
     required this.title,
@@ -11,7 +11,7 @@ class MuzModeTwo {
   });
 }
 
-List<MuzModeTwo> secondList = [
+List<MuzModeTwo> secondList = <MuzModeTwo>[
   MuzModeTwo(
     image: "",
     title: "Rain",

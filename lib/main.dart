@@ -9,12 +9,17 @@ import 'fiveth_frame/widget/bottom_bar.dart';
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
 import 'settings_frame/settings_widget.dart';
+import 'package:device_preview/device_preview.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   runApp(
-    const MyApp(),
+    DevicePreview(
+      enabled: true,
+      tools: const [...DevicePreview.defaultTools],
+      builder: (context) => const MyApp(),
+    ),
   );
 }
 

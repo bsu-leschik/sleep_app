@@ -1,5 +1,5 @@
 class MuzModeTwo {
-  final String image;
+  final String? image;
   final String title;
   final String music;
   bool isSelected;
@@ -248,7 +248,7 @@ List<MuzModeTwo> secondList = <MuzModeTwo>[
   ),
 ];
 
-List<String> items = [
+List<String> allList = [
   "All",
   "Favorite",
   "Music",

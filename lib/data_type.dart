@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import 'fiveth_frame/data_fiveth.dart';
@@ -28,6 +27,7 @@ class DataSlider extends ChangeNotifier {
 //     );
 //   }
 // }
+class Lists extends ChangeNotifier {}
 
 class DataTypeList extends ChangeNotifier {
   List<List<String>> allList = [
@@ -127,6 +127,7 @@ class DataTypeList extends ChangeNotifier {
     ],
     [],
   ];
+
   List<String> items = [
     "All",
     "Favorite",

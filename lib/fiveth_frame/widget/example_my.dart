@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/widget/second_lock.dart';
 import '../../data_type.dart';
 import '../data_fiveth.dart';
 import 'bar_widget.dart';
@@ -45,7 +44,8 @@ class _MainHomeState extends State<MainHome> {
           children: [
             /// CUSTOM TABBAR
             SizedBox(
-              // color: Colors.red, цвет для теста
+              // color: Colors.red,
+              // цвет для теста
               width: double.infinity,
               height: 50,
               child: ListView.builder(

@@ -84,13 +84,14 @@ class _MainHomeState extends State<MainHome> {
                                 context.read<DataTypeList>().items[index],
                                 style: GoogleFonts.nunito(
                                   textStyle: TextStyle(
-                                    height: 21.82 / 16,
-                                    fontSize: 16,
-                                    fontWeight: FontWeight.w700,
-                                    color: current == index
-                                        ? const Color(0xFF281343)
-                                        : const Color(0xFF8E9FCC),
-                                  ),
+                                      height: 21.82 / 16,
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.w700,
+                                      color: current == index
+                                          ? const Color(0xFF281343)
+                                          : Colors.red
+                                      // (0xFF8E9FCC),
+                                      ),
                                 ),
                               ),
                             ),
@@ -114,7 +115,7 @@ class _MainHomeState extends State<MainHome> {
               // color: Colors.orange,
               margin: const EdgeInsets.only(top: 30),
               width: double.infinity,
-              height: 294,
+              height: 311,
               child: GridView.builder(
                   itemCount: secondList.length,
                   // context.read<DataTypeList>().allList[current].length,
@@ -134,11 +135,6 @@ class _MainHomeState extends State<MainHome> {
                                   .read<DataTypeList>()
                                   .secondList[index]
                                   .isSelected;
-                          print("object 111");
-                          print(context
-                              .read<DataTypeList>()
-                              .secondList[index]
-                              .isSelected);
                         });
                       },
                       child: Stack(

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../example_folder/picker.dart';
+
 void main() => runApp(const MyApp());
 
 class MyApp extends StatelessWidget {
@@ -42,7 +44,7 @@ class DialogExample extends StatelessWidget {
               child: const Icon(Icons.close),
             ),
           ),
-          content: const Text("AlertDialog description"),
+          content: const TimerPickerExample(),
           actions: <Widget>[
             TextButton(
               onPressed: () => Navigator.pop(context, "Cancel"),
@@ -55,7 +57,7 @@ class DialogExample extends StatelessWidget {
           ],
         ),
       ),
-      child: const Text("Show Dialog"),
+      child: const Text("Show Dialog Button"),
     );
   }
 }

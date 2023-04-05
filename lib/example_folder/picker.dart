@@ -30,7 +30,7 @@ class _TimerPickerExampleState extends State<TimerPickerExample> {
     showCupertinoModalPopup<void>(
         context: context,
         builder: (BuildContext context) => Container(
-              height: 216,
+              height: 250,
               padding: const EdgeInsets.only(top: 6.0),
               // The bottom margin is provided to align the popup above the system
               // navigation bar.
@@ -120,7 +120,7 @@ class _TimerPickerItem extends StatelessWidget {
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+        padding: const EdgeInsets.symmetric(horizontal: 15.0),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: children,

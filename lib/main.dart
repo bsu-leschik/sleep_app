@@ -42,6 +42,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<TabBarTypeMusic>(
           create: (context) => TabBarTypeMusic(),
         ),
+        ChangeNotifierProvider<TypeListMusic>(
+          create: (context) => TypeListMusic(),
+        ),
+
         // ChangeNotifierProvider<MuzModeTwo>(
         //   create: (context) => MuzModeTwo(
         //     image: '',

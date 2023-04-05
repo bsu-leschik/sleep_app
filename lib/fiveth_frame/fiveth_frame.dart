@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sleep_app/fiveth_frame/widget/example_my.dart';
 
 import 'widget/bar_widget.dart';
 import 'widget/type_music.dart';
@@ -34,7 +35,7 @@ class _FivethFrameState extends State<FivethFrame> {
             indent: screenWidth * 0.11,
             endIndent: screenWidth * 0.11,
           ),
-          const SecondLock(),
+          const MainHome(),
         ],
       ),
     );

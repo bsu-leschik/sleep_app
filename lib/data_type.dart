@@ -381,6 +381,118 @@ class DataTypeList extends ChangeNotifier {
   ];
 }
 
+class TypeListMusic extends ChangeNotifier {
+  List<MuzModeTwo> all = [];
+  List<MuzModeTwo> favorite = [];
+  List<MuzModeTwo> music = [];
+  List<MuzModeTwo> nature = [
+    MuzModeTwo(
+      image: "",
+      title: "Rain",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "Fire",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "Forest",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "Night",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "Ocean",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "River",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "Sea",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "Thunder",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "Snow",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "Waterfall",
+      music: "",
+      isSelected: false,
+    ),
+  ];
+  List<MuzModeTwo> urban = [
+    MuzModeTwo(
+      image: "",
+      title: "Crowd",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "Kids",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "Subway",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "Train",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "Cricket",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "Live",
+      music: "",
+      isSelected: false,
+    ),
+    MuzModeTwo(
+      image: "",
+      title: "Phone",
+      music: "",
+      isSelected: false,
+    ),
+  ];
+}
+
 class DataListCurrentWidget extends ChangeNotifier {
   List<String> unlockMusik = [
     "Shopen",

@@ -117,8 +117,10 @@ class _MainHomeState extends State<MainHome> {
               width: double.infinity,
               height: 311,
               child: GridView.builder(
-                  itemCount: secondList.length,
-                  // context.read<DataTypeList>().allList[current].length,
+                  itemCount:
+                      // secondList.length,
+                      context.read<DataTypeList>().allList[current].length,
+                  // context.read<TypeListMusic>(),
                   primary: false,
                   padding: const EdgeInsets.all(10),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

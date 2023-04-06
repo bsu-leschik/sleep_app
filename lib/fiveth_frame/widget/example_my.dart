@@ -84,14 +84,13 @@ class _MainHomeState extends State<MainHome> {
                                 context.read<DataTypeList>().items[index],
                                 style: GoogleFonts.nunito(
                                   textStyle: TextStyle(
-                                      height: 21.82 / 16,
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w700,
-                                      color: current == index
-                                          ? const Color(0xFF281343)
-                                          : Colors.red
-                                      // (0xFF8E9FCC),
-                                      ),
+                                    height: 21.82 / 16,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w700,
+                                    color: current == index
+                                        ? const Color(0xFF281343)
+                                        : const Color(0xFF8E9FCC),
+                                  ),
                                 ),
                               ),
                             ),
@@ -119,7 +118,7 @@ class _MainHomeState extends State<MainHome> {
               child: GridView.builder(
                   itemCount:
                       // secondList.length,
-                      context.read<DataTypeList>().allList[current].length,
+                      context.read<DataTypeList>().secondList.length,
                   // context.read<TypeListMusic>(),
                   primary: false,
                   padding: const EdgeInsets.all(10),
@@ -131,11 +130,11 @@ class _MainHomeState extends State<MainHome> {
                         setState(() {
                           context
                                   .read<DataTypeList>()
-                                  .secondList[index]
+                                  .secondList[current][index]
                                   .isSelected =
                               !context
                                   .read<DataTypeList>()
-                                  .secondList[index]
+                                  .secondList[current][index]
                                   .isSelected;
                         });
                       },
@@ -157,7 +156,7 @@ class _MainHomeState extends State<MainHome> {
                                     decoration: BoxDecoration(
                                       color: context
                                               .watch<DataTypeList>()
-                                              .secondList[index]
+                                              .secondList[current][index]
                                               .isSelected
                                           ? const Color(0xFF9747FF)
                                           : Colors.transparent,
@@ -178,7 +177,7 @@ class _MainHomeState extends State<MainHome> {
                               Text(
                                 context
                                     .read<DataTypeList>()
-                                    .secondList[index]
+                                    .secondList[current][index]
                                     .title,
                                 style: const TextStyle(
                                   fontSize: 12,

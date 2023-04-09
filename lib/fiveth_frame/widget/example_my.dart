@@ -114,7 +114,7 @@ class _MainHomeState extends State<MainHome> {
               // color: Colors.orange,
               margin: const EdgeInsets.only(top: 30),
               width: double.infinity,
-              height: 311,
+              height: 294,
               child: GridView.builder(
                   itemCount:
                       // secondList.length,

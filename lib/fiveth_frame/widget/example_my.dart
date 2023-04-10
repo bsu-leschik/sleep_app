@@ -156,8 +156,8 @@ class _MainHomeState extends State<MainHome> {
                                     decoration: BoxDecoration(
                                       color: context
                                               .watch<DataTypeList>()
-                                              .secondList[current][index]
-                                              .isSelected
+                                              .secondList[current][index].isSelected
+                                              
                                           ? const Color(0xFF9747FF)
                                           : Colors.transparent,
                                       borderRadius: const BorderRadius.all(

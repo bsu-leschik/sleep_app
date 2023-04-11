@@ -118,7 +118,7 @@ class _MainHomeState extends State<MainHome> {
               child: GridView.builder(
                   itemCount:
                       // secondList.length,
-                      context.read<DataTypeList>().secondList.length,
+                      context.read<DataTypeList>().secondList[current].length,
                   // context.read<TypeListMusic>(),
                   primary: false,
                   padding: const EdgeInsets.all(10),
@@ -157,7 +157,6 @@ class _MainHomeState extends State<MainHome> {
                                       color: context
                                               .watch<DataTypeList>()
                                               .secondList[current][index].isSelected
-                                              
                                           ? const Color(0xFF9747FF)
                                           : Colors.transparent,
                                       borderRadius: const BorderRadius.all(

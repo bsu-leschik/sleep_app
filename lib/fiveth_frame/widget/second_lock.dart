@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../../data_type.dart';
+import '../../class/data_type_list.dart';
+
+
 
 class GridSecond extends StatefulWidget {
   final String title;
@@ -114,14 +116,14 @@ class _SecondLockState extends State<SecondLock> {
       width: screenWidth,
       height: screenHeight * 0.32,
       child: GridView.builder(
-          itemCount: context.read<DataTypeList>().allList[current].length,
+          itemCount: context.read<DataTypeList>().secondList[current].length,
           primary: false,
           padding: const EdgeInsets.all(10),
           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 3),
           itemBuilder: (BuildContext context, int index) {
             return GridSecond(
-              title: context.read<DataTypeList>().allList[current][index],
+              title: context.read<DataTypeList>().secondList[current][index].title,
             );
           }),
     );

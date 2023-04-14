@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../../data_type.dart';
+
+import '../../class/data_type_list.dart';
+
 
 class TypeMusic extends StatefulWidget {
   const TypeMusic({super.key});

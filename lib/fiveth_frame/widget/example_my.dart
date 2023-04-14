@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../../data_type.dart';
-import '../data_fiveth.dart';
+import '../../class/data_type_list.dart';
 import 'bar_widget.dart';
 import 'first_lock.dart';
 
@@ -14,6 +13,7 @@ class MainHome extends StatefulWidget {
 }
 
 class _MainHomeState extends State<MainHome> {
+  
   /// List of Tab Bar Item
 
   int current = 0;
@@ -51,7 +51,8 @@ class _MainHomeState extends State<MainHome> {
               child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
                   // длинна списка типа музыки
-                  itemCount: context.read<DataTypeList>().items.length,
+                  itemCount: 
+                  context.read<DataTypeList>().items.length,
                   // (items.length),
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (ctx, index) {

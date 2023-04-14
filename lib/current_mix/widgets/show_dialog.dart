@@ -16,6 +16,7 @@ class _ShowDialogState extends State<ShowDialog> {
         centerTitle: true,
       ),
       body: Container(
+        color: Colors.red,
         alignment: Alignment.topCenter,
         padding: const EdgeInsets.all(10),
         child: ElevatedButton(

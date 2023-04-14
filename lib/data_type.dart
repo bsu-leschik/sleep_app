@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'fiveth_frame/data_fiveth.dart';
+
 
 class DataSlider extends ChangeNotifier {
   double _rating1 = 1;
@@ -632,18 +632,23 @@ class DataTypeList extends ChangeNotifier {
   ];
 }
 
+class MuzModeTwo {
+  final String? image;
+  final String title;
+  final String music;
+  bool isSelected;
+  MuzModeTwo({
+    required this.image,
+    required this.title,
+    required this.music,
+    required this.isSelected,
+  });
+}
+
+
 class DataListCurrentWidget extends ChangeNotifier {
   List<String> unlockMusik = [
-    "Shopen",
-    "Lirique",
-    "Styucaman",
-    "Pop",
-    "Drop",
-    "Hip-Hop",
-    "Rock",
-    "I TD",
-    "Serduchka",
-    "For Baby"
+    
   ];
 }
 

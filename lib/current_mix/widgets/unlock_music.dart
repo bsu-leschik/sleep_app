@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/data_fiveth.dart';
+
+
 import 'package:sleep_app/seven_frame/sevena_frame.dart';
 
 import '../../data_type.dart';
@@ -19,7 +22,8 @@ class _UnlockMusicState extends State<UnlockMusic> {
     // var lenght = unlockMusik.length;
     return ListView.builder(
       padding: EdgeInsets.zero,
-      itemCount: context.read<DataListCurrentWidget>().unlockMusik.length,
+      itemCount: 
+      context.read<DataListCurrentWidget>().unlockMusik.length,
       itemBuilder: (BuildContext context, int index) {
         return Slidable(
           key: UniqueKey(),
@@ -114,7 +118,7 @@ class _LikeCurrentMusicState extends State<LikeCurrentMusic> {
                   width: screenWidth * 0.2,
                   height: screenHeight * 0.092,
                   decoration: const BoxDecoration(
-                    color: Color(0xff7E44FA),
+                    color: Color(0xFF7E44FA),
                     borderRadius: BorderRadius.all(
                       Radius.circular(57),
                     ),

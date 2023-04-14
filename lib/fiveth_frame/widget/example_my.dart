@@ -154,7 +154,8 @@ class _MainHomeState extends State<MainHome> {
                                     width: screenWidth * 0.2,
                                     height: screenHeight * 0.09,
                                     decoration: BoxDecoration(
-                                      color: context
+                                      color: 
+                                      context
                                               .watch<DataTypeList>()
                                               .secondList[current][index].isSelected
                                           ? const Color(0xFF9747FF)

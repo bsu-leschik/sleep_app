@@ -13,7 +13,7 @@ class _TypeMusicCurrentState extends State<TypeMusicCurrent> {
     "Clear": false,
     "Save mix": false,
   };
-
+  
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;

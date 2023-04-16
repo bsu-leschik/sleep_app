@@ -160,7 +160,7 @@ class _MainHomeState extends State<MainHome> {
                                               .watch<DataTypeList>()
                                               .secondList[current][index].isSelected
                                           ? const Color(0xFF9747FF)
-                                          : Colors.transparent,
+                                          : Colors.red,
                                       borderRadius: const BorderRadius.all(
                                         Radius.circular(59),
                                       ),

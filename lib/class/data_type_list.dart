@@ -116,7 +116,7 @@ class DataTypeList extends ChangeNotifier {
   ];
 
   int current = 0;
-
+  
   List<List<MuzModeTwo>> secondList = [
     [
       MuzModeTwo(

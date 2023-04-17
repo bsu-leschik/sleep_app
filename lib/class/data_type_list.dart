@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sleep_app/models/muz_mode_two.dart';
 
 class DataTypeList extends ChangeNotifier {
+  List<MuzModeTwo> activePlayList = [];
 
   List<List<String>> allList = [
     [
@@ -101,7 +102,6 @@ class DataTypeList extends ChangeNotifier {
     [],
   ];
 
-
   List<String> items = [
     "All",
     "Favorite",
@@ -116,7 +116,7 @@ class DataTypeList extends ChangeNotifier {
   ];
 
   int current = 0;
-  
+
   List<List<MuzModeTwo>> secondList = [
     [
       MuzModeTwo(

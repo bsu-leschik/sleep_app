@@ -13,7 +13,6 @@ class MainHome extends StatefulWidget {
 }
 
 class _MainHomeState extends State<MainHome> {
-  
   /// List of Tab Bar Item
 
   int current = 0;
@@ -51,8 +50,7 @@ class _MainHomeState extends State<MainHome> {
               child: ListView.builder(
                   physics: const BouncingScrollPhysics(),
                   // длинна списка типа музыки
-                  itemCount: 
-                  context.read<DataTypeList>().items.length,
+                  itemCount: context.read<DataTypeList>().items.length,
                   // (items.length),
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (ctx, index) {
@@ -137,6 +135,18 @@ class _MainHomeState extends State<MainHome> {
                                   .read<DataTypeList>()
                                   .secondList[current][index]
                                   .isSelected;
+                          if (context
+                              .read<DataTypeList>()
+                              .secondList[current][index]
+                              .isSelected) {
+                            context.read<DataTypeList>().activePlayList.add(
+                                context.read<DataTypeList>().secondList[current]
+                                    [index]);
+                          } else {
+                            context.read<DataTypeList>().activePlayList.remove(
+                                context.read<DataTypeList>().secondList[current]
+                                    [index]);
+                          }
                         });
                       },
                       child: Stack(
@@ -155,12 +165,12 @@ class _MainHomeState extends State<MainHome> {
                                     width: screenWidth * 0.2,
                                     height: screenHeight * 0.09,
                                     decoration: BoxDecoration(
-                                      color: 
-                                      context
+                                      color: context
                                               .watch<DataTypeList>()
-                                              .secondList[current][index].isSelected
+                                              .secondList[current][index]
+                                              .isSelected
                                           ? const Color(0xFF9747FF)
-                                          : Colors.red,
+                                          : Colors.transparent,
                                       borderRadius: const BorderRadius.all(
                                         Radius.circular(59),
                                       ),

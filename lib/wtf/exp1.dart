@@ -38,7 +38,6 @@ class _UserSymptomState extends State<UserSymptom> {
   }
 
   _showChoseDialog() {
-    
     showModalBottomSheet(
         backgroundColor: const Color(0xffC7CACF),
         isScrollControlled: true,

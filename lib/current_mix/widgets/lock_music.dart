@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/class/data_type_list.dart';
-import 'package:sleep_app/models/muz_mode_two.dart';
 // import 'package:provider/provider.dart';
 // import 'package:sleep_app/data.dart';
 
@@ -88,11 +87,8 @@ class _LockMusicState extends State<LockMusic> {
                                     Text(
                                       context
                                           .read<DataTypeList>()
-                                          .activePlayList
-                                          .add(context
-                                              .read<DataTypeList>()
-                                              .secondList[current][index]
-                                              .title as MuzModeTwo),
+                                          .secondList[current][index]
+                                          .title,
                                       style: GoogleFonts.nunito(
                                         textStyle: const TextStyle(
                                           color: Color(0xff8E9FCC),

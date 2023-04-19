@@ -1,6 +1,6 @@
 class MuzModeTwo {
   final String? image;
-  final String title;
+  String title;
   final String music;
   bool isSelected;
   MuzModeTwo({

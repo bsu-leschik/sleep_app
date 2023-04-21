@@ -31,7 +31,7 @@ class HomeWidget extends State<InitalScreenWidget> {
       body: PageView(
         controller: _navPage,
         onPageChanged: (i) {
-          // print('Page changes to index $i');
+          print('Page changes to index $i');
         },
         children: const <Widget>[
           TotalFrame(),
@@ -49,7 +49,7 @@ class HomeWidget extends State<InitalScreenWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
-              color: Colors.pink,
+              color: Colors.red,
               margin: EdgeInsets.only(
                 left: screenWidth * 0.07,
                 top: screenHeight * 0.009,

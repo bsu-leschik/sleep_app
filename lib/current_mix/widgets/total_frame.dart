@@ -27,18 +27,7 @@ class _TotalFrameState extends State<TotalFrame> {
             height: screenHeight * 0.03,
           ),
           const TypeMusicCurrent(),
-          SizedBox(
-            height: screenHeight * 0.03,
-          ),
           const LockMusic(),
-          SizedBox(
-            height: screenHeight * 0.03,
-          ),
-          SizedBox(
-            height: screenHeight * 0.49,
-            width: screenWidth,
-            child: const UnlockMusic(),
-          ),
         ],
       ),
     );

@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<DataListCurrentWidget>(
           create: (context) => DataListCurrentWidget(),
         ),
-        
+
         ChangeNotifierProvider<DataTypeTopMusic>(
           create: (context) => DataTypeTopMusic(),
         ),
@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<DataTypeList>(
           create: (context) => DataTypeList(),
-          ),
+        ),
 
         // ChangeNotifierProvider<MuzModeTwo>(
         //   create: (context) => MuzModeTwo(

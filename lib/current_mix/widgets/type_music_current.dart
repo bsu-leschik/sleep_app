@@ -13,14 +13,14 @@ class _TypeMusicCurrentState extends State<TypeMusicCurrent> {
     "Clear": false,
     "Save mix": false,
   };
-  
+
   @override
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
     return SizedBox(
-      // color: Colors.red,
+      //color: Colors.red,
       height: screenHeight * 0.085,
       width: screenWidth,
       child: ListView.builder(

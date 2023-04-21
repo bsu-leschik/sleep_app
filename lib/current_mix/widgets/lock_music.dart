@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/class/data_type_list.dart';
@@ -87,7 +88,7 @@ class _LockMusicState extends State<LockMusic> {
                                     Text(
                                       context
                                           .read<DataTypeList>()
-                                          .secondList[current][index]
+                                          .activePlayList[index]
                                           .title,
                                       style: GoogleFonts.nunito(
                                         textStyle: const TextStyle(

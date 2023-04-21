@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:sleep_app/class/data_type_list.dart';
 
 import 'widgets/total_frame.dart';
 
@@ -19,6 +21,14 @@ class InitalScreenWidget extends StatefulWidget {
 }
 
 class HomeWidget extends State<InitalScreenWidget> {
+  final int _counter = context.read<DataTypeList>().activePlayList.length;
+
+  void _incrementCounter() {
+    setState(() {
+      _counter;
+    });
+  }
+
   bool play = false;
 
   final PageController _navPage = PageController(initialPage: 0);
@@ -78,7 +88,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                             color: Colors.white,
                           ),
                         ),
-                        const Text("1")
+                        Text("$_counter")
                       ],
                     ),
                     const FittedBox(

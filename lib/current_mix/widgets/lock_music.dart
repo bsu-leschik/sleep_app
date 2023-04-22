@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/class/data_type_list.dart';
@@ -14,8 +13,8 @@ class LockMusic extends StatefulWidget {
 }
 
 class _LockMusicState extends State<LockMusic> {
-  int _min = 0;
-  int _max = 100;
+  final int _min = 0;
+  final int _max = 100;
   double _value = 1;
   int current = 0;
   @override

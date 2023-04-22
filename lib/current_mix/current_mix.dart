@@ -21,11 +21,12 @@ class InitalScreenWidget extends StatefulWidget {
 }
 
 class HomeWidget extends State<InitalScreenWidget> {
-  final int _counter = context.read<DataTypeList>().activePlayList.length.toInt();
+  final int _counter = 0;
+  // = context.read<DataTypeList>().activePlayList.length.toInt();
 
   void _incrementCounter() {
     setState(() {
-      _counter;
+      int _counter;
     });
   }
 
@@ -70,7 +71,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                 onTap: (() {
                   print("Mix");
                   setState(() {
-                    _navPage.jumpToPage(0);
+                    context.read<DataTypeList>().activePlayList.length.toInt();
                   });
                 }),
                 child: Column(
@@ -88,7 +89,16 @@ class HomeWidget extends State<InitalScreenWidget> {
                             color: Colors.white,
                           ),
                         ),
-                        Text("$_counter")
+                        Container(
+                          alignment: Alignment.center,
+                          width: 30,
+                          height: 23,
+                          decoration: const BoxDecoration(
+                            color: Color(0xFF7E44FA),
+                            borderRadius: BorderRadius.all(Radius.circular(8)),
+                          ),
+                          child: Text("$_counter"),
+                        ),
                       ],
                     ),
                     const FittedBox(

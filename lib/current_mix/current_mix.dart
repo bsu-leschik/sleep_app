@@ -21,7 +21,7 @@ class InitalScreenWidget extends StatefulWidget {
 }
 
 class HomeWidget extends State<InitalScreenWidget> {
-  final int _counter = context.read<DataTypeList>().activePlayList.length;
+  final int _counter = context.read<DataTypeList>().activePlayList.length.toInt();
 
   void _incrementCounter() {
     setState(() {

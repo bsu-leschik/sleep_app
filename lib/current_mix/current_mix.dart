@@ -22,7 +22,7 @@ class InitalScreenWidget extends StatefulWidget {
 
 class HomeWidget extends State<InitalScreenWidget> {
   final int _counter = 0;
-  // = context.read<DataTypeList>().activePlayList.length.toInt();
+  //context.read<DataTypeList>().activePlayList.length.toInt();
 
   void _incrementCounter() {
     setState(() {
@@ -60,7 +60,7 @@ class HomeWidget extends State<InitalScreenWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
-              color: Colors.red,
+              //color: Colors.red,
               margin: EdgeInsets.only(
                 left: screenWidth * 0.07,
                 top: screenHeight * 0.009,
@@ -81,7 +81,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Container(
-                          color: Colors.red,
+                          //color: Colors.red,
                           width: screenWidth * 0.06,
                           height: screenHeight * 0.03,
                           child: Image.asset(

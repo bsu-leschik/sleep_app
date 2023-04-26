@@ -7,8 +7,8 @@ class CurrentAlertDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Container(
-        color: Colors.red,
+      title: SizedBox(
+        //color: Colors.red,
         height: 23,
         width: 279,
         child: Row(

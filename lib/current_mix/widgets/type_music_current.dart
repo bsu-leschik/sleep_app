@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+
+import '../../class/data_type_list.dart';
 
 class TypeMusicCurrent extends StatefulWidget {
   const TypeMusicCurrent({super.key});
@@ -9,6 +12,7 @@ class TypeMusicCurrent extends StatefulWidget {
 }
 
 class _TypeMusicCurrentState extends State<TypeMusicCurrent> {
+  int current = 0;
   Map<String, bool> type = {
     "Clear": false,
     "Save mix": false,
@@ -41,7 +45,10 @@ class _TypeMusicCurrentState extends State<TypeMusicCurrent> {
                   }
                 },
               );
-              setState(() {});
+              setState(() {
+                context.read<DataTypeList>().activePlayList.remove(
+                    context.read<DataTypeList>().secondList[current][index]);
+              });
             },
             child: CategoryToogleCurrent(
               title: key,

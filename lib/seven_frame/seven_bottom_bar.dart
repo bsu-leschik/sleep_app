@@ -186,16 +186,16 @@ class HomeWidget extends State<InitalScreenWidget> {
           onPressed: () {
             setState(() {
               play = !play;
-              // if (play) {
-              //   _player2.pause();
-              // } else {
-              //   l.add(_play1("assets/images/music/Dozhd.mp3", 1));
-              //   _player2.play();
-              // }
+              if (play) {
+                _player2.pause();
+              } else {
+                l.add(_play1("assets/images/music/Dozhd.mp3", 1));
+                _player2.play();
+              }
               l.add(_play1("assets/images/music/Dozhd.mp3", 1));
-              // _player2.setAsset("assets/images/music/Dozhd.mp3");
-              // _player2.play();
-              // _player2.setVolume(1);
+              _player2.setAsset("assets/images/music/Dozhd.mp3");
+              _player2.play();
+              _player2.setVolume(1);
             });
           },
           child: Icon(

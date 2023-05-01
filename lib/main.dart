@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:sleep_app/seven_frame/seven_bottom_bar.dart';
 import 'class/data_type_list.dart';
 import 'current_mix/current_mix.dart';
 import 'current_mix/widgets/show_dialog.dart';
@@ -55,7 +56,7 @@ class MyApp extends StatelessWidget {
         // ),
       ],
       child: MaterialApp(
-        initialRoute: "/fiveframe",
+        initialRoute: "/sevenframe",
         routes: {
           "/": (context) => const OnBoardingWidget(),
           "/subscribe": (context) => const SubscribeWidget(),
@@ -63,6 +64,7 @@ class MyApp extends StatelessWidget {
           "/settings": (context) => const SettingsWidget(),
           "/currentmix": (context) => const CurrentMix(),
           "/showdialog": (context) => const ShowDialog(),
+          "/sevenframe": (context) => const SevenBottomBar(),
         },
         debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',

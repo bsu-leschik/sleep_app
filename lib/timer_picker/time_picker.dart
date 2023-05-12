@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sleep_app/timer_picker/widgets/sleep_time_picker.dart';
 
@@ -11,13 +12,13 @@ class PopupRouteApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CupertinoApp(
-      home: PopupRouteExample(),
+      home: Timer(),
     );
   }
 }
 
-class PopupRouteExample extends StatelessWidget {
-  const PopupRouteExample({super.key});
+class Timer extends StatelessWidget {
+  const Timer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +27,7 @@ class PopupRouteExample extends StatelessWidget {
       body: Center(
         child: OutlinedButton(
           onPressed: () {
-            Navigator.of(context).push(Timer<void>());
+            context.go('/timer');
           },
           child: const Text('Open Timer'),
         ),
@@ -35,7 +36,7 @@ class PopupRouteExample extends StatelessWidget {
   }
 }
 
-class Timer<T> extends PopupRoute<T> {
+class TimerRoute<T> extends PopupRoute<T> {
   @override
   Color? get barrierColor => const Color.fromRGBO(20, 23, 51, 0.5);
 

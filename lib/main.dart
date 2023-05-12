@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:sleep_app/timer_picker/time_picker.dart';
 import 'current_mix/current_mix.dart';
 import 'current_mix/widgets/show_dialog.dart';
 import 'data_type.dart';
@@ -14,12 +16,38 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
   runApp(
-    const MyApp(),
+    MyApp(),
   );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({
+  final GoRouter _router = GoRouter(routes: [
+    GoRoute(path: '/', builder: (context, state) => const OnBoardingWidget()),
+    GoRoute(
+      path: '/subscribe',
+      builder: (context, state) => const SubscribeWidget(),
+    ),
+    GoRoute(
+      path: '/fiveframe',
+      builder: (context, state) => const BottomBar(),
+    ),
+    GoRoute(
+      path: '/settings',
+      builder: (context, state) => const SettingsWidget(),
+    ),
+    GoRoute(
+      path: '/currentmix',
+      builder: (context, state) => const CurrentMix(),
+    ),
+    GoRoute(
+      path: '/showdialog',
+      builder: (context, state) => const ShowDialog(),
+    ),
+    GoRoute(path: '/timer', builder: (context, state) => const Timer()),
+    GoRoute(path: '/bottombar', builder: (context, state) => const BottomBar())
+  ]);
+
+  MyApp({
     Key? key,
   }) : super(key: key);
 
@@ -42,43 +70,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<TabBarTypeMusic>(
           create: (context) => TabBarTypeMusic(),
         ),
-        // ChangeNotifierProvider<MuzModeTwo>(
-        //   create: (context) => MuzModeTwo(
-        //     image: '',
-        //     isSelected: false,
-        //     music: '',
-        //     title: '',
-        //   ),
-        // ),
       ],
-      child: MaterialApp(
-        initialRoute: "/fiveframe",
-        routes: {
-          "/": (context) => const OnBoardingWidget(),
-          "/subscribe": (context) => const SubscribeWidget(),
-          "/fiveframe": (context) => const BottomBar(),
-          "/settings": (context) => const SettingsWidget(),
-          "/currentmix": (context) => const CurrentMix(),
-          "/showdialog": (context) => const ShowDialog(),
-        },
-        debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          useMaterial3: false,
-          primarySwatch: Colors.blue,
-        ),
-        // home: const OnBoardingWidget(),
-        // home: const SubscribeWidget(),
-        // home: const BottomBar(),
-        // home: const FivethFrame(),
-        // home: const FiveFrameScroll(),
-        // home: const SettingsWidget(),
-
-        // home: const CurrentMix(),
-        // home: const Sevena(),
-        // home: const Dialog(),
-        // home: const SevenaBottomBar(),
-        // home: const MoonSheepCloud(),
+      child: MaterialApp.router(
+        routerConfig: _router,
       ),
     );
   }

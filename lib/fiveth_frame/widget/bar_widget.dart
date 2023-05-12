@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BarWidget extends StatelessWidget {
   const BarWidget({super.key});
@@ -39,7 +40,7 @@ class BarWidget extends StatelessWidget {
           backgroundColor: const Color(0xFF003293),
           child: InkWell(
             onTap: () {
-              Navigator.pushNamed(context, "/settings");
+              context.go('/settings');
               // Navigator.of(context).push(
               //   MaterialPageRoute<void>(
               //     builder: (BuildContext context) => const SettingsWidget(),

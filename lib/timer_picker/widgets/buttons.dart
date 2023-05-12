@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sleep_app/timer_picker/sleep_timer.dart';
 import 'package:sleep_app/timer_picker/timer_display.dart';
@@ -122,7 +123,7 @@ class CrossExitButton extends StatelessWidget {
       width: 20,
       child: CupertinoButton(
         padding: EdgeInsets.zero,
-        onPressed: () => Navigator.pop(context),
+        onPressed: () => context.pop(),
         child: const Icon(
           CupertinoIcons.xmark,
           color: Colors.white,

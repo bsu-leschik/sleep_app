@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:sleep_app/current_mix/current_mix.dart';
 import 'widgets/result_widget.dart';
 
@@ -62,11 +63,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                 height: screenHeight * 0.065,
                 child: InkWell(
                   onTap: (() {
-                    Navigator.of(context).push(
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) => const CurrentMix(),
-                      ),
-                    );
+                    context.go('/currentmix');
                   }),
                   child: Column(
                     // пооборачивать колонку в SizedBox и задать размеры!!!

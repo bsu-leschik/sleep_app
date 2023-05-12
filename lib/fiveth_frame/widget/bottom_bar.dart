@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../fiveth_frame.dart';
@@ -59,7 +60,7 @@ class HomeWidget extends State<InitalScreenWidget> {
               height: screenHeight * 0.07,
               child: InkWell(
                 onTap: (() {
-                  Navigator.pushNamed(context, "/currentmix");
+                  context.go('/currentMix');
                 }),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,

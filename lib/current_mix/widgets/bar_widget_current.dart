@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../fiveth_frame/widget/bottom_bar.dart';
 
@@ -38,11 +39,9 @@ class BarWidgetCurrent extends StatelessWidget {
           ),
           child: InkWell(
             onTap: () {
-              Navigator.of(context).pop(
-                MaterialPageRoute<void>(
-                  builder: (BuildContext context) => const BottomBar(),
-                ),
-              );
+              context.pop(MaterialPageRoute<void>(
+                builder: (BuildContext context) => const BottomBar(),
+              ));
             },
             child: const Icon(
               Icons.close,

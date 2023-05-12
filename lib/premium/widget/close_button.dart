@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class CloseButt extends StatelessWidget {
   const CloseButt({super.key});
@@ -11,9 +12,7 @@ class CloseButt extends StatelessWidget {
         color: Color(0xFFFFFFFF),
         size: 20,
       ),
-      onTap: () => {
-        Navigator.pushNamed(context, "/fiveframe"),
-      },
+      onTap: () => {context.go('/fiveframe')},
     );
   }
 }

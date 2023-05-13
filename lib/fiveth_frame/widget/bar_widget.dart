@@ -40,7 +40,7 @@ class BarWidget extends StatelessWidget {
           backgroundColor: const Color(0xFF003293),
           child: InkWell(
             onTap: () {
-              context.go('/settings');
+              context.push('/settings');
               // Navigator.of(context).push(
               //   MaterialPageRoute<void>(
               //     builder: (BuildContext context) => const SettingsWidget(),

@@ -40,7 +40,7 @@ class _SevenFrameState extends State<SevenFrame> {
                         child: InkWell(
                           // alignment: Alignment.topRight,
                           // padding: const EdgeInsets.all(0),
-                          onTap: () => {(print("close"))},
+                          onTap: () => {(debugPrint("close"))},
                           child: const Icon(
                             Icons.close,
                             color: Colors.white,

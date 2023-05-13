@@ -39,7 +39,7 @@ class BarWidgetScroll extends StatelessWidget {
             backgroundColor: const Color(0xFF003293),
             child: InkWell(
               onTap: () {
-                print("Tap on the Settings");
+                debugPrint("Tap on the Settings");
               },
               child: const Icon(
                 Icons.settings,

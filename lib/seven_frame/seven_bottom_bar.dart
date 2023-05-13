@@ -34,14 +34,14 @@ class HomeWidget extends State<InitalScreenWidget> {
     String setAsset,
     double setVolume,
   ) {
-    final AudioPlayer _player2 = AudioPlayer();
-    _player2.setAsset(setAsset);
-    _player2.play();
-    _player2.pause();
-    _player2.setVolume(setVolume);
+    final AudioPlayer player2 = AudioPlayer();
+    player2.setAsset(setAsset);
+    player2.play();
+    player2.pause();
+    player2.setVolume(setVolume);
     // notifyListeners();
 
-    return _player2;
+    return player2;
   }
 
   // final AudioPlayer audioPlayer = AudioPlayer();
@@ -80,7 +80,7 @@ class HomeWidget extends State<InitalScreenWidget> {
       body: PageView(
         controller: _navPage,
         onPageChanged: (i) {
-          print('Page changes to index $i');
+          debugPrint('Page changes to index $i');
         },
         children: <Widget>[
           const SevenFrame(),
@@ -105,7 +105,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                 height: 55,
                 child: InkWell(
                   onTap: (() {
-                    print("Mix");
+                    debugPrint("Mix");
                     setState(() {
                       _navPage.jumpToPage(0);
                     });
@@ -139,7 +139,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                 height: 55,
                 child: InkWell(
                   onTap: (() {
-                    print("Timer");
+                    debugPrint("Timer");
                     setState(() {
                       _player2.stop();
                       for (var element in l) {

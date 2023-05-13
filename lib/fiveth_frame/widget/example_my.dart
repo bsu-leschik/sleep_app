@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/widget/second_lock.dart';
 import '../../data_type.dart';
 import '../data_fiveth.dart';
 import 'bar_widget.dart';
@@ -134,11 +133,12 @@ class _MainHomeState extends State<MainHome> {
                                   .read<DataTypeList>()
                                   .secondList[index]
                                   .isSelected;
-                          print("object 111");
-                          print(context
+                          debugPrint("object 111");
+                          debugPrint(context
                               .read<DataTypeList>()
                               .secondList[index]
-                              .isSelected);
+                              .isSelected
+                              .toString());
                         });
                       },
                       child: Stack(

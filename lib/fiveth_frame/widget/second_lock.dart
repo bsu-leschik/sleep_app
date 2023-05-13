@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/data_fiveth.dart';
-
-import '../../data_type.dart';
 
 class GridSecond extends StatefulWidget {
   final String title;
@@ -30,7 +27,7 @@ class _GridSecondState extends State<GridSecond> {
   Widget build(BuildContext context) {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
-    print(widget.activeTap);
+    debugPrint(widget.activeTap.toString());
     return Stack(
       children: [
         Column(
@@ -129,7 +126,7 @@ class _SecondLockState extends State<SecondLock> {
               onTap: () {
                 setState(() {
                   secondList[index].isSelected = !secondList[index].isSelected;
-                  print("object 111");
+                  debugPrint("object 111");
                 });
               },
               child: GridSecond(

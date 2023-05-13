@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../fiveth_frame.dart';
 import 'example_my.dart';
 
 class BottomBar extends StatelessWidget {
@@ -36,13 +35,10 @@ class HomeWidget extends State<InitalScreenWidget> {
       body: PageView(
         controller: _navPage,
         onPageChanged: (i) {
-          print('Page changes to index $i');
+          debugPrint('Page changes to index $i');
         },
         children: const <Widget>[
           MainHome(),
-          // Container(
-          //   color: Colors.red,
-          // ),
         ],
       ),
       backgroundColor: Colors.transparent,
@@ -60,7 +56,7 @@ class HomeWidget extends State<InitalScreenWidget> {
               height: screenHeight * 0.07,
               child: InkWell(
                 onTap: (() {
-                  context.go('/currentMix');
+                  context.push('/currentMix');
                 }),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -94,7 +90,7 @@ class HomeWidget extends State<InitalScreenWidget> {
               height: screenHeight * 0.07,
               child: InkWell(
                 onTap: (() {
-                  print("Timer");
+                  debugPrint("Timer");
                   setState(
                     () {
                       _navPage.jumpToPage(1);

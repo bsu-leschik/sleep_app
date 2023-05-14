@@ -1,6 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:text_scroll/text_scroll.dart';
 
 class FirstLock extends StatefulWidget {
   const FirstLock({super.key});
@@ -54,10 +55,6 @@ class _GridFirstState extends State<GridFirst> {
       image: "assets/images/music/Winter.png",
       title: "Winter",
     ),
-    MuzModOne(
-      image: "assets/images/music/Winter.png",
-      title: "Winter",
-    ),
   ];
 
   @override
@@ -66,9 +63,9 @@ class _GridFirstState extends State<GridFirst> {
     final double screenHeight = MediaQuery.of(context).size.height;
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(26, 20, 26, 40),
       color: Colors.transparent,
-      height: screenHeight * 0.296,
+      height: 284,
       width: screenWidth,
       child: GridView.builder(
           padding: EdgeInsets.zero,
@@ -86,7 +83,7 @@ class _GridFirstState extends State<GridFirst> {
                 color: Colors.transparent,
                 alignment: Alignment.center,
                 width: screenWidth * 0.287,
-                height: screenHeight * 0.12,
+                height: 102,
                 child: Stack(
                   children: [
                     Column(
@@ -98,20 +95,21 @@ class _GridFirstState extends State<GridFirst> {
                           child: Image.asset(firstList[index].image),
                         ),
                         SizedBox(
-                          width: screenWidth * 0.2,
+                          width: 112,
                           child: Center(
-                            child: FittedBox(
-                              fit: BoxFit.contain,
-                              child: Text(
-                                firstList[index].title,
-                                overflow: TextOverflow.ellipsis,
-                                style: GoogleFonts.nunito(
-                                  textStyle: const TextStyle(
-                                    fontWeight: FontWeight.w400,
-                                    fontSize: 12,
-                                    height: 17.37 / 12,
-                                    color: Color(0xFF8E9FCC),
-                                  ),
+                            child: TextScroll(
+                              delayBefore: const Duration(seconds: 1),
+                              pauseBetween: const Duration(seconds: 3),
+                              fadedBorder: true,
+                              velocity: const Velocity(
+                                  pixelsPerSecond: Offset(30, 0)),
+                              firstList[index].title,
+                              style: GoogleFonts.nunito(
+                                textStyle: const TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                  height: 17.37 / 12,
+                                  color: Color(0xFF8E9FCC),
                                 ),
                               ),
                             ),
@@ -120,7 +118,7 @@ class _GridFirstState extends State<GridFirst> {
                       ],
                     ),
                     Positioned(
-                      right: 0,
+                      right: 14,
                       child: SizedBox(
                         width: screenWidth * 0.07,
                         height: screenHeight * 0.03,

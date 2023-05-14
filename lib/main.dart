@@ -43,7 +43,6 @@ class MyApp extends StatelessWidget {
       builder: (context, state) => const ShowDialog(),
     ),
     GoRoute(path: '/timer', builder: (context, state) => const Timer()),
-    GoRoute(path: '/bottombar', builder: (context, state) => const BottomBar())
   ]);
 
   MyApp({

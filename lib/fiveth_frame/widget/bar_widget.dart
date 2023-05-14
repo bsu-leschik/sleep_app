@@ -11,11 +11,6 @@ class BarWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        // Padding(
-        //   padding: EdgeInsets.only(
-        //     left: screenWidth,
-        //     top: screenHeight,
-        // ),
         const FittedBox(
           fit: BoxFit.contain,
           child: Text(
@@ -29,23 +24,12 @@ class BarWidget extends StatelessWidget {
             ),
           ),
         ),
-        // );
-        // Padding(
-        //   padding: EdgeInsets.only(
-        //     top: screenHeight,
-        //     right: screenWidth,
-        //   ),
         CircleAvatar(
           radius: 20,
           backgroundColor: const Color(0xFF003293),
           child: InkWell(
             onTap: () {
               context.push('/settings');
-              // Navigator.of(context).push(
-              //   MaterialPageRoute<void>(
-              //     builder: (BuildContext context) => const SettingsWidget(),
-              //   ),
-              // );
             },
             child: const Icon(
               Icons.settings,

@@ -109,107 +109,111 @@ class _MainHomeState extends State<MainHome> {
               bottom: 0,
               right: 0,
               left: 0,
-              child: Stack(children: [
-                Container(
-                  //margin: const EdgeInsets.only(top: 30),
-                  width: double.infinity,
-                  height: 200,
-                  child: GridView.builder(
-                      itemCount: secondList.length,
-                      // context.read<DataTypeList>().allList[current].length,
-                      primary: false,
-                      padding: const EdgeInsets.all(10),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 3),
-                      itemBuilder: (BuildContext context, int index) {
-                        return InkWell(
-                          onTap: () {
-                            setState(() {
-                              context
-                                      .read<DataTypeList>()
-                                      .secondList[index]
-                                      .isSelected =
-                                  !context
-                                      .read<DataTypeList>()
-                                      .secondList[index]
-                                      .isSelected;
-                              debugPrint("object 111");
-                              debugPrint(context
-                                  .read<DataTypeList>()
-                                  .secondList[index]
-                                  .isSelected
-                                  .toString());
-                            });
-                          },
-                          child: Stack(
-                            children: [
-                              Column(
-                                children: [
-                                  Center(
-                                    child: InkWell(
-                                      child: Container(
-                                        width: 78,
-                                        height: 78,
-                                        decoration: BoxDecoration(
-                                          color: context
-                                                  .watch<DataTypeList>()
-                                                  .secondList[index]
-                                                  .isSelected
-                                              ? const Color(0xFF9747FF)
-                                              : Colors.transparent,
-                                          borderRadius: const BorderRadius.all(
-                                            Radius.circular(59),
-                                          ),
-                                          border: Border.all(
-                                            color: const Color(0xFF8E9FCC),
-                                            // const Color(0xff8e9fcc),
-                                            width: 1,
-                                          ),
-                                        ),
-                                        child: Image.asset(
-                                            "assets/images/Fire.png"),
-                                      ),
-                                    ),
-                                  ),
-                                  Text(
-                                    context
+              child: SingleChildScrollView(
+                scrollDirection: Axis.vertical,
+                child: Stack(children: [
+                  Container(
+                    //margin: const EdgeInsets.only(top: 30),
+                    width: double.infinity,
+                    height: 200,
+                    child: GridView.builder(
+                        itemCount: secondList.length,
+                        // context.read<DataTypeList>().allList[current].length,
+                        primary: false,
+                        padding: const EdgeInsets.all(10),
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3),
+                        itemBuilder: (BuildContext context, int index) {
+                          return InkWell(
+                            onTap: () {
+                              setState(() {
+                                context
                                         .read<DataTypeList>()
                                         .secondList[index]
-                                        .title,
-                                    style: const TextStyle(
-                                      fontSize: 12,
-                                      color: Color(0xFF8E9FCC),
+                                        .isSelected =
+                                    !context
+                                        .read<DataTypeList>()
+                                        .secondList[index]
+                                        .isSelected;
+                                debugPrint("object 111");
+                                debugPrint(context
+                                    .read<DataTypeList>()
+                                    .secondList[index]
+                                    .isSelected
+                                    .toString());
+                              });
+                            },
+                            child: Stack(
+                              children: [
+                                Column(
+                                  children: [
+                                    Center(
+                                      child: InkWell(
+                                        child: Container(
+                                          width: 78,
+                                          height: 78,
+                                          decoration: BoxDecoration(
+                                            color: context
+                                                    .watch<DataTypeList>()
+                                                    .secondList[index]
+                                                    .isSelected
+                                                ? const Color(0xFF9747FF)
+                                                : Colors.transparent,
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                              Radius.circular(59),
+                                            ),
+                                            border: Border.all(
+                                              color: const Color(0xFF8E9FCC),
+                                              // const Color(0xff8e9fcc),
+                                              width: 1,
+                                            ),
+                                          ),
+                                          child: Image.asset(
+                                              "assets/images/Fire.png"),
+                                        ),
+                                      ),
                                     ),
-                                  ),
-                                ],
-                              ),
-                              Positioned(
-                                top: 0,
-                                right: screenWidth * 0.05,
-                                child: const LockIcon(),
-                              ),
-                            ],
-                          ),
-                        );
-                      }),
-                ),
-                Positioned(
-                    bottom: 0,
-                    child: Container(
-                      width: screenWidth,
-                      height: 117,
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [
-                              Color.fromRGBO(20, 23, 51, 1),
-                              Color.fromRGBO(20, 23, 51, 0)
-                            ],
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter),
-                      ),
-                    ))
-              ]),
+                                    Text(
+                                      context
+                                          .read<DataTypeList>()
+                                          .secondList[index]
+                                          .title,
+                                      style: const TextStyle(
+                                        fontSize: 12,
+                                        color: Color(0xFF8E9FCC),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                Positioned(
+                                  top: 0,
+                                  right: screenWidth * 0.05,
+                                  child: const LockIcon(),
+                                ),
+                              ],
+                            ),
+                          );
+                        }),
+                  ),
+                  Positioned(
+                      bottom: 0,
+                      child: Container(
+                        width: screenWidth,
+                        height: 117,
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [
+                                Color.fromRGBO(20, 23, 51, 1),
+                                Color.fromRGBO(20, 23, 51, 0)
+                              ],
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter),
+                        ),
+                      ))
+                ]),
+              ),
             ),
           ],
         ),

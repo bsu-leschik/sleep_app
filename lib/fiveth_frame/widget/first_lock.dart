@@ -1,8 +1,6 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:sleep_app/fiveth_frame/widget/music_element.dart';
 import 'package:sleep_app/fiveth_frame/widget/types_list.dart';
-import 'package:text_scroll/text_scroll.dart';
 
 class FirstLock extends StatefulWidget {
   const FirstLock({super.key});
@@ -35,26 +33,31 @@ class GridFirst extends StatefulWidget {
 }
 
 class _GridFirstState extends State<GridFirst> {
-  final List<MuzModOne> firstList = [
-    MuzModOne(
-      image: "assets/images/music/Mediative.png",
+  final List<MusicElement> firstList = [
+    const MusicElement(
+      image: Image(image: AssetImage("assets/images/music/Mediative.png")),
       title: "Mediative space",
+      property: SoundProperties.locked,
     ),
-    MuzModOne(
-      image: "assets/images/music/Moonmusic.png",
+    const MusicElement(
+      image: Image(image: AssetImage("assets/images/music/Moonmusic.png")),
       title: "Moon vibes",
+      property: SoundProperties.locked,
     ),
-    MuzModOne(
-      image: "assets/images/music/Peaceful.png",
+    const MusicElement(
+      image: Image(image: AssetImage("assets/images/music/Peaceful.png")),
       title: "Peaceful and calm",
+      property: SoundProperties.locked,
     ),
-    MuzModOne(
-      image: "assets/images/music/Tropical.png",
+    const MusicElement(
+      image: Image(image: AssetImage("assets/images/music/Tropical.png")),
       title: "Tropical",
+      property: SoundProperties.locked,
     ),
-    MuzModOne(
-      image: "assets/images/music/Winter.png",
+    const MusicElement(
+      image: Image(image: AssetImage("assets/images/music/Winter.png")),
       title: "Winter",
+      property: SoundProperties.locked,
     ),
   ];
 

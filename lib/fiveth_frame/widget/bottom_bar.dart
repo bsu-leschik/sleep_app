@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import 'example_my.dart';
+import '../main_page.dart';
 
 class BottomBar extends StatelessWidget {
   static const String appTitle = 'Bottom Nav Bar';

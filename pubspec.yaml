@@ -53,6 +53,7 @@ dependencies:
   flutter_time_picker_spinner: ^2.0.0
   numberpicker: ^2.1.2
   text_scroll: ^0.2.0
+  assets_audio_player: ^3.0.6
 
 dev_dependencies:
   flutter_test:
@@ -83,6 +84,7 @@ flutter:
     - assets/images/music/
     - assets/images/shopping/
     - assets/images/settings/
+    - assets/music/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

@@ -116,14 +116,15 @@ class _MainHomeState extends State<MainHome> {
                       indent: screenWidth * 0.11,
                       endIndent: screenWidth * 0.11,
                     ),
-
-                    /// MAIN BODY
-                    Positioned(
-                      top: 30,
-                      bottom: 0,
-                      right: 0,
-                      left: 0,
-                      child: TypesList(SoundsModel.list),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 40),
+                      child: Positioned(
+                        top: 0,
+                        bottom: 0,
+                        right: 0,
+                        left: 0,
+                        child: TypesList(SoundsModel.list),
+                      ),
                     ),
                   ],
                 ),

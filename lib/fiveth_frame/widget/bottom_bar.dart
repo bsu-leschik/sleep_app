@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sleep_app/timer_picker/time_picker.dart';
 
 import '../main_page.dart';
 
@@ -91,11 +92,7 @@ class HomeWidget extends State<InitalScreenWidget> {
               child: InkWell(
                 onTap: (() {
                   debugPrint("Timer");
-                  setState(
-                    () {
-                      _navPage.jumpToPage(1);
-                    },
-                  );
+                  Navigator.push(context, TimerRoute());
                 }),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,

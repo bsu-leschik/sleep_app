@@ -35,32 +35,36 @@ class TimerDisplay<T> extends PopupRoute<T> {
       Animation<double> secondaryAnimation) {
     return Padding(
         padding: const EdgeInsets.fromLTRB(27, 387, 27, 181),
-        child: Container(
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(30.0),
-            color: const Color.fromRGBO(1, 48, 140, 1),
-            border: Border.all(
-              color: const Color.fromRGBO(126, 68, 250, 1),
-              width: 1,
-            ),
-          ),
-          child: Column(
-            children: [
-              Container(
-                margin: const EdgeInsets.only(bottom: 10, top: 25, right: 25),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: const [
-                    CrossExitButton(),
-                  ],
-                ),
+        child: Scaffold(
+          backgroundColor: Colors.transparent,
+          body: Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(30.0),
+              color: const Color.fromRGBO(1, 48, 140, 1),
+              border: Border.all(
+                color: const Color.fromRGBO(126, 68, 250, 1),
+                width: 1,
               ),
-              Container(
-                  margin: const EdgeInsets.only(bottom: 12), child: timerText),
-              MainButton(
-                  text: const Text("Stop timer"),
-                  callback: () => timerText.stopTimer())
-            ],
+            ),
+            child: Column(
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(bottom: 10, top: 25, right: 25),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: const [
+                      CrossExitButton(),
+                    ],
+                  ),
+                ),
+                Container(
+                    margin: const EdgeInsets.only(bottom: 12),
+                    child: timerText),
+                MainButton(
+                    text: const Text("Stop timer"),
+                    callback: () => timerText.stopTimer())
+              ],
+            ),
           ),
         ));
   }

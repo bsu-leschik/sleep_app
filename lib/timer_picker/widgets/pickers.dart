@@ -10,7 +10,6 @@ class _TimerPickerState extends State<TimerPicker> {
       fontWeight: FontWeight.w500,
       color: Color.fromRGBO(142, 159, 204, 1),
       fontSize: 16,
-      height: 22 / 16,
     ),
   );
   final _activeTextStyle = GoogleFonts.nunito(
@@ -18,7 +17,6 @@ class _TimerPickerState extends State<TimerPicker> {
       fontWeight: FontWeight.w700,
       color: Colors.white,
       fontSize: 16,
-      height: 22 / 16,
     ),
   );
 
@@ -29,12 +27,12 @@ class _TimerPickerState extends State<TimerPicker> {
     if (_currentElement == -1) _currentElement = widget.start;
     return Row(children: [
       NumberPicker(
-        itemCount: 5,
+        itemCount: 7,
         minValue: widget.start,
         maxValue: widget.end,
         zeroPad: true,
         value: _currentElement,
-        itemHeight: 34,
+        itemHeight: 29,
         itemWidth: 34,
         infiniteLoop: widget.isCycled,
         textStyle: _generalTextStyle,

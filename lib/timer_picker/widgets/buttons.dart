@@ -88,7 +88,7 @@ class TimerButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.only(right: 7, bottom: 14),
+          padding: const EdgeInsets.only(right: 7),
           child: MainButton(
               text: const Text("Start"),
               callback: () {
@@ -97,7 +97,7 @@ class TimerButtons extends StatelessWidget {
               }),
         ),
         const Padding(
-          padding: EdgeInsets.only(left: 7, bottom: 14),
+          padding: EdgeInsets.only(left: 7),
           child: TransparentButton(text: Text("Clear")),
         ),
       ],

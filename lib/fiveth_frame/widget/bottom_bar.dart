@@ -41,7 +41,7 @@ class HomeWidget extends State<InitalScreenWidget> {
           MainHome(),
         ],
       ),
-      backgroundColor: Colors.transparent,
+      backgroundColor: const Color.fromRGBO(20, 23, 51, 1),
       bottomNavigationBar: BottomAppBar(
         color: const Color(0xFF01308C),
         shape: const CircularNotchedRectangle(),

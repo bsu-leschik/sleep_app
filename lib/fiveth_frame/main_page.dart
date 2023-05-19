@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/choose_music_bar/choose_music_bar.dart';
 import 'package:sleep_app/fiveth_frame/music_themes/types_list.dart';
 import 'package:sleep_app/fiveth_frame/music_themes/types_list_model.dart';
 import 'package:sleep_app/fiveth_frame/sound_widgets/sounds_model.dart';
-import '../data_type.dart';
-import 'data_fiveth.dart';
 import 'widget/bar_widget.dart';
 
 class MainHome extends StatefulWidget {
@@ -22,9 +19,8 @@ class _MainHomeState extends State<MainHome> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: const Color(0xFF141733),
+      backgroundColor: const Color.fromRGBO(20, 23, 51, 1),
 
       /// APPBAR
       appBar: AppBar(
@@ -34,105 +30,67 @@ class _MainHomeState extends State<MainHome> {
         backgroundColor: const Color(0xFF141733),
         title: const BarWidget(),
       ),
-      body: Container(
-        color: const Color(0xFF141733),
-        width: double.infinity,
-        height: MediaQuery.of(context).size.height,
-        child: Column(
-          children: [
-            /// CUSTOM TABBAR
-            SizedBox(
-              // color: Colors.red, цвет для теста
-              width: double.infinity,
-              height: 72,
-              child: ListView.builder(
-                  physics: const BouncingScrollPhysics(),
-                  // длинна списка типа музыки
-                  itemCount: context.read<DataTypeList>().items.length,
-                  // (items.length),
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (ctx, index) {
-                    return Container(
-                      alignment: Alignment.center,
-                      padding: EdgeInsets.only(top: 15, bottom: 15),
-                      child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            current = index;
-                          });
-                        },
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 300),
-                          margin: const EdgeInsets.only(left: 17),
-                          width: 80,
-                          height: 42,
-                          decoration: BoxDecoration(
-                            color: current == index
-                                ? const Color(0xFFFFFFFF)
-                                : const Color(0xFF141733),
-                            borderRadius: BorderRadius.circular(59),
-                            border: Border.all(
-                              color: const Color(0xFF8E9FCC),
-                            ),
-                          ),
-                          child: Center(
-                            child: Text(
-                              textAlign: TextAlign.center,
-                              //  текст типа музыки
-                              context.read<DataTypeList>().items[index],
-                              style: GoogleFonts.nunito(
-                                textStyle: TextStyle(
-                                  height: 21.82 / 16,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w700,
-                                  color: current == index
-                                      ? const Color(0xFF281343)
-                                      : const Color(0xFF8E9FCC),
-                                ),
-                              ),
-                            ),
-                          ),
+      body: Stack(children: [
+        Container(
+          color: const Color(0xFF141733),
+          width: double.infinity,
+          height: MediaQuery.of(context).size.height,
+          child: Column(
+            children: [
+              const ChooseMusicBar(),
+              Expanded(
+                flex: 1,
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.vertical,
+                  child: Column(
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.fromLTRB(26, 20, 26, 40),
+                        color: Colors.transparent,
+                        height: 284,
+                        width: double.infinity,
+                        child: TypesList(TypesListModel.list),
+                      ),
+                      Divider(
+                        color: const Color.fromRGBO(142, 159, 204, 0.5),
+                        thickness: 1,
+                        indent: screenWidth * 0.11,
+                        endIndent: screenWidth * 0.11,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 40),
+                        child: Positioned(
+                          top: 0,
+                          bottom: 0,
+                          right: 0,
+                          left: 0,
+                          child: TypesList(SoundsModel.list),
                         ),
                       ),
-                    );
-                  }),
-            ),
-            Expanded(
-              flex: 1,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.vertical,
-                child: Column(
-                  children: [
-                    Container(
-                      padding: const EdgeInsets.fromLTRB(26, 20, 26, 40),
-                      color: Colors.transparent,
-                      height: 284,
-                      width: screenWidth,
-                      child: TypesList(TypesListModel.list),
-                    ),
-                    Divider(
-                      color: const Color(0xFF8E9FCC),
-                      thickness: 1,
-                      indent: screenWidth * 0.11,
-                      endIndent: screenWidth * 0.11,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 40),
-                      child: Positioned(
-                        top: 0,
-                        bottom: 0,
-                        right: 0,
-                        left: 0,
-                        child: TypesList(SoundsModel.list),
-                      ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
+        Positioned(
+          height: 200,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          child: Container(
+            width: double.infinity,
+            height: 117,
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(colors: [
+                Color.fromRGBO(20, 23, 51, 1),
+                Color.fromRGBO(20, 23, 51, 0),
+              ], begin: Alignment.bottomCenter, end: Alignment.topCenter),
+            ),
+          ),
+        ),
+      ]),
     );
   }
 }

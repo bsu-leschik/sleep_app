@@ -62,12 +62,6 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<DataTypeList>(
           create: (context) => DataTypeList(),
         ),
-        ChangeNotifierProvider<DataTypeTopMusic>(
-          create: (context) => DataTypeTopMusic(),
-        ),
-        ChangeNotifierProvider<TabBarTypeMusic>(
-          create: (context) => TabBarTypeMusic(),
-        ),
       ],
       child: MaterialApp.router(
         routerConfig: _router,

@@ -3,11 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:numberpicker/numberpicker.dart';
 
 class _TimerPickerState extends State<TimerPicker> {
-  int _currentElement;
-  final int _start;
-  final int _end;
-  final Text _name;
-  final bool _isCycled;
+  int _currentElement = -1;
 
   final _generalTextStyle = GoogleFonts.nunito(
     textStyle: const TextStyle(
@@ -26,21 +22,21 @@ class _TimerPickerState extends State<TimerPicker> {
     ),
   );
 
-  _TimerPickerState(this._start, this._end, this._name, this._isCycled)
-      : _currentElement = _start;
+  _TimerPickerState();
 
   @override
   Widget build(BuildContext context) {
+    if (_currentElement == -1) _currentElement = widget.start;
     return Row(children: [
       NumberPicker(
         itemCount: 5,
-        minValue: _start,
-        maxValue: _end,
+        minValue: widget.start,
+        maxValue: widget.end,
         zeroPad: true,
         value: _currentElement,
         itemHeight: 34,
         itemWidth: 34,
-        infiniteLoop: _isCycled,
+        infiniteLoop: widget.isCycled,
         textStyle: _generalTextStyle,
         selectedTextStyle: _activeTextStyle,
         decoration: BoxDecoration(
@@ -50,25 +46,25 @@ class _TimerPickerState extends State<TimerPicker> {
           _currentElement = value;
         }),
       ),
-      Container(margin: const EdgeInsets.only(left: 7), child: _name),
+      Container(margin: const EdgeInsets.only(left: 7), child: widget.name),
     ]);
   }
 }
 
 class TimerPicker extends StatefulWidget {
-  final _TimerPickerState _state;
-  TimerPicker(
-      {required int start,
-      required int end,
-      required Text name,
-      bool isCycled = false,
-      super.key})
-      : _state = _TimerPickerState(start, end, name, isCycled);
+  final int start;
+  final int end;
+  final Text name;
+  final bool isCycled;
+  const TimerPicker(
+      {required this.start,
+      required this.end,
+      required this.name,
+      this.isCycled = false,
+      super.key});
 
   @override
-  State<TimerPicker> createState() {
-    return _state;
-  }
+  State<TimerPicker> createState() => _TimerPickerState();
 }
 
 class DecoratedTimePicker extends StatelessWidget {

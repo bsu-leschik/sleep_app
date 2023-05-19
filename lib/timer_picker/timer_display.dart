@@ -70,17 +70,14 @@ class TimerDisplay<T> extends PopupRoute<T> {
 }
 
 class _TimerTextState extends State<TimerText> {
-  final TextStyle timerTextStyle;
-  int minutes, seconds;
   Timer? minutesTimer, secondsTimer;
-
-  _TimerTextState(
-      {required this.minutes,
-      required this.seconds,
-      required this.timerTextStyle});
+  int minutes = -1, seconds = -1;
+  _TimerTextState();
 
   @override
   Widget build(BuildContext context) {
+    if (minutes < 0) minutes = widget.minutes;
+    if (seconds < 0) seconds = widget.seconds;
     minutesTimer ??= Timer.periodic(const Duration(minutes: 1), (timer) {
       setState(() {
         minutes--;
@@ -99,7 +96,7 @@ class _TimerTextState extends State<TimerText> {
     }
     return Text(
       "${minutes >= 10 ? minutes : "0$minutes"} : ${seconds >= 10 ? seconds : "0$seconds"}",
-      style: timerTextStyle,
+      style: widget.timerTextStyle,
     );
   }
 }
@@ -114,13 +111,13 @@ class TimerText extends StatefulWidget {
       required this.minutes,
       required this.seconds,
       required this.timerTextStyle})
-      : _timerText = _TimerTextState(
-            minutes: minutes, seconds: seconds, timerTextStyle: timerTextStyle);
+      : _timerText = _TimerTextState() {
+    assert(minutes >= 0);
+    assert(seconds >= 0);
+  }
 
   @override
-  State<StatefulWidget> createState() {
-    return _timerText;
-  }
+  State<StatefulWidget> createState() => _timerText;
 
   void stopTimer() {
     _timerText.minutesTimer?.cancel();

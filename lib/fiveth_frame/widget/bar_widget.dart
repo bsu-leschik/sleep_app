@@ -6,8 +6,6 @@ class BarWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width * 0.04;
-    final double screenHeight = MediaQuery.of(context).size.height * 0.09;
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [

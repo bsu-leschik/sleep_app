@@ -20,8 +20,7 @@ class SoundProperty extends StatelessWidget {
     }
   }
 
-  const SoundProperty._create(this.icon, this.background, this.property,
-      {super.key});
+  const SoundProperty._create(this.icon, this.background, this.property);
 
   @override
   Widget build(BuildContext context) {

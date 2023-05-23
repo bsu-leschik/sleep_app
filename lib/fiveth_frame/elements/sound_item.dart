@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sleep_app/fiveth_frame/choose_music_bar/choose_music_bar_model.dart';
 
 import '../widget/sound_property.dart';
 
@@ -47,6 +48,7 @@ class _SoundItemState extends State<SoundItem> {
 
 class SoundItem extends StatefulWidget {
   final SoundProperties property;
+  final SoundType type;
   final String title;
   final TextStyle textStyle = GoogleFonts.nunito(
     color: const Color.fromRGBO(142, 159, 204, 1),
@@ -54,8 +56,20 @@ class SoundItem extends StatefulWidget {
     fontWeight: FontWeight.w400,
   );
 
-  SoundItem({required this.property, required this.title, super.key});
+  SoundItem(
+      {required this.property,
+      required this.title,
+      required this.type,
+      super.key});
 
   @override
   State<StatefulWidget> createState() => _SoundItemState();
+
+  SoundItem.fromJson(Map<String, dynamic> json)
+      : property = SoundProperties.values[json['property'] as int],
+        type = SoundType.values[json['type'] as int],
+        title = json['title'] as String;
+
+  Map<String, dynamic> toJson() =>
+      {'property': property.index, 'type': type.index, 'title': title};
 }

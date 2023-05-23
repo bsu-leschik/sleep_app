@@ -5,7 +5,6 @@ import 'choose_music_bar_model.dart';
 
 class ChooseMusicBar extends StatefulWidget {
   const ChooseMusicBar({super.key});
-
   @override
   State<StatefulWidget> createState() => _ChooseMusicBarState();
 }
@@ -13,17 +12,16 @@ class ChooseMusicBar extends StatefulWidget {
 class _ChooseMusicBarState extends State<ChooseMusicBar> {
   int current = 0;
 
+  _ChooseMusicBarState();
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      // color: Colors.red, цвет для теста
       width: double.infinity,
       height: 72,
       child: ListView.builder(
           physics: const BouncingScrollPhysics(),
-          // длинна списка типа музыки
-          itemCount: ChooseMusicBarModel.allList.length,
-          // (items.length),
+          itemCount: SoundType.values.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (ctx, index) {
             return Container(
@@ -53,7 +51,7 @@ class _ChooseMusicBarState extends State<ChooseMusicBar> {
                     child: Center(
                       child: Text(
                         textAlign: TextAlign.center,
-                        ChooseMusicBarModel.allList[index],
+                        SoundType.values[index].name,
                         style: GoogleFonts.nunito(
                           textStyle: TextStyle(
                             height: 21.82 / 16,

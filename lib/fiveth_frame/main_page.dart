@@ -37,7 +37,7 @@ class _MainHomeState extends State<MainHome> {
           height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
-              const ChooseMusicBar(),
+              ChooseMusicBar(),
               Expanded(
                 flex: 1,
                 child: SingleChildScrollView(
@@ -64,7 +64,7 @@ class _MainHomeState extends State<MainHome> {
                           bottom: 0,
                           right: 0,
                           left: 0,
-                          child: TypesList(SoundsModel.list),
+                          child: TypesList(SoundsStorageService.list),
                         ),
                       ),
                     ],

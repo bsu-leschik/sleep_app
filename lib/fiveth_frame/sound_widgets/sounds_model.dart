@@ -1,5 +1,6 @@
 import 'dart:collection';
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
@@ -9,24 +10,38 @@ import '../elements/sound_item.dart';
 import '../widget/sound_property.dart';
 
 class SoundsStorageService extends ChangeNotifier {
-  static late List<HashMap<String, SoundItem>> _musicLists;
+  static final List<List<SoundItem>> _musicLists = List.filled(
+      MusicBarModel.tabs.length, List<SoundItem>.empty(growable: true));
+
+  List<SoundItem> get currentList => _musicLists[_currentListIndex];
 
   static const PATH_TO_MUSIC = "assets/music/info.json";
 
   SoundsStorageService() {
     Future<String> json = rootBundle.loadString(PATH_TO_MUSIC);
     json.then((value) {
-      List<Map<String, dynamic>> map = jsonDecode(value);
-      map.forEach((element) {
+      List<dynamic> map = jsonDecode(value);
+      for (var element in map) {
         var item = SoundItem.fromJson(element);
-        _musicLists[item.type.index].putIfAbsent(item.type.name, () => item);
-      });
+        int index = item.type.index > 0 ? item.type.index + 1 : item.type.index;
+        _musicLists[index].add(item);
+        if (item.property == SoundProperties.favorite) {
+          _musicLists[1].add(item);
+        }
+        _musicLists[0].add(item);
+      }
+      notifyListeners();
     });
   }
 
-  int currentList = 0;
+  int _currentListIndex = 0;
 
-  void changeTab(SoundType soundType) {}
+  int get currentListIndex => _currentListIndex;
+
+  void changeTab(int soundType) {
+    _currentListIndex = soundType;
+    notifyListeners();
+  }
 
   static List<SoundItem> list = <SoundItem>[
     SoundItem(

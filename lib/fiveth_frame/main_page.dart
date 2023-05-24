@@ -1,4 +1,7 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/choose_music_bar/choose_music_bar.dart';
 import 'package:sleep_app/fiveth_frame/music_themes/types_list.dart';
 import 'package:sleep_app/fiveth_frame/music_themes/types_list_model.dart';
@@ -19,6 +22,11 @@ class _MainHomeState extends State<MainHome> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
+
+    Provider.of<SoundsStorageService>(context).addListener(() => setState(() {
+          log("reloading page");
+        }));
+
     return Scaffold(
       backgroundColor: const Color.fromRGBO(20, 23, 51, 1),
 
@@ -64,7 +72,9 @@ class _MainHomeState extends State<MainHome> {
                           bottom: 0,
                           right: 0,
                           left: 0,
-                          child: TypesList(SoundsStorageService.list),
+                          child: TypesList(
+                              Provider.of<SoundsStorageService>(context)
+                                  .currentList),
                         ),
                       ),
                     ],

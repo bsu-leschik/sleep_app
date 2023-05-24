@@ -1,6 +1,4 @@
 enum SoundType {
-  any("All"),
-  favorite("Favorite"),
   music("Music"),
   nature("Nature"),
   urban("Urban"),
@@ -14,6 +12,15 @@ enum SoundType {
   final String name;
 }
 
-class SoundTypeModel {
-  var current = SoundType.any;
+class MusicBarModel {
+  static List<String> tabs = [
+    "All",
+    "Favorite",
+    "Music",
+    "Nature",
+    "Animals",
+    "White noise",
+    "Home",
+    "Baby"
+  ];
 }

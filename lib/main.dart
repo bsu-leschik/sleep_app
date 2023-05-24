@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/sound_widgets/sounds_model.dart';
 import 'package:sleep_app/timer_picker/time_picker.dart';
 import 'current_mix/current_mix.dart';
 import 'current_mix/widgets/show_dialog.dart';
@@ -61,6 +62,9 @@ class MyApp extends StatelessWidget {
         ),
         ChangeNotifierProvider<DataTypeList>(
           create: (context) => DataTypeList(),
+        ),
+        ChangeNotifierProvider<SoundsStorageService>(
+          create: (context) => SoundsStorageService(),
         ),
       ],
       child: MaterialApp.router(

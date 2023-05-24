@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/sound_widgets/sounds_model.dart';
 
 import 'choose_music_bar_model.dart';
 
@@ -21,7 +23,7 @@ class _ChooseMusicBarState extends State<ChooseMusicBar> {
       height: 72,
       child: ListView.builder(
           physics: const BouncingScrollPhysics(),
-          itemCount: SoundType.values.length,
+          itemCount: MusicBarModel.tabs.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (ctx, index) {
             return Container(
@@ -30,14 +32,17 @@ class _ChooseMusicBarState extends State<ChooseMusicBar> {
               child: GestureDetector(
                 onTap: () {
                   setState(() {
-                    current = index;
+                    Provider.of<SoundsStorageService>(context, listen: false)
+                        .changeTab(index);
                   });
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
                   margin: const EdgeInsets.only(left: 17),
                   decoration: BoxDecoration(
-                    color: current == index
+                    color: Provider.of<SoundsStorageService>(context)
+                                .currentListIndex ==
+                            index
                         ? const Color(0xFFFFFFFF)
                         : const Color(0xFF141733),
                     borderRadius: BorderRadius.circular(59),
@@ -51,13 +56,15 @@ class _ChooseMusicBarState extends State<ChooseMusicBar> {
                     child: Center(
                       child: Text(
                         textAlign: TextAlign.center,
-                        SoundType.values[index].name,
+                        MusicBarModel.tabs[index],
                         style: GoogleFonts.nunito(
                           textStyle: TextStyle(
                             height: 21.82 / 16,
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
-                            color: current == index
+                            color: Provider.of<SoundsStorageService>(context)
+                                        .currentListIndex ==
+                                    index
                                 ? const Color(0xFF281343)
                                 : const Color(0xFF8E9FCC),
                           ),

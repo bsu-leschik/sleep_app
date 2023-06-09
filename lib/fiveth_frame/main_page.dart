@@ -19,13 +19,22 @@ class _MainHomeState extends State<MainHome> {
   /// List of Tab Bar Item
 
   int current = 0;
+  bool addedListener = false;
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    Provider.of<SoundsStorageService>(context).addListener(() => setState(() {
-          log("reloading page");
-        }));
+    if (!addedListener) {
+      Provider.of<SoundsStorageService>(context).addListener(() => setState(() {
+            log("loading sounds");
+          }));
+      Provider.of<TypesListModel>(context).addListener(() {
+        setState(() {
+          log("loading music");
+        });
+      });
+      addedListener = true;
+    }
 
     return Scaffold(
       backgroundColor: const Color.fromRGBO(20, 23, 51, 1),
@@ -53,12 +62,12 @@ class _MainHomeState extends State<MainHome> {
                   child: Column(
                     children: [
                       Container(
-                        padding: const EdgeInsets.fromLTRB(26, 20, 26, 40),
-                        color: Colors.transparent,
-                        height: 284,
-                        width: double.infinity,
-                        child: TypesList(TypesListModel.list),
-                      ),
+                          padding: const EdgeInsets.fromLTRB(26, 20, 26, 40),
+                          color: Colors.transparent,
+                          height: 284,
+                          width: double.infinity,
+                          child: TypesList(
+                              Provider.of<TypesListModel>(context).items)),
                       Divider(
                         color: const Color.fromRGBO(142, 159, 204, 0.5),
                         thickness: 1,

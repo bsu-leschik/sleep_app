@@ -5,10 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "sleep_app_debug",
+            "type": "dart",
+            "request": "launch",
+            "noDebug": false,
+            "program": "lib/main.dart"
+        },
+        {
             "name": "sleep_app",
             "request": "launch",
             "noDebug": true,
             "type": "dart"
+            
         },
         {
             "name": "sleep_app (profile mode)",

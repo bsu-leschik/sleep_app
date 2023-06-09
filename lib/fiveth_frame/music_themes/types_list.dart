@@ -6,10 +6,14 @@ class TypesList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Wrap(
-      runSpacing: 20,
-      direction: Axis.horizontal,
-      children: _list,
-    );
+    if (_list.isEmpty) {
+      return const Center(child: Text("No music added"));
+    } else {
+      return Wrap(
+        runSpacing: 20,
+        direction: Axis.horizontal,
+        children: _list,
+      );
+    }
   }
 }

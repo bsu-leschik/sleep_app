@@ -86,13 +86,20 @@ class MusicItem extends StatefulWidget {
   final String title;
   final Image image;
   final SoundProperty soundProperty;
+  final String imageRoute;
 
-  MusicItem(
-      {required this.title,
-      required this.image,
-      required SoundProperties property,
-      super.key})
-      : soundProperty = SoundProperty(property);
+  MusicItem.fromJson(Map<String, dynamic> json, {super.key})
+      : soundProperty =
+            SoundProperty(SoundProperties.values[json['property'] as int]),
+        imageRoute = json['image'] as String,
+        image = Image(image: AssetImage(json['image'] as String)),
+        title = json['title'] as String;
+
+  Map<String, dynamic> toJson() => {
+        'soundProperty': soundProperty.property.index,
+        'image': image,
+        'title': title
+      };
 
   @override
   State<StatefulWidget> createState() => _MusicItemState();

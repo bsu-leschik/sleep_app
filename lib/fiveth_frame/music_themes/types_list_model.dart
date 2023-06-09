@@ -1,40 +1,23 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:sleep_app/fiveth_frame/elements/music_item.dart';
 
-import '../widget/sound_property.dart';
+class TypesListModel extends ChangeNotifier {
+  var PATH_TO_MUSIC = "assets/music/music.json";
 
-class TypesListModel {
-  static final List<MusicItem> list = [
-    MusicItem(
-      image:
-          const Image(image: AssetImage("assets/images/music/Mediative.png")),
-      title: "Mediative space",
-      property: SoundProperties.locked,
-    ),
-    MusicItem(
-      image:
-          const Image(image: AssetImage("assets/images/music/Moonmusic.png")),
-      title: "Moon vibes",
-      property: SoundProperties.locked,
-    ),
-    MusicItem(
-      image: const Image(image: AssetImage("assets/images/music/Peaceful.png")),
-      title: "Peaceful and calm",
-      property: SoundProperties.locked,
-    ),
-    MusicItem(
-      image: const Image(image: AssetImage("assets/images/music/Tropical.png")),
-      title: "Tropical",
-      property: SoundProperties.locked,
-    ),
-    MusicItem(
-      image: const Image(image: AssetImage("assets/images/music/Winter.png")),
-      title: "Winter",
-      property: SoundProperties.locked,
-    ),
-  ];
+  List<MusicItem> items = [];
 
-  static List<MusicItem> getList() {
-    return list;
+  TypesListModel() {
+    Future<String> json = rootBundle.loadString(PATH_TO_MUSIC);
+    json.then((value) {
+      List<dynamic> map = jsonDecode(value);
+      for (var element in map) {
+        var item = MusicItem.fromJson(element);
+        items.add(item);
+      }
+      notifyListeners();
+    });
   }
 }

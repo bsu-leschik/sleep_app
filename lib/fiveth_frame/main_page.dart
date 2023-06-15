@@ -56,34 +56,32 @@ class _MainHomeState extends State<MainHome> {
             const ChooseMusicBar(),
             Expanded(
               flex: 1,
-              child: MusicChooser(screenWidth: screenWidth),
+              child: Stack(
+                alignment: AlignmentDirectional.bottomCenter,
+                children: [
+                  GestureDetector(
+                      behavior: HitTestBehavior.opaque,
+                      child: MusicChooser(screenWidth: screenWidth)),
+                  IgnorePointer(
+                    ignoring: true,
+                    child: Container(
+                      width: double.infinity,
+                      height: 117,
+                      decoration: const BoxDecoration(
+                        gradient: LinearGradient(
+                            colors: [
+                              Color.fromRGBO(20, 23, 51, 1),
+                              Color.fromRGBO(20, 23, 51, 0),
+                            ],
+                            begin: Alignment.bottomCenter,
+                            end: Alignment.topCenter),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ],
-        ),
-      ),
-    );
-  }
-}
-
-class LockIcon extends StatelessWidget {
-  const LockIcon({
-    super.key,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return const SizedBox(
-      width: 27,
-      height: 27,
-      child: CircleAvatar(
-        backgroundColor: Color(0xFF003293),
-        child: FittedBox(
-          fit: BoxFit.contain,
-          child: Icon(
-            Icons.lock,
-            size: 15,
-            color: Color(0xFFFFFFFF),
-          ),
         ),
       ),
     );

@@ -57,24 +57,26 @@ class _MainHomeState extends State<MainHome> {
             Expanded(
               flex: 1,
               child: Stack(
-                alignment: AlignmentDirectional.bottomCenter,
                 children: [
                   GestureDetector(
                       behavior: HitTestBehavior.opaque,
                       child: MusicChooser(screenWidth: screenWidth)),
-                  IgnorePointer(
-                    ignoring: true,
-                    child: Container(
-                      width: double.infinity,
-                      height: 117,
-                      decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                            colors: [
-                              Color.fromRGBO(20, 23, 51, 1),
-                              Color.fromRGBO(20, 23, 51, 0),
-                            ],
-                            begin: Alignment.bottomCenter,
-                            end: Alignment.topCenter),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: IgnorePointer(
+                      ignoring: true,
+                      child: Container(
+                        width: double.infinity,
+                        height: 117,
+                        decoration: const BoxDecoration(
+                          gradient: LinearGradient(
+                              colors: [
+                                Color.fromRGBO(20, 23, 51, 1),
+                                Color.fromRGBO(20, 23, 51, 0),
+                              ],
+                              begin: Alignment.bottomCenter,
+                              end: Alignment.topCenter),
+                        ),
                       ),
                     ),
                   ),

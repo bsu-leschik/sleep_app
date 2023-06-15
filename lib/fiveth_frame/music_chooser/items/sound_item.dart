@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sleep_app/fiveth_frame/choose_music_bar/choose_music_bar_model.dart';
+import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar_model.dart';
 
-import '../widget/sound_property.dart';
+import '../../widget/sound_property.dart';
 
 class _SoundItemState extends State<SoundItem> {
   @override

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
-import 'package:sleep_app/fiveth_frame/elements/music_item.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/items/music_item.dart';
 
 class TypesListModel extends ChangeNotifier {
   var PATH_TO_MUSIC = "assets/music/music.json";

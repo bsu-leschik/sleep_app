@@ -2,9 +2,9 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/choose_music_bar/choose_music_bar.dart';
-import 'package:sleep_app/fiveth_frame/music_themes/types_list_model.dart';
-import 'package:sleep_app/fiveth_frame/sound_widgets/sounds_model.dart';
+import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/music_themes/types_list_model.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/sound_widgets/sounds_model.dart';
 import 'music_chooser/music_chooser.dart';
 import 'widget/bar_widget.dart';
 

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:text_scroll/text_scroll.dart';
 
-import '../widget/sound_property.dart';
+import '../../widget/sound_property.dart';
 
 class _MusicItemState extends State<MusicItem> {
   final BoxDecoration ifPlaying = BoxDecoration(

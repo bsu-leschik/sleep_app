@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/music_themes/types_list_model.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/sound_widgets/sounds_model.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/storage/types_list_model.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_model.dart';
 import 'music_chooser/music_chooser.dart';
 import 'top_bar/top_bar.dart';
 

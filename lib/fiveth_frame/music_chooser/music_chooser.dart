@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'music_themes/types_list.dart';
-import 'music_themes/types_list_model.dart';
-import 'sound_widgets/sounds_model.dart';
+import 'storage/types_list_model.dart';
+import 'storage/sounds_model.dart';
 
 class MusicChooser extends StatelessWidget {
   const MusicChooser({
@@ -33,8 +33,9 @@ class MusicChooser extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 40),
-            child: TypesList(
-                Provider.of<SoundsStorageService>(context).currentList),
+            child: TypesList(Provider.of<SoundsStorageService>(context)
+                    .musicLists[
+                Provider.of<SoundsStorageService>(context).currentListIndex]),
           ),
         ],
       ),

@@ -8,10 +8,8 @@ import '../items/sound_item.dart';
 import '../items/sound_property.dart';
 
 class SoundsStorageService extends ChangeNotifier {
-  List<List<SoundItem>> _musicLists =
+  List<List<SoundItem>> musicLists =
       List.generate(MusicBarModel.tabs.length, (index) => []);
-
-  List<SoundItem> get currentList => _musicLists[_currentListIndex];
 
   static const PATH_TO_SOUNDS = "assets/sounds/sounds.json";
 
@@ -21,11 +19,11 @@ class SoundsStorageService extends ChangeNotifier {
       List<dynamic> map = jsonDecode(value);
       for (var element in map) {
         var item = SoundItem.fromJson(element);
-        _musicLists.elementAt(item.type.index + 2).add(item);
+        musicLists.elementAt(item.type.index + 2).add(item);
         if (item.property == SoundProperties.favorite) {
-          _musicLists[1].add(item);
+          musicLists[1].add(item);
         }
-        _musicLists[0].add(item);
+        musicLists[0].add(item);
       }
       notifyListeners();
     });

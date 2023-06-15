@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
 import 'package:text_scroll/text_scroll.dart';
 
 import 'sound_property.dart';
@@ -12,7 +13,6 @@ class _MusicItemState extends State<MusicItem> {
       ],
       border:
           Border.all(color: const Color.fromRGBO(126, 68, 250, 1), width: 1));
-  bool isPlaying = false;
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +23,9 @@ class _MusicItemState extends State<MusicItem> {
         children: [
           GestureDetector(
             onTap: () => setState(() {
-              isPlaying = !isPlaying;
+              if (PlayController.playMusic(this)) {
+                widget.isPlaying = !widget.isPlaying;
+              }
             }),
             child: SizedBox(
               width: 112,
@@ -40,7 +42,7 @@ class _MusicItemState extends State<MusicItem> {
                             padding: const EdgeInsets.only(
                                 top: 3, left: 17, right: 17, bottom: 5),
                             child: Container(
-                              decoration: isPlaying ? ifPlaying : null,
+                              decoration: widget.isPlaying ? ifPlaying : null,
                               width: 78,
                               height: 78,
                               child: widget.image,
@@ -87,6 +89,7 @@ class MusicItem extends StatefulWidget {
   final Image image;
   final SoundProperty soundProperty;
   final String imageRoute;
+  bool isPlaying = false;
 
   MusicItem.fromJson(Map<String, dynamic> json, {super.key})
       : soundProperty =

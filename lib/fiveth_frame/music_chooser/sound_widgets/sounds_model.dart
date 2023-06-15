@@ -13,7 +13,7 @@ class SoundsStorageService extends ChangeNotifier {
 
   List<SoundItem> get currentList => _musicLists[_currentListIndex];
 
-  static const PATH_TO_SOUNDS = "assets/music/sounds.json";
+  static const PATH_TO_SOUNDS = "assets/sounds/sounds.json";
 
   SoundsStorageService() {
     Future<String> json = rootBundle.loadString(PATH_TO_SOUNDS);

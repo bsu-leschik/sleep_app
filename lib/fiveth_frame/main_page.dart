@@ -6,7 +6,7 @@ import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/music_themes/types_list_model.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/sound_widgets/sounds_model.dart';
 import 'music_chooser/music_chooser.dart';
-import 'widget/bar_widget.dart';
+import 'top_bar/top_bar.dart';
 
 class MainHome extends StatefulWidget {
   const MainHome({Key? key}) : super(key: key);
@@ -45,7 +45,7 @@ class _MainHomeState extends State<MainHome> {
         elevation: 0,
         automaticallyImplyLeading: false,
         backgroundColor: const Color(0xFF141733),
-        title: const BarWidget(),
+        title: const TopBar(),
       ),
       body: Container(
         color: const Color(0xFF141733),

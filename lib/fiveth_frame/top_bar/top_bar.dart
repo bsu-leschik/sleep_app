@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
-class BarWidget extends StatelessWidget {
-  const BarWidget({super.key});
+class TopBar extends StatelessWidget {
+  const TopBar({super.key});
 
   @override
   Widget build(BuildContext context) {

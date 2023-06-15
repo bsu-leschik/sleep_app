@@ -5,7 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar_model.dart';
 
 import '../items/sound_item.dart';
-import '../../widget/sound_property.dart';
+import '../items/sound_property.dart';
 
 class SoundsStorageService extends ChangeNotifier {
   List<List<SoundItem>> _musicLists =

@@ -8,7 +8,7 @@ import 'package:sleep_app/timer_picker/time_picker.dart';
 import 'current_mix/current_mix.dart';
 import 'current_mix/widgets/show_dialog.dart';
 import 'data_type.dart';
-import 'fiveth_frame/widget/bottom_bar.dart';
+import 'fiveth_frame/bottom_bar/bottom_bar.dart';
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
 import 'settings_frame/settings_widget.dart';

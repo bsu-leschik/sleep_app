@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/music_item.dart';
 
-import '../../widget/sound_property.dart';
+import '../items/sound_property.dart';
 
 class TypeListViewModel extends ChangeNotifier {
   void tryPlayMusic(MusicItem music) {

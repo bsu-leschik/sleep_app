@@ -1,15 +1,15 @@
 import 'dart:convert';
 
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/music_item.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/storage/storage.dart';
 
-class TypesListModel extends ChangeNotifier {
+class MusicStorage extends Storage {
   var PATH_TO_MUSIC = "assets/music/music.json";
 
   List<MusicItem> items = [];
 
-  TypesListModel() {
+  MusicStorage() {
     Future<String> json = rootBundle.loadString(PATH_TO_MUSIC);
     json.then((value) {
       List<dynamic> map = jsonDecode(value);

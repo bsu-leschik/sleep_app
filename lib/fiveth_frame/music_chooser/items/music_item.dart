@@ -1,11 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/items/abstract_item_state.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/storage/music_storage.dart';
 import 'package:text_scroll/text_scroll.dart';
 
 import 'sound_property.dart';
 
-class _MusicItemState extends State<MusicItem> {
+class MusicItemState extends AbstractItemState<MusicItem> {
+  bool isPlaying = false;
+
+  SoundProperties? currentProperty;
+
+  _callback(BuildContext context) {
+    callback(context);
+    Provider.of<MusicStorage>(context).save(this);
+  }
+
+  displayPlaying(bool playing) {
+    setState(() {
+      isPlaying = playing;
+    });
+  }
+
   final BoxDecoration ifPlaying = BoxDecoration(
       borderRadius: BorderRadius.circular(8),
       boxShadow: const [
@@ -16,6 +34,7 @@ class _MusicItemState extends State<MusicItem> {
 
   @override
   Widget build(BuildContext context) {
+    currentProperty ??= widget.property;
     return SizedBox(
       width: 112,
       height: 102,
@@ -24,7 +43,7 @@ class _MusicItemState extends State<MusicItem> {
           GestureDetector(
             onTap: () => setState(() {
               if (PlayController.playMusic(this)) {
-                widget.isPlaying = !widget.isPlaying;
+                isPlaying = !isPlaying;
               }
             }),
             child: SizedBox(
@@ -42,14 +61,16 @@ class _MusicItemState extends State<MusicItem> {
                             padding: const EdgeInsets.only(
                                 top: 3, left: 17, right: 17, bottom: 5),
                             child: Container(
-                              decoration: widget.isPlaying ? ifPlaying : null,
+                              decoration: isPlaying ? ifPlaying : null,
                               width: 78,
                               height: 78,
                               child: widget.image,
                             ),
                           ),
                         ),
-                        Positioned(right: 14, child: widget.soundProperty)
+                        Positioned(
+                            right: 14,
+                            child: SoundProperty(currentProperty!, _callback))
                       ],
                     ),
                   ),
@@ -82,28 +103,29 @@ class _MusicItemState extends State<MusicItem> {
       ),
     );
   }
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'soundProperty': currentProperty == null
+            ? widget.property.index
+            : currentProperty!.index,
+        'image': widget.image,
+        'title': widget.title
+      };
 }
 
 class MusicItem extends StatefulWidget {
   final String title;
   final Image image;
-  final SoundProperty soundProperty;
+  final SoundProperties property;
   final String imageRoute;
-  bool isPlaying = false;
 
   MusicItem.fromJson(Map<String, dynamic> json, {super.key})
-      : soundProperty =
-            SoundProperty(SoundProperties.values[json['property'] as int]),
+      : property = SoundProperties.values[json['property'] as int],
         imageRoute = json['image'] as String,
         image = Image(image: AssetImage(json['image'] as String)),
         title = json['title'] as String;
 
-  Map<String, dynamic> toJson() => {
-        'soundProperty': soundProperty.property.index,
-        'image': image,
-        'title': title
-      };
-
   @override
-  State<StatefulWidget> createState() => _MusicItemState();
+  State<StatefulWidget> createState() => MusicItemState();
 }

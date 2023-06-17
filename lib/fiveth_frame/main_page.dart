@@ -3,8 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/storage/types_list_model.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_model.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/storage/music_storage.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_storage.dart';
 import 'music_chooser/music_chooser.dart';
 import 'top_bar/top_bar.dart';
 
@@ -25,10 +25,10 @@ class _MainHomeState extends State<MainHome> {
     final double screenWidth = MediaQuery.of(context).size.width;
 
     if (!addedListener) {
-      Provider.of<SoundsStorageService>(context).addListener(() => setState(() {
+      Provider.of<SoundsStorage>(context).addListener(() => setState(() {
             log("loading sounds");
           }));
-      Provider.of<TypesListModel>(context).addListener(() {
+      Provider.of<MusicStorage>(context).addListener(() {
         setState(() {
           log("loading music");
         });

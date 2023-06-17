@@ -33,7 +33,6 @@ enum SoundProperties {
 
 class _SoundPropertyState extends State<SoundProperty> {
   @override
-  @override
   Widget build(BuildContext context) {
     return SizedBox(
       width: 27,
@@ -41,17 +40,7 @@ class _SoundPropertyState extends State<SoundProperty> {
       child: CircleAvatar(
         backgroundColor: widget.property.getColor(),
         child: GestureDetector(
-          onTap: () => {
-            if (widget.property != SoundProperties.locked)
-              {
-                setState(() => {
-                      if (widget.property != SoundProperties.favorite)
-                        {widget.property = SoundProperties.favorite}
-                      else
-                        {widget.property = SoundProperties.unlocked}
-                    })
-              }
-          },
+          onTap: () => {widget.action(context)},
           child: FittedBox(
             fit: BoxFit.contain,
             child: Icon(
@@ -67,20 +56,10 @@ class _SoundPropertyState extends State<SoundProperty> {
 }
 
 class SoundProperty extends StatefulWidget {
-  SoundProperties property;
+  final SoundProperties property;
+  final Function action;
 
-  factory SoundProperty(SoundProperties property) {
-    switch (property) {
-      case SoundProperties.locked:
-        return SoundProperty._create(property);
-      case SoundProperties.unlocked:
-        return SoundProperty._create(property);
-      case SoundProperties.favorite:
-        return SoundProperty._create(property);
-    }
-  }
-
-  SoundProperty._create(this.property);
+  const SoundProperty(this.property, this.action, {super.key});
 
   @override
   State<StatefulWidget> createState() => _SoundPropertyState();

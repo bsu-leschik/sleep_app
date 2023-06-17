@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_model.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_storage.dart';
 
 import 'choose_music_bar_model.dart';
 
@@ -32,7 +32,7 @@ class _ChooseMusicBarState extends State<ChooseMusicBar> {
               child: GestureDetector(
                 onTap: () {
                   setState(() {
-                    Provider.of<SoundsStorageService>(context, listen: false)
+                    Provider.of<SoundsStorage>(context, listen: false)
                         .changeTab(index);
                   });
                 },
@@ -40,11 +40,11 @@ class _ChooseMusicBarState extends State<ChooseMusicBar> {
                   duration: const Duration(milliseconds: 300),
                   margin: const EdgeInsets.only(left: 17),
                   decoration: BoxDecoration(
-                    color: Provider.of<SoundsStorageService>(context)
-                                .currentListIndex ==
-                            index
-                        ? const Color(0xFFFFFFFF)
-                        : const Color(0xFF141733),
+                    color:
+                        Provider.of<SoundsStorage>(context).currentListIndex ==
+                                index
+                            ? const Color(0xFFFFFFFF)
+                            : const Color(0xFF141733),
                     borderRadius: BorderRadius.circular(59),
                     border: Border.all(
                       color: const Color(0xFF8E9FCC),
@@ -62,7 +62,7 @@ class _ChooseMusicBarState extends State<ChooseMusicBar> {
                             height: 21.82 / 16,
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
-                            color: Provider.of<SoundsStorageService>(context)
+                            color: Provider.of<SoundsStorage>(context)
                                         .currentListIndex ==
                                     index
                                 ? const Color(0xFF281343)

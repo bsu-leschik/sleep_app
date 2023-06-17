@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/items/abstract_item_state.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_storage.dart';
 import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar_model.dart';
 
 import 'sound_property.dart';
 
-class _SoundItemState extends State<SoundItem> {
+class SoundItemState extends AbstractItemState<SoundItem> {
+  _callback(BuildContext context) {
+    callback(context);
+    Provider.of<SoundsStorage>(context).save(this);
+  }
+
   @override
   Widget build(BuildContext context) {
+    currentProperty ??= widget.property;
     return SizedBox(
       width: 119,
       height: 99,
@@ -24,13 +33,15 @@ class _SoundItemState extends State<SoundItem> {
                 ),
                 border: Border.all(
                   color: const Color(0xFF8E9FCC),
-                  // const Color(0xff8e9fcc),
                   width: 1,
                 ),
               ),
               child: Image.asset("assets/images/Fire.png"),
             ),
-            Positioned(top: 0, right: 0, child: SoundProperty(widget.property))
+            Positioned(
+                top: 0,
+                right: 0,
+                child: SoundProperty(currentProperty!, callback))
           ]),
           Text(widget.title,
               maxLines: 1,
@@ -44,6 +55,15 @@ class _SoundItemState extends State<SoundItem> {
       ),
     );
   }
+
+  @override
+  Map<String, dynamic> toJson() => {
+        'property': currentProperty == null
+            ? widget.property.index
+            : currentProperty!.index,
+        'type': widget.type.index,
+        'title': widget.title
+      };
 }
 
 class SoundItem extends StatefulWidget {
@@ -63,13 +83,10 @@ class SoundItem extends StatefulWidget {
       super.key});
 
   @override
-  State<StatefulWidget> createState() => _SoundItemState();
+  State<StatefulWidget> createState() => SoundItemState();
 
   SoundItem.fromJson(Map<String, dynamic> json)
       : property = SoundProperties.values[json['property'] as int],
         type = SoundType.values[json['type'] as int],
         title = json['title'] as String;
-
-  Map<String, dynamic> toJson() =>
-      {'property': property.index, 'type': type.index, 'title': title};
 }

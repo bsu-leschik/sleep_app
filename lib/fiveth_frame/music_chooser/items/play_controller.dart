@@ -5,18 +5,18 @@ import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/sound_property.dart';
 
 class PlayController {
-  static State<MusicItem>? _musicPlaying;
+  static MusicItemState? _musicPlaying;
   static List<State<SoundItem>> _soundsPlaying = List.empty(growable: true);
   static const pathToMusic = "/assets/music/";
   static const pathToSounds = "/assets/sounds/";
   static const musicFormat = ".mp3";
   static final _player = AssetsAudioPlayer.newPlayer();
 
-  static bool playMusic(State<MusicItem> item) {
-    if (item.widget.soundProperty.property == SoundProperties.locked) {
+  static bool playMusic(MusicItemState item) {
+    if (item.widget.property == SoundProperties.locked) {
       return false;
     }
-    if (item.widget.isPlaying) {
+    if (item.isPlaying) {
       _player.pause();
     } else {
       if (_musicPlaying != null) {
@@ -24,8 +24,7 @@ class PlayController {
           _player.play();
           return true;
         } else {
-          _musicPlaying!.widget.isPlaying = false;
-          _musicPlaying!.setState(() {});
+          _musicPlaying!.displayPlaying(false);
         }
       }
       _musicPlaying = item;

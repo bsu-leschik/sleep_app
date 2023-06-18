@@ -59,8 +59,9 @@ class _MainHomeState extends State<MainHome> {
               child: Stack(
                 children: [
                   GestureDetector(
-                      behavior: HitTestBehavior.opaque,
-                      child: MusicChooser(screenWidth: screenWidth)),
+                    behavior: HitTestBehavior.opaque,
+                    child: MusicChooser(screenWidth: screenWidth),
+                  ),
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: IgnorePointer(

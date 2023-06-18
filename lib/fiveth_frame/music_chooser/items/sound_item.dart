@@ -10,7 +10,7 @@ import 'sound_property.dart';
 class SoundItemState extends AbstractItemState<SoundItem> {
   _callback(BuildContext context) {
     callback(context);
-    Provider.of<SoundsStorage>(context).save(this);
+    Provider.of<SoundsStorage>(context, listen: false).save(this);
   }
 
   @override
@@ -41,7 +41,7 @@ class SoundItemState extends AbstractItemState<SoundItem> {
             Positioned(
                 top: 0,
                 right: 0,
-                child: SoundProperty(currentProperty!, callback))
+                child: SoundProperty(currentProperty!, _callback))
           ]),
           Text(widget.title,
               maxLines: 1,
@@ -85,8 +85,11 @@ class SoundItem extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => SoundItemState();
 
-  SoundItem.fromJson(Map<String, dynamic> json)
+  SoundItem.fromJson(Map<String, dynamic> json, {super.key})
       : property = SoundProperties.values[json['property'] as int],
         type = SoundType.values[json['type'] as int],
         title = json['title'] as String;
+
+  Map<String, dynamic> toJson() =>
+      {'property': property.index, 'type': type.index, 'title': title};
 }

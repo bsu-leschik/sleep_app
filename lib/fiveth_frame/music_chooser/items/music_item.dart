@@ -15,7 +15,7 @@ class MusicItemState extends AbstractItemState<MusicItem> {
 
   _callback(BuildContext context) {
     callback(context);
-    Provider.of<MusicStorage>(context).save(this);
+    Provider.of<MusicStorage>(context, listen: false).save(this);
   }
 
   displayPlaying(bool playing) {
@@ -106,7 +106,7 @@ class MusicItemState extends AbstractItemState<MusicItem> {
 
   @override
   Map<String, dynamic> toJson() => {
-        'soundProperty': currentProperty == null
+        'property': currentProperty == null
             ? widget.property.index
             : currentProperty!.index,
         'image': widget.image,
@@ -120,11 +120,21 @@ class MusicItem extends StatefulWidget {
   final SoundProperties property;
   final String imageRoute;
 
+  MusicItem(
+      {super.key,
+      required this.title,
+      required this.property,
+      required this.imageRoute})
+      : image = Image(image: AssetImage(imageRoute));
+
   MusicItem.fromJson(Map<String, dynamic> json, {super.key})
       : property = SoundProperties.values[json['property'] as int],
         imageRoute = json['image'] as String,
         image = Image(image: AssetImage(json['image'] as String)),
         title = json['title'] as String;
+
+  Map<String, dynamic> toJson() =>
+      {'property': property.index, 'image': imageRoute, 'title': title};
 
   @override
   State<StatefulWidget> createState() => MusicItemState();

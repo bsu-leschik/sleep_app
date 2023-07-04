@@ -1,3 +1,4 @@
+import 'dart:collection';
 import 'dart:convert';
 import 'dart:developer';
 import 'dart:io';
@@ -12,11 +13,13 @@ import '../items/sound_item.dart';
 import '../items/sound_property.dart';
 
 class SoundsStorage extends Storage<SoundItem> {
-  List<List<SoundItem>> musicLists =
-      List.generate(MusicBarModel.tabs.length, (index) => []);
+  List<Map<String, SoundItem>> musicLists = List.generate(
+      MusicBarModel.tabs.length, (index) => <String, SoundItem>{});
 
   static const basicSoundsInfo = "assets/sounds/sounds.json";
+  static const int _shift = 2;
   late String soundsInfo;
+
   SoundsStorage() {
     init();
   }
@@ -42,16 +45,17 @@ class SoundsStorage extends Storage<SoundItem> {
     List<dynamic> map = jsonDecode(json);
     for (var element in map) {
       var item = SoundItem.fromJson(element);
-      musicLists[0].add(item);
+      musicLists[0].putIfAbsent(item.title, () => item);
     }
     disperse();
   }
 
   disperse() {
-    for (var element in musicLists[0]) {
-      musicLists.elementAt(element.type.index + 2).add(element);
+    for (var element in musicLists[0].values) {
+      musicLists[element.type.index + _shift]
+          .putIfAbsent(element.title, () => element);
       if (element.property == SoundProperties.favorite) {
-        musicLists[1].add(element);
+        musicLists[1].putIfAbsent(element.title, () => element);
       }
     }
   }
@@ -75,17 +79,32 @@ class SoundsStorage extends Storage<SoundItem> {
 
   @override
   save(AbstractItemState<SoundItem> item) async {
-    for (var i = 0; i < musicLists[0].length; i++) {
-      if (item.widget == musicLists[0][i]) {
-        musicLists[0][i] = SoundItem(
-          type: item.widget.type,
-          property: item.currentProperty!,
-          title: item.widget.title,
-        );
-      }
+    musicLists[0].update(item.widget.title, (value) {
+      return SoundItem(
+        type: item.widget.type,
+        property: item.currentProperty!,
+        title: item.widget.title,
+      );
+    });
+
+    if (item.currentProperty == SoundProperties.favorite) {
+      musicLists[1].putIfAbsent(
+          item.widget.title,
+          () => SoundItem(
+                type: item.widget.type,
+                property: item.currentProperty!,
+                title: item.widget.title,
+              ));
     }
-    this.musicLists[currentListIndex];
-    var jsonString = jsonEncode(musicLists[0]);
+
+    musicLists[item.widget.type.index + _shift].update(
+        item.widget.title,
+        (value) => SoundItem(
+              type: item.widget.type,
+              property: item.currentProperty!,
+              title: item.widget.title,
+            ));
+    var jsonString = jsonEncode(musicLists[0].values.toList());
 
     log(jsonString);
     var file = await File(soundsInfo).create();

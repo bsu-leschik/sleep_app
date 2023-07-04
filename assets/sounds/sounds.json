@@ -2,80 +2,80 @@
     {
       "property": 1,
       "title": "Rain",
-      "type": 0
+      "type": 1
     },
      {
       "property": 1,
       "title": "Fire",
-      "type": 0
+      "type": 1
     },
      {
       "property": 1,
       "title": "Forest",
-      "type": 0
+      "type": 1
     },
      {
       "property": 1,
-      "type": 0,
+      "type": 1,
       "title": "Night"
     },
      {
       "title": "Ocean",
-      "type": 0,
+      "type": 1,
       "property": 1
     },
      {
       "title": "River",
-      "type": 0,
+      "type": 1,
       "property": 1
     },
      {
       "title": "Sea",
-      "type": 0,
+      "type": 1,
       "property": 1
     },
      {
       "title": "Thunder",
-      "type": 0,
+      "type": 1,
       "property": 1
     },
      {
       "title": "Snow",
-      "type": 0,
+      "type": 1,
       "property": 1
     },
      {
-      "type": 0,
+      "type": 1,
       "property": 1,
       "title": "Waterfall"
     },
      {
-      "type": 1,
+      "type": 2,
       "property": 1,
       "title": "Crowd"
     },
      {
-      "type": 5,
+      "type": 6,
       "property": 1,
       "title": "Kids"
     },
      {
-      "type": 1,
+      "type":2,
       "property": 1,
       "title": "Subway"
     },
      {
-      "type": 1,
+      "type": 2,
       "property": 1,
       "title": "Train"
     },
      {
-      "type": 2,
+      "type": 1,
       "property": 1,
       "title": "Cricket"
     },
      {
-      "type": 3,
+      "type": 4,
       "property": 1,
       "title": "Live"
     },
@@ -85,107 +85,107 @@
       "title": "Phone"
     },
      {
-      "type": 2,
+      "type": 3,
       "property": 1,
       "title": "Seagulls"
     },
      {
-      "type": 2,
+      "type": 3,
       "property": 1,
       "title": "Cat"
     },
      {
-      "type": 2,
+      "type": 3,
       "property": 1,
       "title": "Cows"
     },
      {
-      "type": 2,
+      "type": 3,
       "property": 1,
       "title": "Dog"
     },
      {
-      "type": 2,
+      "type": 3,
       "property": 1,
       "title": "Dolphins"
     },
      {
-      "type": 2,
+      "type": 3,
       "property": 1,
       "title": "Frogs"
     },
      {
-      "type": 2,
+      "type": 3,
       "property": 1,
       "title": "Horse"
     },
      {
-      "type": 2,
+      "type": 3,
       "property": 1,
       "title": "Owl"
     },
      {
-      "type": 2,
+      "type": 3,
       "property": 1,
       "title": "Wolf"
     },
      {
-      "type": 2,
+      "type": 3,
       "property": 1,
       "title": "Whale"
     },
      {
-      "type": 4,
+      "type": 5,
       "property": 1,
       "title": "Microwave"
     },
      {
-      "type": 3,
+      "type": 4,
       "property": 1,
       "title": "Metronome"
     },
      {
-      "type": 4,
+      "type": 5,
       "property": 1,
       "title": "Hairdryer"
     },
      {
-      "type": 4,
+      "type": 5,
       "property": 1,
       "title": "Fan"
     },
      {
-      "type": 4,
+      "type": 5,
       "property": 1,
       "title": "Teapot"
     },
      {
-      "type": 4,
+      "type": 5,
       "property": 1,
       "title": "Vacuum Cleaner"
     },
      {
-      "type": 4,
+      "type": 5,
       "property": 1,
       "title": "Washing Machine"
     },
      {
-      "type": 4,
+      "type": 5,
       "property": 1,
       "title": "Watch"
     },
      {
-      "type": 4,
+      "type": 5,
       "property": 1,
       "title": "Lullaby"
     },
      {
-      "type": 4,
+      "type": 5,
       "property": 1,
       "title": "Music Box"
     },
      {
-      "type": 4,
+      "type": 5,
       "property": 1,
       "title": "Refrigirator"
     },

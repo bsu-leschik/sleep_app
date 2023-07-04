@@ -18,6 +18,7 @@ class MusicBarModel {
     "Favorite",
     "Music",
     "Nature",
+    "Urban",
     "Animals",
     "White noise",
     "Home",

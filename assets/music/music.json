@@ -1,0 +1,27 @@
+[
+    {
+        "image": "assets/images/music/Mediative.png",
+        "title": "Mediative space",
+        "property": 1
+    },
+    {
+        "image": "assets/images/music/Moonmusic.png",
+        "title": "Moon vibes",
+        "property": 1
+    },
+    {
+        "image": "assets/images/music/Peaceful.png",
+        "title": "Peaceful and calm",
+        "property": 1
+    },
+    {
+        "image": "assets/images/music/Tropical.png",
+        "title": "Tropical",
+        "property": 1
+    },
+    {
+        "image": "assets/images/music/Winter.png",
+        "title": "Winter",
+        "property": 1
+    }
+]

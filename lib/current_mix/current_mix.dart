@@ -49,7 +49,6 @@ class HomeWidget extends State<InitalScreenWidget> {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
             Container(
-              color: Colors.pink,
               margin: EdgeInsets.only(
                 left: screenWidth * 0.07,
                 top: screenHeight * 0.009,
@@ -58,7 +57,7 @@ class HomeWidget extends State<InitalScreenWidget> {
               height: screenHeight * 0.065,
               child: InkWell(
                 onTap: (() {
-                  print("Mix");
+                  debugPrint("Mix");
                   setState(() {
                     _navPage.jumpToPage(0);
                   });
@@ -66,20 +65,13 @@ class HomeWidget extends State<InitalScreenWidget> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceAround,
                   children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Container(
-                          color: Colors.red,
-                          width: screenWidth * 0.06,
-                          height: screenHeight * 0.03,
-                          child: Image.asset(
-                            "assets/images/mix.png",
-                            color: Colors.white,
-                          ),
-                        ),
-                        const Text("1")
-                      ],
+                    SizedBox(
+                      width: screenWidth * 0.06,
+                      height: screenHeight * 0.03,
+                      child: Image.asset(
+                        "assets/images/mix.png",
+                        color: Colors.white,
+                      ),
                     ),
                     const FittedBox(
                       fit: BoxFit.contain,
@@ -105,7 +97,7 @@ class HomeWidget extends State<InitalScreenWidget> {
               height: screenHeight * 0.07,
               child: InkWell(
                 onTap: (() {
-                  print("Timer");
+                  debugPrint("Timer");
                   setState(() {
                     _navPage.jumpToPage(1);
                   });

@@ -1,6 +1,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'onboarding_widget.dart';
 
@@ -39,7 +39,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
             onPageChanged: (value) {
               setState(
                 () {
-                  print(value);
+                  debugPrint(value.toString());
                 },
               );
             },
@@ -80,12 +80,7 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                 onTap: () {
                   if (_pageController.page == 1) {}
                   if (_pageController.page == 2) {
-                    Navigator.pushNamed(context, "/subscribe");
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //       builder: (context) => const SubscribeWidget()),
-                    // );
+                    context.go('/subscribe');
                   } else {
                     _pageController.nextPage(
                       duration: const Duration(

@@ -1,18 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sleep_app/timer_picker/sleep_timer.dart';
 import 'package:sleep_app/timer_picker/timer_display.dart';
 
 class _MainButtonState extends State<MainButton> {
-  Text text;
-  VoidCallback callback;
-  _MainButtonState({required this.text, required this.callback});
+  _MainButtonState();
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: callback,
+        onPressed: widget.callback,
         style: ButtonStyle(
           minimumSize: const MaterialStatePropertyAll(Size(130, 42)),
           backgroundColor: const MaterialStatePropertyAll(
@@ -27,7 +25,7 @@ class _MainButtonState extends State<MainButton> {
             ),
           )),
         ),
-        child: text);
+        child: widget.text);
   }
 }
 
@@ -38,14 +36,11 @@ class MainButton extends StatefulWidget {
   const MainButton({super.key, required this.text, required this.callback});
 
   @override
-  State<StatefulWidget> createState() =>
-      _MainButtonState(text: text, callback: callback);
+  State<StatefulWidget> createState() => _MainButtonState();
 }
 
 class _TransparentButtonState extends State<TransparentButton> {
-  Text text;
-
-  _TransparentButtonState({required this.text});
+  _TransparentButtonState();
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +64,7 @@ class _TransparentButtonState extends State<TransparentButton> {
             ),
           )),
         ),
-        child: text);
+        child: widget.text);
   }
 }
 
@@ -79,7 +74,7 @@ class TransparentButton extends StatefulWidget {
   const TransparentButton({super.key, required this.text});
 
   @override
-  State<StatefulWidget> createState() => _TransparentButtonState(text: text);
+  State<StatefulWidget> createState() => _TransparentButtonState();
 }
 
 class TimerButtons extends StatelessWidget {
@@ -93,7 +88,7 @@ class TimerButtons extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Padding(
-          padding: const EdgeInsets.only(right: 7, bottom: 14),
+          padding: const EdgeInsets.only(right: 7),
           child: MainButton(
               text: const Text("Start"),
               callback: () {
@@ -102,7 +97,7 @@ class TimerButtons extends StatelessWidget {
               }),
         ),
         const Padding(
-          padding: EdgeInsets.only(left: 7, bottom: 14),
+          padding: EdgeInsets.only(left: 7),
           child: TransparentButton(text: Text("Clear")),
         ),
       ],
@@ -122,7 +117,7 @@ class CrossExitButton extends StatelessWidget {
       width: 20,
       child: CupertinoButton(
         padding: EdgeInsets.zero,
-        onPressed: () => Navigator.pop(context),
+        onPressed: () => context.pop(),
         child: const Icon(
           CupertinoIcons.xmark,
           color: Colors.white,

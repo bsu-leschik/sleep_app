@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class Dialog extends StatelessWidget {
   const Dialog({super.key});
@@ -34,8 +35,7 @@ class FirstDialog extends StatelessWidget {
             children: [
               const Text("Rain"),
               IconButton(
-                  onPressed: () => Navigator.pop(context),
-                  icon: const Icon(Icons.close))
+                  onPressed: () => context.pop(), icon: const Icon(Icons.close))
             ],
           ),
           content: const Text(
@@ -85,7 +85,7 @@ class SecondDialog extends StatelessWidget {
               ),
             ),
             IconButton(
-              onPressed: () => Navigator.pop(context),
+              onPressed: () => context.pop(),
               icon: const Icon(
                 Icons.close,
                 color: Colors.white,

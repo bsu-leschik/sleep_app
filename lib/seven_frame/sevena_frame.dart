@@ -52,7 +52,7 @@ class TopBar extends StatelessWidget {
             ),
           ),
           InkWell(
-            onTap: () => {print("Close frame")},
+            onTap: () => {debugPrint("Close frame")},
             child: const Icon(
               Icons.close,
               color: Colors.white,
@@ -151,7 +151,7 @@ class PlayList extends StatefulWidget {
 }
 
 class _PlayListState extends State<PlayList> {
-  double _rating1 = 1;
+  final double _rating1 = 1;
 
   @override
   Widget build(BuildContext context) {

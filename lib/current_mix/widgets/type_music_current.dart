@@ -19,7 +19,7 @@ class _TypeMusicCurrentState extends State<TypeMusicCurrent> {
     final double screenHeight = MediaQuery.of(context).size.height;
     final double screenWidth = MediaQuery.of(context).size.width;
 
-    return Container(
+    return SizedBox(
       // color: Colors.red,
       height: screenHeight * 0.085,
       width: screenWidth,

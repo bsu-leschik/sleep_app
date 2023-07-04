@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sleep_app/current_mix/current_mix.dart';
+import 'package:go_router/go_router.dart';
 import 'widgets/result_widget.dart';
 
 class SettingsWidget extends StatelessWidget {
@@ -33,7 +33,7 @@ class HomeWidget extends State<InitalScreenWidget> {
       body: PageView(
         controller: _navPage,
         onPageChanged: (i) {
-          print('Page changes to index $i');
+          debugPrint('Page changes to index $i');
         },
         children: const <Widget>[
           ResultWidget(),
@@ -62,11 +62,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                 height: screenHeight * 0.065,
                 child: InkWell(
                   onTap: (() {
-                    Navigator.of(context).push(
-                      MaterialPageRoute<void>(
-                        builder: (BuildContext context) => const CurrentMix(),
-                      ),
-                    );
+                    context.go('/currentmix');
                   }),
                   child: Column(
                     // пооборачивать колонку в SizedBox и задать размеры!!!
@@ -101,7 +97,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                 height: screenHeight * 0.07,
                 child: InkWell(
                   onTap: (() {
-                    print("Timer");
+                    debugPrint("Timer");
                     setState(() {
                       _navPage.jumpToPage(1);
                     });

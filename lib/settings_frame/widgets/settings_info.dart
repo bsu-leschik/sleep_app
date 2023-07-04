@@ -45,6 +45,7 @@ class ConstructorInfo extends StatelessWidget {
       required this.title,
       required this.ontap});
 
+  @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;
 

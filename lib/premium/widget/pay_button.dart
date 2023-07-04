@@ -48,7 +48,7 @@ class FirstButton extends StatelessWidget {
     final double screenHeight = MediaQuery.of(context).size.height;
     return InkWell(
       onTap: () {
-        print("Print first button");
+        debugPrint("Print first button");
       },
       child: Container(
         height: screenHeight * 0.07,
@@ -122,7 +122,7 @@ class TwoPayButton extends StatelessWidget {
       children: [
         InkWell(
           onTap: () {
-            print("Print first button");
+            debugPrint("Print first button");
           },
           child: Container(
             height: screenHeight * 0.07,

@@ -257,7 +257,7 @@ class ColoredPathAdapter extends TypeAdapter<ColoredPath> {
 class DrawingScreen extends StatefulWidget {
   const DrawingScreen({super.key});
   @override
-  _DrawingScreenState createState() => _DrawingScreenState();
+  State<DrawingScreen> createState() => _DrawingScreenState();
 }
 
 class _DrawingScreenState extends State<DrawingScreen> {
@@ -330,7 +330,7 @@ class DrawingArea extends StatefulWidget {
   const DrawingArea(this.selectedColorIndex, {super.key});
 
   @override
-  _DrawingAreaState createState() => _DrawingAreaState();
+  State<DrawingArea> createState() => _DrawingAreaState();
 }
 
 class _DrawingAreaState extends State<DrawingArea> {

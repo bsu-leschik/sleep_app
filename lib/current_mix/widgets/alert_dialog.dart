@@ -27,7 +27,7 @@ class CurrentAlertDialog extends StatelessWidget {
             CloseButton(
               color: const Color(0xFFFFFFFF),
               onPressed: () {
-                print("Press close Button");
+                debugPrint("Press close Button");
               },
             ),
           ],

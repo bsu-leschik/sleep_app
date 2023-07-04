@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../../fiveth_frame/widget/bottom_bar.dart';
+import 'package:go_router/go_router.dart';
 
 class ButtonBack extends StatelessWidget {
   const ButtonBack({super.key});
@@ -12,7 +11,7 @@ class ButtonBack extends StatelessWidget {
       children: [
         InkWell(
           onTap: (() {
-            Navigator.pushNamed(context, "/fiveframe");
+            context.push("/fiveframe");
           }),
           child: const Icon(
             Icons.chevron_left_rounded,

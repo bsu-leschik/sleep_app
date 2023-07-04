@@ -38,7 +38,7 @@ class _MelodyWidgetState extends State<MelodyWidget> {
                   ),
                 ),
                 CupertinoButton(
-                  onPressed: () => {print("1")},
+                  onPressed: () => {debugPrint("1")},
                   child: Container(
                     width: 40,
                     height: 40,

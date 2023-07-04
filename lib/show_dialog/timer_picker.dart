@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:go_router/go_router.dart';
 
 class TimerDialog extends StatefulWidget {
   const TimerDialog({super.key});
@@ -16,7 +17,7 @@ class TimerDialogState extends State<TimerDialog> {
       CupertinoActionSheetAction(
         child: const Text("Or"),
         onPressed: () {
-          Navigator.pop<Duration>(context, timerDuration);
+          context.pop(timerDuration);
         },
       ),
     ];
@@ -29,7 +30,7 @@ class TimerDialogState extends State<TimerDialog> {
       actions: actions,
       cancelButton: CupertinoActionSheetAction(
         child: const Text("Cancel"),
-        onPressed: () => Navigator.pop(context),
+        onPressed: () => context.pop(),
       ),
     );
 

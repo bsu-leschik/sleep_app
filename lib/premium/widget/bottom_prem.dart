@@ -25,7 +25,7 @@ class BottomTerms extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print("Terms Bottom");
+        debugPrint("Terms Bottom");
       },
       child: Text(
         title,

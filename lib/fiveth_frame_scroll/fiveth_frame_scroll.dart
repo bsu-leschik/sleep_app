@@ -32,7 +32,7 @@ class HomeWidget extends State<InitalScreenWidget> {
       body: PageView(
         controller: _navPage,
         onPageChanged: (i) {
-          print('Page changes to index $i');
+          debugPrint('Page changes to index $i');
         },
         children: const <Widget>[
           FinishScroll(),
@@ -58,7 +58,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                 height: screenHeight * 0.065,
                 child: InkWell(
                   onTap: (() {
-                    print("Mix");
+                    debugPrint("Mix");
                     setState(() {
                       _navPage.jumpToPage(0);
                     });
@@ -92,7 +92,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                 height: screenHeight * 0.07,
                 child: InkWell(
                   onTap: (() {
-                    print("Timer");
+                    debugPrint("Timer");
                     setState(() {
                       _navPage.jumpToPage(1);
                     });

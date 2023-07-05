@@ -150,9 +150,9 @@ class HomeWidget extends State<InitalScreenWidget> {
                       _navPage.jumpToPage(1);
                     });
                   }),
-                  child: Column(
+                  child: const Column(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: const [
+                    children: [
                       SizedBox(
                         width: 25,
                         height: 22,

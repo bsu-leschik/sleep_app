@@ -6,9 +6,9 @@ class BottomPremium extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return const Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: const [
+      children: [
         BottomTerms(title: "Restore Purchases"),
         BottomTerms(title: "Terms of Use"),
         BottomTerms(title: "Privacy Policy"),

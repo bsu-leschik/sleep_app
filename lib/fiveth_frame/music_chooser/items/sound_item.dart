@@ -55,28 +55,14 @@ class SoundItemState extends AbstractItemState<SoundItem> {
       ),
     );
   }
-
-  @override
-  Map<String, dynamic> toJson() => {
-        'property': currentProperty == null
-            ? widget.property.index
-            : currentProperty!.index,
-        'type': widget.type.index,
-        'title': widget.title
-      };
 }
 
 class SoundItem extends StatefulWidget {
   final SoundProperties property;
   final SoundType type;
   final String title;
-  final TextStyle textStyle = GoogleFonts.nunito(
-    color: const Color.fromRGBO(142, 159, 204, 1),
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-  );
 
-  SoundItem(
+  const SoundItem(
       {required this.property,
       required this.title,
       required this.type,
@@ -84,12 +70,4 @@ class SoundItem extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => SoundItemState();
-
-  SoundItem.fromJson(Map<String, dynamic> json, {super.key})
-      : property = SoundProperties.values[json['property'] as int],
-        type = SoundType.values[json['type'] as int],
-        title = json['title'] as String;
-
-  Map<String, dynamic> toJson() =>
-      {'property': property.index, 'type': type.index, 'title': title};
 }

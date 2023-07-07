@@ -33,11 +33,7 @@ class MusicChooser extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 40),
-            child: TypesList(Provider.of<SoundsStorage>(context)
-                .musicLists[
-                    Provider.of<SoundsStorage>(context).currentListIndex]
-                .values
-                .toList()),
+            child: TypesList(Provider.of<SoundsStorage>(context).currentList),
           ),
         ],
       ),

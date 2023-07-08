@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/abstract_item_state.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
@@ -8,10 +9,10 @@ import 'package:text_scroll/text_scroll.dart';
 
 import 'sound_property.dart';
 
+part 'music_item.g.dart';
+
 class MusicItemState extends AbstractItemState<MusicItem> {
   bool isPlaying = false;
-
-  SoundProperties? currentProperty;
 
   _callback(BuildContext context) {
     callback(context);
@@ -64,7 +65,9 @@ class MusicItemState extends AbstractItemState<MusicItem> {
                               decoration: isPlaying ? ifPlaying : null,
                               width: 78,
                               height: 78,
-                              child: widget.image,
+                              child: Image(
+                                image: AssetImage(widget.imageRoute),
+                              ),
                             ),
                           ),
                         ),
@@ -103,38 +106,22 @@ class MusicItemState extends AbstractItemState<MusicItem> {
       ),
     );
   }
-
-  @override
-  Map<String, dynamic> toJson() => {
-        'property': currentProperty == null
-            ? widget.property.index
-            : currentProperty!.index,
-        'image': widget.image,
-        'title': widget.title
-      };
 }
 
+@HiveType(typeId: 4)
 class MusicItem extends StatefulWidget {
+  @HiveField(0)
   final String title;
-  final Image image;
+  @HiveField(1)
   final SoundProperties property;
+  @HiveField(2)
   final String imageRoute;
 
-  MusicItem(
+  const MusicItem(
       {super.key,
       required this.title,
       required this.property,
-      required this.imageRoute})
-      : image = Image(image: AssetImage(imageRoute));
-
-  MusicItem.fromJson(Map<String, dynamic> json, {super.key})
-      : property = SoundProperties.values[json['property'] as int],
-        imageRoute = json['image'] as String,
-        image = Image(image: AssetImage(json['image'] as String)),
-        title = json['title'] as String;
-
-  Map<String, dynamic> toJson() =>
-      {'property': property.index, 'image': imageRoute, 'title': title};
+      required this.imageRoute});
 
   @override
   State<StatefulWidget> createState() => MusicItemState();

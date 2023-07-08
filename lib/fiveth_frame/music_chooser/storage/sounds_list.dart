@@ -131,11 +131,11 @@ const Map<String, SoundItem> sounds = {
       type: SoundType.home),
   "Watch": SoundItem(
       property: SoundProperties.unlocked,
-      title: "Fire",
+      title: "Watch",
       type: SoundType.whiteNoise),
   "Lullaby": SoundItem(
       property: SoundProperties.unlocked,
-      title: "Fire",
+      title: "Lullaby",
       type: SoundType.whiteNoise),
   "Music Box": SoundItem(
       property: SoundProperties.unlocked,

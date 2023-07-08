@@ -1,71 +1,41 @@
-import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
-
-import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:hive/hive.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/abstract_item_state.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/music_item.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/storage/music_list.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/storage/storage.dart';
 
 class MusicStorage extends Storage<MusicItem> {
-  static const basicMusicInfo = "assets/music/music.json";
-  late String pathToMusic;
-  late Directory musicInfo;
-  List<MusicItem> items = [];
+  final String _boxName = "Music";
+  List<MusicItem> _music = music;
+  late Box<MusicItem> box;
 
   MusicStorage() {
-    init();
+    _init();
   }
 
-  init() async {
-    musicInfo = await getApplicationDocumentsDirectory();
-    pathToMusic = '${musicInfo.path}/music.json';
-    read();
-  }
+  List<MusicItem> get musicList => _music;
 
-  @override
-  decode(String json) {
-    List<dynamic> map = jsonDecode(json);
-    for (var element in map) {
-      var item = MusicItem.fromJson(element);
-      items.add(item);
+  _init() async {
+    Hive.registerAdapter(MusicItemAdapter());
+    if (await Hive.boxExists(_boxName)) {
+      read();
+    } else {
+      box = await Hive.openBox<MusicItem>(_boxName);
+      for (var element in music) {
+        box.put(element.title, element);
+      }
     }
   }
 
   @override
   read() async {
-    String json;
-    if (!await File(pathToMusic).exists()) {
-      json = await rootBundle.loadString(basicMusicInfo);
-    } else {
-      json = await File(pathToMusic).readAsString();
-    }
-
-    try {
-      decode(json);
-    } catch (e) {
-      json = await rootBundle.loadString(basicMusicInfo);
-      decode(json);
-    }
+    box = await Hive.openBox<MusicItem>(_boxName);
+    _music = box.values.toList();
     notifyListeners();
   }
 
   @override
   save(AbstractItemState<MusicItem> item) async {
-    for (var i = 0; i < items.length; i++) {
-      if (item.widget == items[i]) {
-        items[i] = MusicItem(
-          imageRoute: item.widget.imageRoute,
-          property: item.currentProperty!,
-          title: item.widget.title,
-        );
-      }
-    }
-    var jsonString = jsonEncode(items);
-
-    log(jsonString);
-    var file = await File(pathToMusic).create();
-    file.writeAsString(jsonString);
+    notifyListeners();
   }
 }

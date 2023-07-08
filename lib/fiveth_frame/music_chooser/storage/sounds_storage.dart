@@ -1,7 +1,4 @@
-import 'dart:developer';
-
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/abstract_item_state.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/sound_property.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_list.dart';
@@ -13,8 +10,8 @@ import '../items/sound_item.dart';
 class SoundsStorage extends Storage<SoundItem> {
   String boxName = "Sounds";
   late Box<SoundItem> box;
-  Map<String, SoundItem> _sounds = <String, SoundItem>{};
-  List<SoundItem> _currentSounds = <SoundItem>[];
+  Map<String, SoundItem> _sounds = sounds;
+  List<SoundItem> _currentSounds = sounds.values.toList();
   MusicBarElement _currentElementType = MusicBarElement.all;
 
   MusicBarElement get currentElementType => _currentElementType;
@@ -26,15 +23,12 @@ class SoundsStorage extends Storage<SoundItem> {
   }
 
   _init() async {
-    await Hive.initFlutter((await getApplicationDocumentsDirectory()).path);
     Hive.registerAdapter(SoundItemAdapter());
     Hive.registerAdapter(SoundPropertiesAdapter());
     Hive.registerAdapter(SoundTypeAdapter());
     if (await Hive.boxExists(boxName)) {
       read();
     } else {
-      _sounds = sounds;
-      _currentSounds = sounds.values.toList();
       box = await Hive.openBox<SoundItem>(boxName);
       box.putAll(sounds);
     }

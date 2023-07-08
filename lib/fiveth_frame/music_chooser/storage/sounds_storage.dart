@@ -1,113 +1,86 @@
-import 'dart:collection';
-import 'dart:convert';
-import 'dart:developer';
-import 'dart:io';
-
-import 'package:flutter/services.dart';
-import 'package:path_provider/path_provider.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/abstract_item_state.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/items/sound_property.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_list.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/storage/storage.dart';
 import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar_model.dart';
 
 import '../items/sound_item.dart';
-import '../items/sound_property.dart';
 
 class SoundsStorage extends Storage<SoundItem> {
-  List<Map<String, SoundItem>> musicLists = List.generate(
-      MusicBarModel.tabs.length, (index) => <String, SoundItem>{});
+  String boxName = "Sounds";
+  late Box<SoundItem> box;
+  Map<String, SoundItem> _sounds = Map<String, SoundItem>.of(sounds);
+  List<SoundItem> _currentSounds = sounds.values.toList();
+  MusicBarElement _currentElementType = MusicBarElement.all;
 
-  static const basicSoundsInfo = "assets/sounds/sounds.json";
-  static const int _shift = 2;
-  late String soundsInfo;
+  MusicBarElement get currentElementType => _currentElementType;
+
+  List<SoundItem> get currentList => _currentSounds;
 
   SoundsStorage() {
-    init();
+    _init();
   }
 
-  int _currentListIndex = 0;
+  _init() async {
+    Hive.registerAdapter(SoundItemAdapter());
+    Hive.registerAdapter(SoundPropertiesAdapter());
+    Hive.registerAdapter(SoundTypeAdapter());
+    if (await Hive.boxExists(boxName)) {
+      read();
+    } else {
+      box = await Hive.openBox<SoundItem>(boxName);
+      box.putAll(sounds);
+    }
+  }
 
-  int get currentListIndex => _currentListIndex;
+  void _filterByType(SoundType type) {
+    _currentSounds.removeWhere((value) => value.type != type);
+  }
 
-  void changeTab(int soundType) {
-    if (_currentListIndex == soundType) return;
-    _currentListIndex = soundType;
+  void _filter(MusicBarElement soundType) {
+    switch (soundType) {
+      case MusicBarElement.all:
+        break;
+      case MusicBarElement.favorite:
+        _currentSounds
+            .removeWhere((value) => value.property != SoundProperties.favorite);
+        break;
+      default:
+        _filterByType(soundType.getSoundType());
+        break;
+    }
+  }
+
+  void changeTab(MusicBarElement soundType) {
+    if (_currentElementType == soundType) {
+      return;
+    }
+    _currentSounds = _sounds.values.toList();
+    _filter(soundType);
+    _currentElementType = soundType;
     notifyListeners();
-  }
-
-  init() async {
-    soundsInfo =
-        '${(await getApplicationDocumentsDirectory()).path}/sounds.json';
-    read();
-  }
-
-  @override
-  decode(String json) {
-    List<dynamic> map = jsonDecode(json);
-    for (var element in map) {
-      var item = SoundItem.fromJson(element);
-      musicLists[0].putIfAbsent(item.title, () => item);
-    }
-    disperse();
-  }
-
-  disperse() {
-    for (var element in musicLists[0].values) {
-      musicLists[element.type.index + _shift]
-          .putIfAbsent(element.title, () => element);
-      if (element.property == SoundProperties.favorite) {
-        musicLists[1].putIfAbsent(element.title, () => element);
-      }
-    }
   }
 
   @override
   read() async {
-    String json;
-    if (!await File(soundsInfo).exists()) {
-      json = await rootBundle.loadString(basicSoundsInfo);
-    } else {
-      json = await File(soundsInfo).readAsString();
-    }
-    try {
-      decode(json);
-    } catch (e) {
-      decode(await rootBundle.loadString(basicSoundsInfo));
-    }
-
+    box = await Hive.openBox<SoundItem>(boxName);
+    _sounds = box.toMap().cast<String, SoundItem>();
+    _currentSounds = _sounds.values.toList();
     notifyListeners();
   }
 
   @override
   save(AbstractItemState<SoundItem> item) async {
-    musicLists[0].update(item.widget.title, (value) {
-      return SoundItem(
-        type: item.widget.type,
+    var currrentItem = SoundItem(
         property: item.currentProperty!,
         title: item.widget.title,
-      );
-    });
+        type: item.widget.type);
+    box.put(item.widget.title, currrentItem);
 
-    if (item.currentProperty == SoundProperties.favorite) {
-      musicLists[1].putIfAbsent(
-          item.widget.title,
-          () => SoundItem(
-                type: item.widget.type,
-                property: item.currentProperty!,
-                title: item.widget.title,
-              ));
-    }
-
-    musicLists[item.widget.type.index + _shift].update(
-        item.widget.title,
-        (value) => SoundItem(
-              type: item.widget.type,
-              property: item.currentProperty!,
-              title: item.widget.title,
-            ));
-    var jsonString = jsonEncode(musicLists[0].values.toList());
-
-    log(jsonString);
-    var file = await File(soundsInfo).create();
-    file.writeAsString(jsonString);
+    _sounds.update(item.widget.title, (value) => currrentItem);
+    _currentSounds = _sounds.values.toList();
+    _filter(_currentElementType);
+    notifyListeners();
   }
 }

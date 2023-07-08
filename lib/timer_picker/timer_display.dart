@@ -50,9 +50,9 @@ class TimerDisplay<T> extends PopupRoute<T> {
               children: [
                 Container(
                   margin: const EdgeInsets.only(bottom: 10, top: 25, right: 25),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.end,
-                    children: const [
+                    children: [
                       CrossExitButton(),
                     ],
                   ),

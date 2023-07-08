@@ -33,18 +33,18 @@ class _ChooseMusicBarState extends State<ChooseMusicBar> {
                 onTap: () {
                   setState(() {
                     Provider.of<SoundsStorage>(context, listen: false)
-                        .changeTab(index);
+                        .changeTab(MusicBarElement.values[index]);
                   });
                 },
                 child: AnimatedContainer(
                   duration: const Duration(milliseconds: 300),
                   margin: const EdgeInsets.only(left: 17),
                   decoration: BoxDecoration(
-                    color:
-                        Provider.of<SoundsStorage>(context).currentListIndex ==
-                                index
-                            ? const Color(0xFFFFFFFF)
-                            : const Color(0xFF141733),
+                    color: Provider.of<SoundsStorage>(context)
+                                .currentElementType ==
+                            MusicBarElement.values[index]
+                        ? const Color(0xFFFFFFFF)
+                        : const Color(0xFF141733),
                     borderRadius: BorderRadius.circular(59),
                     border: Border.all(
                       color: const Color(0xFF8E9FCC),
@@ -63,8 +63,8 @@ class _ChooseMusicBarState extends State<ChooseMusicBar> {
                             fontSize: 16,
                             fontWeight: FontWeight.w700,
                             color: Provider.of<SoundsStorage>(context)
-                                        .currentListIndex ==
-                                    index
+                                        .currentElementType ==
+                                    MusicBarElement.values[index]
                                 ? const Color(0xFF281343)
                                 : const Color(0xFF8E9FCC),
                           ),

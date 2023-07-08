@@ -79,7 +79,7 @@ const Map<String, SoundItem> sounds = {
       property: SoundProperties.unlocked,
       title: "Dog",
       type: SoundType.animals),
-  "Delphins": SoundItem(
+  "Dolphins": SoundItem(
       property: SoundProperties.unlocked,
       title: "Dolphins",
       type: SoundType.animals),
@@ -107,11 +107,11 @@ const Map<String, SoundItem> sounds = {
       property: SoundProperties.unlocked,
       title: "Microwave",
       type: SoundType.home),
-  "Mtronome": SoundItem(
+  "Metronome": SoundItem(
       property: SoundProperties.unlocked,
       title: "Metronome",
       type: SoundType.whiteNoise),
-  "Hairdyer": SoundItem(
+  "Hairdryer": SoundItem(
       property: SoundProperties.unlocked,
       title: "Hairdryer",
       type: SoundType.home),

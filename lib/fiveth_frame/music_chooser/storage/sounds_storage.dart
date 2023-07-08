@@ -10,7 +10,7 @@ import '../items/sound_item.dart';
 class SoundsStorage extends Storage<SoundItem> {
   String boxName = "Sounds";
   late Box<SoundItem> box;
-  Map<String, SoundItem> _sounds = sounds;
+  Map<String, SoundItem> _sounds = Map<String, SoundItem>.of(sounds);
   List<SoundItem> _currentSounds = sounds.values.toList();
   MusicBarElement _currentElementType = MusicBarElement.all;
 

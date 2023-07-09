@@ -35,7 +35,7 @@ class SoundItemState extends AbstractItemState<SoundItem> {
                 height: 78,
                 decoration: BoxDecoration(
                   color: Provider.of<PlayController>(context)
-                          .isPlaying(widget.title)
+                          .isTitlePlaying(widget.title)
                       ? const Color.fromRGBO(151, 71, 255, 1)
                       : Colors.transparent,
                   borderRadius: const BorderRadius.all(

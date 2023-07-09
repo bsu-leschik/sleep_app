@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+part 'sound_property.g.dart';
 
+@HiveType(typeId: 2)
 enum SoundProperties {
+  @HiveField(0)
   locked,
+  @HiveField(1)
   unlocked,
+  @HiveField(2)
   favorite;
 
   static const Color _blue = Color.fromRGBO(0, 50, 147, 1);

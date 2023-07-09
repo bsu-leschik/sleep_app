@@ -93,8 +93,8 @@ class _BoardingWidgetState extends State<BoardingWidget> {
               fit: BoxFit.cover,
               alignment: Alignment.center,
             ),
-            Column(
-              children: const [
+            const Column(
+              children: [
                 PageOneWidget(),
               ],
             ),

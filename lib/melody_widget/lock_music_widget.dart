@@ -257,8 +257,8 @@ class FireWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: const [],
+    return const Stack(
+      children: [],
     );
   }
 }

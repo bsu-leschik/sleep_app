@@ -18,6 +18,4 @@ abstract class AbstractItemState<T extends StatefulWidget> extends State<T> {
       }
     });
   }
-
-  Map<String, dynamic> toJson();
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/storage/music_storage.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_storage.dart';
@@ -12,13 +13,15 @@ import 'fiveth_frame/bottom_bar/bottom_bar.dart';
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
 import 'settings_frame/settings_widget.dart';
+import 'package:path_provider/path_provider.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle.light);
-  runApp(
-    MyApp(),
-  );
+  getApplicationDocumentsDirectory()
+      .then((value) => Hive.initFlutter(value.path).then((value) => runApp(
+            MyApp(),
+          )));
 }
 
 class MyApp extends StatelessWidget {

@@ -14,13 +14,13 @@ class Sevena extends StatefulWidget {
 class _SevenaState extends State<Sevena> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromRGBO(20, 23, 51, 1),
+    return const Scaffold(
+      backgroundColor: Color.fromRGBO(20, 23, 51, 1),
       body: SafeArea(
         top: false,
         bottom: false,
         child: Column(
-          children: const [
+          children: [
             TopBar(),
             SizedBox(height: 25),
             SaveType(),
@@ -198,15 +198,15 @@ class _PlayListState extends State<PlayList> {
             ]),
             Column(
               children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 16, left: 19),
+                const Padding(
+                  padding: EdgeInsets.only(top: 16, left: 19),
                   child: SizedBox(
                     width: 241,
                     height: 27,
                     // color: Colors.black,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text(
                           "Meditation music",
                           style: TextStyle(

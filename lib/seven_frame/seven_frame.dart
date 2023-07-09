@@ -204,15 +204,15 @@ class _PlayingMusicState extends State<PlayingMusic> {
               ]),
               Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16, left: 19),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 16, left: 19),
                     child: SizedBox(
                       width: 241,
                       height: 27,
                       // color: Colors.black,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           Text(
                             "Meditation music",
                             style: TextStyle(
@@ -279,15 +279,15 @@ class _PlayingMusicState extends State<PlayingMusic> {
               ]),
               Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 16, left: 19),
+                  const Padding(
+                    padding: EdgeInsets.only(top: 16, left: 19),
                     child: SizedBox(
                       width: 241,
                       height: 27,
                       // color: Colors.black,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           Text(
                             "Rain",
                             style: TextStyle(

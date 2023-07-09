@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/abstract_item_state.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_storage.dart';
 import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar_model.dart';
 
 import 'sound_property.dart';
+
+part 'sound_item.g.dart';
 
 class SoundItemState extends AbstractItemState<SoundItem> {
   _callback(BuildContext context) {
@@ -55,28 +58,18 @@ class SoundItemState extends AbstractItemState<SoundItem> {
       ),
     );
   }
-
-  @override
-  Map<String, dynamic> toJson() => {
-        'property': currentProperty == null
-            ? widget.property.index
-            : currentProperty!.index,
-        'type': widget.type.index,
-        'title': widget.title
-      };
 }
 
+@HiveType(typeId: 1)
 class SoundItem extends StatefulWidget {
+  @HiveField(0)
   final SoundProperties property;
+  @HiveField(1)
   final SoundType type;
+  @HiveField(2)
   final String title;
-  final TextStyle textStyle = GoogleFonts.nunito(
-    color: const Color.fromRGBO(142, 159, 204, 1),
-    fontSize: 12,
-    fontWeight: FontWeight.w400,
-  );
 
-  SoundItem(
+  const SoundItem(
       {required this.property,
       required this.title,
       required this.type,
@@ -84,12 +77,4 @@ class SoundItem extends StatefulWidget {
 
   @override
   State<StatefulWidget> createState() => SoundItemState();
-
-  SoundItem.fromJson(Map<String, dynamic> json, {super.key})
-      : property = SoundProperties.values[json['property'] as int],
-        type = SoundType.values[json['type'] as int],
-        title = json['title'] as String;
-
-  Map<String, dynamic> toJson() =>
-      {'property': property.index, 'type': type.index, 'title': title};
 }

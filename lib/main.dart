@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/storage/music_storage.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_storage.dart';
 import 'package:sleep_app/timer_picker/time_picker.dart';
@@ -61,18 +62,15 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<DataSlider>(
           create: (context) => DataSlider(),
         ),
-        ChangeNotifierProvider<DataListCurrentWidget>(
-          create: (context) => DataListCurrentWidget(),
-        ),
-        ChangeNotifierProvider<DataTypeList>(
-          create: (context) => DataTypeList(),
-        ),
         ChangeNotifierProvider<SoundsStorage>(
           create: (context) => SoundsStorage(),
         ),
         ChangeNotifierProvider<MusicStorage>(
           create: (context) => MusicStorage(),
         ),
+        ChangeNotifierProvider<PlayController>(
+          create: (context) => PlayController(),
+        )
       ],
       child: MaterialApp.router(
         routerConfig: _router,

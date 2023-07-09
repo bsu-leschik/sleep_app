@@ -43,7 +43,8 @@ class MusicItemState extends AbstractItemState<MusicItem> {
         children: [
           GestureDetector(
             onTap: () => setState(() {
-              if (PlayController.playMusic(this)) {
+              if (Provider.of<PlayController>(context, listen: false)
+                  .playMusic(this)) {
                 isPlaying = !isPlaying;
               }
             }),

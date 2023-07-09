@@ -19,12 +19,6 @@ class MusicItemState extends AbstractItemState<MusicItem> {
     Provider.of<MusicStorage>(context, listen: false).save(this);
   }
 
-  displayPlaying(bool playing) {
-    setState(() {
-      isPlaying = playing;
-    });
-  }
-
   final BoxDecoration ifPlaying = BoxDecoration(
       borderRadius: BorderRadius.circular(8),
       boxShadow: const [
@@ -44,9 +38,7 @@ class MusicItemState extends AbstractItemState<MusicItem> {
           GestureDetector(
             onTap: () => setState(() {
               if (Provider.of<PlayController>(context, listen: false)
-                  .playMusic(this)) {
-                isPlaying = !isPlaying;
-              }
+                  .playMusic(widget)) {}
             }),
             child: SizedBox(
               width: 112,
@@ -63,7 +55,11 @@ class MusicItemState extends AbstractItemState<MusicItem> {
                             padding: const EdgeInsets.only(
                                 top: 3, left: 17, right: 17, bottom: 5),
                             child: Container(
-                              decoration: isPlaying ? ifPlaying : null,
+                              decoration: Provider.of<PlayController>(context)
+                                          .musicPlaying ==
+                                      widget.title
+                                  ? ifPlaying
+                                  : null,
                               width: 78,
                               height: 78,
                               child: Image(

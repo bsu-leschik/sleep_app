@@ -5,61 +5,72 @@ import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/sound_property.dart';
 
 class PlayController extends ChangeNotifier {
-  static MusicItemState? _musicPlaying;
+  static String _musicPlaying = "";
   static const _pathToMusic = "/assets/music/";
   static const _pathToSounds = "/assets/sounds/";
   static const _musicFormat = ".mp3";
   static final _player = AssetsAudioPlayer.newPlayer();
   final Map<String, AssetsAudioPlayer> _soundPlayers =
       <String, AssetsAudioPlayer>{};
+  bool _playing = false;
 
-  bool playMusic(MusicItemState item) {
-    if (item.widget.property == SoundProperties.locked) {
+  bool get isPlaying => _playing;
+
+  String get musicPlaying => _musicPlaying;
+
+  bool playMusic(MusicItem item) {
+    if (item.property == SoundProperties.locked) {
       return false;
     }
-    if (item.isPlaying) {
-      _player.pause();
-    } else {
-      if (_musicPlaying != null) {
-        if (_musicPlaying == item) {
-          _player.play();
-          return true;
-        } else {
-          _musicPlaying!.displayPlaying(false);
-        }
+    if (item.title == _musicPlaying) {
+      _player.dispose();
+      _player.playlist?.removeAtIndex(0);
+      _musicPlaying = "";
+      if (_soundPlayers.isEmpty) {
+        _playing = false;
       }
-      _musicPlaying = item;
+    } else {
+      _musicPlaying = item.title;
       _player.open(
-        Audio(_pathToMusic + item.widget.title + _musicFormat),
+        Audio(_pathToMusic + item.title + _musicFormat),
         autoStart: true,
         loopMode: LoopMode.single,
       );
+      _playing = true;
     }
+    notifyListeners();
     return true;
   }
 
-  bool isPlaying(String title) {
+  bool isTitlePlaying(String title) {
     return _soundPlayers.containsKey(title);
   }
 
   playSound(SoundItemState item) {
+    if (!_playing) resume();
     var currentPlayer = _soundPlayers.remove(item.widget.title);
     if (currentPlayer != null) {
-      currentPlayer.stop();
       currentPlayer.dispose();
+      if (_soundPlayers.isEmpty && !_player.isPlaying.value) {
+        _playing = false;
+      }
     } else {
       var player = AssetsAudioPlayer.newPlayer();
-      player.open(Audio('$_pathToSounds${item.widget.title}$_musicFormat'));
+      player.open(Audio('$_pathToSounds${item.widget.title}$_musicFormat'),
+          loopMode: LoopMode.single);
       _soundPlayers.putIfAbsent(item.widget.title, () => player);
+      _playing = true;
     }
     notifyListeners();
   }
 
   pause() {
+    _playing = false;
     for (var soundPlayer in _soundPlayers.values) {
       soundPlayer.pause();
     }
     _player.pause();
+    notifyListeners();
   }
 
   resume() {
@@ -67,6 +78,8 @@ class PlayController extends ChangeNotifier {
       soundPlayer.play();
     }
     _player.play();
+    _playing = true;
+    notifyListeners();
   }
 
   stop() {

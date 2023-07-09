@@ -1,6 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
 import 'package:sleep_app/timer_picker/time_picker.dart';
 
 import '../main_page.dart';
@@ -24,14 +27,10 @@ class InitalScreenWidget extends StatefulWidget {
 }
 
 class HomeWidget extends State<InitalScreenWidget> {
-  bool play = false;
-
   final PageController _navPage = PageController(initialPage: 0);
 
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
-    final double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: PageView(
         controller: _navPage,
@@ -48,100 +47,95 @@ class HomeWidget extends State<InitalScreenWidget> {
         shape: const CircularNotchedRectangle(),
         child: Row(
           mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.only(
-                  left: screenWidth * 0.07, top: screenHeight * 0.009),
-              width: screenWidth * 0.23,
-              height: screenHeight * 0.07,
-              child: InkWell(
-                onTap: (() {
-                  context.push('/currentMix');
-                }),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    SizedBox(
-                      width: screenWidth * 0.06,
-                      height: screenHeight * 0.03,
-                      child: Image.asset(
-                        "assets/images/mix.png",
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      "Mix",
-                      style: GoogleFonts.nunito(
-                        textStyle: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
-                          height: 24.55 / 18,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Expanded(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  BottomNavButton(
+                      labelText: "Mix",
+                      icon: CupertinoIcons.shuffle_medium,
+                      onTap: () => context.push('/currentMix')),
+                ],
               ),
             ),
-            Container(
-              margin: const EdgeInsets.only(right: 29.0, top: 8),
-              width: screenWidth * 0.23,
-              height: screenHeight * 0.07,
-              child: InkWell(
-                onTap: (() {
-                  debugPrint("Timer");
-                  Navigator.push(context, TimerRoute());
-                }),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    SizedBox(
-                      width: screenWidth * 0.06,
-                      height: screenHeight * 0.03,
-                      child: const Icon(
-                        Icons.timer_sharp,
-                        color: Colors.white,
-                      ),
-                    ),
-                    Text(
-                      "Timer",
-                      style: GoogleFonts.nunito(
-                        textStyle: const TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w400,
-                          color: Colors.white,
-                          height: 24.55 / 18,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+            Expanded(
+                child: Container(
+              height: 0,
+            )),
+            Expanded(
+              child: Row(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  BottomNavButton(
+                      labelText: "Timer",
+                      icon: Icons.timer_outlined,
+                      onTap: () => Navigator.push(context, TimerRoute())),
+                ],
               ),
             ),
           ],
         ),
       ),
       floatingActionButton: SizedBox(
-        // color: Colors.red,
-        height: screenHeight * 0.11,
-        width: screenWidth * 0.24,
+        height: 80,
+        width: 80,
         child: FloatingActionButton(
           backgroundColor: Colors.white,
           onPressed: () {
-            setState(() {
-              play = !play;
-            });
+            if (Provider.of<PlayController>(context, listen: false).isPlaying) {
+              Provider.of<PlayController>(context, listen: false).pause();
+            } else {
+              Provider.of<PlayController>(context, listen: false).resume();
+            }
           },
           child: Icon(
             size: 55,
-            play ? Icons.play_arrow_rounded : Icons.pause_rounded,
+            Provider.of<PlayController>(context).isPlaying
+                ? Icons.pause_rounded
+                : Icons.play_arrow_rounded,
             color: const Color(0xFF7E44FA),
           ),
         ),
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
+  }
+}
+
+class BottomNavButton extends StatelessWidget {
+  final Text label;
+  final Icon icon;
+  final Function onTap;
+
+  BottomNavButton(
+      {required String labelText,
+      required IconData icon,
+      required this.onTap,
+      super.key})
+      : label = Text(labelText,
+            style: GoogleFonts.nunito(
+              textStyle: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w400,
+                color: Colors.white,
+              ),
+            )),
+        icon = Icon(
+          icon,
+          color: Colors.white,
+        );
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+        height: 55,
+        margin: const EdgeInsets.only(top: 8),
+        width: 88,
+        child: GestureDetector(
+            onTap: () => onTap.call(), child: Column(children: [icon, label])));
   }
 }

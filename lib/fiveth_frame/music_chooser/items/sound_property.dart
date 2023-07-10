@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_storage.dart';
+
+import '../storage/music_storage.dart';
 part 'sound_property.g.dart';
 
 @HiveType(typeId: 2)
@@ -40,17 +44,43 @@ enum SoundProperties {
 class _SoundPropertyState extends State<SoundProperty> {
   @override
   Widget build(BuildContext context) {
+    SoundProperties property;
+    switch (widget.storage) {
+      case SoundsStorage:
+        property =
+            Provider.of<SoundsStorage>(context).getSoundProperty(widget.title);
+        break;
+      case MusicStorage:
+        property =
+            Provider.of<MusicStorage>(context).getSoundProperty(widget.title);
+        break;
+      default:
+        throw ArgumentError("Invalid Storage type");
+    }
     return SizedBox(
       width: 27,
       height: 27,
       child: CircleAvatar(
-        backgroundColor: widget.property.getColor(),
+        backgroundColor: property.getColor(),
         child: GestureDetector(
-          onTap: () => {widget.action(context)},
+          onTap: () {
+            switch (widget.storage) {
+              case SoundsStorage:
+                Provider.of<SoundsStorage>(context, listen: false)
+                    .favoriteOrPremium(widget.title);
+                break;
+              case MusicStorage:
+                Provider.of<MusicStorage>(context, listen: false)
+                    .favoriteOrPremium(widget.title);
+                break;
+              default:
+                throw ArgumentError("Invalid Storage type");
+            }
+          },
           child: FittedBox(
             fit: BoxFit.contain,
             child: Icon(
-              widget.property.getIcon(),
+              property.getIcon(),
               size: 15,
               color: const Color(0xFFFFFFFF),
             ),
@@ -62,10 +92,10 @@ class _SoundPropertyState extends State<SoundProperty> {
 }
 
 class SoundProperty extends StatefulWidget {
-  final SoundProperties property;
-  final Function action;
+  final String title;
+  final Type storage;
 
-  const SoundProperty(this.property, this.action, {super.key});
+  const SoundProperty(this.title, this.storage, {super.key});
 
   @override
   State<StatefulWidget> createState() => _SoundPropertyState();

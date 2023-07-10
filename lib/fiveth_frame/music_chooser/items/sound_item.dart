@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/items/abstract_item_state.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_storage.dart';
 import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar_model.dart';
@@ -11,15 +10,9 @@ import 'sound_property.dart';
 
 part 'sound_item.g.dart';
 
-class SoundItemState extends AbstractItemState<SoundItem> {
-  _callback(BuildContext context) {
-    callback(context);
-    Provider.of<SoundsStorage>(context, listen: false).save(this);
-  }
-
+class SoundItemState extends State<SoundItem> {
   @override
   Widget build(BuildContext context) {
-    currentProperty ??= widget.property;
     return SizedBox(
       width: 119,
       height: 99,
@@ -51,7 +44,7 @@ class SoundItemState extends AbstractItemState<SoundItem> {
               Positioned(
                   top: 0,
                   right: 0,
-                  child: SoundProperty(currentProperty!, _callback))
+                  child: SoundProperty(widget.title, SoundsStorage))
             ]),
             Text(widget.title,
                 maxLines: 1,

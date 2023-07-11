@@ -15,31 +15,25 @@ class CurrentMix extends StatefulWidget {
 class _CurrentMixState extends State<CurrentMix> {
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: const Color(0xFF141733),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          const BarWidgetCurrent(),
-          SizedBox(
-            height: screenHeight * 0.03,
+      body: SafeArea(
+        child: Container(
+          margin: const EdgeInsets.only(top: 51, left: 17, right: 17),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              Container(
+                  margin: const EdgeInsets.only(bottom: 20),
+                  child: const MixTopBar()),
+              Container(
+                  margin: const EdgeInsets.only(top: 20),
+                  child: const TypeMusicCurrent()),
+              //LockMusic(),
+              //UnlockMusic(),
+            ],
           ),
-          const TypeMusicCurrent(),
-          SizedBox(
-            height: screenHeight * 0.03,
-          ),
-          const LockMusic(),
-          SizedBox(
-            height: screenHeight * 0.03,
-          ),
-          SizedBox(
-            height: screenHeight * 0.49,
-            width: screenWidth,
-            child: const UnlockMusic(),
-          ),
-        ],
+        ),
       ),
     );
   }

@@ -9,87 +9,54 @@ class TypeMusicCurrent extends StatefulWidget {
 }
 
 class _TypeMusicCurrentState extends State<TypeMusicCurrent> {
-  Map<String, bool> type = {
-    "Clear": false,
-    "Save mix": false,
-  };
+  final List<Widget> buttons = [
+    MixControlButton(title: "Clear", callback: () => {}),
+    const SizedBox(
+      width: 20,
+      height: 1,
+    ),
+    MixControlButton(title: "Save mix", callback: () => {}),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
-    final double screenWidth = MediaQuery.of(context).size.width;
-
-    return SizedBox(
-      // color: Colors.red,
-      height: screenHeight * 0.085,
-      width: screenWidth,
-      child: ListView.builder(
-        itemCount: type.length,
-        scrollDirection: Axis.horizontal,
-        shrinkWrap: true,
-        itemBuilder: (context, index) {
-          final key = type.keys.elementAt(index);
-          return InkWell(
-            splashColor: Colors.transparent,
-            onTap: () {
-              type.forEach(
-                (k, v) {
-                  if (k == key) {
-                    type[k] = !type[k]!;
-                  } else {
-                    type[k] = false;
-                  }
-                },
-              );
-              setState(() {});
-            },
-            child: CategoryToogleCurrent(
-              title: key,
-              isSelected: type[key]!,
-            ),
-          );
-        },
-      ),
+    return Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: buttons,
     );
   }
 }
 
-class CategoryToogleCurrent extends StatelessWidget {
+class MixControlButton extends StatelessWidget {
   final String title;
-  final bool isSelected;
+  final Function _callback;
 
-  const CategoryToogleCurrent({
+  const MixControlButton({
     super.key,
     required this.title,
-    required this.isSelected,
-  });
+    required Function callback,
+  }) : _callback = callback;
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Container(
-        margin: const EdgeInsets.only(left: 17),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(59),
-          border: Border.all(
-            color: const Color(0xFF8E9FCC),
-          ),
-          color: isSelected ? const Color(0xFFFFFFFF) : const Color(0xFF141733),
+    return Container(
+      alignment: Alignment.center,
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(59),
+        border: Border.all(
+          color: const Color(0xFF8E9FCC),
         ),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-          child: Text(
-            title,
-            textAlign: TextAlign.center,
-            style: GoogleFonts.nunito(
-              textStyle: TextStyle(
-                height: 21.82 / 16,
-                fontSize: 16,
-                fontWeight: FontWeight.w700,
-                color: isSelected
-                    ? const Color(0xFF281343)
-                    : const Color(0xFF8E9FCC),
-              ),
+      ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+        child: Text(
+          title,
+          textAlign: TextAlign.center,
+          style: GoogleFonts.nunito(
+            textStyle: const TextStyle(
+              fontSize: 16,
+              fontWeight: FontWeight.w700,
+              color: Color(0xFF8E9FCC),
             ),
           ),
         ),

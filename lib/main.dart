@@ -3,14 +3,14 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/main_page.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/storage/music_storage.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_storage.dart';
-import 'package:sleep_app/timer_picker/time_picker.dart';
-import 'current_mix/current_mix.dart';
-import 'current_mix/widgets/show_dialog.dart';
+import 'fiveth_frame/current_mix/widgets/show_dialog.dart';
 import 'data_type.dart';
 import 'fiveth_frame/bottom_bar/bottom_bar.dart';
+import 'fiveth_frame/current_mix/current_mix.dart';
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
 import 'settings_frame/settings_widget.dart';
@@ -26,30 +26,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final GoRouter _router = GoRouter(routes: [
-    GoRoute(path: '/', builder: (context, state) => const OnBoardingWidget()),
-    GoRoute(
-      path: '/subscribe',
-      builder: (context, state) => const SubscribeWidget(),
-    ),
-    GoRoute(
-      path: '/fiveframe',
-      builder: (context, state) => const BottomBar(),
-    ),
-    GoRoute(
-      path: '/settings',
-      builder: (context, state) => const SettingsWidget(),
-    ),
-    GoRoute(
-      path: '/currentmix',
-      builder: (context, state) => const CurrentMix(),
-    ),
-    GoRoute(
-      path: '/showdialog',
-      builder: (context, state) => const ShowDialog(),
-    ),
-    GoRoute(path: '/timer', builder: (context, state) => const Timer()),
-  ]);
+  final _rootNavigatorKey = GlobalKey<NavigatorState>();
+  final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   MyApp({
     Key? key,
@@ -73,7 +51,47 @@ class MyApp extends StatelessWidget {
         )
       ],
       child: MaterialApp.router(
-        routerConfig: _router,
+        routerConfig: GoRouter(
+            initialLocation: '/',
+            navigatorKey: _rootNavigatorKey,
+            routes: [
+              GoRoute(
+                parentNavigatorKey: _rootNavigatorKey,
+                path: '/',
+                builder: (context, state) => const OnBoardingWidget(),
+              ),
+              GoRoute(
+                parentNavigatorKey: _rootNavigatorKey,
+                path: '/subscribe',
+                builder: (context, state) => const SubscribeWidget(),
+              ),
+              ShellRoute(
+                  navigatorKey: _shellNavigatorKey,
+                  builder: (context, state, widget) =>
+                      BottomNavBar(currentWidget: widget),
+                  routes: [
+                    GoRoute(
+                      parentNavigatorKey: _shellNavigatorKey,
+                      path: '/fiveframe',
+                      builder: (context, state) => const MusicLists(),
+                    ),
+                    GoRoute(
+                      parentNavigatorKey: _shellNavigatorKey,
+                      path: '/current-mix',
+                      builder: (context, state) => const CurrentMix(),
+                    ),
+                  ]),
+              GoRoute(
+                parentNavigatorKey: _rootNavigatorKey,
+                path: '/settings',
+                builder: (context, state) => const SettingsWidget(),
+              ),
+              GoRoute(
+                parentNavigatorKey: _rootNavigatorKey,
+                path: '/showdialog',
+                builder: (context, state) => const ShowDialog(),
+              ),
+            ]),
       ),
     );
   }

@@ -3,14 +3,14 @@ import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar.dart';
 import 'music_chooser/music_chooser.dart';
 import 'top_bar/top_bar.dart';
 
-class MainHome extends StatefulWidget {
-  const MainHome({Key? key}) : super(key: key);
+class MusicLists extends StatefulWidget {
+  const MusicLists({Key? key}) : super(key: key);
 
   @override
-  State<MainHome> createState() => _MainHomeState();
+  State<MusicLists> createState() => _MusicListsState();
 }
 
-class _MainHomeState extends State<MainHome> {
+class _MusicListsState extends State<MusicLists> {
   /// List of Tab Bar Item
 
   int current = 0;

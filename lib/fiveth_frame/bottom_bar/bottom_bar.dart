@@ -4,42 +4,21 @@ import 'package:go_router/go_router.dart';
 import 'package:sleep_app/fiveth_frame/bottom_bar/play_button.dart';
 import 'package:sleep_app/timer_picker/time_picker.dart';
 
-import '../main_page.dart';
 import 'bottom_nav_button.dart';
 
-class BottomBar extends StatelessWidget {
-  static const String appTitle = 'Bottom Nav Bar';
-
-  const BottomBar({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const InitalScreenWidget();
-  }
-}
-
-class InitalScreenWidget extends StatefulWidget {
-  const InitalScreenWidget({super.key});
+class BottomNavBar extends StatefulWidget {
+  final Widget? currentWidget;
+  const BottomNavBar({required this.currentWidget, super.key});
 
   @override
-  HomeWidget createState() => HomeWidget();
+  State<BottomNavBar> createState() => _BottomNavBarState();
 }
 
-class HomeWidget extends State<InitalScreenWidget> {
-  final PageController _navPage = PageController(initialPage: 0);
-
+class _BottomNavBarState extends State<BottomNavBar> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: PageView(
-        controller: _navPage,
-        onPageChanged: (i) {
-          debugPrint('Page changes to index $i');
-        },
-        children: const <Widget>[
-          MainHome(),
-        ],
-      ),
+      body: widget.currentWidget ?? const Text("You are not meant to be here"),
       backgroundColor: const Color.fromRGBO(20, 23, 51, 1),
       bottomNavigationBar: BottomAppBar(
         color: const Color(0xFF01308C),
@@ -54,9 +33,10 @@ class HomeWidget extends State<InitalScreenWidget> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   BottomNavButton(
-                      labelText: "Mix",
-                      icon: CupertinoIcons.shuffle_medium,
-                      onTap: () => context.push('/currentMix')),
+                    labelText: "Mix",
+                    icon: CupertinoIcons.shuffle_medium,
+                    onTap: () => context.push('/current-mix'),
+                  )
                 ],
               ),
             ),

@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 
-import 'bar_widget_current.dart';
-import 'lock_music.dart';
-import 'type_music_current.dart';
-import 'unlock_music.dart';
+import 'widgets/bar_widget_current.dart';
+import 'widgets/lock_music.dart';
+import 'widgets/type_music_current.dart';
+import 'widgets/unlock_music.dart';
 
-class TotalFrame extends StatefulWidget {
-  const TotalFrame({super.key});
+class CurrentMix extends StatefulWidget {
+  const CurrentMix({super.key});
 
   @override
-  State<TotalFrame> createState() => _TotalFrameState();
+  State<CurrentMix> createState() => _CurrentMixState();
 }
 
-class _TotalFrameState extends State<TotalFrame> {
+class _CurrentMixState extends State<CurrentMix> {
   @override
   Widget build(BuildContext context) {
     final double screenWidth = MediaQuery.of(context).size.width;

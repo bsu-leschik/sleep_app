@@ -62,7 +62,7 @@ class HomeWidget extends State<InitalScreenWidget> {
                 height: screenHeight * 0.065,
                 child: InkWell(
                   onTap: (() {
-                    context.go('/currentmix');
+                    context.go('/current-mix');
                   }),
                   child: Column(
                     // пооборачивать колонку в SizedBox и задать размеры!!!

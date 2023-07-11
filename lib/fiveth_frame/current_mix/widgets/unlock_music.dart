@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/seven_frame/sevena_frame.dart';
 
-import '../../data_type.dart';
+import '../../../data_type.dart';
 
 class UnlockMusic extends StatefulWidget {
   const UnlockMusic({super.key});
@@ -19,7 +19,7 @@ class _UnlockMusicState extends State<UnlockMusic> {
     // var lenght = unlockMusik.length;
     return ListView.builder(
       padding: EdgeInsets.zero,
-      itemCount: context.read<DataListCurrentWidget>().unlockMusik.length,
+      itemCount: 0, //context.read<DataListCurrentWidget>().unlockMusik.length,
       itemBuilder: (BuildContext context, int index) {
         return Slidable(
           key: UniqueKey(),

@@ -20,19 +20,19 @@ class MusicChooser extends StatelessWidget {
       child: Column(
         children: [
           Container(
-              padding: const EdgeInsets.fromLTRB(26, 20, 26, 40),
+              margin: const EdgeInsets.only(bottom: 20),
               color: Colors.transparent,
-              height: 284,
               width: double.infinity,
               child: TypesList(Provider.of<MusicStorage>(context).musicList)),
-          Divider(
-            color: const Color.fromRGBO(142, 159, 204, 0.5),
-            thickness: 1,
-            indent: screenWidth * 0.11,
-            endIndent: screenWidth * 0.11,
+          Container(
+            margin: const EdgeInsets.symmetric(vertical: 20),
+            child: const Divider(
+              color: Color.fromRGBO(142, 159, 204, 0.5),
+              thickness: 1,
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.only(top: 40),
+          Container(
+            margin: const EdgeInsets.only(top: 20),
             child: TypesList(Provider.of<SoundsStorage>(context).currentList),
           ),
         ],

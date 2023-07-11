@@ -14,7 +14,7 @@ class SoundItemState extends State<SoundItem> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      width: 119,
+      width: 112,
       height: 99,
       child: GestureDetector(
         onTap: () =>

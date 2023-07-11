@@ -1,13 +1,12 @@
+import 'package:flutter/cupertino.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/items/abstract_item_state.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/sound_property.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_list.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/storage/storage.dart';
 import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar_model.dart';
 
 import '../items/sound_item.dart';
 
-class SoundsStorage extends Storage<SoundItem> {
+class SoundsStorage extends ChangeNotifier {
   String boxName = "Sounds";
   late Box<SoundItem> box;
   Map<String, SoundItem> _sounds = Map<String, SoundItem>.of(sounds);
@@ -62,7 +61,6 @@ class SoundsStorage extends Storage<SoundItem> {
     notifyListeners();
   }
 
-  @override
   read() async {
     box = await Hive.openBox<SoundItem>(boxName);
     _sounds = box.toMap().cast<String, SoundItem>();
@@ -70,17 +68,33 @@ class SoundsStorage extends Storage<SoundItem> {
     notifyListeners();
   }
 
-  @override
-  save(AbstractItemState<SoundItem> item) async {
-    var currrentItem = SoundItem(
-        property: item.currentProperty!,
-        title: item.widget.title,
-        type: item.widget.type);
-    box.put(item.widget.title, currrentItem);
+  save(String name, SoundProperties property) async {
+    if (!_sounds.containsKey(name)) {
+      throw ArgumentError("No key such key was found");
+    }
+    var currrentItem =
+        SoundItem(property: property, title: name, type: _sounds[name]!.type);
+    box.put(name, currrentItem);
 
-    _sounds.update(item.widget.title, (value) => currrentItem);
+    _sounds.update(name, (value) => currrentItem);
     _currentSounds = _sounds.values.toList();
     _filter(_currentElementType);
     notifyListeners();
+  }
+
+  SoundProperties getSoundProperty(String name) {
+    return _sounds[name]!.property;
+  }
+
+  favoriteOrPremium(String name) {
+    var sound = _sounds[name];
+    if (sound!.property == SoundProperties.locked) {
+    } else {
+      if (sound.property == SoundProperties.favorite) {
+        save(name, SoundProperties.unlocked);
+      } else {
+        save(name, SoundProperties.favorite);
+      }
+    }
   }
 }

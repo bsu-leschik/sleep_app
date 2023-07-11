@@ -1,12 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
+import 'package:sleep_app/fiveth_frame/bottom_bar/play_button.dart';
 import 'package:sleep_app/timer_picker/time_picker.dart';
 
 import '../main_page.dart';
+import 'bottom_nav_button.dart';
 
 class BottomBar extends StatelessWidget {
   static const String appTitle = 'Bottom Nav Bar';
@@ -80,62 +79,8 @@ class HomeWidget extends State<InitalScreenWidget> {
           ],
         ),
       ),
-      floatingActionButton: SizedBox(
-        height: 80,
-        width: 80,
-        child: FloatingActionButton(
-          backgroundColor: Colors.white,
-          onPressed: () {
-            if (Provider.of<PlayController>(context, listen: false).isPlaying) {
-              Provider.of<PlayController>(context, listen: false).pause();
-            } else {
-              Provider.of<PlayController>(context, listen: false).resume();
-            }
-          },
-          child: Icon(
-            size: 55,
-            Provider.of<PlayController>(context).isPlaying
-                ? Icons.pause_rounded
-                : Icons.play_arrow_rounded,
-            color: const Color(0xFF7E44FA),
-          ),
-        ),
-      ),
+      floatingActionButton: const MainPlayButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
-  }
-}
-
-class BottomNavButton extends StatelessWidget {
-  final Text label;
-  final Icon icon;
-  final Function onTap;
-
-  BottomNavButton(
-      {required String labelText,
-      required IconData icon,
-      required this.onTap,
-      super.key})
-      : label = Text(labelText,
-            style: GoogleFonts.nunito(
-              textStyle: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w400,
-                color: Colors.white,
-              ),
-            )),
-        icon = Icon(
-          icon,
-          color: Colors.white,
-        );
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-        height: 55,
-        margin: const EdgeInsets.only(top: 8),
-        width: 88,
-        child: GestureDetector(
-            onTap: () => onTap.call(), child: Column(children: [icon, label])));
   }
 }

@@ -4,25 +4,25 @@ import '../items/music_item.dart';
 
 const String musicFolder = "assets/images/music/";
 
-const List<MusicItem> music = [
-  MusicItem(
+const Map<String, MusicItem> music = {
+  "Mediative space": MusicItem(
       title: "Mediative space",
       property: SoundProperties.unlocked,
       imageRoute: '${musicFolder}Mediative.png'),
-  MusicItem(
+  "Moon vibes": MusicItem(
       title: "Moon vibes",
       property: SoundProperties.unlocked,
       imageRoute: '${musicFolder}Moonmusic.png'),
-  MusicItem(
+  "Peaceful and calm": MusicItem(
       title: "Peaceful and calm",
       property: SoundProperties.unlocked,
       imageRoute: '${musicFolder}Peaceful.png'),
-  MusicItem(
+  "Tropical": MusicItem(
       title: "Tropical",
       property: SoundProperties.unlocked,
       imageRoute: '${musicFolder}Tropical.png'),
-  MusicItem(
+  "Winter": MusicItem(
       title: "Winter",
       property: SoundProperties.unlocked,
       imageRoute: '${musicFolder}Winter.png')
-];
+};

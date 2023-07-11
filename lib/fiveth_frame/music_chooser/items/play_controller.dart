@@ -30,6 +30,9 @@ class PlayController extends ChangeNotifier {
         _playing = false;
       }
     } else {
+      if (!_playing) {
+        resume();
+      }
       _musicPlaying = item.title;
       _player.open(
         Audio(_pathToMusic + item.title + _musicFormat),
@@ -47,7 +50,6 @@ class PlayController extends ChangeNotifier {
   }
 
   playSound(SoundItemState item) {
-    if (!_playing) resume();
     var currentPlayer = _soundPlayers.remove(item.widget.title);
     if (currentPlayer != null) {
       currentPlayer.dispose();
@@ -55,6 +57,7 @@ class PlayController extends ChangeNotifier {
         _playing = false;
       }
     } else {
+      if (!_playing) resume();
       var player = AssetsAudioPlayer.newPlayer();
       player.open(Audio('$_pathToSounds${item.widget.title}$_musicFormat'),
           loopMode: LoopMode.single);

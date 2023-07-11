@@ -14,11 +14,6 @@ part 'music_item.g.dart';
 class MusicItemState extends AbstractItemState<MusicItem> {
   bool isPlaying = false;
 
-  _callback(BuildContext context) {
-    callback(context);
-    Provider.of<MusicStorage>(context, listen: false).save(this);
-  }
-
   final BoxDecoration ifPlaying = BoxDecoration(
       borderRadius: BorderRadius.circular(8),
       boxShadow: const [
@@ -70,7 +65,7 @@ class MusicItemState extends AbstractItemState<MusicItem> {
                         ),
                         Positioned(
                             right: 14,
-                            child: SoundProperty(currentProperty!, _callback))
+                            child: SoundProperty(widget.title, MusicStorage))
                       ],
                     ),
                   ),

@@ -25,7 +25,7 @@ class MusicChooser extends StatelessWidget {
               width: double.infinity,
               child: TypesList(Provider.of<MusicStorage>(context).musicList)),
           Container(
-            margin: const EdgeInsets.symmetric(vertical: 20),
+            margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 15),
             child: const Divider(
               color: Color.fromRGBO(142, 159, 204, 0.5),
               thickness: 1,

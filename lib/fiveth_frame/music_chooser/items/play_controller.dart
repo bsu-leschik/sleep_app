@@ -77,6 +77,10 @@ class PlayController extends ChangeNotifier {
   }
 
   resume() {
+    if (_soundPlayers.isEmpty &&
+        (_player.playlist == null || _player.playlist?.numberOfItems == 0)) {
+      return;
+    }
     for (var soundPlayer in _soundPlayers.values) {
       soundPlayer.play();
     }

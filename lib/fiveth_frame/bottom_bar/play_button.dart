@@ -9,8 +9,8 @@ class MainPlayButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 80,
-      width: 80,
+      height: 94,
+      width: 94,
       child: FloatingActionButton(
         backgroundColor: Colors.white,
         onPressed: () {
@@ -21,7 +21,7 @@ class MainPlayButton extends StatelessWidget {
           }
         },
         child: Icon(
-          size: 55,
+          size: 65,
           Provider.of<PlayController>(context).isPlaying
               ? Icons.pause_rounded
               : Icons.play_arrow_rounded,

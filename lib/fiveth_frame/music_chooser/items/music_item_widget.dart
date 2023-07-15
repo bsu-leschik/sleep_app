@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/items/abstract_item_state.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
 import 'package:sleep_app/fiveth_frame/storage/music_storage/music_storage.dart';
 import 'package:text_scroll/text_scroll.dart';
@@ -9,7 +8,7 @@ import 'package:text_scroll/text_scroll.dart';
 import '../../storage/music_storage/music_item.dart';
 import 'sound_property.dart';
 
-class MusicItemWidgetState extends AbstractItemState<MusicItemWidget> {
+class MusicItemWidgetState extends State<MusicItemWidget> {
   bool isPlaying = false;
 
   final BoxDecoration ifPlaying = BoxDecoration(
@@ -22,7 +21,6 @@ class MusicItemWidgetState extends AbstractItemState<MusicItemWidget> {
 
   @override
   Widget build(BuildContext context) {
-    currentProperty ??= widget.property;
     return SizedBox(
       width: 112,
       height: 102,

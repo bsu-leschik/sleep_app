@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/storage/sounds_storage.dart';
+import 'package:sleep_app/fiveth_frame/storage/sounds_storage/sounds_storage.dart';
 
 import 'choose_music_bar_model.dart';
 

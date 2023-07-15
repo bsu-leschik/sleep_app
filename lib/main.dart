@@ -6,7 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/main_page.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
 import 'package:sleep_app/fiveth_frame/storage/music_storage/music_storage.dart';
-import 'package:sleep_app/fiveth_frame/storage/sounds_storage.dart';
+import 'package:sleep_app/fiveth_frame/storage/sounds_storage/sounds_storage.dart';
 import 'fiveth_frame/current_mix/widgets/show_dialog.dart';
 import 'data_type.dart';
 import 'fiveth_frame/bottom_bar/bottom_bar.dart';

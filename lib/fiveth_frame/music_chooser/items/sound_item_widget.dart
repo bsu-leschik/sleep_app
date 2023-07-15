@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
-import 'package:sleep_app/fiveth_frame/storage/sounds_storage.dart';
+import 'package:sleep_app/fiveth_frame/storage/sounds_storage/sounds_storage.dart';
 import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar_model.dart';
 
+import '../../storage/sounds_storage/sound_item.dart';
 import 'sound_property.dart';
 
-part 'sound_item.g.dart';
-
-class SoundItemState extends State<SoundItem> {
+class SoundItemWidgetState extends State<SoundItemWidget> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -61,21 +59,20 @@ class SoundItemState extends State<SoundItem> {
   }
 }
 
-@HiveType(typeId: 1)
-class SoundItem extends StatefulWidget {
-  @HiveField(0)
-  final SoundProperties property;
-  @HiveField(1)
-  final SoundType type;
-  @HiveField(2)
+class SoundItemWidget extends StatefulWidget {
   final String title;
+  final SoundProperties property;
+  final SoundType type;
 
-  const SoundItem(
+  const SoundItemWidget(
       {required this.property,
       required this.title,
       required this.type,
       super.key});
 
+  factory SoundItemWidget.fromSoundItem(SoundItem item) => SoundItemWidget(
+      title: item.title, property: item.property, type: item.type);
+
   @override
-  State<StatefulWidget> createState() => SoundItemState();
+  State<StatefulWidget> createState() => SoundItemWidgetState();
 }

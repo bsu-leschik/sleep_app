@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/music_item_widget.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/items/sound_item.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/items/sound_item_widget.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/sound_property.dart';
 
@@ -49,7 +49,7 @@ class PlayController extends ChangeNotifier {
     return _soundPlayers.containsKey(title);
   }
 
-  playSound(SoundItemState item) {
+  playSound(SoundItemWidgetState item) {
     var currentPlayer = _soundPlayers.remove(item.widget.title);
     if (currentPlayer != null) {
       currentPlayer.dispose();

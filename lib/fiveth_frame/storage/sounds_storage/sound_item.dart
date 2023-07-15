@@ -1,7 +1,7 @@
 import 'package:hive/hive.dart';
 
 import '../../music_chooser/items/sound_property.dart';
-import '../../music_types_bar/choose_music_bar_model.dart';
+import '../../music_chooser/music_types_bar/choose_music_bar_model.dart';
 
 part 'sound_item.g.dart';
 

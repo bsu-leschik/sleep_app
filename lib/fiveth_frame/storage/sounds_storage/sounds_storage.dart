@@ -3,7 +3,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/sound_property.dart';
 import 'package:sleep_app/fiveth_frame/storage/sounds_storage/sound_item.dart';
 import 'package:sleep_app/fiveth_frame/storage/sounds_storage/sounds_list.dart';
-import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar_model.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/music_types_bar/choose_music_bar_model.dart';
 
 class SoundsStorage extends ChangeNotifier {
   String boxName = "Sounds";

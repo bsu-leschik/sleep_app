@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/music_types_bar/choose_music_bar.dart';
 import 'music_chooser/music_chooser.dart';
 import 'top_bar/top_bar.dart';
 

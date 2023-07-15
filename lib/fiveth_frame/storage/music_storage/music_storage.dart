@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:hive/hive.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/items/music_item.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/storage/music_list.dart';
+import 'package:sleep_app/fiveth_frame/storage/music_storage/music_list.dart';
 
-import '../items/sound_property.dart';
+import '../../music_chooser/items/sound_property.dart';
+import 'music_item.dart';
 
 class MusicStorage extends ChangeNotifier {
   final String _boxName = "Music";

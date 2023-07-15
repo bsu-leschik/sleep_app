@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/abstract_item_state.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/storage/music_storage.dart';
+import 'package:sleep_app/fiveth_frame/storage/music_storage/music_storage.dart';
 import 'package:text_scroll/text_scroll.dart';
 
+import '../../storage/music_storage/music_item.dart';
 import 'sound_property.dart';
 
-part 'music_item.g.dart';
-
-class MusicItemState extends AbstractItemState<MusicItem> {
+class MusicItemWidgetState extends AbstractItemState<MusicItemWidget> {
   bool isPlaying = false;
 
   final BoxDecoration ifPlaying = BoxDecoration(
@@ -42,24 +40,19 @@ class MusicItemState extends AbstractItemState<MusicItem> {
                 children: [
                   Expanded(
                     child: Stack(
+                      alignment: Alignment.topRight,
                       children: [
-                        SizedBox(
-                          width: double.infinity,
-                          height: double.infinity,
-                          child: Padding(
-                            padding: const EdgeInsets.only(
-                                top: 3, left: 17, right: 17, bottom: 5),
-                            child: Container(
-                              decoration: Provider.of<PlayController>(context)
-                                          .musicPlaying ==
-                                      widget.title
-                                  ? ifPlaying
-                                  : null,
-                              width: 78,
-                              height: 78,
-                              child: Image(
-                                image: AssetImage(widget.imageRoute),
-                              ),
+                        Center(
+                          child: Container(
+                            decoration: Provider.of<PlayController>(context)
+                                        .musicPlaying ==
+                                    widget.title
+                                ? ifPlaying
+                                : null,
+                            width: 78,
+                            height: 78,
+                            child: Image(
+                              image: AssetImage(widget.imageRoute),
                             ),
                           ),
                         ),
@@ -100,21 +93,23 @@ class MusicItemState extends AbstractItemState<MusicItem> {
   }
 }
 
-@HiveType(typeId: 4)
-class MusicItem extends StatefulWidget {
-  @HiveField(0)
+class MusicItemWidget extends StatefulWidget {
   final String title;
-  @HiveField(1)
   final SoundProperties property;
-  @HiveField(2)
   final String imageRoute;
 
-  const MusicItem(
+  const MusicItemWidget(
       {super.key,
       required this.title,
       required this.property,
       required this.imageRoute});
 
+  factory MusicItemWidget.fromMusicItem(MusicItem item) => MusicItemWidget(
+        title: item.title,
+        property: item.property,
+        imageRoute: item.imageRoute,
+      );
+
   @override
-  State<StatefulWidget> createState() => MusicItemState();
+  State<StatefulWidget> createState() => MusicItemWidgetState();
 }

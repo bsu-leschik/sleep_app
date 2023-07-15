@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'widgets/bar_widget_current.dart';
-import 'widgets/lock_music.dart';
-import 'widgets/type_music_current.dart';
-import 'widgets/unlock_music.dart';
+import 'widgets/music_mix_item.dart';
+import 'widgets/mix_control.dart';
 
 class CurrentMix extends StatefulWidget {
   const CurrentMix({super.key});
@@ -28,9 +27,9 @@ class _CurrentMixState extends State<CurrentMix> {
                   child: const MixTopBar()),
               Container(
                   margin: const EdgeInsets.only(top: 20),
-                  child: const TypeMusicCurrent()),
-              //LockMusic(),
-              //UnlockMusic(),
+                  child: const MixControl()),
+              const MusicMixItem(),
+              //const UnlockMusic(),
             ],
           ),
         ),

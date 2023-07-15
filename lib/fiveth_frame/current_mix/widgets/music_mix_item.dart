@@ -3,14 +3,14 @@ import 'package:google_fonts/google_fonts.dart';
 // import 'package:provider/provider.dart';
 // import 'package:sleep_app/data.dart';
 
-class LockMusic extends StatefulWidget {
-  const LockMusic({super.key});
+class MusicMixItem extends StatefulWidget {
+  const MusicMixItem({super.key});
 
   @override
-  State<LockMusic> createState() => _LockMusicState();
+  State<MusicMixItem> createState() => _MusicMixItemState();
 }
 
-class _LockMusicState extends State<LockMusic> {
+class _MusicMixItemState extends State<MusicMixItem> {
   double _rating = 1;
   @override
   Widget build(BuildContext context) {

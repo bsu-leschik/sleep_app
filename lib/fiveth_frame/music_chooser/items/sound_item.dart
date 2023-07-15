@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_storage.dart';
+import 'package:sleep_app/fiveth_frame/storage/sounds_storage.dart';
 import 'package:sleep_app/fiveth_frame/music_types_bar/choose_music_bar_model.dart';
 
 import 'sound_property.dart';

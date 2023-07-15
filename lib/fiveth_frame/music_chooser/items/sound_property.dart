@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_storage.dart';
+import 'package:sleep_app/fiveth_frame/storage/sounds_storage.dart';
 
-import '../storage/music_storage.dart';
+import '../../storage/music_storage/music_storage.dart';
 part 'sound_property.g.dart';
 
 @HiveType(typeId: 2)

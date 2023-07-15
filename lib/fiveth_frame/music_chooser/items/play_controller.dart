@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/items/music_item.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/items/music_item_widget.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/sound_item.dart';
 import 'package:assets_audio_player/assets_audio_player.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/items/sound_property.dart';
@@ -18,7 +18,7 @@ class PlayController extends ChangeNotifier {
 
   String get musicPlaying => _musicPlaying;
 
-  bool playMusic(MusicItem item) {
+  bool playMusic(MusicItemWidget item) {
     if (item.property == SoundProperties.locked) {
       return false;
     }

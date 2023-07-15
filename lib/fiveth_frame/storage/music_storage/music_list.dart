@@ -1,6 +1,6 @@
 import 'package:sleep_app/fiveth_frame/music_chooser/items/sound_property.dart';
 
-import '../items/music_item.dart';
+import 'music_item.dart';
 
 const String musicFolder = "assets/images/music/";
 

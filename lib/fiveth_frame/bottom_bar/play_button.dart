@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../music_chooser/items/play_controller.dart';
+import '../storage/mixes/play_controller.dart';
 
 class MainPlayButton extends StatelessWidget {
   const MainPlayButton({super.key});

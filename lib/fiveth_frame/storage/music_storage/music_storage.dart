@@ -60,4 +60,8 @@ class MusicStorage extends ChangeNotifier {
   SoundProperties getSoundProperty(String name) {
     return _music[name]!.property;
   }
+
+  getItemByName(String name) {
+    return _music[name];
+  }
 }

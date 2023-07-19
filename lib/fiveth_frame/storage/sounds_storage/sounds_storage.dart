@@ -96,4 +96,8 @@ class SoundsStorage extends ChangeNotifier {
       }
     }
   }
+
+  getItemByName(String name) {
+    return _sounds[name];
+  }
 }

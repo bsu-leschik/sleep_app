@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
+import 'package:sleep_app/fiveth_frame/storage/mixes/play_controller.dart';
+import 'package:sleep_app/fiveth_frame/storage/mixes/mixes_storage.dart';
 import 'package:sleep_app/fiveth_frame/storage/sounds_storage/sounds_storage.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/music_types_bar/choose_music_bar_model.dart';
 
@@ -15,8 +16,8 @@ class SoundItemWidgetState extends State<SoundItemWidget> {
       width: 112,
       height: 99,
       child: GestureDetector(
-        onTap: () =>
-            Provider.of<PlayController>(context, listen: false).playSound(this),
+        onTap: () => Provider.of<MixesStorage>(context, listen: false)
+            .addSound(SoundItem.fromWidget(widget)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

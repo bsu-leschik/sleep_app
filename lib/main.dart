@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/main_page.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
+import 'package:sleep_app/fiveth_frame/storage/mixes/mixes_storage.dart';
 import 'package:sleep_app/fiveth_frame/storage/music_storage/music_storage.dart';
 import 'package:sleep_app/fiveth_frame/storage/sounds_storage/sounds_storage.dart';
 import 'fiveth_frame/current_mix/widgets/show_dialog.dart';
@@ -46,9 +46,10 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<MusicStorage>(
           create: (context) => MusicStorage(),
         ),
-        ChangeNotifierProvider<PlayController>(
-          create: (context) => PlayController(),
-        )
+        ChangeNotifierProvider<MixesStorage>(
+          create: (context) => MixesStorage(Provider.of<MusicStorage>(context),
+              Provider.of<SoundsStorage>(context)),
+        ),
       ],
       child: MaterialApp.router(
         routerConfig: GoRouter(

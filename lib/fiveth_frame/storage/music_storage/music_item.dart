@@ -1,4 +1,5 @@
 import 'package:hive/hive.dart';
+import 'package:sleep_app/fiveth_frame/music_chooser/items/music_item_widget.dart';
 
 import '../../music_chooser/items/sound_property.dart';
 
@@ -15,4 +16,9 @@ class MusicItem {
 
   const MusicItem(
       {required this.title, required this.property, required this.imageRoute});
+
+  MusicItem.fromWidget(MusicItemWidget widget)
+      : title = widget.title,
+        property = widget.property,
+        imageRoute = widget.imageRoute;
 }

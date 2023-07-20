@@ -47,8 +47,9 @@ class MyApp extends StatelessWidget {
           create: (context) => MusicStorage(),
         ),
         ChangeNotifierProvider<MixesStorage>(
-          create: (context) => MixesStorage(Provider.of<MusicStorage>(context),
-              Provider.of<SoundsStorage>(context)),
+          create: (context) => MixesStorage(
+              Provider.of<MusicStorage>(context, listen: false),
+              Provider.of<SoundsStorage>(context, listen: false)),
         ),
       ],
       child: MaterialApp.router(

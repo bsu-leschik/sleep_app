@@ -48,11 +48,7 @@ Future showTimerDialog({
     context: context,
     useRootNavigator: useRootNavigator,
     builder: (BuildContext context) {
-      if (builder == null) {
-        return dialog;
-      } else {
-        return builder(context, dialog);
-      }
+      return builder(context, dialog);
     },
   );
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/storage/mixes/play_controller.dart';
 import 'package:sleep_app/fiveth_frame/storage/mixes/mixes_storage.dart';
 import 'package:sleep_app/fiveth_frame/storage/music_storage/music_storage.dart';
 import 'package:text_scroll/text_scroll.dart';
@@ -43,7 +42,8 @@ class MusicItemWidgetState extends State<MusicItemWidget> {
                       children: [
                         Center(
                           child: Container(
-                            decoration: Provider.of<PlayController>(context)
+                            decoration: Provider.of<MixesStorage>(context)
+                                        .player
                                         .musicPlaying ==
                                     widget.title
                                 ? ifPlaying

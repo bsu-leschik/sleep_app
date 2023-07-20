@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/storage/mixes/mixes_storage.dart';
 
 class MixControl extends StatefulWidget {
   const MixControl({super.key});
@@ -10,19 +12,29 @@ class MixControl extends StatefulWidget {
 
 class _MixControlState extends State<MixControl> {
   final List<Widget> buttons = [
-    MixControlButton(title: "Clear", callback: () => {}),
+    MixControlButton(
+        title: "Clear",
+        callback: (BuildContext context) =>
+            Provider.of<MixesStorage>(context, listen: false).clear()),
     const SizedBox(
       width: 20,
       height: 1,
     ),
-    MixControlButton(title: "Save mix", callback: () => {}),
+    MixControlButton(
+        title: "Save mix",
+        callback: (BuildContext context) =>
+            Provider.of<MixesStorage>(context, listen: false).saveMix()),
   ];
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: buttons,
+    return Container(
+      margin: const EdgeInsets.symmetric(vertical: 16),
+      height: 42,
+      child: Row(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: buttons,
+      ),
     );
   }
 }
@@ -34,30 +46,37 @@ class MixControlButton extends StatelessWidget {
   const MixControlButton({
     super.key,
     required this.title,
-    required Function callback,
+    required Function(BuildContext context) callback,
   }) : _callback = callback;
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: _callback.call(),
-      child: Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+    return Material(
+      type: MaterialType.transparency,
+      animationDuration: const Duration(seconds: 1),
+      child: Ink(
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(59),
           border: Border.all(
             color: const Color(0xFF8E9FCC),
           ),
         ),
-        child: Text(
-          title,
-          textAlign: TextAlign.center,
-          style: GoogleFonts.nunito(
-            textStyle: const TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.w700,
-              color: Color(0xFF8E9FCC),
+        child: InkWell(
+          onTap: () => _callback(context),
+          borderRadius: BorderRadius.circular(59),
+          focusColor: Colors.blueGrey,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 10),
+            child: Text(
+              title,
+              textAlign: TextAlign.center,
+              style: GoogleFonts.nunito(
+                textStyle: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xFF8E9FCC),
+                ),
+              ),
             ),
           ),
         ),

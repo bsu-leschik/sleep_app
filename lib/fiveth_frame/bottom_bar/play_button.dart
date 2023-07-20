@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../storage/mixes/play_controller.dart';
+import 'package:sleep_app/fiveth_frame/storage/mixes/mixes_storage.dart';
 
 class MainPlayButton extends StatelessWidget {
   const MainPlayButton({super.key});
@@ -14,15 +13,17 @@ class MainPlayButton extends StatelessWidget {
       child: FloatingActionButton(
         backgroundColor: Colors.white,
         onPressed: () {
-          if (Provider.of<PlayController>(context, listen: false).isPlaying) {
-            Provider.of<PlayController>(context, listen: false).pause();
+          if (Provider.of<MixesStorage>(context, listen: false)
+              .player
+              .isPlaying) {
+            Provider.of<MixesStorage>(context, listen: false).player.pause();
           } else {
-            Provider.of<PlayController>(context, listen: false).resume();
+            Provider.of<MixesStorage>(context, listen: false).player.resume();
           }
         },
         child: Icon(
           size: 65,
-          Provider.of<PlayController>(context).isPlaying
+          Provider.of<MixesStorage>(context).player.isPlaying
               ? Icons.pause_rounded
               : Icons.play_arrow_rounded,
           color: const Color(0xFF7E44FA),

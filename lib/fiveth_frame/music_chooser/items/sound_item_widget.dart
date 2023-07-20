@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/storage/mixes/play_controller.dart';
 import 'package:sleep_app/fiveth_frame/storage/mixes/mixes_storage.dart';
 import 'package:sleep_app/fiveth_frame/storage/sounds_storage/sounds_storage.dart';
 import 'package:sleep_app/fiveth_frame/music_chooser/music_types_bar/choose_music_bar_model.dart';
@@ -26,7 +25,8 @@ class SoundItemWidgetState extends State<SoundItemWidget> {
                 width: 78,
                 height: 78,
                 decoration: BoxDecoration(
-                  color: Provider.of<PlayController>(context)
+                  color: Provider.of<MixesStorage>(context)
+                          .player
                           .isTitlePlaying(widget.title)
                       ? const Color.fromRGBO(151, 71, 255, 1)
                       : Colors.transparent,

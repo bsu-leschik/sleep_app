@@ -33,7 +33,7 @@ class _CurrentMixState extends State<CurrentMix> {
               Expanded(
                 child: Container(
                   padding: const EdgeInsets.only(
-                      left: 27, right: 27, top: 0, bottom: 0),
+                      left: 27, right: 0, top: 0, bottom: 0),
                   child: const MixList(),
                 ),
               ),

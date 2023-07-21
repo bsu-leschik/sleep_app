@@ -13,7 +13,7 @@ import 'fiveth_frame/bottom_bar/bottom_bar.dart';
 import 'fiveth_frame/current_mix/current_mix.dart';
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
-import 'settings_frame/settings_widget.dart';
+import 'settings/settings_widget.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() {
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         routerConfig: GoRouter(
-            initialLocation: '/',
+            initialLocation: '/fiveframe',
             navigatorKey: _rootNavigatorKey,
             routes: [
               GoRoute(
@@ -82,12 +82,12 @@ class MyApp extends StatelessWidget {
                       path: '/current-mix',
                       builder: (context, state) => const CurrentMix(),
                     ),
+                    GoRoute(
+                      parentNavigatorKey: _shellNavigatorKey,
+                      path: '/settings',
+                      builder: (context, state) => const SettingsWidget(),
+                    ),
                   ]),
-              GoRoute(
-                parentNavigatorKey: _rootNavigatorKey,
-                path: '/settings',
-                builder: (context, state) => const SettingsWidget(),
-              ),
               GoRoute(
                 parentNavigatorKey: _rootNavigatorKey,
                 path: '/showdialog',

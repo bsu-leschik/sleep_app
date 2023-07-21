@@ -11,7 +11,7 @@ class ButtonBack extends StatelessWidget {
       children: [
         InkWell(
           onTap: (() {
-            context.push("/fiveframe");
+            context.pop();
           }),
           child: const Icon(
             Icons.chevron_left_rounded,
@@ -31,7 +31,6 @@ class ButtonBack extends StatelessWidget {
                 fontFamily: "Poetsen",
                 fontWeight: FontWeight.w400,
                 fontSize: 23,
-                height: 27.6 / 23,
               ),
             ),
           ),

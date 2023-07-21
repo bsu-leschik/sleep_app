@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'button_back.dart';
-import 'settings_info.dart';
-import 'sheep_moon_cloud_version.dart';
+import 'widgets/button_back.dart';
+import 'widgets/settings_info.dart';
+import 'widgets/sheep_moon_cloud_version.dart';
 
-class ResultWidget extends StatelessWidget {
-  const ResultWidget({super.key});
+class SettingsWidget extends StatelessWidget {
+  const SettingsWidget({super.key});
 
   @override
   Widget build(BuildContext context) {

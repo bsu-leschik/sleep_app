@@ -33,5 +33,13 @@ class Mix {
     sounds.remove(soundName);
   }
 
+  void adjustSoundVolume(String soundName, double volume) {
+    sounds[soundName]!.volume = volume;
+  }
+
+  void adjustMusicVolume(double volume) {
+    music!.volume = volume;
+  }
+
   bool containsSound(String soundName) => sounds.containsKey(soundName);
 }

@@ -5,7 +5,7 @@ class PlayController {
   static const _pathToMusic = "/assets/music/";
   static const _pathToSounds = "/assets/sounds/";
   static const _musicFormat = ".mp3";
-  static final _player = AssetsAudioPlayer.newPlayer();
+  static var _player = AssetsAudioPlayer.newPlayer();
   final Map<String, AssetsAudioPlayer> _soundPlayers =
       <String, AssetsAudioPlayer>{};
   bool _playing = false;
@@ -32,9 +32,9 @@ class PlayController {
     _checkIfStoped();
   }
 
-  stopMusic() {
-    _player.dispose();
-    _player.playlist?.removeAtIndex(0);
+  Future<void> stopMusic() async {
+    await _player.dispose();
+    _player = AssetsAudioPlayer.newPlayer();
     _musicPlaying = "";
     _checkIfStoped();
   }
@@ -48,6 +48,7 @@ class PlayController {
   }
 
   playMusic(String musicTitle, double volume) {
+    _player = AssetsAudioPlayer.newPlayer();
     _musicPlaying = musicTitle;
     _player.open(
       Audio(_pathToMusic + musicTitle + _musicFormat),
@@ -96,8 +97,17 @@ class PlayController {
   stop() {
     _player.dispose();
     _soundPlayers.forEach((key, value) => value.dispose());
+    _player = AssetsAudioPlayer.newPlayer();
     _soundPlayers.clear();
     _musicPlaying = "";
     _playing = false;
+  }
+
+  adjustMusicVolume(double volume) {
+    _player.setVolume(volume);
+  }
+
+  adjustSoundVolume(String name, double volume) {
+    _soundPlayers[name]?.setVolume(volume);
   }
 }

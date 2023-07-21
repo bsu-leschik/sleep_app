@@ -16,9 +16,9 @@ class MainPlayButton extends StatelessWidget {
           if (Provider.of<MixesStorage>(context, listen: false)
               .player
               .isPlaying) {
-            Provider.of<MixesStorage>(context, listen: false).player.pause();
+            Provider.of<MixesStorage>(context, listen: false).pause();
           } else {
-            Provider.of<MixesStorage>(context, listen: false).player.resume();
+            Provider.of<MixesStorage>(context, listen: false).resume();
           }
         },
         child: Icon(

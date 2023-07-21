@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
@@ -35,6 +37,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(_rootNavigatorKey.toString());
+    log(_shellNavigatorKey.toString());
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<DataSlider>(

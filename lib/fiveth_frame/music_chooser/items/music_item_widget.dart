@@ -43,8 +43,7 @@ class MusicItemWidgetState extends State<MusicItemWidget> {
                         Center(
                           child: Container(
                             decoration: Provider.of<MixesStorage>(context)
-                                        .player
-                                        .musicPlaying ==
+                                        .musicPlayingName ==
                                     widget.title
                                 ? ifPlaying
                                 : null,
@@ -75,7 +74,6 @@ class MusicItemWidgetState extends State<MusicItemWidget> {
                           textStyle: const TextStyle(
                             fontWeight: FontWeight.w400,
                             fontSize: 12,
-                            height: 17.37 / 12,
                             color: Color(0xFF8E9FCC),
                           ),
                         ),

@@ -26,6 +26,13 @@ class MixesStorage extends ChangeNotifier {
     _init(musicStorage, soundsStorage);
   }
 
+  String? get musicPlayingName {
+    if (_currentMix.music == null || _currentMix.music?.item.title == null) {
+      return null;
+    }
+    return _currentMix.music?.item.title;
+  }
+
   void _init(MusicStorage musicStorage, SoundsStorage soundsStorage) async {
     Hive.registerAdapter(HiveMixItemAdapter());
     Hive.registerAdapter(HiveMixAdapter());
@@ -59,10 +66,11 @@ class MixesStorage extends ChangeNotifier {
     }
     if (_currentMix.containsSound(sound.title)) {
       player.stopSound(sound.title);
+      _currentMix.removeSound(sound.title);
     } else {
       player.playSound(sound.title, volume);
+      _currentMix.addSound(sound, volume);
     }
-    _currentMix.addSound(sound, volume);
     notifyListeners();
     return true;
   }
@@ -71,12 +79,19 @@ class MixesStorage extends ChangeNotifier {
     if (music.property == SoundProperties.locked) {
       return false;
     }
-    if (_currentMix.music != null && _currentMix.music!.item == music) {
+    if (_currentMix.music?.item.title == music.title) {
       player.stopMusic();
+      _currentMix.music = null;
     } else {
-      player.playMusic(music.title, volume);
+      if (_currentMix.music == null) {
+        player.playMusic(music.title, volume);
+      } else {
+        player
+            .stopMusic()
+            .then((value) => player.playMusic(music.title, volume));
+      }
+      _currentMix.addMusic(music, volume);
     }
-    _currentMix.addMusic(music, volume);
     notifyListeners();
     return true;
   }
@@ -93,6 +108,36 @@ class MixesStorage extends ChangeNotifier {
     _currentMix = Mix();
     player.stop();
     notifyListeners();
+  }
+
+  void pause() {
+    player.pause();
+    notifyListeners();
+  }
+
+  void resume() {
+    player.resume();
+    notifyListeners();
+  }
+
+  void adjustSoundVolume(String name, double volume) {
+    _currentMix.adjustSoundVolume(name, volume);
+    player.adjustSoundVolume(name, volume);
+    notifyListeners();
+  }
+
+  void adjustMusicVolume(double volume) {
+    _currentMix.adjustMusicVolume(volume);
+    player.adjustMusicVolume(volume);
+    notifyListeners();
+  }
+
+  double? getMusicVolume() {
+    return _currentMix.music?.volume;
+  }
+
+  double? getSoundVolume(String name) {
+    return _currentMix.sounds[name]?.volume;
   }
 }
 

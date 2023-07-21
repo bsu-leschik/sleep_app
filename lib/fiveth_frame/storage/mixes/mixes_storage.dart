@@ -33,6 +33,8 @@ class MixesStorage extends ChangeNotifier {
     return _currentMix.music?.item.title;
   }
 
+  Mix get mix => _currentMix;
+
   void _init(MusicStorage musicStorage, SoundsStorage soundsStorage) async {
     Hive.registerAdapter(HiveMixItemAdapter());
     Hive.registerAdapter(HiveMixAdapter());

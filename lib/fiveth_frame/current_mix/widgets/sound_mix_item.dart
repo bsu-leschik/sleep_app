@@ -1,19 +1,20 @@
 import 'package:flutter/material.dart';
 
+import '../../music_chooser/items/sound_item_widget.dart';
 import '../music_mix/mix_item_name.dart';
-import '../music_mix/mix_music_icon.dart';
 import '../music_mix/sound_slider.dart';
 
-class MusicMixItem extends StatelessWidget {
+class SoundMixItem extends StatelessWidget {
   final String name;
-  const MusicMixItem({super.key, required this.name});
+
+  const SoundMixItem({required this.name, super.key});
 
   @override
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        MixMusicIcon(name: name),
+        SoundIcon(name: name),
         Expanded(
           child: Container(
             padding: const EdgeInsets.only(top: 0),
@@ -28,7 +29,7 @@ class MusicMixItem extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.only(left: 14),
-                  child: SoundSlider(name: name, type: "music"),
+                  child: SoundSlider(name: name, type: "sound"),
                 )
               ],
             ),

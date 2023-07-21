@@ -20,31 +20,7 @@ class SoundItemWidgetState extends State<SoundItemWidget> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Stack(children: [
-              Container(
-                width: 78,
-                height: 78,
-                decoration: BoxDecoration(
-                  color: Provider.of<MixesStorage>(context)
-                          .player
-                          .isTitlePlaying(widget.title)
-                      ? const Color.fromRGBO(151, 71, 255, 1)
-                      : Colors.transparent,
-                  borderRadius: const BorderRadius.all(
-                    Radius.circular(100),
-                  ),
-                  border: Border.all(
-                    color: const Color(0xFF8E9FCC),
-                    width: 1,
-                  ),
-                ),
-                child: Image.asset("assets/images/Fire.png"),
-              ),
-              Positioned(
-                  top: 0,
-                  right: 0,
-                  child: SoundProperty(widget.title, SoundsStorage))
-            ]),
+            SoundIcon(name: widget.title),
             Text(widget.title,
                 maxLines: 1,
                 style: GoogleFonts.nunito(
@@ -57,6 +33,39 @@ class SoundItemWidgetState extends State<SoundItemWidget> {
         ),
       ),
     );
+  }
+}
+
+class SoundIcon extends StatelessWidget {
+  const SoundIcon({
+    super.key,
+    required this.name,
+  });
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(children: [
+      Container(
+        width: 78,
+        height: 78,
+        decoration: BoxDecoration(
+          color: Provider.of<MixesStorage>(context).player.isTitlePlaying(name)
+              ? const Color.fromRGBO(151, 71, 255, 1)
+              : Colors.transparent,
+          borderRadius: const BorderRadius.all(
+            Radius.circular(100),
+          ),
+          border: Border.all(
+            color: const Color(0xFF8E9FCC),
+            width: 1,
+          ),
+        ),
+        child: Image.asset("assets/images/Fire.png"),
+      ),
+      Positioned(top: 0, right: 0, child: SoundProperty(name, SoundsStorage))
+    ]);
   }
 }
 

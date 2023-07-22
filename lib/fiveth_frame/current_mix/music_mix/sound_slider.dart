@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-
-import '../../storage/mixes/mixes_storage.dart';
 
 class SoundSlider extends StatefulWidget {
   final String name;
-  final String type;
+  final Function(BuildContext, double) callback;
 
-  const SoundSlider({super.key, required this.name, required this.type});
+  const SoundSlider({super.key, required this.name, required this.callback});
 
   @override
   State<StatefulWidget> createState() => _SoundSliderState();
@@ -35,13 +32,7 @@ class _SoundSliderState extends State<SoundSlider> {
         min: 0,
         max: 1,
         onChanged: (double volume) {
-          if (widget.type == "music") {
-            Provider.of<MixesStorage>(context, listen: false)
-                .adjustMusicVolume(volume);
-          } else {
-            Provider.of<MixesStorage>(context, listen: false)
-                .adjustSoundVolume(widget.name, volume);
-          }
+          widget.callback(context, volume);
           setState(() {
             this.volume = volume;
           });

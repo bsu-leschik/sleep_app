@@ -122,6 +122,15 @@ class MixesStorage extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// if [name] is null the action will happen to MusicItem
+  void adjustVolume(double volume, {String? name}) {
+    if (name == null) {
+      adjustMusicVolume(volume);
+    } else {
+      adjustSoundVolume(name, volume);
+    }
+  }
+
   void adjustSoundVolume(String name, double volume) {
     _currentMix.adjustSoundVolume(name, volume);
     player.adjustSoundVolume(name, volume);
@@ -140,6 +149,25 @@ class MixesStorage extends ChangeNotifier {
 
   double? getSoundVolume(String name) {
     return _currentMix.sounds[name]?.volume;
+  }
+
+  void _removeSound(String title) {
+    player.stopSound(title);
+    _currentMix.removeSound(title);
+  }
+
+  void _removeMusic() {
+    player.stopMusic();
+    _currentMix.removeMusic();
+  }
+
+  ///if [title] is null, the action will happen to MusicItem
+  void remove({String? title}) {
+    if (title == null) {
+      _removeMusic();
+    } else {
+      _removeSound(title);
+    }
   }
 }
 

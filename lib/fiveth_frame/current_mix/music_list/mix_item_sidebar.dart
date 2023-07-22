@@ -39,16 +39,21 @@ class MixItemSidebar extends StatelessWidget {
               padding: const EdgeInsets.only(left: 15),
               child: SoundProperty(name, type, size: SoundPropertySize.big),
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 36),
+            Padding(
+              padding: const EdgeInsets.only(left: 36),
               child: SideIcon(
-                  icon: Image(image: AssetImage("assets/images/mix/info.png"))),
+                icon: const Image(
+                    image: AssetImage("assets/images/mix/info.png")),
+                callback: infoCallback,
+              ),
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 36),
+            Padding(
+              padding: const EdgeInsets.only(left: 36),
               child: SideIcon(
-                  icon:
-                      Image(image: AssetImage("assets/images/mix/trash.png"))),
+                icon: const Image(
+                    image: AssetImage("assets/images/mix/trash.png")),
+                callback: trashCallback,
+              ),
             )
           ],
         ),

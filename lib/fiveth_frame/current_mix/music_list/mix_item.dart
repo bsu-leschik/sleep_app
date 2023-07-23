@@ -17,11 +17,12 @@ class MusicMixItem extends StatelessWidget {
   MusicMixItem({super.key, required this.name});
 
   final _musicFunctions = [
-    (BuildContext context) => Provider.of<MixesStorage>(context).remove(),
+    (BuildContext context) =>
+        Provider.of<MixesStorage>(context, listen: false).remove(),
     (BuildContext context) => {},
   ];
   _sliderMusicCallback(BuildContext context, double volume) =>
-      Provider.of<MixesStorage>(context).adjustVolume(volume);
+      Provider.of<MixesStorage>(context, listen: false).adjustVolume(volume);
 
   @override
   Widget build(BuildContext context) {
@@ -39,13 +40,14 @@ class MusicMixItem extends StatelessWidget {
 class SoundMixItem extends StatelessWidget {
   final _soundFunctions = List.empty(growable: true);
   _sliderSoundCallback(BuildContext context, double volume) =>
-      Provider.of<MixesStorage>(context).adjustVolume(volume, name: name);
+      Provider.of<MixesStorage>(context, listen: false)
+          .adjustVolume(volume, name: name);
 
   final String name;
 
   SoundMixItem({super.key, required this.name}) {
     _soundFunctions.add((BuildContext context) =>
-        Provider.of<MixesStorage>(context).remove(title: name));
+        Provider.of<MixesStorage>(context, listen: false).remove(title: name));
     _soundFunctions.add((BuildContext context) => {});
   }
 
@@ -83,9 +85,11 @@ class MixItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Slidable(
       direction: Axis.horizontal,
+      key: GlobalKey(),
       endActionPane: ActionPane(
         extentRatio: 0.74,
         motion: const ScrollMotion(),
+        dragDismissible: true,
         children: [
           MixItemSidebar(
               name: name,

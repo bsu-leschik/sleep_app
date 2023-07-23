@@ -32,8 +32,8 @@ class PlayController {
     _checkIfStoped();
   }
 
-  Future<void> stopMusic() async {
-    await _player.dispose();
+  void stopMusic() {
+    _player.dispose();
     _player = AssetsAudioPlayer.newPlayer();
     _musicPlaying = "";
     _checkIfStoped();
@@ -41,9 +41,6 @@ class PlayController {
 
   stopSound(String soundName) {
     _soundPlayers.remove(soundName)?.dispose();
-    if (_soundPlayers.isEmpty && _musicPlaying == "") {
-      _playing = false;
-    }
     _checkIfStoped();
   }
 

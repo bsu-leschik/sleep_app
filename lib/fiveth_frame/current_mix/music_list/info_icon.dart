@@ -7,13 +7,10 @@ class SideIcon extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: callback(context),
-      child: SizedBox(
-        width: 52,
-        height: 52,
-        child: icon,
-      ),
+    return SizedBox(
+      width: 52,
+      height: 52,
+      child: GestureDetector(onTap: () => callback(context), child: icon),
     );
   }
 }

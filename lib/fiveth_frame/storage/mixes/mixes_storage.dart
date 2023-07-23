@@ -88,9 +88,8 @@ class MixesStorage extends ChangeNotifier {
       if (_currentMix.music == null) {
         player.playMusic(music.title, volume);
       } else {
-        player
-            .stopMusic()
-            .then((value) => player.playMusic(music.title, volume));
+        player.stopMusic();
+        player.playMusic(music.title, volume);
       }
       _currentMix.addMusic(music, volume);
     }
@@ -168,6 +167,7 @@ class MixesStorage extends ChangeNotifier {
     } else {
       _removeSound(title);
     }
+    notifyListeners();
   }
 }
 

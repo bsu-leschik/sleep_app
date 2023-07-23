@@ -16,6 +16,7 @@ class _SoundSliderState extends State<SoundSlider> {
   @override
   Widget build(BuildContext context) {
     return SliderTheme(
+      key: GlobalKey(),
       data: const SliderThemeData(
         thumbColor: Color(0xff7E44FA),
         thumbShape: RoundSliderThumbShape(
@@ -25,6 +26,7 @@ class _SoundSliderState extends State<SoundSlider> {
         overlayShape: RoundSliderOverlayShape(overlayRadius: 0),
       ),
       child: Slider(
+        key: GlobalKey(),
         activeColor: const Color(0xff7E44FA),
         inactiveColor: const Color(0xff01308C),
         divisions: 100,

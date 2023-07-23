@@ -71,6 +71,7 @@ class MixItem extends StatelessWidget {
   final Function(BuildContext) infoCallback;
   final Function(BuildContext, double) sliderCallback;
   final Type type;
+
   const MixItem({
     super.key,
     required this.name,
@@ -84,14 +85,16 @@ class MixItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Slidable(
-      direction: Axis.horizontal,
       key: GlobalKey(),
+      direction: Axis.horizontal,
       endActionPane: ActionPane(
+        key: GlobalKey(),
         extentRatio: 0.74,
         motion: const ScrollMotion(),
         dragDismissible: true,
         children: [
           MixItemSidebar(
+              key: GlobalKey(),
               name: name,
               trashCallback: trashCallback,
               infoCallback: infoCallback,
@@ -99,26 +102,37 @@ class MixItem extends StatelessWidget {
         ],
       ),
       child: Padding(
-        padding: const EdgeInsets.only(right: 26),
+        key: GlobalKey(),
+        padding: const EdgeInsets.only(left: 26, right: 26),
         child: Row(
+          key: GlobalKey(),
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             icon,
             Expanded(
+              key: GlobalKey(),
               child: Container(
+                key: GlobalKey(),
                 padding: const EdgeInsets.only(top: 0),
                 child: Column(
+                  key: GlobalKey(),
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
+                      key: GlobalKey(),
                       margin: const EdgeInsets.only(left: 19, bottom: 14),
                       child: MixItemName(name: name),
                     ),
                     Container(
+                      key: GlobalKey(),
                       margin: const EdgeInsets.only(left: 14),
-                      child: SoundSlider(name: name, callback: sliderCallback),
+                      child: SoundSlider(
+                        key: GlobalKey(),
+                        name: name,
+                        callback: sliderCallback,
+                      ),
                     )
                   ],
                 ),

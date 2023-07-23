@@ -142,6 +142,15 @@ class MixesStorage extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// if [name] is null the action will happen to MusicItem
+  double? getVolume({String? name}) {
+    if (name == null) {
+      return getMusicVolume();
+    } else {
+      return getSoundVolume(name);
+    }
+  }
+
   double? getMusicVolume() {
     return _currentMix.music?.volume;
   }

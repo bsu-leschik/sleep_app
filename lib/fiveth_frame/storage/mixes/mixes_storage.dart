@@ -9,6 +9,7 @@ import 'package:sleep_app/fiveth_frame/storage/music_storage/music_storage.dart'
 import 'package:sleep_app/fiveth_frame/storage/sounds_storage/sounds_list.dart';
 import 'package:sleep_app/fiveth_frame/storage/sounds_storage/sounds_storage.dart';
 
+import '../../timer_picker/provider/timer_provider.dart';
 import '../sounds_storage/sound_item.dart';
 import 'mix.dart';
 
@@ -177,6 +178,13 @@ class MixesStorage extends ChangeNotifier {
       _removeSound(title);
     }
     notifyListeners();
+  }
+
+  MixesStorage update(TimerProvider timer) {
+    if (timer.ended) {
+      pause();
+    }
+    return this;
   }
 }
 

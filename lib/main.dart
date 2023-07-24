@@ -54,10 +54,17 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (context) => TimerProvider(),
         ),
-        ChangeNotifierProvider<MixesStorage>(
+        ChangeNotifierProxyProvider<TimerProvider, MixesStorage>(
           create: (context) => MixesStorage(
-              Provider.of<MusicStorage>(context, listen: false),
-              Provider.of<SoundsStorage>(context, listen: false)),
+            Provider.of<MusicStorage>(context, listen: false),
+            Provider.of<SoundsStorage>(context, listen: false),
+          ),
+          update: (context, value, previous) =>
+              previous?.update(value) ??
+              MixesStorage(
+                Provider.of<MusicStorage>(context, listen: false),
+                Provider.of<SoundsStorage>(context, listen: false),
+              ),
         ),
       ],
       child: MaterialApp.router(

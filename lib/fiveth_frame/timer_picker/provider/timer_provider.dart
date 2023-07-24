@@ -21,8 +21,10 @@ class TimerProvider extends ChangeNotifier {
   }
 
   bool _started = false;
+  bool _ended = false;
 
   bool get started => _started;
+  bool get ended => _ended;
 
   void setTime(int minutes, int seconds) {
     _hours = minutes;
@@ -30,6 +32,7 @@ class TimerProvider extends ChangeNotifier {
   }
 
   void startTimer() {
+    _ended = false;
     if (_hours == 0 && _minutes == 0) return;
     _timer = Timer.periodic(const Duration(minutes: 1), (timer) {
       if (_minutes == 0) {
@@ -40,6 +43,7 @@ class TimerProvider extends ChangeNotifier {
       if (_hours == 0 && _minutes == 0) {
         timer.cancel();
         _started = false;
+        _ended = true;
       }
       notifyListeners();
     });
@@ -49,12 +53,14 @@ class TimerProvider extends ChangeNotifier {
   }
 
   clear() {
+    _ended = false;
     _hours = 0;
     _minutes = 0;
     notifyListeners();
   }
 
   stopTimer() {
+    _ended = false;
     _timer?.cancel();
     _hours = 0;
     _minutes = 0;

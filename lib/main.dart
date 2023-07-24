@@ -9,6 +9,7 @@ import 'package:sleep_app/fiveth_frame/music_chooser/main_page.dart';
 import 'package:sleep_app/fiveth_frame/storage/mixes/mixes_storage.dart';
 import 'package:sleep_app/fiveth_frame/storage/music_storage/music_storage.dart';
 import 'package:sleep_app/fiveth_frame/storage/sounds_storage/sounds_storage.dart';
+import 'package:sleep_app/timer_picker/time_picker.dart';
 import 'fiveth_frame/current_mix/widgets/show_dialog.dart';
 import 'data_type.dart';
 import 'fiveth_frame/bottom_bar/bottom_bar.dart';
@@ -69,7 +70,7 @@ class MyApp extends StatelessWidget {
               GoRoute(
                 parentNavigatorKey: _rootNavigatorKey,
                 path: '/subscribe',
-                builder: (context, state) => const SubscribeWidget(),
+                builder: (context, state) => SubscribeWidget(key: GlobalKey()),
               ),
               ShellRoute(
                   navigatorKey: _shellNavigatorKey,
@@ -79,18 +80,24 @@ class MyApp extends StatelessWidget {
                     GoRoute(
                       parentNavigatorKey: _shellNavigatorKey,
                       path: '/fiveframe',
-                      builder: (context, state) => const MusicLists(),
+                      builder: (context, state) => MusicLists(key: GlobalKey()),
                     ),
                     GoRoute(
                       parentNavigatorKey: _shellNavigatorKey,
                       path: '/current-mix',
-                      builder: (context, state) => const CurrentMix(),
+                      builder: (context, state) => CurrentMix(key: GlobalKey()),
                     ),
                     GoRoute(
                       parentNavigatorKey: _shellNavigatorKey,
                       path: '/settings',
-                      builder: (context, state) => const SettingsWidget(),
+                      builder: (context, state) =>
+                          SettingsWidget(key: GlobalKey()),
                     ),
+                    GoRoute(
+                      path: '/timer',
+                      parentNavigatorKey: _shellNavigatorKey,
+                      pageBuilder: (context, state) => TimerPage(),
+                    )
                   ]),
               GoRoute(
                 parentNavigatorKey: _rootNavigatorKey,

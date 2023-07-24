@@ -3,7 +3,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 class BottomNavButton extends StatelessWidget {
   final Text label;
-  final Icon icon;
+  final Widget icon;
   final Function onTap;
 
   BottomNavButton(

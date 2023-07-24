@@ -35,7 +35,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   BottomNavButton(
                     labelText: "Mix",
                     icon: CupertinoIcons.shuffle_medium,
-                    onTap: () => context.push('/current-mix'),
+                    onTap: () {
+                      if (GoRouter.of(context).location == "/current-mix") {
+                        context.pop();
+                      } else {
+                        context.push('/current-mix');
+                      }
+                    },
                   )
                 ],
               ),
@@ -52,7 +58,13 @@ class _BottomNavBarState extends State<BottomNavBar> {
                   BottomNavButton(
                       labelText: "Timer",
                       icon: Icons.timer_outlined,
-                      onTap: () => Navigator.push(context, TimerRoute())),
+                      onTap: () {
+                        if (GoRouter.of(context).location == "/timer") {
+                          context.pop();
+                        } else {
+                          context.push("/timer");
+                        }
+                      }),
                 ],
               ),
             ),

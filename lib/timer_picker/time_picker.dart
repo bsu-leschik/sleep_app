@@ -1,42 +1,8 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:sleep_app/timer_picker/widgets/sleep_time_picker.dart';
 
-void main() => runApp(const TimerPopup());
-
-class TimerPopup extends StatelessWidget {
-  const TimerPopup({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const CupertinoApp(
-      home: Timer(),
-    );
-  }
-}
-
-class Timer extends StatelessWidget {
-  const Timer({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: const Color.fromRGBO(20, 23, 51, 1),
-      body: Center(
-        child: OutlinedButton(
-          onPressed: () {
-            context.push('/timer');
-          },
-          child: const Text('Open Timer'),
-        ),
-      ),
-    );
-  }
-}
-
-class TimerRoute<T> extends PopupRoute<T> {
+class TimerRoute<T> extends ModalRoute<T> {
   @override
   Color? get barrierColor => const Color.fromRGBO(20, 23, 51, 0.5);
 
@@ -53,6 +19,11 @@ class TimerRoute<T> extends PopupRoute<T> {
       fontSize: 16,
     ),
   );
+
+  @override
+  RouteSettings settings;
+
+  TimerRoute(this.settings);
 
   @override
   Widget buildPage(BuildContext context, Animation<double> animation,
@@ -82,4 +53,17 @@ class TimerRoute<T> extends PopupRoute<T> {
 
   @override
   Duration get transitionDuration => const Duration(milliseconds: 0);
+
+  @override
+  bool get maintainState => true;
+
+  @override
+  bool get opaque => false;
+}
+
+class TimerPage<T> extends Page<T> {
+  @override
+  Route<T> createRoute(BuildContext context) {
+    return TimerRoute<T>(this);
+  }
 }

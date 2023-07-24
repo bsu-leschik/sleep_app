@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sleep_app/fiveth_frame/current_mix/widgets/mix_list.dart';
 
-import 'widgets/bar_widget_current.dart';
+import 'widgets/mix_top_bar.dart';
 import 'widgets/mix_control.dart';
 
 class CurrentMix extends StatefulWidget {

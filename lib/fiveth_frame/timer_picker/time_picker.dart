@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sleep_app/timer_picker/widgets/sleep_time_picker.dart';
+import 'package:sleep_app/fiveth_frame/timer_picker/widgets/sleep_time_picker.dart';
 
 class TimerRoute<T> extends ModalRoute<T> {
   @override

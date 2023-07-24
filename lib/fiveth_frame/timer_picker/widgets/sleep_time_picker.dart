@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:sleep_app/timer_picker/widgets/pickers.dart';
+import 'package:sleep_app/fiveth_frame/timer_picker/widgets/pickers.dart';
 
 import 'buttons.dart';
 

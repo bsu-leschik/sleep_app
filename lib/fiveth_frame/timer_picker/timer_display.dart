@@ -2,7 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sleep_app/timer_picker/widgets/buttons.dart';
+import 'package:sleep_app/fiveth_frame/timer_picker/widgets/buttons.dart';
 
 class TimerDisplay<T> extends PopupRoute<T> {
   int minutes, seconds;

@@ -9,7 +9,7 @@ import 'package:sleep_app/fiveth_frame/music_chooser/main_page.dart';
 import 'package:sleep_app/fiveth_frame/storage/mixes/mixes_storage.dart';
 import 'package:sleep_app/fiveth_frame/storage/music_storage/music_storage.dart';
 import 'package:sleep_app/fiveth_frame/storage/sounds_storage/sounds_storage.dart';
-import 'package:sleep_app/timer_picker/time_picker.dart';
+import 'package:sleep_app/fiveth_frame/timer_picker/time_picker.dart';
 import 'fiveth_frame/current_mix/widgets/show_dialog.dart';
 import 'data_type.dart';
 import 'fiveth_frame/bottom_bar/bottom_bar.dart';

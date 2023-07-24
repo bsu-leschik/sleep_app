@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sleep_app/timer_picker/timer_display.dart';
+import 'package:sleep_app/fiveth_frame/timer_picker/timer_display.dart';
 
 class _MainButtonState extends State<MainButton> {
   _MainButtonState();

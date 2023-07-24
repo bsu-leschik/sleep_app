@@ -33,7 +33,9 @@ class _TimerPickerState extends State<TimerPicker> {
         minValue: widget.start,
         maxValue: widget.end,
         zeroPad: true,
-        value: _currentElement,
+        value: widget.name.data == "min."
+            ? Provider.of<TimerProvider>(context).minutes
+            : Provider.of<TimerProvider>(context).hours,
         itemHeight: 29,
         itemWidth: 34,
         infiniteLoop: widget.isCycled,
@@ -43,7 +45,6 @@ class _TimerPickerState extends State<TimerPicker> {
             borderRadius: BorderRadius.circular(12),
             border: Border.all(color: Colors.white, width: 1)),
         onChanged: (value) => setState(() {
-          _currentElement = value;
           if (widget.name.data == "min.") {
             Provider.of<TimerProvider>(context, listen: false).minutes = value;
           } else {

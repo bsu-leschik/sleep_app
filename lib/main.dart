@@ -9,8 +9,8 @@ import 'package:sleep_app/fiveth_frame/music_chooser/main_page.dart';
 import 'package:sleep_app/fiveth_frame/storage/mixes/mixes_storage.dart';
 import 'package:sleep_app/fiveth_frame/storage/music_storage/music_storage.dart';
 import 'package:sleep_app/fiveth_frame/storage/sounds_storage/sounds_storage.dart';
+import 'package:sleep_app/fiveth_frame/timer_picker/provider/timer_provider.dart';
 import 'package:sleep_app/fiveth_frame/timer_picker/time_picker.dart';
-import 'fiveth_frame/current_mix/widgets/show_dialog.dart';
 import 'data_type.dart';
 import 'fiveth_frame/bottom_bar/bottom_bar.dart';
 import 'fiveth_frame/current_mix/current_mix.dart';
@@ -51,6 +51,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<MusicStorage>(
           create: (context) => MusicStorage(),
         ),
+        ChangeNotifierProvider(
+          create: (context) => TimerProvider(),
+        ),
         ChangeNotifierProvider<MixesStorage>(
           create: (context) => MixesStorage(
               Provider.of<MusicStorage>(context, listen: false),
@@ -65,7 +68,7 @@ class MyApp extends StatelessWidget {
               GoRoute(
                 parentNavigatorKey: _rootNavigatorKey,
                 path: '/',
-                builder: (context, state) => const OnBoardingWidget(),
+                builder: (context, state) => OnBoardingWidget(key: GlobalKey()),
               ),
               GoRoute(
                 parentNavigatorKey: _rootNavigatorKey,
@@ -75,7 +78,7 @@ class MyApp extends StatelessWidget {
               ShellRoute(
                   navigatorKey: _shellNavigatorKey,
                   builder: (context, state, widget) =>
-                      BottomNavBar(currentWidget: widget),
+                      BottomNavBar(currentWidget: widget, key: GlobalKey()),
                   routes: [
                     GoRoute(
                       parentNavigatorKey: _shellNavigatorKey,
@@ -99,11 +102,6 @@ class MyApp extends StatelessWidget {
                       pageBuilder: (context, state) => TimerPage(),
                     )
                   ]),
-              GoRoute(
-                parentNavigatorKey: _rootNavigatorKey,
-                path: '/showdialog',
-                builder: (context, state) => const ShowDialog(),
-              ),
             ]),
       ),
     );

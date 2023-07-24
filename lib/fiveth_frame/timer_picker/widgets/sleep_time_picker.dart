@@ -1,16 +1,21 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:sleep_app/fiveth_frame/timer_picker/widgets/pickers.dart';
 
 import 'buttons.dart';
 
 class SleepTimePicker extends StatelessWidget {
-  const SleepTimePicker({
+  SleepTimePicker({
     super.key,
-    required this.generalTextStyle,
   });
 
-  final TextStyle generalTextStyle;
+  final TextStyle generalTextStyle = GoogleFonts.nunito(
+    textStyle: const TextStyle(
+      fontWeight: FontWeight.w700,
+      color: Colors.white,
+      fontSize: 16,
+    ),
+  );
 
   @override
   Widget build(BuildContext context) {
@@ -20,21 +25,12 @@ class SleepTimePicker extends StatelessWidget {
       children: [
         Container(
           margin: const EdgeInsets.only(left: 77),
-          child: Row(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 39),
-                child: DecoratedTimePicker(generalTextStyle: generalTextStyle),
-              ),
-              Container(
-                margin: const EdgeInsets.only(left: 32, top: 25),
-                child: const CrossExitButton(),
-              ),
-            ],
+          child: Container(
+            margin: const EdgeInsets.only(top: 39),
+            child: DecoratedTimePicker(generalTextStyle: generalTextStyle),
           ),
         ),
-        const TimerButtons()
+        const TimerButtons(),
       ],
     );
   }

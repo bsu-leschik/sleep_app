@@ -2,15 +2,19 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:sleep_app/fiveth_frame/timer_picker/timer_display.dart';
+import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/timer_picker/provider/timer_provider.dart';
 
-class _MainButtonState extends State<MainButton> {
-  _MainButtonState();
+class MainButton extends StatelessWidget {
+  final Text text;
+  final Function(BuildContext) callback;
+
+  const MainButton({super.key, required this.text, required this.callback});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
-        onPressed: widget.callback,
+        onPressed: () => {callback(context)},
         style: ButtonStyle(
           minimumSize: const MaterialStatePropertyAll(Size(130, 42)),
           backgroundColor: const MaterialStatePropertyAll(
@@ -25,27 +29,20 @@ class _MainButtonState extends State<MainButton> {
             ),
           )),
         ),
-        child: widget.text);
+        child: text);
   }
 }
 
-class MainButton extends StatefulWidget {
+class TransparentButton extends StatelessWidget {
   final Text text;
-  final VoidCallback callback;
-
-  const MainButton({super.key, required this.text, required this.callback});
-
-  @override
-  State<StatefulWidget> createState() => _MainButtonState();
-}
-
-class _TransparentButtonState extends State<TransparentButton> {
-  _TransparentButtonState();
+  final Function callback;
+  const TransparentButton(
+      {super.key, required this.text, required this.callback});
 
   @override
   Widget build(BuildContext context) {
     return TextButton(
-        onPressed: () => 1,
+        onPressed: () => {callback(context)},
         style: ButtonStyle(
           minimumSize: const MaterialStatePropertyAll(Size(130, 42)),
           backgroundColor: const MaterialStatePropertyAll(
@@ -64,20 +61,15 @@ class _TransparentButtonState extends State<TransparentButton> {
             ),
           )),
         ),
-        child: widget.text);
+        child: text);
   }
 }
 
-class TransparentButton extends StatefulWidget {
-  final Text text;
-
-  const TransparentButton({super.key, required this.text});
-
-  @override
-  State<StatefulWidget> createState() => _TransparentButtonState();
-}
-
 class TimerButtons extends StatelessWidget {
+  void _mainButtonCallback(BuildContext context) {
+    Provider.of<TimerProvider>(context, listen: false).startTimer();
+  }
+
   const TimerButtons({
     super.key,
   });
@@ -90,15 +82,15 @@ class TimerButtons extends StatelessWidget {
         Padding(
           padding: const EdgeInsets.only(right: 7),
           child: MainButton(
-              text: const Text("Start"),
-              callback: () {
-                Navigator.pushReplacement(
-                    context, TimerDisplay(minutes: 0, seconds: 0));
-              }),
+              text: const Text("Start"), callback: _mainButtonCallback),
         ),
-        const Padding(
-          padding: EdgeInsets.only(left: 7),
-          child: TransparentButton(text: Text("Clear")),
+        Padding(
+          padding: const EdgeInsets.only(left: 7),
+          child: TransparentButton(
+            text: const Text("Clear"),
+            callback: (p0) =>
+                Provider.of<TimerProvider>(context, listen: false).clear(),
+          ),
         ),
       ],
     );

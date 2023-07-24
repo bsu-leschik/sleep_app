@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/timer_picker/provider/timer_provider.dart';
+import 'package:sleep_app/fiveth_frame/timer_picker/timer_display.dart';
+import 'package:sleep_app/fiveth_frame/timer_picker/widgets/buttons.dart';
 import 'package:sleep_app/fiveth_frame/timer_picker/widgets/sleep_time_picker.dart';
 
 class TimerRoute<T> extends ModalRoute<T> {
@@ -28,6 +32,9 @@ class TimerRoute<T> extends ModalRoute<T> {
   @override
   Widget buildPage(BuildContext context, Animation<double> animation,
       Animation<double> secondaryAnimation) {
+    var mainWidget = Provider.of<TimerProvider>(context).started
+        ? const TimerDisplay()
+        : SleepTimePicker();
     return Align(
       alignment: Alignment.bottomCenter,
       child: Padding(
@@ -45,7 +52,13 @@ class TimerRoute<T> extends ModalRoute<T> {
                   width: 1,
                 ),
               ),
-              child: SleepTimePicker(generalTextStyle: generalTextStyle)),
+              child: Stack(
+                children: [
+                  const Positioned(
+                      right: 25, top: 25, child: CrossExitButton()),
+                  mainWidget,
+                ],
+              )),
         ),
       ),
     );

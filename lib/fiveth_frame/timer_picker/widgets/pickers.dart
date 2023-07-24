@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:numberpicker/numberpicker.dart';
+import 'package:provider/provider.dart';
+import 'package:sleep_app/fiveth_frame/timer_picker/provider/timer_provider.dart';
 
 class _TimerPickerState extends State<TimerPicker> {
   int _currentElement = -1;
@@ -42,6 +44,11 @@ class _TimerPickerState extends State<TimerPicker> {
             border: Border.all(color: Colors.white, width: 1)),
         onChanged: (value) => setState(() {
           _currentElement = value;
+          if (widget.name.data == "min.") {
+            Provider.of<TimerProvider>(context, listen: false).minutes = value;
+          } else {
+            Provider.of<TimerProvider>(context, listen: false).hours = value;
+          }
         }),
       ),
       Container(margin: const EdgeInsets.only(left: 7), child: widget.name),

@@ -32,18 +32,26 @@ class TimerRoute<T> extends ModalRoute<T> {
   @override
   Widget buildPage(BuildContext context, Animation<double> animation,
       Animation<double> secondaryAnimation) {
-    var mainWidget = Provider.of<TimerProvider>(context).started
-        ? const TimerDisplay()
-        : SleepTimePicker();
+    Widget mainWidget;
+    double top, height;
+    if (Provider.of<TimerProvider>(context).started) {
+      mainWidget = const TimerDisplay();
+      top = 423;
+      height = 240;
+    } else {
+      mainWidget = SleepTimePicker();
+      top = 350;
+      height = 313;
+    }
     return Align(
       alignment: Alignment.bottomCenter,
       child: Padding(
-        padding: const EdgeInsets.only(top: 350, left: 27),
+        padding: EdgeInsets.only(top: top, left: 27),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           body: Container(
               width: 336,
-              height: 313,
+              height: height,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(30.0),
                 color: const Color.fromRGBO(1, 48, 140, 1),

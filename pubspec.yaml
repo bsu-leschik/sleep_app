@@ -84,6 +84,7 @@ flutter:
     - assets/images/shopping/
     - assets/images/settings/
     - assets/images/mix/
+    - assets/images/bottom_bar/
     - assets/music/
     - assets/sounds/
 

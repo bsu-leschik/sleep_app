@@ -8,7 +8,7 @@ class BottomNavButton extends StatelessWidget {
 
   BottomNavButton(
       {required String labelText,
-      required IconData icon,
+      required this.icon,
       required this.onTap,
       super.key})
       : label = Text(labelText,
@@ -18,11 +18,7 @@ class BottomNavButton extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 color: Colors.white,
               ),
-            )),
-        icon = Icon(
-          icon,
-          color: Colors.white,
-        );
+            ));
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +26,11 @@ class BottomNavButton extends StatelessWidget {
         height: 55,
         margin: const EdgeInsets.only(top: 8),
         width: 88,
+        padding: const EdgeInsets.only(left: 11, right: 12),
         child: GestureDetector(
-            onTap: () => onTap.call(), child: Column(children: [icon, label])));
+            onTap: () => onTap.call(),
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [icon, label])));
   }
 }

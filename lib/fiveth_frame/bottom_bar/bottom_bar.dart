@@ -1,9 +1,11 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:sleep_app/fiveth_frame/bottom_bar/play_button.dart';
+import 'package:sleep_app/fiveth_frame/bottom_bar/widgets/mix_icon.dart';
+import 'package:sleep_app/fiveth_frame/bottom_bar/widgets/play_button.dart';
+import 'package:sleep_app/fiveth_frame/bottom_bar/widgets/timer_icon.dart';
 
-import 'bottom_nav_button.dart';
+import 'widgets/bottom_nav_button.dart';
 
 class BottomNavBar extends StatefulWidget {
   final Widget? currentWidget;
@@ -33,7 +35,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 children: [
                   BottomNavButton(
                     labelText: "Mix",
-                    icon: CupertinoIcons.shuffle_medium,
+                    icon: const MixIcon(),
                     onTap: () {
                       if (GoRouter.of(context).location == "/current-mix") {
                         context.pop();
@@ -56,7 +58,7 @@ class _BottomNavBarState extends State<BottomNavBar> {
                 children: [
                   BottomNavButton(
                       labelText: "Timer",
-                      icon: Icons.timer_outlined,
+                      icon: const TimerIcon(),
                       onTap: () {
                         if (GoRouter.of(context).location == "/timer") {
                           context.pop();

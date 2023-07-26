@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
+import 'package:sleep_app/player/ads/ad_popup.dart';
 import 'package:sleep_app/player/bottom_bar/bottom_bar.dart';
 import 'package:sleep_app/player/current_mix/current_mix.dart';
 import 'package:sleep_app/player/music_chooser/main_page.dart';
@@ -104,6 +105,13 @@ class MyApp extends StatelessWidget {
                       path: '/timer',
                       parentNavigatorKey: _shellNavigatorKey,
                       pageBuilder: (context, state) => TimerPage(),
+                    ),
+                    GoRoute(
+                      path: '/ad/:type/:name',
+                      parentNavigatorKey: _shellNavigatorKey,
+                      pageBuilder: (context, state) => AdPage(
+                          state.pathParameters['type']!,
+                          state.pathParameters['name']!),
                     )
                   ]),
             ]),

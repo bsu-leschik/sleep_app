@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/player/storage/mixes/mixes_storage.dart';
@@ -10,15 +11,6 @@ import 'sound_property.dart';
 
 class MusicItemWidgetState extends State<MusicItemWidget> {
   bool isPlaying = false;
-
-  final BoxDecoration ifPlaying = BoxDecoration(
-      borderRadius: BorderRadius.circular(8),
-      boxShadow: const [
-        BoxShadow(color: Color.fromRGBO(151, 71, 255, 1), blurRadius: 8)
-      ],
-      border:
-          Border.all(color: const Color.fromRGBO(126, 68, 250, 1), width: 1));
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -28,63 +20,132 @@ class MusicItemWidgetState extends State<MusicItemWidget> {
         children: [
           GestureDetector(
             onTap: () => setState(() {
-              if (Provider.of<MixesStorage>(context, listen: false)
-                  .addMusic(MusicItem.fromWidget(widget))) {}
+              if (!Provider.of<MixesStorage>(context, listen: false)
+                  .addMusic(MusicItem.fromWidget(widget))) {
+                context.push('/ad/music/${widget.title}');
+              }
             }),
             child: SizedBox(
               width: 112,
               height: 102,
-              child: Column(
+              child: Stack(
                 children: [
-                  Expanded(
-                    child: Stack(
-                      alignment: Alignment.topRight,
-                      children: [
-                        Center(
-                          child: Container(
-                            decoration: Provider.of<MixesStorage>(context)
-                                        .musicPlayingName ==
-                                    widget.title
-                                ? ifPlaying
-                                : null,
-                            width: 78,
-                            height: 78,
-                            child: Image(
-                              image: AssetImage(widget.imageRoute),
-                            ),
-                          ),
-                        ),
-                        Positioned(
-                            right: 14,
-                            child: SoundProperty(widget.title, MusicStorage))
-                      ],
-                    ),
+                  NamedMusicItemIcon(
+                    title: widget.title,
+                    imageRoute: widget.imageRoute,
                   ),
-                  SizedBox(
-                    width: 112,
-                    child: Center(
-                      child: TextScroll(
-                        delayBefore: const Duration(seconds: 1),
-                        pauseBetween: const Duration(seconds: 3),
-                        fadedBorder: true,
-                        velocity:
-                            const Velocity(pixelsPerSecond: Offset(30, 0)),
-                        widget.title,
-                        style: GoogleFonts.nunito(
-                          textStyle: const TextStyle(
-                            fontWeight: FontWeight.w400,
-                            fontSize: 12,
-                            color: Color(0xFF8E9FCC),
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
+                  Positioned(
+                      right: 14,
+                      child: SoundProperty(widget.title, MusicStorage))
                 ],
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class NamedMusicItemIcon extends StatelessWidget {
+  const NamedMusicItemIcon({
+    super.key,
+    required this.title,
+    required this.imageRoute,
+    this.updating = true,
+  });
+
+  final String title;
+  final String imageRoute;
+  final bool updating;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Expanded(
+          child: Center(
+            child: MusicItemIcon(
+              title: title,
+              imageRoute: imageRoute,
+              updating: updating,
+            ),
+          ),
+        ),
+        MusicItemTitle(title: title),
+      ],
+    );
+  }
+}
+
+class MusicItemIcon extends StatelessWidget {
+  MusicItemIcon({
+    super.key,
+    required this.title,
+    required this.imageRoute,
+    this.updating = true,
+  });
+
+  final BoxDecoration ifPlaying = BoxDecoration(
+      borderRadius: BorderRadius.circular(8),
+      boxShadow: const [
+        BoxShadow(color: Color.fromRGBO(151, 71, 255, 1), blurRadius: 8)
+      ],
+      border:
+          Border.all(color: const Color.fromRGBO(126, 68, 250, 1), width: 1));
+
+  final String title;
+  final String imageRoute;
+  final bool updating;
+
+  @override
+  Widget build(BuildContext context) {
+    BoxDecoration? decoration;
+    if (updating) {
+      decoration = Provider.of<MixesStorage>(context).musicPlayingName == title
+          ? ifPlaying
+          : null;
+    } else {
+      decoration = null;
+    }
+    return Container(
+      decoration: decoration,
+      width: 78,
+      height: 78,
+      child: Image(
+        image: AssetImage(imageRoute),
+      ),
+    );
+  }
+}
+
+class MusicItemTitle extends StatelessWidget {
+  const MusicItemTitle({
+    super.key,
+    required this.title,
+  });
+
+  final String title;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: 112,
+      child: Center(
+        child: TextScroll(
+          delayBefore: const Duration(seconds: 1),
+          pauseBetween: const Duration(seconds: 3),
+          fadedBorder: true,
+          velocity: const Velocity(pixelsPerSecond: Offset(30, 0)),
+          title,
+          style: GoogleFonts.nunito(
+            textStyle: const TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 12,
+              color: Color(0xFF8E9FCC),
+            ),
+          ),
+        ),
       ),
     );
   }

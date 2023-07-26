@@ -103,7 +103,7 @@ flutter:
   fonts:
     - family: Poetsen
       fonts:
-        - asset: fonts/PoetsenOne.ttf
+        - asset: assets/fonts/PoetsenOne.ttf
           weight: 400
     #     - asset: fonts/Schyler-Italic.ttf
     #       style: italic

@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 
 class TypesList extends StatelessWidget {
   final List<Widget> _list;
-  const TypesList(this._list, {super.key});
+  final double spacing;
+  const TypesList(this._list, {super.key, this.spacing = 0});
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +12,7 @@ class TypesList extends StatelessWidget {
     } else {
       return Wrap(
         runSpacing: 20,
+        spacing: spacing,
         direction: Axis.horizontal,
         children: _list,
       );

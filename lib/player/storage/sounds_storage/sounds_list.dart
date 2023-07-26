@@ -76,9 +76,7 @@ const Map<String, SoundItem> sounds = {
       title: "Cows",
       type: SoundType.animals),
   "Dog": SoundItem(
-      property: SoundProperties.unlocked,
-      title: "Dog",
-      type: SoundType.animals),
+      property: SoundProperties.locked, title: "Dog", type: SoundType.animals),
   "Dolphins": SoundItem(
       property: SoundProperties.unlocked,
       title: "Dolphins",

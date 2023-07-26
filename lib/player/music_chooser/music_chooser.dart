@@ -42,7 +42,10 @@ class MusicChooser extends StatelessWidget {
           ),
           Container(
             margin: const EdgeInsets.only(top: 20),
-            child: TypesList(soundsWidgetList),
+            child: TypesList(
+              soundsWidgetList,
+              spacing: 35,
+            ),
           ),
         ],
       ),

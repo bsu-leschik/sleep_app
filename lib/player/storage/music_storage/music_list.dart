@@ -11,7 +11,7 @@ const Map<String, MusicItem> music = {
       imageRoute: '${musicFolder}Mediative.png'),
   "Moon vibes": MusicItem(
       title: "Moon vibes",
-      property: SoundProperties.unlocked,
+      property: SoundProperties.locked,
       imageRoute: '${musicFolder}Moonmusic.png'),
   "Peaceful and calm": MusicItem(
       title: "Peaceful and calm",

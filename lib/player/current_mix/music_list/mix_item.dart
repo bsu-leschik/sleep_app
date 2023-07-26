@@ -56,7 +56,10 @@ class SoundMixItem extends StatelessWidget {
     return MixItem(
       name: name,
       trashCallback: _soundFunctions[0],
-      icon: SoundIcon(name: name),
+      icon: SoundItemIcon(
+        title: name,
+        updating: false,
+      ),
       infoCallback: _soundFunctions[1],
       sliderCallback: _sliderSoundCallback,
       type: SoundsStorage,

@@ -7,7 +7,7 @@ import 'music_item.dart';
 
 class MusicStorage extends ChangeNotifier {
   final String _boxName = "Music";
-  Map<String, MusicItem> _music = music;
+  Map<String, MusicItem> _music = Map.of(music);
   late Box<MusicItem> box;
 
   MusicStorage() {

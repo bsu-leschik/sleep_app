@@ -5,18 +5,18 @@ import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/main_page.dart';
-import 'package:sleep_app/fiveth_frame/storage/mixes/mixes_storage.dart';
-import 'package:sleep_app/fiveth_frame/storage/music_storage/music_storage.dart';
-import 'package:sleep_app/fiveth_frame/storage/sounds_storage/sounds_storage.dart';
-import 'package:sleep_app/fiveth_frame/timer_picker/provider/timer_provider.dart';
-import 'package:sleep_app/fiveth_frame/timer_picker/time_picker.dart';
-import 'data_type.dart';
-import 'fiveth_frame/bottom_bar/bottom_bar.dart';
-import 'fiveth_frame/current_mix/current_mix.dart';
+import 'package:sleep_app/player/bottom_bar/bottom_bar.dart';
+import 'package:sleep_app/player/current_mix/current_mix.dart';
+import 'package:sleep_app/player/music_chooser/main_page.dart';
+import 'package:sleep_app/player/settings/settings_widget.dart';
+import 'package:sleep_app/player/storage/mixes/mixes_storage.dart';
+import 'package:sleep_app/player/storage/music_storage/music_storage.dart';
+import 'package:sleep_app/player/storage/sounds_storage/sounds_storage.dart';
+import 'package:sleep_app/player/timer_picker/provider/timer_provider.dart';
+import 'package:sleep_app/player/timer_picker/time_picker.dart';
+
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
-import 'settings/settings_widget.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() {
@@ -42,9 +42,6 @@ class MyApp extends StatelessWidget {
     log(_shellNavigatorKey.toString());
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<DataSlider>(
-          create: (context) => DataSlider(),
-        ),
         ChangeNotifierProvider<SoundsStorage>(
           create: (context) => SoundsStorage(),
         ),
@@ -69,7 +66,7 @@ class MyApp extends StatelessWidget {
       ],
       child: MaterialApp.router(
         routerConfig: GoRouter(
-            initialLocation: '/fiveframe',
+            initialLocation: '/',
             navigatorKey: _rootNavigatorKey,
             routes: [
               GoRoute(
@@ -89,7 +86,7 @@ class MyApp extends StatelessWidget {
                   routes: [
                     GoRoute(
                       parentNavigatorKey: _shellNavigatorKey,
-                      path: '/fiveframe',
+                      path: '/player',
                       builder: (context, state) => MusicLists(key: GlobalKey()),
                     ),
                     GoRoute(

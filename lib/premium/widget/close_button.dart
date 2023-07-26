@@ -12,7 +12,7 @@ class CloseButt extends StatelessWidget {
         color: Color(0xFFFFFFFF),
         size: 20,
       ),
-      onTap: () => context.go('/fiveframe'),
+      onTap: () => context.go('/player'),
     );
   }
 }

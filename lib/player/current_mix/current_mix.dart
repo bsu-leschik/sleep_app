@@ -32,19 +32,21 @@ class _CurrentMixState extends State<CurrentMix> {
                   child: const MixTopBar()),
               Provider.of<MixesStorage>(context).mix.isEmpty
                   ? const NoSounds()
-                  : Column(children: [
-                      Container(
-                          margin: const EdgeInsets.only(
-                              bottom: 25, left: 17, right: 17),
-                          child: const MixControl()),
-                      Expanded(
-                        child: Container(
-                          padding: const EdgeInsets.only(
-                              left: 0, right: 0, top: 0, bottom: 0),
-                          child: const MixList(),
+                  : Expanded(
+                      child: Column(children: [
+                        Container(
+                            margin: const EdgeInsets.only(
+                                bottom: 25, left: 17, right: 17),
+                            child: const MixControl()),
+                        Expanded(
+                          child: Container(
+                            padding: const EdgeInsets.only(
+                                left: 0, right: 0, top: 0, bottom: 0),
+                            child: const MixList(),
+                          ),
                         ),
-                      ),
-                    ]),
+                      ]),
+                    ),
             ],
           ),
         ),

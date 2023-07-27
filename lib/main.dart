@@ -1,19 +1,23 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:go_router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/items/play_controller.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/storage/music_storage.dart';
-import 'package:sleep_app/fiveth_frame/music_chooser/storage/sounds_storage.dart';
-import 'package:sleep_app/timer_picker/time_picker.dart';
-import 'current_mix/current_mix.dart';
-import 'current_mix/widgets/show_dialog.dart';
-import 'data_type.dart';
-import 'fiveth_frame/bottom_bar/bottom_bar.dart';
+import 'package:sleep_app/player/ads/ad_popup.dart';
+import 'package:sleep_app/player/bottom_bar/bottom_bar.dart';
+import 'package:sleep_app/player/current_mix/current_mix.dart';
+import 'package:sleep_app/player/music_chooser/main_page.dart';
+import 'package:sleep_app/player/settings/settings_widget.dart';
+import 'package:sleep_app/player/storage/mixes/mixes_storage.dart';
+import 'package:sleep_app/player/storage/music_storage/music_storage.dart';
+import 'package:sleep_app/player/storage/sounds_storage/sounds_storage.dart';
+import 'package:sleep_app/player/timer_picker/provider/timer_provider.dart';
+import 'package:sleep_app/player/timer_picker/time_picker.dart';
+
 import 'onboarding/onboardingalex.dart';
 import 'premium/sub_widget.dart';
-import 'settings_frame/settings_widget.dart';
 import 'package:path_provider/path_provider.dart';
 
 void main() {
@@ -26,30 +30,8 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  final GoRouter _router = GoRouter(routes: [
-    GoRoute(path: '/', builder: (context, state) => const OnBoardingWidget()),
-    GoRoute(
-      path: '/subscribe',
-      builder: (context, state) => const SubscribeWidget(),
-    ),
-    GoRoute(
-      path: '/fiveframe',
-      builder: (context, state) => const BottomBar(),
-    ),
-    GoRoute(
-      path: '/settings',
-      builder: (context, state) => const SettingsWidget(),
-    ),
-    GoRoute(
-      path: '/currentmix',
-      builder: (context, state) => const CurrentMix(),
-    ),
-    GoRoute(
-      path: '/showdialog',
-      builder: (context, state) => const ShowDialog(),
-    ),
-    GoRoute(path: '/timer', builder: (context, state) => const Timer()),
-  ]);
+  final _rootNavigatorKey = GlobalKey<NavigatorState>();
+  final _shellNavigatorKey = GlobalKey<NavigatorState>();
 
   MyApp({
     Key? key,
@@ -57,23 +39,82 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    log(_rootNavigatorKey.toString());
+    log(_shellNavigatorKey.toString());
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<DataSlider>(
-          create: (context) => DataSlider(),
-        ),
         ChangeNotifierProvider<SoundsStorage>(
           create: (context) => SoundsStorage(),
         ),
         ChangeNotifierProvider<MusicStorage>(
           create: (context) => MusicStorage(),
         ),
-        ChangeNotifierProvider<PlayController>(
-          create: (context) => PlayController(),
-        )
+        ChangeNotifierProvider(
+          create: (context) => TimerProvider(),
+        ),
+        ChangeNotifierProxyProvider<TimerProvider, MixesStorage>(
+          create: (context) => MixesStorage(
+            Provider.of<MusicStorage>(context, listen: false),
+            Provider.of<SoundsStorage>(context, listen: false),
+          ),
+          update: (context, value, previous) =>
+              previous?.update(value) ??
+              MixesStorage(
+                Provider.of<MusicStorage>(context, listen: false),
+                Provider.of<SoundsStorage>(context, listen: false),
+              ),
+        ),
       ],
       child: MaterialApp.router(
-        routerConfig: _router,
+        routerConfig: GoRouter(
+            initialLocation: '/',
+            navigatorKey: _rootNavigatorKey,
+            routes: [
+              GoRoute(
+                parentNavigatorKey: _rootNavigatorKey,
+                path: '/',
+                builder: (context, state) => OnBoardingWidget(key: GlobalKey()),
+              ),
+              GoRoute(
+                parentNavigatorKey: _rootNavigatorKey,
+                path: '/subscribe',
+                builder: (context, state) => SubscribeWidget(key: GlobalKey()),
+              ),
+              GoRoute(
+                path: '/ad/:type/:name',
+                parentNavigatorKey: _rootNavigatorKey,
+                pageBuilder: (context, state) => AdPage(
+                    state.pathParameters['type']!,
+                    state.pathParameters['name']!),
+              ),
+              ShellRoute(
+                  navigatorKey: _shellNavigatorKey,
+                  builder: (context, state, widget) =>
+                      BottomNavBar(currentWidget: widget, key: GlobalKey()),
+                  routes: [
+                    GoRoute(
+                      parentNavigatorKey: _shellNavigatorKey,
+                      path: '/player',
+                      builder: (context, state) => MusicLists(key: GlobalKey()),
+                    ),
+                    GoRoute(
+                      parentNavigatorKey: _shellNavigatorKey,
+                      path: '/current-mix',
+                      builder: (context, state) => CurrentMix(key: GlobalKey()),
+                    ),
+                    GoRoute(
+                      parentNavigatorKey: _shellNavigatorKey,
+                      path: '/settings',
+                      builder: (context, state) =>
+                          SettingsWidget(key: GlobalKey()),
+                    ),
+                    GoRoute(
+                      path: '/timer',
+                      parentNavigatorKey: _shellNavigatorKey,
+                      pageBuilder: (context, state) => TimerPage(),
+                    ),
+                  ]),
+            ]),
       ),
     );
   }

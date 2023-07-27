@@ -80,6 +80,13 @@ class MyApp extends StatelessWidget {
                 path: '/subscribe',
                 builder: (context, state) => SubscribeWidget(key: GlobalKey()),
               ),
+              GoRoute(
+                path: '/ad/:type/:name',
+                parentNavigatorKey: _rootNavigatorKey,
+                pageBuilder: (context, state) => AdPage(
+                    state.pathParameters['type']!,
+                    state.pathParameters['name']!),
+              ),
               ShellRoute(
                   navigatorKey: _shellNavigatorKey,
                   builder: (context, state, widget) =>
@@ -106,13 +113,6 @@ class MyApp extends StatelessWidget {
                       parentNavigatorKey: _shellNavigatorKey,
                       pageBuilder: (context, state) => TimerPage(),
                     ),
-                    GoRoute(
-                      path: '/ad/:type/:name',
-                      parentNavigatorKey: _shellNavigatorKey,
-                      pageBuilder: (context, state) => AdPage(
-                          state.pathParameters['type']!,
-                          state.pathParameters['name']!),
-                    )
                   ]),
             ]),
       ),

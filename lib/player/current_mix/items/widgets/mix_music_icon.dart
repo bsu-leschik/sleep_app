@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 
-import '../../music_chooser/items/sound_property.dart';
-import '../../storage/music_storage/music_storage.dart';
+import '../../../music_chooser/items/sound_property.dart';
+import '../../../storage/music_storage/music_storage.dart';
 
 class MixMusicIcon extends StatelessWidget {
   final String name;

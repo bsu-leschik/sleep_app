@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/player/storage/mixes/mixes_storage.dart';
 
-import '../music_list/mix_item.dart';
+import '../items/music_mix_item.dart';
+import '../items/sound_mix_item.dart';
 
 class MixList extends StatelessWidget {
   const MixList({super.key});

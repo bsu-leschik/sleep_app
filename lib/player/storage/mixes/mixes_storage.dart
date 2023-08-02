@@ -48,7 +48,7 @@ class MixesStorage extends ChangeNotifier {
         () => Mix(
           name: key,
           music: MixMusicItem(
-            item: musicStorage.getItemByName(value.music.title),
+            item: musicStorage.getItemByName(value.music.title)!,
             volume: value.music.volume,
           ),
           sounds: List.generate(

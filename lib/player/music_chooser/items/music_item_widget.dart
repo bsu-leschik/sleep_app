@@ -155,17 +155,20 @@ class MusicItemWidget extends StatefulWidget {
   final String title;
   final SoundProperties property;
   final String imageRoute;
+  final String info;
 
   const MusicItemWidget(
       {super.key,
       required this.title,
       required this.property,
-      required this.imageRoute});
+      required this.imageRoute,
+      required this.info});
 
   factory MusicItemWidget.fromMusicItem(MusicItem item) => MusicItemWidget(
         title: item.title,
         property: item.property,
         imageRoute: item.imageRoute,
+        info: item.info,
       );
 
   @override

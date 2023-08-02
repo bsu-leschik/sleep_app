@@ -21,7 +21,7 @@ class SoundsStorage extends ChangeNotifier {
   }
 
   _init() async {
-    Hive.registerAdapter(SoundItemAdapter());
+    //Hive.registerAdapter(SoundItemAdapter());
     Hive.registerAdapter(SoundPropertiesAdapter());
     Hive.registerAdapter(SoundTypeAdapter());
     if (await Hive.boxExists(boxName)) {
@@ -71,8 +71,11 @@ class SoundsStorage extends ChangeNotifier {
     if (!_sounds.containsKey(name)) {
       throw ArgumentError("No key such key was found");
     }
-    var currrentItem =
-        SoundItem(property: property, title: name, type: _sounds[name]!.type);
+    var currrentItem = SoundItem(
+        property: property,
+        title: name,
+        type: _sounds[name]!.type,
+        info: _sounds[name]!.info);
     box.put(name, currrentItem);
 
     _sounds.update(name, (value) => currrentItem);

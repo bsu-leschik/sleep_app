@@ -30,7 +30,7 @@ class MixMusicIcon extends StatelessWidget {
           ),
           child: Image(
             image: AssetImage(Provider.of<MusicStorage>(context)
-                .getItemByName(name)
+                .getItemByName(name)!
                 .imageRoute),
           ),
         ),

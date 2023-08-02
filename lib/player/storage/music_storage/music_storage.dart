@@ -39,7 +39,8 @@ class MusicStorage extends ChangeNotifier {
     var currentItem = MusicItem(
         title: title,
         property: property,
-        imageRoute: _music[title]!.imageRoute);
+        imageRoute: _music[title]!.imageRoute,
+        info: _music[title]!.info);
     _music.update(title, (item) => currentItem);
     box.put(title, currentItem);
     notifyListeners();
@@ -61,7 +62,7 @@ class MusicStorage extends ChangeNotifier {
     return _music[name]!.property;
   }
 
-  getItemByName(String name) {
+  MusicItem? getItemByName(String name) {
     return _music[name];
   }
 }

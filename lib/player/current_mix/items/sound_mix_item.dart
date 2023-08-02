@@ -24,7 +24,7 @@ class SoundMixItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return MixItem(
       name: name,
-      trashCallback: _soundFunctions[0],
+      isSound: true,
       icon: SoundItemIcon(
         title: name,
         updating: false,

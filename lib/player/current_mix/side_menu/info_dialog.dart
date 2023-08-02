@@ -69,9 +69,8 @@ class _InfoDialogText extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      //TODO: add info text
       isMusic
-          ? Provider.of<MusicStorage>(context).getItemByName(name).toString()
+          ? Provider.of<MusicStorage>(context).getItemByName(name)!.info
           : Provider.of<SoundsStorage>(context).getItemByName(name).toString(),
       style: const TextStyle(
         color: Color(0xFF8E9FCC),

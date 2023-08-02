@@ -10,12 +10,8 @@ import 'mix_item.dart';
 class MusicMixItem extends StatelessWidget {
   final String name;
 
-  MusicMixItem({super.key, required this.name});
+  const MusicMixItem({super.key, required this.name});
 
-  final _musicFunctions = [
-    (BuildContext context) =>
-        Provider.of<MixesStorage>(context, listen: false).remove(),
-  ];
   _sliderMusicCallback(BuildContext context, double volume) =>
       Provider.of<MixesStorage>(context, listen: false).adjustVolume(volume);
 
@@ -23,7 +19,7 @@ class MusicMixItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return MixItem(
       name: name,
-      trashCallback: _musicFunctions[0],
+      isSound: false,
       icon: MixMusicIcon(name: name),
       infoCallback: (BuildContext context) => {
         showDialog(

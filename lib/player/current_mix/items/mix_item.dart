@@ -7,10 +7,10 @@ import 'widgets/mix_item_name.dart';
 import '../side_menu/mix_item_sidebar.dart';
 import 'widgets/sound_slider.dart';
 
-class MixItem extends StatelessWidget {
+class MixItem extends StatefulWidget {
   final String name;
   final Widget icon;
-  final Function(BuildContext) trashCallback;
+  final bool isSound;
   final Function(BuildContext) infoCallback;
   final Function(BuildContext, double) sliderCallback;
   final Type type;
@@ -19,62 +19,58 @@ class MixItem extends StatelessWidget {
     super.key,
     required this.name,
     required this.icon,
-    required this.trashCallback,
+    required this.isSound,
     required this.infoCallback,
     required this.sliderCallback,
     required this.type,
   }) : assert(type == SoundsStorage || type == MusicStorage);
 
   @override
+  State<MixItem> createState() => _MixItemState();
+}
+
+class _MixItemState extends State<MixItem> {
+  @override
   Widget build(BuildContext context) {
     return Slidable(
-      key: GlobalKey(),
       direction: Axis.horizontal,
       endActionPane: ActionPane(
-        key: GlobalKey(),
         extentRatio: 0.74,
         motion: const ScrollMotion(),
         dragDismissible: true,
         children: [
           MixItemSidebar(
-              key: GlobalKey(),
-              name: name,
-              trashCallback: trashCallback,
-              infoCallback: infoCallback,
-              type: type)
+            deleteCallback: () => setState(() => {}),
+            name: widget.name,
+            isSound: widget.isSound,
+            infoCallback: widget.infoCallback,
+            type: widget.type,
+          )
         ],
       ),
       child: Padding(
-        key: GlobalKey(),
         padding: const EdgeInsets.only(left: 26, right: 26),
         child: Row(
-          key: GlobalKey(),
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            icon,
+            widget.icon,
             Expanded(
-              key: GlobalKey(),
               child: Container(
-                key: GlobalKey(),
                 padding: const EdgeInsets.only(top: 0),
                 child: Column(
-                  key: GlobalKey(),
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Container(
-                      key: GlobalKey(),
                       margin: const EdgeInsets.only(left: 19, bottom: 14),
-                      child: MixItemName(name: name),
+                      child: MixItemName(name: widget.name),
                     ),
                     Container(
-                      key: GlobalKey(),
                       margin: const EdgeInsets.only(left: 14),
                       child: SoundSlider(
-                        key: GlobalKey(),
-                        name: name,
-                        callback: sliderCallback,
+                        name: widget.name,
+                        callback: widget.sliderCallback,
                       ),
                     )
                   ],

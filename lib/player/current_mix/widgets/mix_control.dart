@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
+import 'package:sleep_app/player/current_mix/sounds/mix_title_dialog/mix_title_dialog.dart';
 import 'package:sleep_app/player/storage/mixes/mixes_storage.dart';
 
 class MixControl extends StatefulWidget {
@@ -22,8 +23,18 @@ class _MixControlState extends State<MixControl> {
     ),
     MixControlButton(
         title: "Save mix",
-        callback: (BuildContext context) =>
-            Provider.of<MixesStorage>(context, listen: false).saveMix()),
+        callback: (BuildContext context) {
+          if (Provider.of<MixesStorage>(context, listen: false).mix.name ==
+              null) {
+            showDialog(
+              useRootNavigator: false,
+              context: context,
+              builder: (context) => const MixTitleDialog(),
+            );
+          } else {
+            Provider.of<MixesStorage>(context, listen: false).saveMix();
+          }
+        }),
   ];
 
   @override

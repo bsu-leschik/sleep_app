@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:sleep_app/player/storage/music_storage/music_storage.dart';
 import 'package:sleep_app/player/storage/sounds_storage/sounds_storage.dart';
 
-import '../../timer_picker/widgets/buttons.dart';
+import '../../../timer_picker/widgets/buttons.dart';
 
 class InfoDialog extends StatelessWidget {
   const InfoDialog({

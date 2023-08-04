@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/player/storage/mixes/mixes_storage.dart';
 
-import '../../music_chooser/items/sound_property.dart';
-import '../../storage/music_storage/music_storage.dart';
-import '../../storage/sounds_storage/sounds_storage.dart';
+import '../../../music_chooser/items/sound_property.dart';
+import '../../../storage/music_storage/music_storage.dart';
+import '../../../storage/sounds_storage/sounds_storage.dart';
 import 'info_icon.dart';
 
 class MixItemSidebar extends StatefulWidget {

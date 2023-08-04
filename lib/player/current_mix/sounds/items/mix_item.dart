@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:sleep_app/player/storage/music_storage/music_storage.dart';
 
-import '../../storage/sounds_storage/sounds_storage.dart';
+import '../../../storage/sounds_storage/sounds_storage.dart';
 import 'widgets/mix_item_name.dart';
 import '../side_menu/mix_item_sidebar.dart';
 import 'widgets/sound_slider.dart';
 
-class MixItem extends StatefulWidget {
+class CurrentMixItem extends StatefulWidget {
   final String name;
   final Widget icon;
   final bool isSound;
@@ -15,7 +15,7 @@ class MixItem extends StatefulWidget {
   final Function(BuildContext, double) sliderCallback;
   final Type type;
 
-  const MixItem({
+  const CurrentMixItem({
     super.key,
     required this.name,
     required this.icon,
@@ -26,10 +26,10 @@ class MixItem extends StatefulWidget {
   }) : assert(type == SoundsStorage || type == MusicStorage);
 
   @override
-  State<MixItem> createState() => _MixItemState();
+  State<CurrentMixItem> createState() => _CurrentMixItemState();
 }
 
-class _MixItemState extends State<MixItem> {
+class _CurrentMixItemState extends State<CurrentMixItem> {
   @override
   Widget build(BuildContext context) {
     return Slidable(

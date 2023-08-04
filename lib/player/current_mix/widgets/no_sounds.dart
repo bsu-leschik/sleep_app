@@ -6,45 +6,42 @@ class NoSounds extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      child: Flex(direction: Axis.vertical, children: [
-        const Expanded(
-            flex: 1,
-            child: Align(
-              alignment: Alignment.bottomCenter,
-              child: Image(
-                  width: 316,
-                  height: 145,
-                  image:
-                      AssetImage("assets/images/mix/no_sounds/top_sheep.png")),
-            )),
-        Expanded(
-            flex: 2,
-            child: Stack(
-              children: [
-                const Align(
-                  alignment: Alignment.centerRight,
-                  child: Image(
-                      width: 120,
-                      image: AssetImage(
-                          "assets/images/mix/no_sounds/bottom_sheep.png")),
-                ),
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Padding(
-                    padding: const EdgeInsets.only(right: 75, top: 140),
-                    child: Transform(
-                      transform: Matrix4.identity()
-                        ..translate(0.0, 0.0)
-                        ..rotateZ(-0.35),
-                      child: const ViewSoundsButton(),
-                    ),
+    return Flex(direction: Axis.vertical, children: [
+      const Expanded(
+          flex: 1,
+          child: Align(
+            alignment: Alignment.bottomCenter,
+            child: Image(
+                width: 316,
+                height: 145,
+                image: AssetImage("assets/images/mix/no_sounds/top_sheep.png")),
+          )),
+      Expanded(
+          flex: 2,
+          child: Stack(
+            children: [
+              const Align(
+                alignment: Alignment.centerRight,
+                child: Image(
+                    width: 120,
+                    image: AssetImage(
+                        "assets/images/mix/no_sounds/bottom_sheep.png")),
+              ),
+              Align(
+                alignment: Alignment.centerRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(right: 75, top: 140),
+                  child: Transform(
+                    transform: Matrix4.identity()
+                      ..translate(0.0, 0.0)
+                      ..rotateZ(-0.35),
+                    child: const ViewSoundsButton(),
                   ),
                 ),
-              ],
-            ))
-      ]),
-    );
+              ),
+            ],
+          ))
+    ]);
   }
 }
 

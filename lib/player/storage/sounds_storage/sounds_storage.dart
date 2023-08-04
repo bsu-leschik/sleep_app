@@ -21,7 +21,7 @@ class SoundsStorage extends ChangeNotifier {
   }
 
   _init() async {
-    //Hive.registerAdapter(SoundItemAdapter());
+    Hive.registerAdapter(SoundItemAdapter());
     Hive.registerAdapter(SoundPropertiesAdapter());
     Hive.registerAdapter(SoundTypeAdapter());
     if (await Hive.boxExists(boxName)) {

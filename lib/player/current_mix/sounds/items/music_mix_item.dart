@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:sleep_app/player/current_mix/items/widgets/mix_music_icon.dart';
+import 'package:sleep_app/player/current_mix/sounds/items/widgets/mix_music_icon.dart';
 
-import '../../storage/mixes/mixes_storage.dart';
-import '../../storage/music_storage/music_storage.dart';
+import '../../../storage/mixes/mixes_storage.dart';
+import '../../../storage/music_storage/music_storage.dart';
 import '../side_menu/info_dialog.dart';
 import 'mix_item.dart';
 
@@ -17,7 +17,7 @@ class MusicMixItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MixItem(
+    return CurrentMixItem(
       name: name,
       isSound: false,
       icon: MixMusicIcon(name: name),

@@ -90,7 +90,8 @@ class DeleteMixWrapper extends StatelessWidget {
       child: SideIcon(
           icon: const Image(image: AssetImage("assets/images/mix/trash.png")),
           callback: (context) =>
-              Provider.of<MixesStorage>(context).deleteMix(title)),
+              Provider.of<MixesStorage>(context, listen: false)
+                  .deleteMix(title)),
     );
   }
 }

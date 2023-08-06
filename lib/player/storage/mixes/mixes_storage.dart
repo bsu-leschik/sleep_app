@@ -26,7 +26,7 @@ class MixesStorage extends ChangeNotifier {
     _init(musicStorage, soundsStorage);
   }
 
-  List<Mix>? get mixes => _mixes.values.toList();
+  List<Mix> get mixes => _mixes.values.toList();
 
   Mix? getMixByName(String name) => _mixes[name];
 
@@ -130,6 +130,7 @@ class MixesStorage extends ChangeNotifier {
     } else {
       _mixes.putIfAbsent(_currentMix.name!, () => _currentMix);
     }
+    notifyListeners();
     return true;
   }
 

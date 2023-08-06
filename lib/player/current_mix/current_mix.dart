@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:sleep_app/player/current_mix/mixes/mixes_list.dart';
+import 'package:sleep_app/player/current_mix/providers/mix_count.dart';
 import 'package:sleep_app/player/current_mix/sounds/sounds_list_mix.dart';
 import 'package:sleep_app/player/current_mix/widgets/mix_top_bar.dart';
 
@@ -27,10 +29,14 @@ class _CurrentMixState extends State<CurrentMix> {
                 ),
                 Expanded(
                   child: PageView(
-                    children: const [
-                      MixesList(),
-                      SoundsListMix(),
-                    ],
+                    children: Provider.of<MixCount>(context).hasMixes
+                        ? const [
+                            MixesList(),
+                            SoundsListMix(),
+                          ]
+                        : const [
+                            SoundsListMix(),
+                          ],
                   ),
                 )
               ]))),

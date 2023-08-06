@@ -29,7 +29,7 @@ class _MixTitleDialogState extends State<MixTitleDialog> {
     ),
     focusedBorder: OutlineInputBorder(
       borderRadius: BorderRadius.all(Radius.circular(12)),
-      borderSide: BorderSide(color: Colors.white, width: 3),
+      borderSide: BorderSide(color: Colors.white, width: 2),
     ),
   );
 
@@ -80,6 +80,7 @@ class _MixTitleDialogState extends State<MixTitleDialog> {
                         ),
                       ),
                     ),
+                    const SizedBox(height: 25),
                     SizedBox(
                       width: 300,
                       height: 60,
@@ -87,9 +88,16 @@ class _MixTitleDialogState extends State<MixTitleDialog> {
                         maxLines: 1,
                         minLines: 1,
                         decoration: currentBorder,
+                        style: const TextStyle(
+                          color: Color(0xFF8E9FCC),
+                          fontSize: 16,
+                          fontFamily: 'Nunito',
+                          fontWeight: FontWeight.w700,
+                        ),
                         onChanged: (value) => title = value,
                       ),
                     ),
+                    const SizedBox(height: 25),
                     Center(
                       child: ColoredButton(
                         text: "Save",

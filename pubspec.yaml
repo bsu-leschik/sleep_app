@@ -90,6 +90,7 @@ flutter:
     - assets/images/ads/
     - assets/fonts/
     - assets/images/mix/no_sounds/
+    - assets/images/first_load/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

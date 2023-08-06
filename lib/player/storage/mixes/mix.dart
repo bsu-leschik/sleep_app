@@ -43,5 +43,5 @@ class Mix {
 
   bool containsSound(String soundName) => sounds.containsKey(soundName);
 
-  bool get isEmpty => music == null || sounds.isEmpty;
+  bool get isEmpty => music == null && sounds.isEmpty;
 }

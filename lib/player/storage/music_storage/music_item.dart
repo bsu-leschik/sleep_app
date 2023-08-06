@@ -13,12 +13,18 @@ class MusicItem {
   final SoundProperties property;
   @HiveField(2)
   final String imageRoute;
+  @HiveField(3)
+  final String info;
 
   const MusicItem(
-      {required this.title, required this.property, required this.imageRoute});
+      {required this.info,
+      required this.title,
+      required this.property,
+      required this.imageRoute});
 
   MusicItem.fromWidget(MusicItemWidget widget)
       : title = widget.title,
         property = widget.property,
-        imageRoute = widget.imageRoute;
+        imageRoute = widget.imageRoute,
+        info = widget.info;
 }

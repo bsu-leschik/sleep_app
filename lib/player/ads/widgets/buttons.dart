@@ -11,29 +11,11 @@ class AdButtons extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          MainButton(
-            text: const Text(
-              'Go PREMIUM',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 16,
-                fontFamily: 'Nunito',
-                fontWeight: FontWeight.w700,
-              ),
-            ),
+          ColoredButton(
+            text: 'Go PREMIUM',
             callback: (p0) => "",
           ),
-          TransparentButton(
-              text: const Text(
-                'Watch ad',
-                style: TextStyle(
-                  color: Color(0xFF8E9FCC),
-                  fontSize: 16,
-                  fontFamily: 'Nunito',
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              callback: () => "")
+          TransparentButton(text: 'Watch ad', callback: () => "")
         ]);
   }
 }

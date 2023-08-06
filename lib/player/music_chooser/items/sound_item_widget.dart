@@ -13,15 +13,21 @@ class SoundItemWidget extends StatelessWidget {
   final String title;
   final SoundProperties property;
   final SoundType type;
+  final String info;
 
   const SoundItemWidget(
       {required this.property,
       required this.title,
       required this.type,
+      required this.info,
       super.key});
 
   factory SoundItemWidget.fromSoundItem(SoundItem item) => SoundItemWidget(
-      title: item.title, property: item.property, type: item.type);
+        title: item.title,
+        property: item.property,
+        type: item.type,
+        info: item.info,
+      );
 
   @override
   Widget build(BuildContext context) {

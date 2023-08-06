@@ -14,15 +14,19 @@ class SoundItem {
   final SoundType type;
   @HiveField(2)
   final String title;
+  @HiveField(3)
+  final String info;
 
   const SoundItem({
     required this.property,
     required this.title,
     required this.type,
+    required this.info,
   });
 
   SoundItem.fromWidget(SoundItemWidget widget)
       : property = widget.property,
         type = widget.type,
-        title = widget.title;
+        title = widget.title,
+        info = widget.info;
 }

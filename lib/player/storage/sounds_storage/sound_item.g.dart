@@ -20,19 +20,22 @@ class SoundItemAdapter extends TypeAdapter<SoundItem> {
       property: fields[0] as SoundProperties,
       title: fields[2] as String,
       type: fields[1] as SoundType,
+      info: fields[3] as String,
     );
   }
 
   @override
   void write(BinaryWriter writer, SoundItem obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.property)
       ..writeByte(1)
       ..write(obj.type)
       ..writeByte(2)
-      ..write(obj.title);
+      ..write(obj.title)
+      ..writeByte(3)
+      ..write(obj.info);
   }
 
   @override

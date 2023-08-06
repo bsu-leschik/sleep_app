@@ -5,18 +5,17 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'package:sleep_app/player/timer_picker/provider/timer_provider.dart';
 
-class MainButton extends StatelessWidget {
-  final Text text;
+class ColoredButton extends StatelessWidget {
+  final String text;
   final Function(BuildContext) callback;
 
-  const MainButton({super.key, required this.text, required this.callback});
+  const ColoredButton({super.key, required this.text, required this.callback});
 
   @override
   Widget build(BuildContext context) {
     return ElevatedButton(
         onPressed: () => {callback(context)},
         style: ButtonStyle(
-          minimumSize: const MaterialStatePropertyAll(Size(130, 42)),
           backgroundColor: const MaterialStatePropertyAll(
             Color.fromRGBO(126, 68, 250, 1),
           ),
@@ -29,22 +28,24 @@ class MainButton extends StatelessWidget {
             ),
           )),
         ),
-        child: text);
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 10),
+          child: Text(text),
+        ));
   }
 }
 
 class TransparentButton extends StatelessWidget {
-  final Text text;
+  final String text;
   final Function callback;
   const TransparentButton(
       {super.key, required this.text, required this.callback});
 
   @override
   Widget build(BuildContext context) {
-    return TextButton(
+    return OutlinedButton(
         onPressed: () => {callback(context)},
         style: ButtonStyle(
-          minimumSize: const MaterialStatePropertyAll(Size(130, 42)),
           backgroundColor: const MaterialStatePropertyAll(
             Colors.transparent,
           ),
@@ -61,7 +62,10 @@ class TransparentButton extends StatelessWidget {
             ),
           )),
         ),
-        child: text);
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 19, vertical: 10),
+          child: Text(text),
+        ));
   }
 }
 
@@ -81,13 +85,12 @@ class TimerButtons extends StatelessWidget {
       children: [
         Padding(
           padding: const EdgeInsets.only(right: 7),
-          child: MainButton(
-              text: const Text("Start"), callback: _mainButtonCallback),
+          child: ColoredButton(text: "Start", callback: _mainButtonCallback),
         ),
         Padding(
           padding: const EdgeInsets.only(left: 7),
           child: TransparentButton(
-            text: const Text("Clear"),
+            text: "Clear",
             callback: (p0) =>
                 Provider.of<TimerProvider>(context, listen: false).clear(),
           ),

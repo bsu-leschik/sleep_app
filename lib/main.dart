@@ -8,6 +8,8 @@ import 'package:provider/provider.dart';
 import 'package:sleep_app/player/ads/ad_popup.dart';
 import 'package:sleep_app/player/bottom_bar/bottom_bar.dart';
 import 'package:sleep_app/player/current_mix/current_mix.dart';
+import 'package:sleep_app/player/current_mix/mixes/provider/mix_playing.dart';
+import 'package:sleep_app/player/current_mix/providers/mix_count.dart';
 import 'package:sleep_app/player/music_chooser/main_page.dart';
 import 'package:sleep_app/player/settings/settings_widget.dart';
 import 'package:sleep_app/player/storage/mixes/mixes_storage.dart';
@@ -64,6 +66,30 @@ class MyApp extends StatelessWidget {
                 Provider.of<SoundsStorage>(context, listen: false),
               ),
         ),
+        ChangeNotifierProxyProvider<MixesStorage, MixPlaying>(
+            create: (context) =>
+                MixPlaying(Provider.of<MixesStorage>(context, listen: false)),
+            update: (context, value, previous) {
+              if (previous != null) {
+                return previous
+                  ..update(Provider.of<MixesStorage>(context, listen: false));
+              } else {
+                return MixPlaying(
+                    Provider.of<MixesStorage>(context, listen: false));
+              }
+            }),
+        ChangeNotifierProxyProvider<MixesStorage, MixCount>(
+            create: (context) =>
+                MixCount(Provider.of<MixesStorage>(context, listen: false)),
+            update: (context, value, previous) {
+              if (previous != null) {
+                return previous
+                  ..update(Provider.of<MixesStorage>(context, listen: false));
+              } else {
+                return MixCount(
+                    Provider.of<MixesStorage>(context, listen: false));
+              }
+            }),
       ],
       child: MaterialApp.router(
         routerConfig: GoRouter(

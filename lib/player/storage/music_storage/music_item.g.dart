@@ -17,6 +17,7 @@ class MusicItemAdapter extends TypeAdapter<MusicItem> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return MusicItem(
+      info: fields[3] as String,
       title: fields[0] as String,
       property: fields[1] as SoundProperties,
       imageRoute: fields[2] as String,
@@ -26,13 +27,15 @@ class MusicItemAdapter extends TypeAdapter<MusicItem> {
   @override
   void write(BinaryWriter writer, MusicItem obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.title)
       ..writeByte(1)
       ..write(obj.property)
       ..writeByte(2)
-      ..write(obj.imageRoute);
+      ..write(obj.imageRoute)
+      ..writeByte(3)
+      ..write(obj.info);
   }
 
   @override

@@ -27,8 +27,8 @@ class TimerDisplay extends StatelessWidget {
               child: TimerText(
                 timerTextStyle: timerTextStyle,
               )),
-          MainButton(
-            text: const Text("Stop timer"),
+          ColoredButton(
+            text: "Stop timer",
             callback: (BuildContext context) =>
                 Provider.of<TimerProvider>(context, listen: false).stopTimer(),
           )

@@ -6,7 +6,6 @@ import 'package:sleep_app/player/storage/mixes/mix_music_item.dart';
 import 'package:sleep_app/player/storage/mixes/mix_sound_item.dart';
 import 'package:sleep_app/player/storage/music_storage/music_item.dart';
 import 'package:sleep_app/player/storage/music_storage/music_storage.dart';
-import 'package:sleep_app/player/storage/sounds_storage/sounds_list.dart';
 import 'package:sleep_app/player/storage/sounds_storage/sounds_storage.dart';
 
 import '../../timer_picker/provider/timer_provider.dart';
@@ -25,6 +24,16 @@ class MixesStorage extends ChangeNotifier {
 
   MixesStorage(MusicStorage musicStorage, SoundsStorage soundsStorage) {
     _init(musicStorage, soundsStorage);
+  }
+
+  List<Mix> get mixes => _mixes.values.toList();
+
+  Mix? getMixByName(String name) => _mixes[name];
+
+  set mixTitle(String title) {
+    if (title != "" && !_mixes.containsKey(title)) {
+      _currentMix.name = title;
+    }
   }
 
   String? get musicPlayingName {
@@ -48,11 +57,11 @@ class MixesStorage extends ChangeNotifier {
         () => Mix(
           name: key,
           music: MixMusicItem(
-            item: musicStorage.getItemByName(value.music.title),
+            item: musicStorage.getItemByName(value.music.title)!,
             volume: value.music.volume,
           ),
           sounds: List.generate(
-            sounds.length,
+            value.sounds.length,
             (index) => MixSoundItem(
               volume: value.sounds[index].volume,
               item: soundsStorage.getItemByName(value.sounds[index].title),
@@ -99,12 +108,30 @@ class MixesStorage extends ChangeNotifier {
     return true;
   }
 
-  void saveMix() {
+  /// Function for saving currently
+  /// playing sounds and music to mix.
+  ///
+  /// If [mix] wasn't previously named or
+  /// [title] is already used function does nothing and returns `false`.
+  /// If mix was saved succesfully the return value is `true`
+  bool saveMix({String? title}) {
+    if (title != null && title != "") {
+      if (_mixes.containsKey(title)) {
+        return false;
+      }
+      _currentMix.name = title;
+    }
     if (_currentMix.name == null) {
-      throw ArgumentError.notNull("Mix name is null");
+      return false;
     }
     _box.put(_currentMix.name, _HiveMix.fromMix(_currentMix));
-    _mixes.putIfAbsent(_currentMix.name!, () => _currentMix);
+    if (_mixes.containsKey(_currentMix.name)) {
+      _mixes[_currentMix.name!] = _currentMix;
+    } else {
+      _mixes.putIfAbsent(_currentMix.name!, () => _currentMix);
+    }
+    notifyListeners();
+    return true;
   }
 
   void clear() {
@@ -186,6 +213,30 @@ class MixesStorage extends ChangeNotifier {
       pause();
     }
     return this;
+  }
+
+  playMix(String title) {
+    if (title == _currentMix.name) {
+      clear();
+      return;
+    }
+    clear();
+    _currentMix = _mixes[title]!;
+    player.playMix(_currentMix);
+    notifyListeners();
+  }
+
+  deleteMix(String title) {
+    if (_currentMix.name == title) {
+      clear();
+    }
+    _mixes.remove(title);
+    _box.delete(title);
+    notifyListeners();
+  }
+
+  bool validMixTitle(String? title) {
+    return title != null && title != '' && !_mixes.containsKey(title);
   }
 }
 

@@ -1,5 +1,7 @@
 import 'package:assets_audio_player/assets_audio_player.dart';
 
+import 'mix.dart';
+
 class PlayController {
   static String _musicPlaying = "";
   static const _pathToMusic = "/assets/music/";
@@ -106,5 +108,13 @@ class PlayController {
 
   adjustSoundVolume(String name, double volume) {
     _soundPlayers[name]?.setVolume(volume);
+  }
+
+  playMix(Mix mix) {
+    var music = mix.music;
+    if (music != null) {
+      playMusic(music.item.title, music.volume);
+    }
+    mix.sounds.forEach((key, value) => playSound(key, value.volume));
   }
 }

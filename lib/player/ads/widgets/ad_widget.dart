@@ -27,7 +27,7 @@ class AdWidget extends StatelessWidget {
                     : MusicItemIcon(
                         title: title,
                         imageRoute: Provider.of<MusicStorage>(context)
-                            .getItemByName(title)
+                            .getItemByName(title)!
                             .imageRoute,
                         updating: false),
                 const SizedBox(height: 15),

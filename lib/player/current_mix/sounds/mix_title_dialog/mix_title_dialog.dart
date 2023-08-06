@@ -14,15 +14,38 @@ class MixTitleDialog extends StatefulWidget {
 
 class _MixTitleDialogState extends State<MixTitleDialog> {
   String? title;
-  InputDecoration decoration = const InputDecoration(
-      border: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(12)),
-        borderSide: BorderSide(color: Colors.white, width: 1),
-      ),
-      errorBorder: OutlineInputBorder(
-        borderRadius: BorderRadius.all(Radius.circular(12)),
-        borderSide: BorderSide(color: Colors.red, width: 1),
-      ));
+  static const InputDecoration basicBorder = InputDecoration(
+    border: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderSide: BorderSide(color: Colors.white, width: 1),
+    ),
+    enabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderSide: BorderSide(color: Colors.white, width: 1),
+    ),
+    disabledBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderSide: BorderSide(color: Colors.white, width: 1),
+    ),
+    focusedBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderSide: BorderSide(color: Colors.white, width: 3),
+    ),
+  );
+
+  static const InputDecoration errorBorder = InputDecoration(
+    focusedErrorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderSide: BorderSide(color: Colors.red, width: 2),
+    ),
+    errorBorder: OutlineInputBorder(
+      borderRadius: BorderRadius.all(Radius.circular(12)),
+      borderSide: BorderSide(color: Colors.red, width: 1),
+    ),
+    errorText: "Invalid title",
+  );
+
+  InputDecoration currentBorder = basicBorder;
 
   @override
   Widget build(BuildContext context) {
@@ -38,38 +61,52 @@ class _MixTitleDialogState extends State<MixTitleDialog> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Column(
+            Stack(
               children: [
-                Container(
-                  width: 300,
-                  height: 100,
-                  child: TextField(
-                    maxLines: 1,
-                    minLines: 1,
-                    decoration: decoration,
-                    onChanged: (value) => title = value,
-                  ),
+                const Align(
+                  alignment: Alignment.topRight,
+                  child: CrossExitButton(),
                 ),
-                Row(
+                Column(
                   children: [
-                    ColoredButton(
-                      text: "Save",
-                      callback: (context) {
-                        var result =
-                            Provider.of<MixesStorage>(context, listen: false)
-                                .saveMix(title: title);
-                        if (!result) {
-                          // setState(() {
-                          //   decoration = const InputDecoration(
-                          //       errorText: "Invalid input");
-                          // });
-                        }
-                      },
+                    const Center(
+                      child: Text(
+                        "Name this mix",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 16,
+                          fontFamily: 'Nunito',
+                          fontWeight: FontWeight.w700,
+                        ),
+                      ),
                     ),
-                    TransparentButton(
-                      text: "Cancel",
-                      callback: () => context.pop(),
-                    )
+                    SizedBox(
+                      width: 300,
+                      height: 60,
+                      child: TextField(
+                        maxLines: 1,
+                        minLines: 1,
+                        decoration: currentBorder,
+                        onChanged: (value) => title = value,
+                      ),
+                    ),
+                    Center(
+                      child: ColoredButton(
+                        text: "Save",
+                        callback: (context) {
+                          var result =
+                              Provider.of<MixesStorage>(context, listen: false)
+                                  .saveMix(title: title);
+                          if (!result) {
+                            setState(() {
+                              currentBorder = errorBorder;
+                            });
+                          } else {
+                            context.pop();
+                          }
+                        },
+                      ),
+                    ),
                   ],
                 ),
               ],

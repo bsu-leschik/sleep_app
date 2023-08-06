@@ -12,8 +12,12 @@ class MixesList extends StatelessWidget {
     var mixes = Provider.of<MixesStorage>(context).mixes;
     if (mixes != null && mixes.isNotEmpty) {
       return ListView.builder(
-          itemCount: mixes.length,
-          itemBuilder: (context, index) => MixItem(mixes[index].name!));
+        itemCount: mixes.length,
+        itemBuilder: (context, index) => Padding(
+          padding: const EdgeInsets.only(bottom: 25),
+          child: MixItem(mixes[index].name!),
+        ),
+      );
     } else {
       return const NoSounds();
     }

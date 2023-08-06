@@ -233,6 +233,10 @@ class MixesStorage extends ChangeNotifier {
     _box.delete(title);
     notifyListeners();
   }
+
+  bool validMixTitle(String? title) {
+    return title != null && title != '' && !_mixes.containsKey(title);
+  }
 }
 
 @HiveType(typeId: 5)

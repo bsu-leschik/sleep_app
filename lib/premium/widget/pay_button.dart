@@ -18,7 +18,7 @@ class _PayButtonState extends State<PayButton> {
         SizedBox(
           height: screenHeight * 0.01,
         ),
-        const TwoPayButton(
+        const BigPayButton(
           close: "\$15.99",
           sum: "\$15.99",
           period: "per month",
@@ -26,7 +26,7 @@ class _PayButtonState extends State<PayButton> {
         SizedBox(
           height: screenHeight * 0.01,
         ),
-        const TwoPayButton(
+        const BigPayButton(
           close: "\$207.48",
           sum: "\$99.99",
           period: "per year",
@@ -95,11 +95,11 @@ class FirstButton extends StatelessWidget {
   }
 }
 
-class TwoPayButton extends StatelessWidget {
+class BigPayButton extends StatelessWidget {
   final String close;
   final String sum;
   final String period;
-  const TwoPayButton({
+  const BigPayButton({
     super.key,
     required this.close,
     required this.sum,
@@ -108,84 +108,71 @@ class TwoPayButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
-    return Stack(
-      children: [
-        InkWell(
-          onTap: () {
-            debugPrint("Print first button");
-          },
-          child: Container(
-            height: screenHeight * 0.07,
-            width: screenWidth * 0.83,
-            decoration: BoxDecoration(
-              color: Colors.transparent,
-              borderRadius: BorderRadius.circular(43),
-              border: Border.all(
-                color: const Color(0xFF8E9FCC),
-              ),
-            ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+    return Material(
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(43),
+          side: const BorderSide(
+            color: Color(0xFF8E9FCC),
+          )),
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(43),
+        onTap: () {},
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 33.5),
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Stack(
+                alignment: AlignmentDirectional.center,
                 children: [
-                  Stack(
-                    alignment: AlignmentDirectional.center,
-                    children: [
-                      Text(
-                        close,
-                        style: const TextStyle(
-                          fontFamily: 'Poetsen',
-                          color: Color(0xFF8E9FCC),
-                          fontSize: 18,
-                          height: 21.6 / 18,
-                          fontWeight: FontWeight.w400,
-                          fontStyle: FontStyle.normal,
-                        ),
-                      ),
-                      SizedBox(
-                        width: screenWidth * 0.038,
-                        height: screenHeight * 0.035,
-                        child: Image.asset("assets/images/premium/Splash.png"),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    width: screenWidth * 0.03,
-                  ),
                   Text(
-                    sum,
+                    close,
                     style: const TextStyle(
                       fontFamily: 'Poetsen',
-                      color: Color(0xFFFA9044),
-                      fontSize: 32,
-                      height: 38.4 / 32,
+                      color: Color(0xFF8E9FCC),
+                      fontSize: 18,
                       fontWeight: FontWeight.w400,
                       fontStyle: FontStyle.normal,
                     ),
                   ),
                   SizedBox(
-                    width: screenWidth * 0.03,
-                  ),
-                  Text(
-                    period,
-                    style: GoogleFonts.nunito(
-                      textStyle: const TextStyle(
-                        color: Color(0xFF8E9FCC),
-                        fontSize: 18,
-                        height: 24.55 / 18,
-                        fontWeight: FontWeight.w400,
-                        fontStyle: FontStyle.normal,
-                      ),
-                    ),
+                    width: 15,
+                    height: 30,
+                    child: Image.asset("assets/images/premium/Splash.png"),
                   ),
                 ],
               ),
-            ),
+              const SizedBox(width: 12),
+              Text(
+                sum,
+                style: const TextStyle(
+                  fontFamily: 'Poetsen',
+                  color: Color(0xFFFA9044),
+                  fontSize: 32,
+                  height: 38.4 / 32,
+                  fontWeight: FontWeight.w400,
+                  fontStyle: FontStyle.normal,
+                ),
+              ),
+              const SizedBox(width: 12),
+              Text(
+                period,
+                style: GoogleFonts.nunito(
+                  textStyle: const TextStyle(
+                    color: Color(0xFF8E9FCC),
+                    fontSize: 18,
+                    height: 24.55 / 18,
+                    fontWeight: FontWeight.w400,
+                    fontStyle: FontStyle.normal,
+                  ),
+                ),
+              ),
+            ],
           ),
-        )
-      ],
+        ),
+      ),
     );
   }
 }

@@ -23,18 +23,19 @@ class BottomTerms extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () {
-        debugPrint("Terms Bottom");
-      },
-      child: Text(
-        title,
-        style: GoogleFonts.nunito(
-          textStyle: const TextStyle(
+    return Material(
+      color: Colors.transparent,
+      child: InkWell(
+        onTap: () {},
+        child: Text(
+          title,
+          style: GoogleFonts.nunito(
+            textStyle: const TextStyle(
               color: Color(0xFFFFFFFF),
               fontSize: 12,
-              height: 16.37 / 12,
-              fontWeight: FontWeight.w400),
+              fontWeight: FontWeight.w400,
+            ),
+          ),
         ),
       ),
     );

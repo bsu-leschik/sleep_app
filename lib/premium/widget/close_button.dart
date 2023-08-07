@@ -8,9 +8,9 @@ class CloseButt extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       child: const Icon(
-        Icons.close,
+        Icons.close_rounded,
         color: Color(0xFFFFFFFF),
-        size: 20,
+        size: 30,
       ),
       onTap: () => context.go('/player'),
     );

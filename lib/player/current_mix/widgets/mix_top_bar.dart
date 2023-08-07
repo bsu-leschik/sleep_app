@@ -24,7 +24,7 @@ class MixTopBar extends StatelessWidget {
             context.pop();
           },
           child: const Icon(
-            Icons.close,
+            Icons.close_rounded,
             color: Color(0xFFFFFFFF),
             size: 25,
           ),

@@ -16,46 +16,78 @@ class SubscribeWidget extends StatefulWidget {
 class _SubscribeWidgetState extends State<SubscribeWidget> {
   @override
   Widget build(BuildContext context) {
-    final double screenHeight = MediaQuery.of(context).size.height;
-    final double screenWidth = MediaQuery.of(context).size.width;
-    return Scaffold(
-      backgroundColor: const Color(0xff141733),
-      body: Stack(
-        // alignment: AlignmentDirectional.topCenter,
-        children: <Widget>[
-          Image.asset(
-            "assets/images/premium/bg4.png",
-            // "assets/images/premium/4.png",
-            width: double.infinity,
-            fit: BoxFit.cover,
-            alignment: Alignment.center,
+    return SafeArea(
+      child: Scaffold(
+        backgroundColor: const Color(0xff141733),
+        body: Container(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+                image: AssetImage(
+                  "assets/images/premium/background.png",
+                ),
+                fit: BoxFit.cover),
           ),
-          Positioned(
-            top: screenHeight * 0.075,
-            right: screenWidth * 0.076,
-            child: const CloseButt(),
-          ),
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+          child: const Stack(
             children: [
-              SizedBox(
-                height: screenHeight * 0.1,
-              ),
-              // MoonWidget(),
-              const MoonSheepCloud(),
-              const SweetDreamsPremium(),
-              const PlusPremium(),
-              SizedBox(
-                height: screenHeight * 0.036,
-              ),
-              const PayButton(),
-              const BottomPremium(),
-              SizedBox(
-                height: screenHeight * 0.03,
+              MoonSheepCloud(),
+              Flex(
+                direction: Axis.vertical,
+                children: [
+                  Expanded(
+                    flex: 28,
+                    child: SizedBox(),
+                  ),
+                  Expanded(
+                    flex: 21,
+                    child: Align(
+                        alignment:
+                            Alignment(360 / 390 * 2 - 1, 28 / 844 * 2 - 1),
+                        child: CloseButt()),
+                  ),
+                  Expanded(
+                    flex: 157,
+                    child: SizedBox(),
+                  ),
+                  Expanded(
+                    flex: 98,
+                    child: SweetDreamsPremium(),
+                  ),
+                  Expanded(
+                    flex: 36,
+                    child: SizedBox(),
+                  ),
+                  Expanded(
+                    flex: 115,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 60),
+                      child: PlusPremium(),
+                    ),
+                  ),
+                  Expanded(
+                    flex: 29,
+                    child: SizedBox(),
+                  ),
+                  Expanded(
+                    flex: 198,
+                    child: PayButton(),
+                  ),
+                  Expanded(
+                    flex: 47,
+                    child: SizedBox(),
+                  ),
+                  Expanded(
+                    flex: 16,
+                    child: BottomPremium(),
+                  ),
+                  Expanded(
+                    flex: 30,
+                    child: SizedBox(),
+                  )
+                ],
               ),
             ],
           ),
-        ],
+        ),
       ),
     );
   }

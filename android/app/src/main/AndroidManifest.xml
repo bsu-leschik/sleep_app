@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.sleep_app">
    <application
-        android:label="sleep_app"
+        android:label="Sleep app"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

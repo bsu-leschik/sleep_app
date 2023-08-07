@@ -10,15 +10,15 @@ class PlusPremium extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         PlusPremiumConstructor(
-          image: "assets/images/shopping/Corona.png",
+          image: "assets/images/premium/Corona.png",
           title: "Full acces to the sleep library",
         ),
         PlusPremiumConstructor(
-          image: "assets/images/shopping/Music.png",
+          image: "assets/images/premium/Music.png",
           title: "Relaxing music",
         ),
         PlusPremiumConstructor(
-          image: "assets/images/shopping/Flower.png",
+          image: "assets/images/premium/Flower.png",
           title: "Sleep medidations",
         ),
       ],

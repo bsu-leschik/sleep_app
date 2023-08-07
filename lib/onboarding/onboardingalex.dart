@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'onboarding_widget.dart';
 
@@ -91,29 +92,31 @@ class _OnBoardingWidgetState extends State<OnBoardingWidget> {
                         }
                       },
                       child: Stack(children: [
-                        Container(
-                          height: 70,
-                          decoration: BoxDecoration(
-                            color: const Color(0xff8E9FCC).withOpacity(0.05),
-                            borderRadius: BorderRadius.circular(43.0),
-                          ),
-                        ),
                         ClipRect(
                           child: BackdropFilter(
                             filter: ImageFilter.blur(sigmaX: 1.5, sigmaY: 1.5),
                             child: Container(
                               padding: const EdgeInsets.symmetric(
                                   horizontal: 69, vertical: 15),
-                              decoration: ShapeDecoration(
-                                gradient: const LinearGradient(colors: [
-                                  Color(0x00202432),
-                                  Color(0x004c566c)
-                                ]),
-                                shape: RoundedRectangleBorder(
-                                  side: const BorderSide(
-                                      width: 0.50, color: Color(0xFF4C566C)),
-                                  borderRadius: BorderRadius.circular(43),
+                              decoration: BoxDecoration(
+                                backgroundBlendMode: BlendMode.difference,
+                                gradient: const LinearGradient(
+                                    colors: [
+                                      Color(0xFF202432),
+                                      Color(0xFF4c566c)
+                                    ],
+                                    begin: Alignment.bottomCenter,
+                                    end: Alignment.topCenter),
+                                border: const GradientBoxBorder(
+                                  gradient: LinearGradient(
+                                      colors: [
+                                        Color(0xFF202432),
+                                        Color(0xFF4c566c)
+                                      ],
+                                      begin: Alignment.bottomCenter,
+                                      end: Alignment.topCenter),
                                 ),
+                                borderRadius: BorderRadius.circular(43),
                               ),
                               child: const Text(
                                 "Continue",

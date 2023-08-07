@@ -44,9 +44,9 @@ class _SubscribeWidgetState extends State<SubscribeWidget> {
               // MoonWidget(),
               const MoonSheepCloud(),
               const SweetDreamsPremium(),
-              const PlusPremium(),
-              SizedBox(
-                height: screenHeight * 0.036,
+              const Padding(
+                padding: EdgeInsets.only(left: 60, bottom: 31),
+                child: PlusPremium(),
               ),
               const PayButton(),
               const BottomPremium(),

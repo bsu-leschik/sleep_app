@@ -44,60 +44,52 @@ class FirstButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final double screenWidth = MediaQuery.of(context).size.width;
-    final double screenHeight = MediaQuery.of(context).size.height;
-    return InkWell(
-      onTap: () {
-        debugPrint("Print first button");
-      },
-      child: Container(
-        height: screenHeight * 0.07,
-        width: screenWidth * 0.83,
-        decoration: BoxDecoration(
-          color: Colors.transparent,
+    return Material(
+      shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(43),
-          border: Border.all(
-            color: const Color(0xFFFFFFFF),
-          ),
-        ),
-        child: Center(
-            child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            const FittedBox(
-              fit: BoxFit.contain,
-              child: Text(
+          side: const BorderSide(
+            color: Color(0xFFFFFFFF),
+          )),
+      color: Colors.transparent,
+      child: InkWell(
+        borderRadius: BorderRadius.circular(43),
+        onTap: () {},
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 73.5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
                 "\$11.99",
                 style: TextStyle(
                   fontFamily: 'Poetsen',
                   color: Color(0xFFFFFFFF),
                   fontSize: 32,
-                  height: 38.4 / 32,
                   fontWeight: FontWeight.w400,
                   fontStyle: FontStyle.normal,
                 ),
               ),
-            ),
-            const SizedBox(
-              width: 12,
-            ),
-            FittedBox(
-              fit: BoxFit.contain,
-              child: Text(
-                "per week",
-                style: GoogleFonts.nunito(
-                  textStyle: const TextStyle(
-                    color: Color(0xFFFFFFFF),
-                    fontSize: 18,
-                    height: 24.5 / 18,
-                    fontWeight: FontWeight.w400,
-                    fontStyle: FontStyle.normal,
+              const SizedBox(
+                width: 12,
+              ),
+              FittedBox(
+                fit: BoxFit.contain,
+                child: Text(
+                  "per week",
+                  style: GoogleFonts.nunito(
+                    textStyle: const TextStyle(
+                      color: Color(0xFFFFFFFF),
+                      fontSize: 18,
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.normal,
+                    ),
                   ),
                 ),
               ),
-            ),
-          ],
-        )),
+            ],
+          ),
+        ),
       ),
     );
   }

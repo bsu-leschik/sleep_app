@@ -18,7 +18,7 @@ import 'package:sleep_app/player/storage/sounds_storage/sounds_storage.dart';
 import 'package:sleep_app/player/timer_picker/provider/timer_provider.dart';
 import 'package:sleep_app/player/timer_picker/time_picker.dart';
 
-import 'onboarding/onboardingalex.dart';
+import 'welcome/welcome_page.dart';
 import 'premium/sub_widget.dart';
 import 'package:path_provider/path_provider.dart';
 

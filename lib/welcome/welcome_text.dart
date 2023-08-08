@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class OnboardingWidget extends StatelessWidget {
+class WelcomeText extends StatelessWidget {
   final String title;
-  const OnboardingWidget({
+  const WelcomeText({
     super.key,
     required this.title,
   });
@@ -25,7 +25,6 @@ class OnboardingWidget extends StatelessWidget {
               color: Color(0xFFFFFFFF),
               fontSize: 33,
               fontWeight: FontWeight.w400,
-              height: 45 / 33,
             ),
           ),
         ),
